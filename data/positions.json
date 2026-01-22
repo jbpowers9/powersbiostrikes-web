@@ -73,7 +73,7 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-22T19:51:22.674156"
+      "last_updated": "2026-01-22T19:52:00.365967"
     },
     {
       "ticker": "OMER",
@@ -142,7 +142,7 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-22T19:51:22.970496"
+      "last_updated": "2026-01-22T19:52:00.606391"
     },
     {
       "ticker": "GOSS",
@@ -217,7 +217,7 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-22T19:51:23.242301"
+      "last_updated": "2026-01-22T19:52:00.784451"
     },
     {
       "ticker": "VNDA",
@@ -292,7 +292,7 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-22T19:51:23.503299"
+      "last_updated": "2026-01-22T19:52:01.178961"
     },
     {
       "ticker": "RGNX",
@@ -367,7 +367,7 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-22T19:51:23.794731"
+      "last_updated": "2026-01-22T19:52:01.637557"
     },
     {
       "ticker": "VNDA",
@@ -442,7 +442,7 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-22T19:51:24.088184"
+      "last_updated": "2026-01-22T19:52:01.874313"
     },
     {
       "ticker": "GOSS",
@@ -517,7 +517,7 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-22T19:51:24.417740"
+      "last_updated": "2026-01-22T19:52:02.062683"
     },
     {
       "ticker": "ACHV",
@@ -592,7 +592,7 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-22T19:51:24.695906"
+      "last_updated": "2026-01-22T19:52:02.248155"
     },
     {
       "ticker": "RGNX",
@@ -667,7 +667,7 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-22T19:51:24.950328"
+      "last_updated": "2026-01-22T19:52:02.860880"
     },
     {
       "ticker": "CRMD",
@@ -742,7 +742,7 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-22T19:51:25.233943"
+      "last_updated": "2026-01-22T19:52:03.084193"
     },
     {
       "ticker": "IMMP",
@@ -817,7 +817,7 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-22T19:51:25.568434"
+      "last_updated": "2026-01-22T19:52:03.254970"
     }
   ],
   "summary": {
@@ -827,7 +827,7 @@
   },
   "market_status": {
     "is_open": true,
-    "last_updated": "2026-01-22T19:51:25.568461"
+    "last_updated": "2026-01-22T19:52:03.254999"
   },
-  "last_updated": "2026-01-22T19:51:25.568463"
+  "last_updated": "2026-01-22T19:52:03.255001"
 }
