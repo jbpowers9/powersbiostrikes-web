@@ -14,7 +14,7 @@
       "prices": {
         "entry": 1.2,
         "current": 1.2000000000000002,
-        "stock_price": 5.8544,
+        "stock_price": 6.02,
         "break_even": 8.2,
         "max_buy": 1.32,
         "pnl_pct": 0.0
@@ -26,7 +26,7 @@
         "pct_from_entry": 2.220446049250313e-14
       },
       "enr": {
-        "enr": 166.3,
+        "enr": 188.7,
         "win_prob": 90.0,
         "enr_zone": {
           "zone": "good",
@@ -73,7 +73,7 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-22T21:56:13.593131"
+      "last_updated": "2026-01-22T22:05:01.646750"
     },
     {
       "ticker": "OMER",
@@ -89,7 +89,7 @@
       "prices": {
         "entry": 1.91,
         "current": 1.91,
-        "stock_price": 12.49,
+        "stock_price": 12.22,
         "break_even": 6.91,
         "max_buy": 2.1,
         "pnl_pct": 0.0
@@ -101,7 +101,7 @@
         "pct_from_entry": 0.0
       },
       "enr": {
-        "enr": 679.5,
+        "enr": 657.9,
         "win_prob": 85.0,
         "enr_zone": {
           "zone": "good",
@@ -142,7 +142,7 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-22T21:56:13.978911"
+      "last_updated": "2026-01-22T22:05:01.862627"
     },
     {
       "ticker": "GOSS",
@@ -158,7 +158,7 @@
       "prices": {
         "entry": 1.15,
         "current": 1.525,
-        "stock_price": 2.5,
+        "stock_price": 2.89,
         "break_even": 6.15,
         "max_buy": 1.26,
         "pnl_pct": 32.6
@@ -217,7 +217,7 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-22T21:56:14.458875"
+      "last_updated": "2026-01-22T22:05:02.099162"
     },
     {
       "ticker": "VNDA",
@@ -233,7 +233,7 @@
       "prices": {
         "entry": 1.675,
         "current": 2.2750000000000004,
-        "stock_price": 7.3,
+        "stock_price": 8.08,
         "break_even": 7.675,
         "max_buy": 1.84,
         "pnl_pct": 35.8
@@ -245,7 +245,7 @@
         "pct_from_entry": 35.82089552238807
       },
       "enr": {
-        "enr": 168.3,
+        "enr": 220.7,
         "win_prob": 85.0,
         "enr_zone": {
           "zone": "good",
@@ -292,7 +292,7 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-22T21:56:14.838634"
+      "last_updated": "2026-01-22T22:05:02.458717"
     },
     {
       "ticker": "RGNX",
@@ -308,7 +308,7 @@
       "prices": {
         "entry": 4.325,
         "current": 5.5,
-        "stock_price": 14.56,
+        "stock_price": 15.87,
         "break_even": 16.825,
         "max_buy": 4.76,
         "pnl_pct": 27.2
@@ -320,12 +320,12 @@
         "pct_from_entry": 27.16763005780347
       },
       "enr": {
-        "enr": 137.3,
+        "enr": 178.0,
         "win_prob": 95.0,
         "enr_zone": {
-          "zone": "fair",
-          "color": "yellow",
-          "message": "Moderate expected return"
+          "zone": "good",
+          "color": "green",
+          "message": "Strong expected return"
         },
         "is_live": true
       },
@@ -367,7 +367,7 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-22T21:56:15.307220"
+      "last_updated": "2026-01-22T22:05:02.636336"
     },
     {
       "ticker": "VNDA",
@@ -383,7 +383,7 @@
       "prices": {
         "entry": 1.95,
         "current": 3.3000000000000003,
-        "stock_price": 7.3,
+        "stock_price": 8.08,
         "break_even": 11.95,
         "max_buy": 2.15,
         "pnl_pct": 69.2
@@ -395,7 +395,7 @@
         "pct_from_entry": 69.23076923076925
       },
       "enr": {
-        "enr": 0,
+        "enr": 18.5,
         "win_prob": 85.0,
         "enr_zone": {
           "zone": "avoid",
@@ -442,7 +442,7 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-22T21:56:15.657782"
+      "last_updated": "2026-01-22T22:05:02.821236"
     },
     {
       "ticker": "GOSS",
@@ -458,7 +458,7 @@
       "prices": {
         "entry": 1.4,
         "current": 1.725,
-        "stock_price": 2.5,
+        "stock_price": 2.89,
         "break_even": 4.4,
         "max_buy": 1.54,
         "pnl_pct": 23.2
@@ -470,7 +470,7 @@
         "pct_from_entry": 23.214285714285722
       },
       "enr": {
-        "enr": 4.4,
+        "enr": 39.3,
         "win_prob": 70.0,
         "enr_zone": {
           "zone": "avoid",
@@ -517,7 +517,7 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-22T21:56:16.013303"
+      "last_updated": "2026-01-22T22:05:03.018755"
     },
     {
       "ticker": "ACHV",
@@ -533,7 +533,7 @@
       "prices": {
         "entry": 2.25,
         "current": 2.275,
-        "stock_price": 5.429,
+        "stock_price": 5.5947,
         "break_even": 7.25,
         "max_buy": 2.48,
         "pnl_pct": 1.1
@@ -545,12 +545,12 @@
         "pct_from_entry": 1.1111111111111072
       },
       "enr": {
-        "enr": 99.8,
+        "enr": 112.2,
         "win_prob": 95.0,
         "enr_zone": {
-          "zone": "weak",
-          "color": "orange",
-          "message": "Below target threshold"
+          "zone": "fair",
+          "color": "yellow",
+          "message": "Moderate expected return"
         },
         "is_live": true
       },
@@ -592,7 +592,7 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-22T21:56:16.331471"
+      "last_updated": "2026-01-22T22:05:03.254105"
     },
     {
       "ticker": "RGNX",
@@ -608,7 +608,7 @@
       "prices": {
         "entry": 4.6,
         "current": 4.1,
-        "stock_price": 14.56,
+        "stock_price": 15.87,
         "break_even": 19.6,
         "max_buy": 5.06,
         "pnl_pct": -10.9
@@ -620,7 +620,7 @@
         "pct_from_entry": -10.869565217391308
       },
       "enr": {
-        "enr": 160.2,
+        "enr": 214.8,
         "win_prob": 95.0,
         "enr_zone": {
           "zone": "good",
@@ -667,7 +667,7 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-22T21:56:16.707371"
+      "last_updated": "2026-01-22T22:05:03.455519"
     },
     {
       "ticker": "CRMD",
@@ -683,7 +683,7 @@
       "prices": {
         "entry": 1.4,
         "current": 1.5499999999999998,
-        "stock_price": 0,
+        "stock_price": 7.43,
         "break_even": 9.4,
         "max_buy": 1.54,
         "pnl_pct": 10.7
@@ -695,14 +695,14 @@
         "pct_from_entry": 10.714285714285698
       },
       "enr": {
-        "enr": 0,
-        "win_prob": 0,
+        "enr": 269.3,
+        "win_prob": 68.0,
         "enr_zone": {
-          "zone": "avoid",
-          "color": "red",
-          "message": "Negative expected return"
+          "zone": "good",
+          "color": "green",
+          "message": "Strong expected return"
         },
-        "is_live": false
+        "is_live": true
       },
       "cont": {
         "score": 90,
@@ -742,7 +742,7 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-22T21:56:17.010395"
+      "last_updated": "2026-01-22T22:05:03.610706"
     },
     {
       "ticker": "IMMP",
@@ -758,7 +758,7 @@
       "prices": {
         "entry": 0.9,
         "current": 0.95,
-        "stock_price": 0,
+        "stock_price": 2.9995,
         "break_even": 3.4,
         "max_buy": 0.99,
         "pnl_pct": 5.6
@@ -770,14 +770,14 @@
         "pct_from_entry": 5.555555555555558
       },
       "enr": {
-        "enr": 0,
-        "win_prob": 0,
+        "enr": 196.6,
+        "win_prob": 68.0,
         "enr_zone": {
-          "zone": "avoid",
-          "color": "red",
-          "message": "Negative expected return"
+          "zone": "good",
+          "color": "green",
+          "message": "Strong expected return"
         },
-        "is_live": false
+        "is_live": true
       },
       "cont": {
         "score": 55,
@@ -817,7 +817,7 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-22T21:56:17.403271"
+      "last_updated": "2026-01-22T22:05:03.834484"
     }
   ],
   "summary": {
@@ -827,7 +827,7 @@
   },
   "market_status": {
     "is_open": true,
-    "last_updated": "2026-01-22T21:56:17.403301"
+    "last_updated": "2026-01-22T22:05:03.834518"
   },
-  "last_updated": "2026-01-22T21:56:17.403303"
+  "last_updated": "2026-01-22T22:05:03.834520"
 }
