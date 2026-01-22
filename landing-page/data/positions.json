@@ -26,13 +26,14 @@
         "pct_from_entry": -57.85340314136125
       },
       "enr": {
-        "enr": 1249.2,
+        "enr": 1245.5,
         "win_prob": 9740.0,
         "enr_zone": {
           "zone": "good",
           "color": "green",
           "message": "Strong expected return"
-        }
+        },
+        "research_found": false
       },
       "cont": {
         "score": 70,
@@ -66,7 +67,7 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-22T07:36:17.240140"
+      "last_updated": "2026-01-22T11:25:42.801559"
     },
     {
       "ticker": "RGNX",
@@ -94,13 +95,14 @@
         "pct_from_entry": -93.64161849710982
       },
       "enr": {
-        "enr": 3205.0,
-        "win_prob": 9130.0,
+        "enr": 2186.4,
+        "win_prob": 9170.0,
         "enr_zone": {
           "zone": "good",
           "color": "green",
           "message": "Strong expected return"
-        }
+        },
+        "research_found": false
       },
       "cont": {
         "score": 65,
@@ -140,7 +142,7 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-22T07:36:17.263134"
+      "last_updated": "2026-01-22T11:25:42.869579"
     },
     {
       "ticker": "RGNX",
@@ -168,13 +170,14 @@
         "pct_from_entry": -95.38043478260869
       },
       "enr": {
-        "enr": 3066.5,
-        "win_prob": 9150.0,
+        "enr": 1777.9,
+        "win_prob": 9110.0,
         "enr_zone": {
           "zone": "good",
           "color": "green",
           "message": "Strong expected return"
-        }
+        },
+        "research_found": false
       },
       "cont": {
         "score": 65,
@@ -214,7 +217,7 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-22T07:36:17.286657"
+      "last_updated": "2026-01-22T11:25:43.085892"
     },
     {
       "ticker": "VNDA",
@@ -242,13 +245,14 @@
         "pct_from_entry": -89.25373134328358
       },
       "enr": {
-        "enr": 2399.5,
-        "win_prob": 9150.0,
+        "enr": 1801.1,
+        "win_prob": 9210.0,
         "enr_zone": {
           "zone": "good",
           "color": "green",
           "message": "Strong expected return"
-        }
+        },
+        "research_found": false
       },
       "cont": {
         "score": 72,
@@ -288,7 +292,7 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-22T07:36:17.308948"
+      "last_updated": "2026-01-22T11:25:43.152413"
     },
     {
       "ticker": "VNDA",
@@ -316,13 +320,14 @@
         "pct_from_entry": -96.88034188034187
       },
       "enr": {
-        "enr": 1502.5,
-        "win_prob": 7290.0,
+        "enr": 148.7,
+        "win_prob": 2860.0,
         "enr_zone": {
           "zone": "good",
           "color": "green",
           "message": "Strong expected return"
-        }
+        },
+        "research_found": false
       },
       "cont": {
         "score": 72,
@@ -362,7 +367,7 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-22T07:36:17.332024"
+      "last_updated": "2026-01-22T11:25:43.249899"
     },
     {
       "ticker": "GOSS",
@@ -390,13 +395,14 @@
         "pct_from_entry": -98.51449275362319
       },
       "enr": {
-        "enr": 835.7,
-        "win_prob": 2700.0,
+        "enr": -90.9,
+        "win_prob": 80.0,
         "enr_zone": {
-          "zone": "good",
-          "color": "green",
-          "message": "Strong expected return"
-        }
+          "zone": "avoid",
+          "color": "red",
+          "message": "Negative expected return"
+        },
+        "research_found": false
       },
       "cont": {
         "score": 60,
@@ -436,7 +442,7 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-22T07:36:17.353486"
+      "last_updated": "2026-01-22T11:25:43.302686"
     },
     {
       "ticker": "GOSS",
@@ -464,13 +470,14 @@
         "pct_from_entry": -98.35714285714286
       },
       "enr": {
-        "enr": 4951.9,
-        "win_prob": 5910.0,
+        "enr": 2511.2,
+        "win_prob": 5770.0,
         "enr_zone": {
           "zone": "good",
           "color": "green",
           "message": "Strong expected return"
-        }
+        },
+        "research_found": false
       },
       "cont": {
         "score": 60,
@@ -510,7 +517,7 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-22T07:36:17.375874"
+      "last_updated": "2026-01-22T11:25:43.417557"
     },
     {
       "ticker": "IMMP",
@@ -547,9 +554,9 @@
         }
       },
       "cont": {
-        "score": null,
-        "rating": "unknown",
-        "display": "Unknown"
+        "score": 55,
+        "rating": "MODERATE",
+        "display": "Moderate"
       },
       "catalyst": {
         "date": "2026-03-31",
@@ -584,7 +591,7 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-22T07:36:17.376149"
+      "last_updated": "2026-01-22T11:25:43.443020"
     },
     {
       "ticker": "MNKD",
@@ -612,13 +619,14 @@
         "pct_from_entry": -98.61979166666667
       },
       "enr": {
-        "enr": 10951.9,
-        "win_prob": 8990.0,
+        "enr": 4452.7,
+        "win_prob": 8340.0,
         "enr_zone": {
           "zone": "good",
           "color": "green",
           "message": "Strong expected return"
-        }
+        },
+        "research_found": false
       },
       "cont": {
         "score": 75,
@@ -658,7 +666,7 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-22T07:36:17.399457"
+      "last_updated": "2026-01-22T11:25:43.547596"
     },
     {
       "ticker": "ACHV",
@@ -686,17 +694,18 @@
         "pct_from_entry": -96.62962962962963
       },
       "enr": {
-        "enr": 4488.6,
-        "win_prob": 9130.0,
+        "enr": 2585.3,
+        "win_prob": 9530.0,
         "enr_zone": {
           "zone": "good",
           "color": "green",
           "message": "Strong expected return"
-        }
+        },
+        "research_found": true
       },
       "cont": {
-        "score": 55,
-        "rating": "unknown",
+        "score": 70,
+        "rating": "MODERATE",
         "display": "Moderate"
       },
       "catalyst": {
@@ -732,7 +741,7 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-22T07:36:17.422478"
+      "last_updated": "2026-01-22T11:25:43.621685"
     },
     {
       "ticker": "CRMD",
@@ -769,9 +778,9 @@
         }
       },
       "cont": {
-        "score": null,
-        "rating": "unknown",
-        "display": "Unknown"
+        "score": 90,
+        "rating": "HIGH",
+        "display": "High (Hold Through)"
       },
       "catalyst": {
         "date": "2026-06-30",
@@ -806,7 +815,7 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-22T07:36:17.422736"
+      "last_updated": "2026-01-22T11:25:43.652307"
     }
   ],
   "summary": {
@@ -816,7 +825,7 @@
   },
   "market_status": {
     "is_open": true,
-    "last_updated": "2026-01-22T07:36:17.422778"
+    "last_updated": "2026-01-22T11:25:43.652366"
   },
-  "last_updated": "2026-01-22T07:36:17.422781"
+  "last_updated": "2026-01-22T11:25:43.652370"
 }

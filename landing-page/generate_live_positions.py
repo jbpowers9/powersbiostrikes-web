@@ -41,9 +41,12 @@ try:
     from enr_calculator import calculate_enr, calculate_cont_score
     from database import get_database
     IMPORTS_AVAILABLE = True
+    # Initialize database connection
+    db = get_database()
 except ImportError as e:
     print(f"Warning: Could not import modules: {e}")
     IMPORTS_AVAILABLE = False
+    db = None
 
 
 # =============================================================================
@@ -299,62 +302,67 @@ def generate_position_data(position: Dict, stock_price: Optional[float] = None) 
     except:
         pass
 
-    # Calculate CONT score
+    # Calculate CONT score using research data from database (SINGLE SOURCE OF TRUTH)
     cont_data = {
         'cont_score': position.get('cont_score', 0),
         'cont_rating': 'unknown'
     }
 
-    if IMPORTS_AVAILABLE:
+    if IMPORTS_AVAILABLE and db:
         try:
-            cont_result = calculate_cont_score(
-                is_first_in_class=position.get('is_first_in_class', False),
-                critical_unmet_need=position.get('critical_unmet_need', False),
-                is_orphan=position.get('is_orphan', False),
-                has_multiple_catalysts=False,  # Would need pipeline data
-                price_change_60d_pct=position.get('price_change_60d_pct', 0),
-                mcap_millions=position.get('mcap_millions'),
-                is_me_too=False,
-                single_indication_only=False,
-                incremental_improvement=False,
-            )
-            cont_data = cont_result
-        except:
-            pass
+            # Get research data for CONT calculation
+            research = db.get_catalyst_research(ticker, catalyst_date, position.get('catalyst_event'))
+            if research:
+                cont_result = calculate_cont_score(
+                    is_first_in_class=bool(research.get('is_first_in_class')),
+                    critical_unmet_need=bool(research.get('critical_unmet_need')),
+                    is_orphan=bool(research.get('is_orphan')),
+                    is_breakthrough=bool(research.get('is_breakthrough')),
+                    is_fast_track=bool(research.get('is_fast_track')),
+                    multiple_catalysts=1,  # Default, would need pipeline data
+                    price_change_60d_pct=research.get('price_change_60d_pct') or 0,
+                    mcap_millions=research.get('mcap_millions'),
+                    is_me_too=bool(research.get('is_me_too')),
+                    single_indication_only=bool(research.get('single_indication_only')),
+                    incremental_improvement=bool(research.get('incremental_improvement')),
+                    market_skepticism=bool(research.get('market_skepticism')),
+                )
+                cont_data = cont_result
+        except Exception as e:
+            print(f"Error calculating CONT for {ticker}: {e}")
 
     # Calculate live ENR if we have current prices
+    # USING SINGLE SOURCE OF TRUTH: get_enr_inputs_for_catalyst()
     enr_data = {
         'enr': 0,
         'win_prob': 0,
         'enr_zone': get_enr_zone(0)
     }
 
-    if IMPORTS_AVAILABLE and current_stock > 0 and current_option > 0:
+    if IMPORTS_AVAILABLE and db and current_stock > 0 and current_option > 0:
         try:
-            event_type = position.get('catalyst_event', 'Phase 3')
-            if 'PDUFA' in event_type or 'Approval' in event_type:
-                event_type = 'PDUFA'
-            elif 'Phase 3' in event_type:
-                event_type = 'Phase 3'
-            elif 'Phase 2' in event_type:
-                event_type = 'Phase 2'
+            # Get all research-adjusted inputs from the single source of truth
+            enr_inputs = db.get_enr_inputs_for_catalyst(
+                ticker=ticker,
+                catalyst_date=catalyst_date,
+                catalyst_event=position.get('catalyst_event')
+            )
 
             enr_result = calculate_enr(
                 current_price=current_stock,
                 strike=strike,
                 premium=current_option,
                 days_to_expiry=days_to_expiry,
-                event_type=event_type,
-                market_data={
-                    'mcap': position.get('mcap_millions'),
-                    'is_first_in_class': position.get('is_first_in_class', False),
-                    'short_interest_pct': position.get('short_interest_pct', 0),
-                }
+                event_type=enr_inputs['event_type'],
+                indication=enr_inputs['indication'],
+                market_data=enr_inputs['market_data'],
+                adjustments=enr_inputs['adjustments'],
             )
             enr_data = {
                 'enr': round(enr_result.get('enr', 0), 1),
                 'win_prob': round(enr_result.get('win_prob', 0) * 100, 1),
-                'enr_zone': get_enr_zone(enr_result.get('enr', 0))
+                'enr_zone': get_enr_zone(enr_result.get('enr', 0)),
+                'research_found': enr_inputs.get('research_found', False)
             }
         except Exception as e:
             print(f"Error calculating ENR for {ticker}: {e}")
