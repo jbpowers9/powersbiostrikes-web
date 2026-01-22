@@ -57,9 +57,18 @@ try:
     from schwab_api import SchwabAPI
     SCHWAB_AVAILABLE = True
     print("Schwab API module loaded")
+    # Create a single shared API instance to avoid token refresh issues
+    _schwab_api_instance = None
+    def get_schwab_api():
+        global _schwab_api_instance
+        if _schwab_api_instance is None:
+            _schwab_api_instance = SchwabAPI()
+        return _schwab_api_instance
 except ImportError as e:
     print(f"Warning: Could not import schwab_api: {e}")
     SCHWAB_AVAILABLE = False
+    def get_schwab_api():
+        return None
 
 # Add biotech-options-v2 to path for imports (local mode only)
 BIOTECH_DIR = os.environ.get('BIOTECH_OPTIONS_DIR', '/mnt/c/biotech-options-v2')
@@ -364,8 +373,8 @@ def get_live_prices(tickers: List[str]) -> Dict[str, Dict]:
         return prices
 
     try:
-        api = SchwabAPI()
-        if api.is_authenticated():
+        api = get_schwab_api()
+        if api and api.is_authenticated():
             print(f"Fetching live prices from Schwab API for: {tickers}")
             quotes = api.get_quotes(tickers)
             for ticker, data in quotes.items():
@@ -394,8 +403,8 @@ def get_option_price(ticker: str, expiration: str, strike: float, option_type: s
         return {}
 
     try:
-        api = SchwabAPI()
-        if not api.is_authenticated():
+        api = get_schwab_api()
+        if not api or not api.is_authenticated():
             print(f"Cannot get option price - not authenticated")
             return {}
 
