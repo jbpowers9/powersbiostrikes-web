@@ -19,6 +19,9 @@ on:
     paths:
       - 'landing-page/generate_live_positions.py'
 
+permissions:
+  contents: write
+
 jobs:
   update-positions:
     runs-on: ubuntu-latest
