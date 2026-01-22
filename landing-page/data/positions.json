@@ -73,7 +73,7 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-22T18:03:46.793637"
+      "last_updated": "2026-01-22T18:09:34.525511"
     },
     {
       "ticker": "OMER",
@@ -142,7 +142,7 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-22T18:03:46.793700"
+      "last_updated": "2026-01-22T18:09:34.525573"
     },
     {
       "ticker": "GOSS",
@@ -217,7 +217,7 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-22T18:03:46.793804"
+      "last_updated": "2026-01-22T18:09:34.525656"
     },
     {
       "ticker": "VNDA",
@@ -292,7 +292,7 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-22T18:03:46.793890"
+      "last_updated": "2026-01-22T18:09:34.525740"
     },
     {
       "ticker": "RGNX",
@@ -367,7 +367,7 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-22T18:03:46.793968"
+      "last_updated": "2026-01-22T18:09:34.525840"
     },
     {
       "ticker": "VNDA",
@@ -442,7 +442,7 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-22T18:03:46.794045"
+      "last_updated": "2026-01-22T18:09:34.525918"
     },
     {
       "ticker": "GOSS",
@@ -517,7 +517,7 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-22T18:03:46.794118"
+      "last_updated": "2026-01-22T18:09:34.525992"
     },
     {
       "ticker": "ACHV",
@@ -592,7 +592,7 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-22T18:03:46.794210"
+      "last_updated": "2026-01-22T18:09:34.526080"
     },
     {
       "ticker": "RGNX",
@@ -667,7 +667,7 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-22T18:03:46.794292"
+      "last_updated": "2026-01-22T18:09:34.526156"
     },
     {
       "ticker": "CRMD",
@@ -705,9 +705,9 @@
         "is_live": false
       },
       "cont": {
-        "score": null,
-        "rating": "unknown",
-        "display": "Unknown"
+        "score": 90,
+        "rating": "HIGH",
+        "display": "High (Hold Through)"
       },
       "catalyst": {
         "date": "2026-06-30",
@@ -742,7 +742,7 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-22T18:03:46.794362"
+      "last_updated": "2026-01-22T18:09:34.526222"
     },
     {
       "ticker": "IMMP",
@@ -780,9 +780,9 @@
         "is_live": false
       },
       "cont": {
-        "score": null,
-        "rating": "unknown",
-        "display": "Unknown"
+        "score": 55,
+        "rating": "MODERATE",
+        "display": "Moderate"
       },
       "catalyst": {
         "date": "2026-03-31",
@@ -817,7 +817,7 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-22T18:03:46.794430"
+      "last_updated": "2026-01-22T18:09:34.526292"
     }
   ],
   "summary": {
@@ -827,7 +827,7 @@
   },
   "market_status": {
     "is_open": true,
-    "last_updated": "2026-01-22T18:03:46.794444"
+    "last_updated": "2026-01-22T18:09:34.526308"
   },
-  "last_updated": "2026-01-22T18:03:46.794446"
+  "last_updated": "2026-01-22T18:09:34.526309"
 }
