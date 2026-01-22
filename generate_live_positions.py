@@ -48,26 +48,41 @@ if USE_SUPABASE:
         print("Warning: supabase package not installed, falling back to local DB")
         USE_SUPABASE = False
 
-# Add biotech-options-v2 to path for imports (local mode)
+# =============================================================================
+# SCHWAB API (works in both local and cloud mode)
+# =============================================================================
+
+# Try to import local schwab_api (for cloud mode via GitHub Actions)
+try:
+    from schwab_api import SchwabAPI
+    SCHWAB_AVAILABLE = True
+    print("Schwab API module loaded")
+except ImportError as e:
+    print(f"Warning: Could not import schwab_api: {e}")
+    SCHWAB_AVAILABLE = False
+
+# Add biotech-options-v2 to path for imports (local mode only)
 BIOTECH_DIR = os.environ.get('BIOTECH_OPTIONS_DIR', '/mnt/c/biotech-options-v2')
 if os.path.exists(BIOTECH_DIR):
     sys.path.insert(0, BIOTECH_DIR)
 
-# Try to import from biotech-options-v2
+# Try to import additional modules from biotech-options-v2 (local mode)
 try:
-    from schwab_api import SchwabAPI
     from enr_calculator import calculate_enr, calculate_cont_score
     from database import get_database
-    IMPORTS_AVAILABLE = True
+    LOCAL_IMPORTS_AVAILABLE = True
     # Initialize database connection (for local mode)
     if not USE_SUPABASE:
         db = get_database()
     else:
         db = None
 except ImportError as e:
-    print(f"Warning: Could not import local modules: {e}")
-    IMPORTS_AVAILABLE = False
+    print(f"Note: Local biotech modules not available (expected in cloud mode): {e}")
+    LOCAL_IMPORTS_AVAILABLE = False
     db = None
+
+# For backward compatibility
+IMPORTS_AVAILABLE = LOCAL_IMPORTS_AVAILABLE
 
 
 # =============================================================================
@@ -144,6 +159,77 @@ def get_enr_zone(enr: float) -> Dict[str, str]:
         return {'zone': 'weak', 'color': 'orange', 'message': 'Below target threshold'}
     else:
         return {'zone': 'avoid', 'color': 'red', 'message': 'Negative expected return'}
+
+
+def calculate_cloud_enr(
+    stock_price: float,
+    strike: float,
+    premium: float,
+    days_to_expiry: int,
+    catalyst_event: str,
+    research_data: Dict
+) -> Dict[str, Any]:
+    """
+    Calculate ENR in cloud mode using research data and live stock price.
+
+    This is a simplified calculation when we don't have live option prices.
+    Uses historical biotech approval rates and expected moves.
+    """
+
+    # Default values based on catalyst type
+    event_lower = (catalyst_event or '').lower()
+
+    # Determine win probability based on event type
+    if 'pdufa' in event_lower or 'approval' in event_lower:
+        base_win_prob = 0.85  # FDA approval success rate ~85%
+    elif 'phase 3' in event_lower:
+        base_win_prob = 0.60  # Phase 3 success rate ~60%
+    elif 'phase 2' in event_lower:
+        base_win_prob = 0.40  # Phase 2 success rate ~40%
+    else:
+        base_win_prob = 0.50  # Default
+
+    # Adjust for research factors
+    if research_data.get('is_first_in_class'):
+        base_win_prob += 0.05
+    if research_data.get('is_orphan'):
+        base_win_prob += 0.05
+    if research_data.get('is_fast_track'):
+        base_win_prob += 0.03
+    if research_data.get('is_breakthrough'):
+        base_win_prob += 0.05
+
+    # Cap win probability
+    win_prob = min(0.95, base_win_prob)
+
+    # Expected move on win (typical biotech approval move)
+    if 'pdufa' in event_lower:
+        expected_gain_pct = 0.80  # 80% stock move on approval
+    elif 'phase 3' in event_lower:
+        expected_gain_pct = 1.20  # 120% on positive Phase 3
+    else:
+        expected_gain_pct = 0.60  # 60% default
+
+    # Calculate option payoff on win
+    if stock_price > 0 and premium > 0:
+        stock_on_win = stock_price * (1 + expected_gain_pct)
+        intrinsic_on_win = max(0, stock_on_win - strike)
+        option_return_on_win = (intrinsic_on_win / premium - 1) * 100 if intrinsic_on_win > premium else -50
+    else:
+        option_return_on_win = 200  # Default assumption
+
+    # Loss on lose (options typically lose 80-100%)
+    option_return_on_lose = -90
+
+    # Calculate ENR
+    enr = (win_prob * option_return_on_win) + ((1 - win_prob) * option_return_on_lose)
+
+    return {
+        'enr': max(0, round(enr, 1)),
+        'win_prob': round(win_prob * 100, 1),
+        'is_live': True,
+        'calculation_method': 'cloud'
+    }
 
 
 def calculate_break_even(strike: float, premium: float, option_type: str = 'CALL') -> float:
@@ -273,55 +359,85 @@ def get_live_prices(tickers: List[str]) -> Dict[str, Dict]:
     """Fetch live stock prices from Schwab API."""
     prices = {}
 
-    if not IMPORTS_AVAILABLE:
-        print("Schwab API not available, using cached data")
+    if not SCHWAB_AVAILABLE:
+        print("Schwab API not available")
         return prices
 
     try:
         api = SchwabAPI()
-        if not api.is_authenticated():
-            print("Schwab API not authenticated")
+        if api.is_authenticated():
+            print(f"Fetching live prices from Schwab API for: {tickers}")
+            quotes = api.get_quotes(tickers)
+            for ticker, data in quotes.items():
+                price = data.get('lastPrice', 0)
+                prices[ticker] = {
+                    'price': price,
+                    'change': data.get('netChange', 0),
+                    'change_pct': data.get('netPercentChangeInDouble', 0),
+                    'bid': data.get('bidPrice', 0),
+                    'ask': data.get('askPrice', 0),
+                    'volume': data.get('totalVolume', 0),
+                }
+                print(f"  {ticker}: ${price:.2f}")
             return prices
-
-        quotes = api.get_quotes(tickers)
-        for ticker, data in quotes.items():
-            prices[ticker] = {
-                'price': data.get('lastPrice', 0),
-                'change': data.get('netChange', 0),
-                'change_pct': data.get('netPercentChangeInDouble', 0),
-                'bid': data.get('bidPrice', 0),
-                'ask': data.get('askPrice', 0),
-                'volume': data.get('totalVolume', 0),
-            }
+        else:
+            print("Schwab API not authenticated")
     except Exception as e:
-        print(f"Error fetching quotes: {e}")
+        print(f"Schwab API error: {e}")
 
     return prices
 
 
-def get_option_chain(ticker: str, expiration: str, strike: float) -> Dict:
-    """Fetch specific option data from Schwab API."""
-    if not IMPORTS_AVAILABLE:
+def get_option_price(ticker: str, expiration: str, strike: float, option_type: str = 'CALL') -> Dict:
+    """Fetch specific option price from Schwab API."""
+    if not SCHWAB_AVAILABLE:
         return {}
 
     try:
         api = SchwabAPI()
         if not api.is_authenticated():
+            print(f"Cannot get option price - not authenticated")
             return {}
 
+        # Get option chain for this ticker and expiration
+        print(f"  Fetching option chain for {ticker} {expiration} ${strike} {option_type}")
         chain = api.get_option_chain(ticker, expiration_date=expiration)
-        # Find the specific strike
-        for option in chain.get('callExpDateMap', {}).get(expiration, {}).get(str(strike), []):
-            return {
-                'bid': option.get('bid', 0),
-                'ask': option.get('ask', 0),
-                'last': option.get('last', 0),
-                'volume': option.get('totalVolume', 0),
-                'open_interest': option.get('openInterest', 0),
-                'iv': option.get('volatility', 0),
-            }
+
+        if not chain:
+            print(f"  No option chain returned for {ticker}")
+            return {}
+
+        # Navigate to the correct expiration and strike
+        exp_map_key = 'callExpDateMap' if option_type.upper() == 'CALL' else 'putExpDateMap'
+        exp_map = chain.get(exp_map_key, {})
+
+        # Schwab uses format like "2026-07-17:500" for the key
+        for exp_key, strikes in exp_map.items():
+            if expiration in exp_key:
+                # Look for the strike
+                strike_str = str(float(strike))
+                if strike_str in strikes:
+                    options = strikes[strike_str]
+                    if options and len(options) > 0:
+                        opt = options[0]
+                        bid = opt.get('bid', 0)
+                        ask = opt.get('ask', 0)
+                        last = opt.get('last', 0)
+                        mid = (bid + ask) / 2 if bid and ask else last
+                        print(f"  Found option: bid=${bid:.2f}, ask=${ask:.2f}, mid=${mid:.2f}")
+                        return {
+                            'bid': bid,
+                            'ask': ask,
+                            'last': last,
+                            'mid': mid,
+                            'volume': opt.get('totalVolume', 0),
+                            'open_interest': opt.get('openInterest', 0),
+                            'iv': opt.get('volatility', 0),
+                        }
+
+        print(f"  Strike ${strike} not found in option chain")
     except Exception as e:
-        print(f"Error fetching option chain for {ticker}: {e}")
+        print(f"Error fetching option price for {ticker}: {e}")
 
     return {}
 
@@ -349,18 +465,24 @@ def generate_position_data(position: Dict, stock_price: Optional[float] = None) 
     # Calculate break even
     break_even = calculate_break_even(strike, entry_price)
 
-    # Calculate entry zone for options (compare current option price to entry)
-    # current_price may be total position value, not per-contract - check if it's reasonable
-    raw_current = position.get('current_price')
+    # Get current option price from Schwab API
     quantity = position.get('quantity', 1) or 1
+    option_type = position.get('option_type', 'CALL')
 
-    # If current_price exists and seems like a total value (way higher than entry), divide by quantity*100
-    if raw_current and entry_price and raw_current > entry_price * 10:
-        current_option = raw_current / (quantity * 100)
-    elif raw_current:
-        current_option = raw_current
+    # Try to get live option price from Schwab
+    current_option = entry_price  # Default to entry price
+    option_data = get_option_price(ticker, expiration, strike, option_type)
+    if option_data and option_data.get('mid', 0) > 0:
+        current_option = option_data['mid']
+        print(f"  {ticker}: Live option price = ${current_option:.2f}")
     else:
-        current_option = entry_price  # Fall back to entry if no current price
+        # Fall back to stored current_price or entry_price
+        raw_current = position.get('current_price')
+        if raw_current and entry_price and raw_current > entry_price * 10:
+            current_option = raw_current / (quantity * 100)
+        elif raw_current:
+            current_option = raw_current
+        print(f"  {ticker}: Using stored option price = ${current_option:.2f}")
 
     entry_zone = get_entry_zone(current_option, entry_price)
 
@@ -433,7 +555,7 @@ def generate_position_data(position: Dict, stock_price: Optional[float] = None) 
 
     # Calculate live ENR if we have current prices
     # In local mode: use database single source of truth for live calculation
-    # In Supabase mode: use synced ENR values (calculated when position was added)
+    # In Supabase/cloud mode: calculate ENR using research data + live stock prices
     synced_enr = position.get('enr') or 0
     synced_win_prob = position.get('win_prob') or 0
 
@@ -444,8 +566,35 @@ def generate_position_data(position: Dict, stock_price: Optional[float] = None) 
         'is_live': False
     }
 
-    # If we have local database, calculate live ENR
-    if IMPORTS_AVAILABLE and db and not USE_SUPABASE and current_stock > 0 and current_option > 0:
+    # Cloud mode: calculate ENR using research data + live stock/option prices
+    if SCHWAB_AVAILABLE and current_stock > 0 and current_option > 0:
+        try:
+            research_data = {
+                'is_first_in_class': position.get('is_first_in_class'),
+                'is_orphan': position.get('is_orphan'),
+                'is_fast_track': position.get('is_fast_track'),
+                'is_breakthrough': position.get('is_breakthrough'),
+            }
+            cloud_enr = calculate_cloud_enr(
+                stock_price=current_stock,
+                strike=strike,
+                premium=current_option,  # Use live option price
+                days_to_expiry=days_to_expiry,
+                catalyst_event=position.get('catalyst_event', ''),
+                research_data=research_data
+            )
+            enr_data = {
+                'enr': cloud_enr['enr'],
+                'win_prob': cloud_enr['win_prob'],
+                'enr_zone': get_enr_zone(cloud_enr['enr']),
+                'is_live': True
+            }
+            print(f"  {ticker}: Live ENR = {cloud_enr['enr']:.1f}%, Win Prob = {cloud_enr['win_prob']:.1f}%")
+        except Exception as e:
+            print(f"  Error calculating live ENR for {ticker}: {e}")
+
+    # If we have local database, calculate live ENR (more accurate)
+    elif IMPORTS_AVAILABLE and db and not USE_SUPABASE and current_stock > 0 and current_option > 0:
         try:
             enr_inputs = db.get_enr_inputs_for_catalyst(
                 ticker=ticker,

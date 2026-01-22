@@ -17,7 +17,7 @@ on:
     branches:
       - main
     paths:
-      - 'landing-page/generate_live_positions.py'
+      - 'generate_live_positions.py'
 
 permissions:
   contents: write
@@ -43,15 +43,17 @@ jobs:
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+          SCHWAB_APP_KEY: ${{ secrets.SCHWAB_APP_KEY }}
+          SCHWAB_APP_SECRET: ${{ secrets.SCHWAB_APP_SECRET }}
+          SCHWAB_REFRESH_TOKEN: ${{ secrets.SCHWAB_REFRESH_TOKEN }}
         run: |
-          cd landing-page
           python generate_live_positions.py
 
       - name: Commit and push if changed
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add landing-page/data/positions.json
+          git add data/positions.json
           git diff --quiet --staged || git commit -m "Update live positions data [skip ci]"
           git push
 
@@ -59,5 +61,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: positions-data
-          path: landing-page/data/positions.json
+          path: data/positions.json
           retention-days: 7
