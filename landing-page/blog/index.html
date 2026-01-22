@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn | PowersBioStrikes</title>
+    <meta name="description" content="Educational content about biotech options trading, catalyst plays, and systematic trading strategies.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'dark-bg': '#0a0a0f',
+                        'dark-card': '#12121a',
+                        'steel': '#2a2a3a',
+                        'steel-dark': '#1a1a2a',
+                        'gold': '#d4af37',
+                        'gold-dark': '#b8960c',
+                        'gold-light': '#f0d060',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-dark-bg text-white antialiased">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-dark-bg/95 backdrop-blur-sm border-b border-steel-dark/50">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="../" class="text-gold font-bold text-xl tracking-wider">PowersBioStrikes</a>
+            <div class="flex items-center space-x-6">
+                <a href="../#active-positions" class="text-gray-400 hover:text-gold transition-colors text-sm">Live Trades</a>
+                <a href="../#track-record" class="text-gray-400 hover:text-gold transition-colors text-sm">Track Record</a>
+                <a href="./" class="text-gold text-sm">Learn</a>
+                <a href="https://twitter.com/PowersBioStrike" target="_blank" class="text-gray-400 hover:text-gold transition-colors">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <section class="pt-32 pb-16 bg-gradient-to-b from-dark-bg to-dark-card">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <span class="text-gold uppercase tracking-wider text-sm font-semibold">Education</span>
+            <h1 class="text-4xl md:text-5xl font-bold mt-4 mb-6">
+                Learn to Trade <span class="text-gold">Biotech Options</span>
+            </h1>
+            <p class="text-gray-400 text-lg max-w-2xl mx-auto">
+                Deep dives into catalyst trading, market mechanics, and the systematic approach behind PowersBioStrikes.
+            </p>
+        </div>
+    </section>
+
+    <!-- Blog Posts Grid -->
+    <section class="py-16 bg-dark-card">
+        <div class="max-w-4xl mx-auto px-6">
+            <!-- Featured Post -->
+            <article class="mb-12">
+                <a href="what-really-happens-trading-biotech-options.html" class="block group">
+                    <div class="p-8 bg-gradient-to-br from-steel-dark/50 to-dark-bg border border-steel rounded-2xl hover:border-gold/50 transition-colors">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="px-3 py-1 bg-gold/20 text-gold text-xs rounded-full uppercase tracking-wide">Featured</span>
+                            <span class="text-gray-500 text-sm">January 2026</span>
+                        </div>
+                        <h2 class="text-2xl font-bold mb-3 group-hover:text-gold transition-colors">
+                            What Really Happens When You Trade Biotech Options: A Retail Investor's Guide
+                        </h2>
+                        <p class="text-gray-400 mb-4">
+                            If you've ever placed a limit order on an illiquid biotech option and watched it sit there all day before mysteriously filling at 3:55pm, you're not alone. Here's how this game actually works.
+                        </p>
+                        <div class="flex items-center text-gold text-sm font-semibold">
+                            Read Article
+                            <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </a>
+            </article>
+
+            <!-- More posts will go here -->
+            <div class="text-center py-12 border-t border-steel-dark">
+                <p class="text-gray-500">More educational content coming soon.</p>
+                <a href="https://twitter.com/PowersBioStrike" target="_blank" class="inline-flex items-center gap-2 mt-4 text-gold hover:underline">
+                    Follow on Twitter for updates
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-dark-bg border-t border-steel-dark/50">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                <div class="text-gray-500 text-sm">
+                    &copy; 2025 Powers Capital Investments
+                </div>
+                <div class="text-gray-500 text-xs text-center md:text-right max-w-xl">
+                    This content is for educational purposes only. Not financial advice. Trade at your own risk.
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
