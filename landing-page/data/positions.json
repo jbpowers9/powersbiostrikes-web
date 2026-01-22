@@ -26,18 +26,19 @@
         "pct_from_entry": -57.85340314136125
       },
       "enr": {
-        "enr": 1245.5,
-        "win_prob": 9740.0,
+        "enr": 1237.7,
+        "win_prob": 9710.0,
         "enr_zone": {
           "zone": "good",
           "color": "green",
           "message": "Strong expected return"
         },
-        "research_found": false
+        "research_found": false,
+        "is_live": true
       },
       "cont": {
         "score": 70,
-        "rating": "unknown",
+        "rating": "MODERATE",
         "display": "Moderate"
       },
       "catalyst": {
@@ -67,7 +68,7 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-22T11:25:42.801559"
+      "last_updated": "2026-01-22T12:26:08.601676"
     },
     {
       "ticker": "RGNX",
@@ -95,18 +96,19 @@
         "pct_from_entry": -93.64161849710982
       },
       "enr": {
-        "enr": 2186.4,
-        "win_prob": 9170.0,
+        "enr": 2189.0,
+        "win_prob": 9150.0,
         "enr_zone": {
           "zone": "good",
           "color": "green",
           "message": "Strong expected return"
         },
-        "research_found": false
+        "research_found": false,
+        "is_live": true
       },
       "cont": {
         "score": 65,
-        "rating": "unknown",
+        "rating": "MODERATE",
         "display": "Moderate"
       },
       "catalyst": {
@@ -142,7 +144,7 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-22T11:25:42.869579"
+      "last_updated": "2026-01-22T12:26:08.658625"
     },
     {
       "ticker": "RGNX",
@@ -170,18 +172,19 @@
         "pct_from_entry": -95.38043478260869
       },
       "enr": {
-        "enr": 1777.9,
-        "win_prob": 9110.0,
+        "enr": 1808.0,
+        "win_prob": 9130.0,
         "enr_zone": {
           "zone": "good",
           "color": "green",
           "message": "Strong expected return"
         },
-        "research_found": false
+        "research_found": false,
+        "is_live": true
       },
       "cont": {
         "score": 65,
-        "rating": "unknown",
+        "rating": "MODERATE",
         "display": "Moderate"
       },
       "catalyst": {
@@ -217,7 +220,7 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-22T11:25:43.085892"
+      "last_updated": "2026-01-22T12:26:08.803791"
     },
     {
       "ticker": "VNDA",
@@ -245,18 +248,19 @@
         "pct_from_entry": -89.25373134328358
       },
       "enr": {
-        "enr": 1801.1,
-        "win_prob": 9210.0,
+        "enr": 1800.1,
+        "win_prob": 9200.0,
         "enr_zone": {
           "zone": "good",
           "color": "green",
           "message": "Strong expected return"
         },
-        "research_found": false
+        "research_found": false,
+        "is_live": true
       },
       "cont": {
         "score": 72,
-        "rating": "unknown",
+        "rating": "MODERATE",
         "display": "Moderate"
       },
       "catalyst": {
@@ -292,7 +296,7 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-22T11:25:43.152413"
+      "last_updated": "2026-01-22T12:26:08.873904"
     },
     {
       "ticker": "VNDA",
@@ -320,18 +324,19 @@
         "pct_from_entry": -96.88034188034187
       },
       "enr": {
-        "enr": 148.7,
-        "win_prob": 2860.0,
+        "enr": 155.9,
+        "win_prob": 2910.0,
         "enr_zone": {
           "zone": "good",
           "color": "green",
           "message": "Strong expected return"
         },
-        "research_found": false
+        "research_found": false,
+        "is_live": true
       },
       "cont": {
         "score": 72,
-        "rating": "unknown",
+        "rating": "MODERATE",
         "display": "Moderate"
       },
       "catalyst": {
@@ -367,7 +372,7 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-22T11:25:43.249899"
+      "last_updated": "2026-01-22T12:26:08.942634"
     },
     {
       "ticker": "GOSS",
@@ -395,18 +400,19 @@
         "pct_from_entry": -98.51449275362319
       },
       "enr": {
-        "enr": -90.9,
-        "win_prob": 80.0,
+        "enr": -92.5,
+        "win_prob": 90.0,
         "enr_zone": {
           "zone": "avoid",
           "color": "red",
           "message": "Negative expected return"
         },
-        "research_found": false
+        "research_found": false,
+        "is_live": true
       },
       "cont": {
         "score": 60,
-        "rating": "unknown",
+        "rating": "MODERATE",
         "display": "Moderate"
       },
       "catalyst": {
@@ -442,7 +448,7 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-22T11:25:43.302686"
+      "last_updated": "2026-01-22T12:26:09.037262"
     },
     {
       "ticker": "GOSS",
@@ -470,18 +476,19 @@
         "pct_from_entry": -98.35714285714286
       },
       "enr": {
-        "enr": 2511.2,
-        "win_prob": 5770.0,
+        "enr": 2521.2,
+        "win_prob": 5790.0,
         "enr_zone": {
           "zone": "good",
           "color": "green",
           "message": "Strong expected return"
         },
-        "research_found": false
+        "research_found": false,
+        "is_live": true
       },
       "cont": {
         "score": 60,
-        "rating": "unknown",
+        "rating": "MODERATE",
         "display": "Moderate"
       },
       "catalyst": {
@@ -517,7 +524,7 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-22T11:25:43.417557"
+      "last_updated": "2026-01-22T12:26:09.106006"
     },
     {
       "ticker": "IMMP",
@@ -551,7 +558,8 @@
           "zone": "avoid",
           "color": "red",
           "message": "Negative expected return"
-        }
+        },
+        "is_live": false
       },
       "cont": {
         "score": 55,
@@ -591,7 +599,7 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-22T11:25:43.443020"
+      "last_updated": "2026-01-22T12:26:09.134688"
     },
     {
       "ticker": "MNKD",
@@ -619,18 +627,19 @@
         "pct_from_entry": -98.61979166666667
       },
       "enr": {
-        "enr": 4452.7,
+        "enr": 4437.1,
         "win_prob": 8340.0,
         "enr_zone": {
           "zone": "good",
           "color": "green",
           "message": "Strong expected return"
         },
-        "research_found": false
+        "research_found": false,
+        "is_live": true
       },
       "cont": {
         "score": 75,
-        "rating": "unknown",
+        "rating": "MODERATE",
         "display": "Moderate"
       },
       "catalyst": {
@@ -666,7 +675,7 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-22T11:25:43.547596"
+      "last_updated": "2026-01-22T12:26:09.206426"
     },
     {
       "ticker": "ACHV",
@@ -694,14 +703,15 @@
         "pct_from_entry": -96.62962962962963
       },
       "enr": {
-        "enr": 2585.3,
-        "win_prob": 9530.0,
+        "enr": 2571.9,
+        "win_prob": 9500.0,
         "enr_zone": {
           "zone": "good",
           "color": "green",
           "message": "Strong expected return"
         },
-        "research_found": true
+        "research_found": true,
+        "is_live": true
       },
       "cont": {
         "score": 70,
@@ -741,7 +751,7 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-22T11:25:43.621685"
+      "last_updated": "2026-01-22T12:26:09.287184"
     },
     {
       "ticker": "CRMD",
@@ -775,7 +785,8 @@
           "zone": "avoid",
           "color": "red",
           "message": "Negative expected return"
-        }
+        },
+        "is_live": false
       },
       "cont": {
         "score": 90,
@@ -815,7 +826,7 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-22T11:25:43.652307"
+      "last_updated": "2026-01-22T12:26:09.320272"
     }
   ],
   "summary": {
@@ -825,7 +836,7 @@
   },
   "market_status": {
     "is_open": true,
-    "last_updated": "2026-01-22T11:25:43.652366"
+    "last_updated": "2026-01-22T12:26:09.320331"
   },
-  "last_updated": "2026-01-22T11:25:43.652370"
+  "last_updated": "2026-01-22T12:26:09.320336"
 }

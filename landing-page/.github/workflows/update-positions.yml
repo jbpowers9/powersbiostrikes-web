@@ -34,22 +34,12 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install requests
-
-      - name: Set up Schwab credentials
-        env:
-          SCHWAB_APP_KEY: ${{ secrets.SCHWAB_APP_KEY }}
-          SCHWAB_APP_SECRET: ${{ secrets.SCHWAB_APP_SECRET }}
-          SCHWAB_REFRESH_TOKEN: ${{ secrets.SCHWAB_REFRESH_TOKEN }}
-        run: |
-          # Create .env file with credentials
-          echo "SCHWAB_APP_KEY=$SCHWAB_APP_KEY" > landing-page/.env
-          echo "SCHWAB_APP_SECRET=$SCHWAB_APP_SECRET" >> landing-page/.env
-          echo "SCHWAB_REFRESH_TOKEN=$SCHWAB_REFRESH_TOKEN" >> landing-page/.env
+          pip install requests supabase
 
       - name: Generate positions data
         env:
-          BIOTECH_OPTIONS_DIR: ${{ github.workspace }}/biotech-options-v2
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
         run: |
           cd landing-page
           python generate_live_positions.py

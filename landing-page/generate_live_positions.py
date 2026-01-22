@@ -30,7 +30,25 @@ import sqlite3
 from datetime import datetime, timedelta
 from typing import Dict, Any, List, Optional
 
-# Add biotech-options-v2 to path for imports
+# =============================================================================
+# SUPABASE CONFIGURATION (for GitHub Actions)
+# =============================================================================
+
+SUPABASE_URL = os.environ.get('SUPABASE_URL', '')
+SUPABASE_KEY = os.environ.get('SUPABASE_KEY', '')
+USE_SUPABASE = bool(SUPABASE_URL and SUPABASE_KEY)
+
+supabase_client = None
+if USE_SUPABASE:
+    try:
+        from supabase import create_client
+        supabase_client = create_client(SUPABASE_URL, SUPABASE_KEY)
+        print(f"Using Supabase: {SUPABASE_URL}")
+    except ImportError:
+        print("Warning: supabase package not installed, falling back to local DB")
+        USE_SUPABASE = False
+
+# Add biotech-options-v2 to path for imports (local mode)
 BIOTECH_DIR = os.environ.get('BIOTECH_OPTIONS_DIR', '/mnt/c/biotech-options-v2')
 if os.path.exists(BIOTECH_DIR):
     sys.path.insert(0, BIOTECH_DIR)
@@ -41,10 +59,13 @@ try:
     from enr_calculator import calculate_enr, calculate_cont_score
     from database import get_database
     IMPORTS_AVAILABLE = True
-    # Initialize database connection
-    db = get_database()
+    # Initialize database connection (for local mode)
+    if not USE_SUPABASE:
+        db = get_database()
+    else:
+        db = None
 except ImportError as e:
-    print(f"Warning: Could not import modules: {e}")
+    print(f"Warning: Could not import local modules: {e}")
     IMPORTS_AVAILABLE = False
     db = None
 
@@ -153,8 +174,51 @@ def get_max_buy_price(entry_price: float) -> float:
 # DATA FETCHING
 # =============================================================================
 
-def get_positions_from_db() -> List[Dict]:
-    """Fetch open positions from database."""
+def get_positions_from_supabase() -> List[Dict]:
+    """Fetch open positions from Supabase cloud database."""
+    if not supabase_client:
+        return []
+
+    try:
+        # Get positions
+        positions_result = supabase_client.table('positions').select('*').eq('status', 'OPEN').execute()
+        positions = positions_result.data or []
+
+        # Get research data
+        research_result = supabase_client.table('catalyst_research').select('*').execute()
+        research_map = {}
+        for r in (research_result.data or []):
+            key = (r['ticker'], r['catalyst_date'])
+            research_map[key] = r
+
+        # Merge research into positions
+        for pos in positions:
+            key = (pos['ticker'], pos.get('catalyst_date'))
+            research = research_map.get(key, {})
+            pos['research_notes'] = research.get('research_notes')
+            pos['mcap_millions'] = research.get('mcap_millions')
+            pos['peak_revenue_millions'] = research.get('peak_revenue_millions')
+            pos['is_first_in_class'] = research.get('is_first_in_class')
+            pos['is_orphan'] = research.get('is_orphan')
+            pos['is_fast_track'] = research.get('is_fast_track')
+            pos['is_breakthrough'] = research.get('is_breakthrough')
+            pos['short_interest_pct'] = research.get('short_interest_pct')
+            pos['critical_unmet_need'] = research.get('critical_unmet_need')
+            pos['price_change_60d_pct'] = research.get('price_change_60d_pct')
+            pos['trade_analysis_json'] = research.get('trade_analysis_json')
+            pos['is_me_too'] = research.get('is_me_too')
+            pos['single_indication_only'] = research.get('single_indication_only')
+            pos['incremental_improvement'] = research.get('incremental_improvement')
+            pos['market_skepticism'] = research.get('market_skepticism')
+
+        return positions
+    except Exception as e:
+        print(f"Error fetching from Supabase: {e}")
+        return []
+
+
+def get_positions_from_sqlite() -> List[Dict]:
+    """Fetch open positions from local SQLite database."""
     if not os.path.exists(DB_PATH):
         print(f"Database not found: {DB_PATH}")
         return []
@@ -176,7 +240,11 @@ def get_positions_from_db() -> List[Dict]:
             cr.short_interest_pct,
             cr.critical_unmet_need,
             cr.price_change_60d_pct,
-            cr.trade_analysis_json
+            cr.trade_analysis_json,
+            cr.is_me_too,
+            cr.single_indication_only,
+            cr.incremental_improvement,
+            cr.market_skepticism
         FROM positions p
         LEFT JOIN catalyst_research cr
             ON p.ticker = cr.ticker
@@ -189,6 +257,16 @@ def get_positions_from_db() -> List[Dict]:
     conn.close()
 
     return [dict(r) for r in rows]
+
+
+def get_positions_from_db() -> List[Dict]:
+    """Fetch open positions from database (Supabase or local SQLite)."""
+    if USE_SUPABASE:
+        print("Fetching positions from Supabase...")
+        return get_positions_from_supabase()
+    else:
+        print("Fetching positions from local SQLite...")
+        return get_positions_from_sqlite()
 
 
 def get_live_prices(tickers: List[str]) -> Dict[str, Dict]:
@@ -302,15 +380,17 @@ def generate_position_data(position: Dict, stock_price: Optional[float] = None) 
     except:
         pass
 
-    # Calculate CONT score using research data from database (SINGLE SOURCE OF TRUTH)
+    # Calculate CONT score using research data
+    # In Supabase mode: use synced cont_score OR calculate from merged research data
+    # In local mode: use database single source of truth
     cont_data = {
         'cont_score': position.get('cont_score', 0),
-        'cont_rating': 'unknown'
+        'cont_rating': get_cont_rating(position.get('cont_score', 0))
     }
 
-    if IMPORTS_AVAILABLE and db:
+    # If we have local database access, recalculate for accuracy
+    if IMPORTS_AVAILABLE and db and not USE_SUPABASE:
         try:
-            # Get research data for CONT calculation
             research = db.get_catalyst_research(ticker, catalyst_date, position.get('catalyst_event'))
             if research:
                 cont_result = calculate_cont_score(
@@ -319,7 +399,7 @@ def generate_position_data(position: Dict, stock_price: Optional[float] = None) 
                     is_orphan=bool(research.get('is_orphan')),
                     is_breakthrough=bool(research.get('is_breakthrough')),
                     is_fast_track=bool(research.get('is_fast_track')),
-                    multiple_catalysts=1,  # Default, would need pipeline data
+                    multiple_catalysts=1,
                     price_change_60d_pct=research.get('price_change_60d_pct') or 0,
                     mcap_millions=research.get('mcap_millions'),
                     is_me_too=bool(research.get('is_me_too')),
@@ -330,18 +410,43 @@ def generate_position_data(position: Dict, stock_price: Optional[float] = None) 
                 cont_data = cont_result
         except Exception as e:
             print(f"Error calculating CONT for {ticker}: {e}")
+    elif USE_SUPABASE and IMPORTS_AVAILABLE:
+        # In Supabase mode with enr_calculator available, calculate from merged research
+        try:
+            cont_result = calculate_cont_score(
+                is_first_in_class=bool(position.get('is_first_in_class')),
+                critical_unmet_need=bool(position.get('critical_unmet_need')),
+                is_orphan=bool(position.get('is_orphan')),
+                is_breakthrough=bool(position.get('is_breakthrough')),
+                is_fast_track=bool(position.get('is_fast_track')),
+                multiple_catalysts=1,
+                price_change_60d_pct=position.get('price_change_60d_pct') or 0,
+                mcap_millions=position.get('mcap_millions'),
+                is_me_too=bool(position.get('is_me_too')),
+                single_indication_only=bool(position.get('single_indication_only')),
+                incremental_improvement=bool(position.get('incremental_improvement')),
+                market_skepticism=bool(position.get('market_skepticism')),
+            )
+            cont_data = cont_result
+        except Exception as e:
+            print(f"Error calculating CONT for {ticker} in Supabase mode: {e}")
 
     # Calculate live ENR if we have current prices
-    # USING SINGLE SOURCE OF TRUTH: get_enr_inputs_for_catalyst()
+    # In local mode: use database single source of truth for live calculation
+    # In Supabase mode: use synced ENR values (calculated when position was added)
+    synced_enr = position.get('enr') or 0
+    synced_win_prob = position.get('win_prob') or 0
+
     enr_data = {
-        'enr': 0,
-        'win_prob': 0,
-        'enr_zone': get_enr_zone(0)
+        'enr': round(synced_enr, 1),
+        'win_prob': round(synced_win_prob * 100, 1) if synced_win_prob < 1 else round(synced_win_prob, 1),
+        'enr_zone': get_enr_zone(synced_enr),
+        'is_live': False
     }
 
-    if IMPORTS_AVAILABLE and db and current_stock > 0 and current_option > 0:
+    # If we have local database, calculate live ENR
+    if IMPORTS_AVAILABLE and db and not USE_SUPABASE and current_stock > 0 and current_option > 0:
         try:
-            # Get all research-adjusted inputs from the single source of truth
             enr_inputs = db.get_enr_inputs_for_catalyst(
                 ticker=ticker,
                 catalyst_date=catalyst_date,
@@ -362,7 +467,8 @@ def generate_position_data(position: Dict, stock_price: Optional[float] = None) 
                 'enr': round(enr_result.get('enr', 0), 1),
                 'win_prob': round(enr_result.get('win_prob', 0) * 100, 1),
                 'enr_zone': get_enr_zone(enr_result.get('enr', 0)),
-                'research_found': enr_inputs.get('research_found', False)
+                'research_found': enr_inputs.get('research_found', False),
+                'is_live': True
             }
         except Exception as e:
             print(f"Error calculating ENR for {ticker}: {e}")
@@ -486,6 +592,18 @@ def get_cont_display(score: int) -> str:
         return 'Moderate'
     else:
         return 'Low (Exit Early)'
+
+
+def get_cont_rating(score: int) -> str:
+    """Get CONT score rating category."""
+    if score is None:
+        return 'unknown'
+    if score >= 80:
+        return 'HIGH'
+    elif score >= 50:
+        return 'MODERATE'
+    else:
+        return 'LOW'
 
 
 def generate_all_positions() -> Dict:
