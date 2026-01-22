@@ -26,14 +26,14 @@
         "pct_from_entry": 0.0
       },
       "enr": {
-        "enr": 76.1,
-        "win_prob": 72.9,
+        "enr": 166.3,
+        "win_prob": 90.0,
         "enr_zone": {
-          "zone": "weak",
-          "color": "orange",
-          "message": "Below target threshold"
+          "zone": "good",
+          "color": "green",
+          "message": "Strong expected return"
         },
-        "is_live": false
+        "is_live": true
       },
       "cont": {
         "score": 75,
@@ -73,7 +73,7 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-22T18:09:34.525511"
+      "last_updated": "2026-01-22T19:51:22.674156"
     },
     {
       "ticker": "OMER",
@@ -101,14 +101,14 @@
         "pct_from_entry": 0.0
       },
       "enr": {
-        "enr": 0,
-        "win_prob": 50,
+        "enr": 679.5,
+        "win_prob": 85.0,
         "enr_zone": {
-          "zone": "avoid",
-          "color": "red",
-          "message": "Negative expected return"
+          "zone": "good",
+          "color": "green",
+          "message": "Strong expected return"
         },
-        "is_live": false
+        "is_live": true
       },
       "cont": {
         "score": 70,
@@ -142,7 +142,7 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-22T18:09:34.525573"
+      "last_updated": "2026-01-22T19:51:22.970496"
     },
     {
       "ticker": "GOSS",
@@ -171,13 +171,13 @@
       },
       "enr": {
         "enr": 0,
-        "win_prob": 50,
+        "win_prob": 70.0,
         "enr_zone": {
           "zone": "avoid",
           "color": "red",
           "message": "Negative expected return"
         },
-        "is_live": false
+        "is_live": true
       },
       "cont": {
         "score": 60,
@@ -217,7 +217,7 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-22T18:09:34.525656"
+      "last_updated": "2026-01-22T19:51:23.242301"
     },
     {
       "ticker": "VNDA",
@@ -245,14 +245,14 @@
         "pct_from_entry": 0.0
       },
       "enr": {
-        "enr": 207.2,
-        "win_prob": 84.7,
+        "enr": 263.8,
+        "win_prob": 85.0,
         "enr_zone": {
           "zone": "good",
           "color": "green",
           "message": "Strong expected return"
         },
-        "is_live": false
+        "is_live": true
       },
       "cont": {
         "score": 72,
@@ -292,7 +292,7 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-22T18:09:34.525740"
+      "last_updated": "2026-01-22T19:51:23.503299"
     },
     {
       "ticker": "RGNX",
@@ -320,14 +320,14 @@
         "pct_from_entry": 0.0
       },
       "enr": {
-        "enr": 210,
-        "win_prob": 84.4,
+        "enr": 201.6,
+        "win_prob": 95.0,
         "enr_zone": {
           "zone": "good",
           "color": "green",
           "message": "Strong expected return"
         },
-        "is_live": false
+        "is_live": true
       },
       "cont": {
         "score": 65,
@@ -367,7 +367,7 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-22T18:09:34.525840"
+      "last_updated": "2026-01-22T19:51:23.794731"
     },
     {
       "ticker": "VNDA",
@@ -395,14 +395,14 @@
         "pct_from_entry": 0.0
       },
       "enr": {
-        "enr": 774.1,
-        "win_prob": 81.9,
+        "enr": 38.4,
+        "win_prob": 85.0,
         "enr_zone": {
-          "zone": "good",
-          "color": "green",
-          "message": "Strong expected return"
+          "zone": "avoid",
+          "color": "red",
+          "message": "Negative expected return"
         },
-        "is_live": false
+        "is_live": true
       },
       "cont": {
         "score": 72,
@@ -442,7 +442,7 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-22T18:09:34.525918"
+      "last_updated": "2026-01-22T19:51:24.088184"
     },
     {
       "ticker": "GOSS",
@@ -470,14 +470,14 @@
         "pct_from_entry": 0.0
       },
       "enr": {
-        "enr": 0,
-        "win_prob": 50,
+        "enr": 28.0,
+        "win_prob": 70.0,
         "enr_zone": {
           "zone": "avoid",
           "color": "red",
           "message": "Negative expected return"
         },
-        "is_live": false
+        "is_live": true
       },
       "cont": {
         "score": 60,
@@ -517,7 +517,7 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-22T18:09:34.525992"
+      "last_updated": "2026-01-22T19:51:24.417740"
     },
     {
       "ticker": "ACHV",
@@ -545,14 +545,14 @@
         "pct_from_entry": 0.0
       },
       "enr": {
-        "enr": 92.9,
-        "win_prob": 83.9,
+        "enr": 102.0,
+        "win_prob": 95.0,
         "enr_zone": {
-          "zone": "weak",
-          "color": "orange",
-          "message": "Below target threshold"
+          "zone": "fair",
+          "color": "yellow",
+          "message": "Moderate expected return"
         },
-        "is_live": false
+        "is_live": true
       },
       "cont": {
         "score": 55,
@@ -592,7 +592,7 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-22T18:09:34.526080"
+      "last_updated": "2026-01-22T19:51:24.695906"
     },
     {
       "ticker": "RGNX",
@@ -620,14 +620,14 @@
         "pct_from_entry": 0.0
       },
       "enr": {
-        "enr": 211.7,
-        "win_prob": 84,
+        "enr": 132.0,
+        "win_prob": 95.0,
         "enr_zone": {
-          "zone": "good",
-          "color": "green",
-          "message": "Strong expected return"
+          "zone": "fair",
+          "color": "yellow",
+          "message": "Moderate expected return"
         },
-        "is_live": false
+        "is_live": true
       },
       "cont": {
         "score": 65,
@@ -667,7 +667,7 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-22T18:09:34.526156"
+      "last_updated": "2026-01-22T19:51:24.950328"
     },
     {
       "ticker": "CRMD",
@@ -742,7 +742,7 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-22T18:09:34.526222"
+      "last_updated": "2026-01-22T19:51:25.233943"
     },
     {
       "ticker": "IMMP",
@@ -817,7 +817,7 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-22T18:09:34.526292"
+      "last_updated": "2026-01-22T19:51:25.568434"
     }
   ],
   "summary": {
@@ -827,7 +827,7 @@
   },
   "market_status": {
     "is_open": true,
-    "last_updated": "2026-01-22T18:09:34.526308"
+    "last_updated": "2026-01-22T19:51:25.568461"
   },
-  "last_updated": "2026-01-22T18:09:34.526309"
+  "last_updated": "2026-01-22T19:51:25.568463"
 }
