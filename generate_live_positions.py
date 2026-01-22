@@ -378,14 +378,16 @@ def get_live_prices(tickers: List[str]) -> Dict[str, Dict]:
             print(f"Fetching live prices from Schwab API for: {tickers}")
             quotes = api.get_quotes(tickers)
             for ticker, data in quotes.items():
-                price = data.get('lastPrice', 0)
+                # Schwab returns nested structure: data['quote']['lastPrice']
+                quote_data = data.get('quote', data)  # Fall back to data if no 'quote' key
+                price = quote_data.get('lastPrice', 0) or quote_data.get('mark', 0)
                 prices[ticker] = {
                     'price': price,
-                    'change': data.get('netChange', 0),
-                    'change_pct': data.get('netPercentChangeInDouble', 0),
-                    'bid': data.get('bidPrice', 0),
-                    'ask': data.get('askPrice', 0),
-                    'volume': data.get('totalVolume', 0),
+                    'change': quote_data.get('netChange', 0),
+                    'change_pct': quote_data.get('netPercentChangeInDouble', 0),
+                    'bid': quote_data.get('bidPrice', 0),
+                    'ask': quote_data.get('askPrice', 0),
+                    'volume': quote_data.get('totalVolume', 0),
                 }
                 print(f"  {ticker}: ${price:.2f}")
             return prices
