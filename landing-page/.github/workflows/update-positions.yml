@@ -1,0 +1,70 @@
+name: Update Live Positions Data
+
+on:
+  # Run every 30 minutes during market hours (9:30 AM - 4 PM ET, Mon-Fri)
+  schedule:
+    # 30 minutes past each hour during market hours
+    # Note: Times are in UTC, ET is UTC-5 (or UTC-4 during DST)
+    # Market hours: 9:30 AM - 4:00 PM ET = 14:30 - 21:00 UTC (standard time)
+    - cron: '30 14-20 * * 1-5'  # Every hour from 9:30 AM to 3:30 PM ET
+    - cron: '0 15-21 * * 1-5'   # Top of each hour from 10 AM to 4 PM ET
+
+  # Manual trigger
+  workflow_dispatch:
+
+  # Also run on push to main (for testing)
+  push:
+    branches:
+      - main
+    paths:
+      - 'landing-page/generate_live_positions.py'
+
+jobs:
+  update-positions:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install requests
+
+      - name: Set up Schwab credentials
+        env:
+          SCHWAB_APP_KEY: ${{ secrets.SCHWAB_APP_KEY }}
+          SCHWAB_APP_SECRET: ${{ secrets.SCHWAB_APP_SECRET }}
+          SCHWAB_REFRESH_TOKEN: ${{ secrets.SCHWAB_REFRESH_TOKEN }}
+        run: |
+          # Create .env file with credentials
+          echo "SCHWAB_APP_KEY=$SCHWAB_APP_KEY" > landing-page/.env
+          echo "SCHWAB_APP_SECRET=$SCHWAB_APP_SECRET" >> landing-page/.env
+          echo "SCHWAB_REFRESH_TOKEN=$SCHWAB_REFRESH_TOKEN" >> landing-page/.env
+
+      - name: Generate positions data
+        env:
+          BIOTECH_OPTIONS_DIR: ${{ github.workspace }}/biotech-options-v2
+        run: |
+          cd landing-page
+          python generate_live_positions.py
+
+      - name: Commit and push if changed
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add landing-page/data/positions.json
+          git diff --quiet --staged || git commit -m "Update live positions data [skip ci]"
+          git push
+
+      - name: Upload positions artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: positions-data
+          path: landing-page/data/positions.json
+          retention-days: 7

@@ -1,0 +1,66 @@
+[
+  {
+    "id": 1,
+    "platform": "twitter",
+    "template": "thread_starter",
+    "title": "Introduction Thread - PowersBioStrikes Launch",
+    "status": "draft",
+    "created_at": "2026-01-22",
+    "content": "Most biotech traders treat FDA catalysts like a casino.\n\nI treat them like an engineering problem.\n\nHere's how I'm building a systematic, math-driven approach to biotech options - and why I'm publishing every trade, win or lose. [THREAD]",
+    "thread_parts": [
+      "1/ The problem with biotech \"gurus\": They show you the wins and bury the losses. No accountability. No edge verification.\n\nI got tired of it. So I built a system that forces transparency - starting with my own money.",
+      "2/ My approach uses 3 pillars:\n\n- Expected Net Return (ENR): Monte Carlo simulations across 10K scenarios\n- Kelly Criterion: Mathematical position sizing based on edge\n- CONT Score: Predicting post-catalyst continuation vs sell-the-news\n\nNo gut feel. Pure math.",
+      "3/ The numbers so far:\n\n- 54 trades across 29 biotechs\n- 68.5% win rate\n- 176% annualized return\n\nEvery position timestamped. Losses shown prominently. Because that's how you build trust.",
+      "4/ Right now I'm holding 2 active positions:\n\n$IMMP - Phase 3 futility analysis Q1 2026\n$CRMD - Phase 3 data readout Q2 2026\n\nFull thesis, entry prices, and risk factors at powersbiostrikes.com",
+      "5/ I'm offering FREE founding member access for 6 months.\n\n- Real-time trade alerts\n- Full thesis with ENR scores\n- Position sizing guidance\n- Exit alerts\n\nFirst 100 members lock in 50% off forever.\n\nLink in bio."
+    ]
+  },
+  {
+    "id": 2,
+    "platform": "twitter",
+    "template": "trade_alert",
+    "title": "Trade Alert: IMMP Position",
+    "status": "draft",
+    "created_at": "2026-01-22",
+    "content": "NEW POSITION: $IMMP\n\n$2.50 Calls | July 17, 2026\nEntry: $0.90\n\nCatalyst: Phase 3 futility analysis (Q1 2026)\n\nWhy I like it:\n- First-in-class LAG-3 therapy\n- Ph2 showed 32.9mo mOS vs 22mo benchmark\n- Dr. Reddy's $369M deal validates asset\n\nFull thesis at powersbiostrikes.com"
+  },
+  {
+    "id": 3,
+    "platform": "twitter",
+    "template": "trade_alert",
+    "title": "Trade Alert: CRMD Position",
+    "status": "draft",
+    "created_at": "2026-01-22",
+    "content": "NEW POSITION: $CRMD\n\n$8 Calls | Aug 21, 2026\nEntry: $1.40\n\nCatalyst: Phase 3 data (Q2 2026)\n\nWhy I like it:\n- Drug already FDA-approved for treatment\n- Profitable company ($310M rev)\n- 21.6% short interest = squeeze potential\n- Orphan + Fast Track\n\nFull thesis at powersbiostrikes.com"
+  },
+  {
+    "id": 4,
+    "platform": "twitter",
+    "template": "educational",
+    "title": "Educational: What is ENR?",
+    "status": "draft",
+    "created_at": "2026-01-22",
+    "content": "Most traders ask \"what's the probability of this biotech drug getting approved?\"\n\nI ask \"what's my expected NET return after accounting for IV crush, theta decay, and asymmetric payoffs?\"\n\nThat's ENR (Expected Net Return). Here's how it works:\n\n[THREAD]",
+    "thread_parts": [
+      "1/ A drug can have 85% approval odds but TERRIBLE options.\n\nWhy? Because the market already priced it in. The IV is juiced. The premiums are insane.\n\nENR captures this. It's not just probability - it's probability * payoff - premium - IV crush.",
+      "2/ I run 10,000 Monte Carlo simulations per strike.\n\nEach sim models:\n- Random approval/rejection (weighted by historical base rates)\n- Stock move magnitude (adjusted for market cap, indication, phase)\n- IV crush impact (50-70% for binary events)\n- Time decay\n\nThen I average them all.",
+      "3/ My entry threshold: 140% ENR minimum.\n\nThis means I expect to more than DOUBLE my money on average across thousands of similar trades.\n\nBelow 140%? I pass. Even if the thesis is great.\n\nMath over hype.",
+      "4/ Want to see ENR in action?\n\nCheck out my current positions at powersbiostrikes.com\n\nEvery trade shows:\n- Entry price\n- ENR at entry\n- Win probability\n- Thesis reasoning\n\n100% transparent."
+    ]
+  },
+  {
+    "id": 5,
+    "platform": "twitter",
+    "template": "educational",
+    "title": "Educational: CONT Score Explained",
+    "status": "draft",
+    "created_at": "2026-01-22",
+    "content": "\"Buy the rumor, sell the news\" kills biotech traders.\n\nA drug gets APPROVED and the stock... drops?\n\nThat's why I built the CONT score - to predict which approvals RUN vs which get dumped. Here's how:\n\n[THREAD]",
+    "thread_parts": [
+      "1/ CONT (Continuation Score) predicts post-catalyst price action.\n\nFactors that drive continuation:\n- First-in-class drug (new mechanism)\n- Critical unmet medical need\n- Orphan drug status\n- Multiple future catalysts\n- Price momentum into event",
+      "2/ Factors that kill continuation:\n- Already priced in (stock ran 100%+)\n- Me-too drug (competitors exist)\n- Single indication (no pipeline optionality)\n- Heavy insider selling\n\nI weight each factor and generate a 0-100 score.",
+      "3/ Score interpretation:\n\n80+ = HOLD through catalyst (expect continuation)\n50-79 = Tight exit plan (take profits quick)\n<50 = Exit BEFORE catalyst fully prices in\n\nThis saved me from multiple \"approval dumps.\"",
+      "4/ Example: $CRMD has CONT score of 90.\n\nWhy? Already profitable, 21% short interest (squeeze fuel), orphan drug, multiple indications.\n\nThis is a \"hold through\" setup, not a \"sell the news\" trap.\n\nMore at powersbiostrikes.com"
+    ]
+  }
+]
