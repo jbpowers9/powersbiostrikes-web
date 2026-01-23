@@ -310,7 +310,6 @@
     }
 
     // ===== Navbar Background on Scroll =====
-    let lastScrollY = window.scrollY;
     const nav = document.querySelector('nav');
 
     window.addEventListener('scroll', function() {
@@ -322,15 +321,6 @@
         } else {
             nav.classList.remove('scrolled');
         }
-
-        // Hide/show nav on scroll direction (optional)
-        if (currentScrollY > lastScrollY && currentScrollY > 200) {
-            nav.style.transform = 'translateY(-100%)';
-        } else {
-            nav.style.transform = 'translateY(0)';
-        }
-
-        lastScrollY = currentScrollY;
     });
 
     // ===== Intersection Observer for Animations =====
