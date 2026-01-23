@@ -5,6 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Learn | PowersBioStrikes</title>
     <meta name="description" content="Educational content about biotech options trading, catalyst plays, and systematic trading strategies.">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://powersbiostrikes.com/blog/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://powersbiostrikes.com/blog/">
+    <meta property="og:title" content="Learn | PowersBioStrikes">
+    <meta property="og:description" content="Educational content about biotech options trading, catalyst plays, and systematic trading strategies.">
+    <meta property="og:image" content="https://powersbiostrikes.com/images/og-image.png">
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@PowersBioStrike">
+    <meta name="twitter:creator" content="@PowersBioStrike">
+    <meta name="twitter:title" content="Learn | PowersBioStrikes">
+    <meta name="twitter:description" content="Educational content about biotech options trading, catalyst plays, and systematic trading strategies.">
+    <meta name="twitter:image" content="https://powersbiostrikes.com/images/og-image.png">
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -32,7 +60,21 @@
     <!-- Navigation -->
     <nav class="fixed top-0 left-0 right-0 z-50 bg-dark-bg/95 backdrop-blur-sm border-b border-steel-dark/50">
         <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="../" class="text-gold font-bold text-xl tracking-wider">PowersBioStrikes</a>
+            <a href="../" class="flex items-center gap-3">
+                <svg class="h-10 w-10" viewBox="0 0 80 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="boltGradNav" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#D4AF37"/>
+                            <stop offset="100%" style="stop-color:#8B6914"/>
+                        </linearGradient>
+                    </defs>
+                    <path d="M45 5 L25 45 L38 45 L20 95 L55 40 L40 40 Z" fill="url(#boltGradNav)"/>
+                    <circle cx="20" cy="95" r="6" fill="#D4AF37" opacity="0.9"/>
+                    <circle cx="45" cy="5" r="5" fill="#8B6914" opacity="0.9"/>
+                    <circle cx="55" cy="40" r="4" fill="#D4AF37" opacity="0.7"/>
+                </svg>
+                <span class="text-gold font-bold text-xl tracking-wider">PowersBioStrikes</span>
+            </a>
             <div class="flex items-center space-x-6">
                 <a href="../#active-positions" class="text-gray-400 hover:text-gold transition-colors text-sm">Live Trades</a>
                 <a href="../#track-record" class="text-gray-400 hover:text-gold transition-colors text-sm">Track Record</a>
@@ -69,7 +111,7 @@
                             <span class="text-gray-500 text-sm">January 2026</span>
                         </div>
                         <h2 class="text-2xl font-bold mb-3 group-hover:text-gold transition-colors">
-                            What Really Happens When You Trade Biotech Options: A Retail Investor's Guide
+                            Fishing the Spread: How to Buy Illiquid Biotech Options
                         </h2>
                         <p class="text-gray-400 mb-4">
                             If you've ever placed a limit order on an illiquid biotech option and watched it sit there all day before mysteriously filling at 3:55pm, you're not alone. Here's how this game actually works.

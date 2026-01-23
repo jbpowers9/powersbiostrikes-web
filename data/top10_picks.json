@@ -1,0 +1,613 @@
+{
+  "page_title": "PowersBioStrikes Stock Picks",
+  "subtitle": "Data-Driven Stock Selection Using Our 6-Factor Scoring System",
+  "core_holdings": {
+    "title": "Core Holdings - The Magnificent 7",
+    "description": "Foundational tech positions for long-term wealth building. These aren't 'picks' - they're portfolio cornerstones.",
+    "picks": [
+      {
+        "ticker": "NVDA",
+        "company": "NVIDIA Corporation",
+        "sector": "Technology",
+        "industry": "Semiconductors",
+        "total_score": 84,
+        "signal": "BUY",
+        "signal_color": "#00C853",
+        "prices": {
+          "current": 184.84,
+          "entry_price": 184.42,
+          "entry_date": "2026-01-22"
+        },
+        "score_breakdown": {
+          "growth": 100,
+          "value": 50,
+          "quality": 100,
+          "momentum": 100,
+          "sentiment": 100,
+          "risk": 45
+        },
+        "thesis": "AI infrastructure leader with 62% revenue growth. Perfect scores in Growth, Quality, Momentum, and Sentiment."
+      },
+      {
+        "ticker": "AMZN",
+        "company": "Amazon.com, Inc.",
+        "sector": "Consumer Cyclical",
+        "industry": "Internet Retail",
+        "total_score": 78,
+        "signal": "BUY",
+        "signal_color": "#00C853",
+        "prices": {
+          "current": 234.34,
+          "entry_price": 235.43,
+          "entry_date": "2026-01-22"
+        },
+        "score_breakdown": {
+          "growth": 75,
+          "value": 60,
+          "quality": 80,
+          "momentum": 90,
+          "sentiment": 100,
+          "risk": 65
+        },
+        "thesis": "AWS dominance + e-commerce moat. Perfect sentiment score with strong momentum."
+      },
+      {
+        "ticker": "META",
+        "company": "Meta Platforms, Inc.",
+        "sector": "Communication Services",
+        "industry": "Internet Content & Information",
+        "total_score": 77,
+        "signal": "BUY",
+        "signal_color": "#00C853",
+        "prices": {
+          "current": 647.63,
+          "entry_price": 649.19,
+          "entry_date": "2026-01-22"
+        },
+        "score_breakdown": {
+          "growth": 50,
+          "value": 60,
+          "quality": 100,
+          "momentum": 90,
+          "sentiment": 100,
+          "risk": 70
+        },
+        "thesis": "Social media monopoly with AI tailwinds. Perfect Quality and Sentiment scores."
+      },
+      {
+        "ticker": "GOOG",
+        "company": "Alphabet Inc.",
+        "sector": "Communication Services",
+        "industry": "Internet Content & Information",
+        "total_score": 76,
+        "signal": "BUY",
+        "signal_color": "#00C853",
+        "prices": {
+          "current": 330.84,
+          "entry_price": 332.00,
+          "entry_date": "2026-01-22"
+        },
+        "score_breakdown": {
+          "growth": 75,
+          "value": 45,
+          "quality": 95,
+          "momentum": 85,
+          "sentiment": 85,
+          "risk": 75
+        },
+        "thesis": "Search monopoly + YouTube + Cloud. Strong across all factors with 35% ROE."
+      },
+      {
+        "ticker": "TSLA",
+        "company": "Tesla, Inc.",
+        "sector": "Consumer Cyclical",
+        "industry": "Auto Manufacturers",
+        "total_score": 59,
+        "signal": "HOLD",
+        "signal_color": "#2196F3",
+        "prices": {
+          "current": 449.36,
+          "entry_price": 450.78,
+          "entry_date": "2026-01-22"
+        },
+        "score_breakdown": {
+          "growth": 40,
+          "value": 55,
+          "quality": 50,
+          "momentum": 90,
+          "sentiment": 65,
+          "risk": 55
+        },
+        "thesis": "EV leader but growth slowing. Strong momentum but fundamentals weakening. Hold for optionality."
+      }
+    ]
+  },
+  "picks": [
+    {
+      "rank": 1,
+      "ticker": "NEM",
+      "company": "Newmont Corporation",
+      "sector": "Basic Materials",
+      "industry": "Gold",
+      "total_score": 78,
+      "signal": "BUY",
+      "signal_color": "#00C853",
+      "prices": {
+        "current": 121.69,
+        "entry_price": 122.25,
+        "entry_date": "2026-01-22",
+        "target": 150.00,
+        "stop_loss": 105.00
+      },
+      "score_breakdown": {
+        "growth": 80,
+        "value": 60,
+        "quality": 100,
+        "momentum": 65,
+        "sentiment": 75,
+        "risk": 90
+      },
+      "metrics": {
+        "market_cap": "$55B",
+        "revenue_growth": "20%",
+        "roe": "23%",
+        "rsi": 89
+      },
+      "deep_dive": {
+        "thesis": "World's largest gold miner with perfect Quality score and excellent Risk profile. Gold provides portfolio hedge against inflation and market volatility. 20% revenue growth with 23% ROE shows operational excellence.",
+        "bull_case": [
+          "Perfect 100 Quality score - exceptional profitability",
+          "90 Risk score - low volatility, defensive positioning",
+          "Gold hedge against inflation and uncertainty",
+          "20% revenue growth in mature industry"
+        ],
+        "bear_case": [
+          "RSI at 89 - overbought in near term",
+          "Gold price dependent",
+          "Commodity cyclicality"
+        ],
+        "key_insight": "Gold allocation is smart portfolio insurance. NEM is the best-in-class way to get it."
+      }
+    },
+    {
+      "rank": 2,
+      "ticker": "UBER",
+      "company": "Uber Technologies, Inc.",
+      "sector": "Technology",
+      "industry": "Software - Application",
+      "total_score": 76,
+      "signal": "BUY",
+      "signal_color": "#00C853",
+      "prices": {
+        "current": 82.56,
+        "entry_price": 82.68,
+        "entry_date": "2026-01-22",
+        "target": 110.00,
+        "stop_loss": 70.00
+      },
+      "score_breakdown": {
+        "growth": 90,
+        "value": 70,
+        "quality": 85,
+        "momentum": 55,
+        "sentiment": 95,
+        "risk": 70
+      },
+      "metrics": {
+        "market_cap": "$171B",
+        "revenue_growth": "20%",
+        "roe": "73%",
+        "rsi": 52
+      },
+      "deep_dive": {
+        "thesis": "Ride-sharing and delivery giant with incredible 73% ROE. Strong across Growth, Value, and Quality. 95 Sentiment score shows Wall Street loves this name. Finally profitable and scaling.",
+        "bull_case": [
+          "73% ROE - exceptional capital efficiency",
+          "95 Sentiment - Street is bullish",
+          "Duopoly in ride-sharing (with LYFT)",
+          "Delivery and freight expanding TAM"
+        ],
+        "bear_case": [
+          "Regulatory risks globally",
+          "Driver classification concerns",
+          "Autonomous vehicle disruption threat"
+        ],
+        "key_insight": "UBER went from money-losing startup to profit machine. The 73% ROE proves the business model works."
+      }
+    },
+    {
+      "rank": 3,
+      "ticker": "COIN",
+      "company": "Coinbase Global, Inc.",
+      "sector": "Financial Services",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_score": 72,
+      "signal": "ADD",
+      "signal_color": "#64DD17",
+      "prices": {
+        "current": 223.14,
+        "entry_price": 224.55,
+        "entry_date": "2026-01-22",
+        "target": 300.00,
+        "stop_loss": 180.00
+      },
+      "score_breakdown": {
+        "growth": 100,
+        "value": 50,
+        "quality": 95,
+        "momentum": 45,
+        "sentiment": 95,
+        "risk": 40
+      },
+      "metrics": {
+        "market_cap": "$56B",
+        "revenue_growth": "59%",
+        "roe": "26%",
+        "rsi": 48
+      },
+      "deep_dive": {
+        "thesis": "The picks-and-shovels play on crypto. Perfect 100 Growth score with 59% revenue growth. 95 Quality shows they're building a real business, not just riding crypto waves.",
+        "bull_case": [
+          "Perfect 100 Growth score - 59% revenue growth",
+          "95 Quality + 95 Sentiment - best-in-class crypto exposure",
+          "Regulatory moat as compliant US exchange",
+          "Institutional adoption accelerating"
+        ],
+        "bear_case": [
+          "40 Risk score - high volatility",
+          "Crypto market correlation",
+          "Competition from traditional finance"
+        ],
+        "key_insight": "If you believe in crypto long-term, COIN is the safest way to play it with a real, profitable business."
+      }
+    },
+    {
+      "rank": 4,
+      "ticker": "UI",
+      "company": "Ubiquiti Inc.",
+      "sector": "Technology",
+      "industry": "Communication Equipment",
+      "total_score": 71,
+      "signal": "ADD",
+      "signal_color": "#64DD17",
+      "prices": {
+        "current": 562.45,
+        "entry_price": 562.45,
+        "entry_date": "2026-01-22",
+        "target": 700.00,
+        "stop_loss": 480.00
+      },
+      "score_breakdown": {
+        "growth": 95,
+        "value": 40,
+        "quality": 95,
+        "momentum": 70,
+        "sentiment": 45,
+        "risk": 65
+      },
+      "metrics": {
+        "market_cap": "$33B",
+        "revenue_growth": "33%",
+        "roe": "156%",
+        "rsi": 53
+      },
+      "deep_dive": {
+        "thesis": "Hidden gem with mind-blowing 156% ROE. Strong Growth (95) and Quality (95) but low Sentiment (45) means Wall Street is sleeping on this. 33% revenue growth in networking hardware.",
+        "bull_case": [
+          "156% ROE - one of the highest in tech",
+          "95 Growth + 95 Quality - fundamentals are exceptional",
+          "Low Wall Street coverage = under-owned",
+          "Founder-led with aligned incentives"
+        ],
+        "bear_case": [
+          "45 Sentiment - Street doesn't follow closely",
+          "Single CEO/founder concentration risk",
+          "Supply chain dependencies"
+        ],
+        "key_insight": "UI is what happens when a founder builds for profitability, not headlines. The 156% ROE speaks for itself."
+      }
+    },
+    {
+      "rank": 5,
+      "ticker": "APLS",
+      "company": "Apellis Pharmaceuticals, Inc.",
+      "sector": "Healthcare",
+      "industry": "Biotechnology",
+      "total_score": 70,
+      "signal": "ADD",
+      "signal_color": "#64DD17",
+      "prices": {
+        "current": 22.00,
+        "entry_price": 22.00,
+        "entry_date": "2026-01-22",
+        "target": 40.00,
+        "stop_loss": 17.00
+      },
+      "score_breakdown": {
+        "growth": 80,
+        "value": 55,
+        "quality": 80,
+        "momentum": 60,
+        "sentiment": 75,
+        "risk": 70
+      },
+      "metrics": {
+        "market_cap": "$3B",
+        "revenue_growth": "133%",
+        "roe": "14%",
+        "rsi": 40
+      },
+      "deep_dive": {
+        "thesis": "Biotech with FDA-approved drug and 133% revenue growth. Unlike speculative biotech, APLS has real revenue and is scaling. RSI at 40 suggests potential entry point.",
+        "bull_case": [
+          "133% revenue growth - rare in profitable biotech",
+          "FDA-approved Syfovre for geographic atrophy",
+          "Large addressable market in eye disease",
+          "RSI at 40 - not overbought"
+        ],
+        "bear_case": [
+          "Biotech sector volatility",
+          "Competition in ophthalmology",
+          "Still not fully profitable"
+        ],
+        "key_insight": "APLS is the rare biotech with both an approved drug AND triple-digit revenue growth."
+      }
+    },
+    {
+      "rank": 6,
+      "ticker": "INOD",
+      "company": "Innodata Inc.",
+      "sector": "Technology",
+      "industry": "Information Technology Services",
+      "total_score": 68,
+      "signal": "ADD",
+      "signal_color": "#64DD17",
+      "prices": {
+        "current": 60.71,
+        "entry_price": 60.66,
+        "entry_date": "2026-01-22",
+        "target": 85.00,
+        "stop_loss": 48.00
+      },
+      "score_breakdown": {
+        "growth": 40,
+        "value": 60,
+        "quality": 90,
+        "momentum": 80,
+        "sentiment": 95,
+        "risk": 45
+      },
+      "metrics": {
+        "market_cap": "$1.7B",
+        "revenue_growth": "20%",
+        "roe": "47%",
+        "rsi": 64
+      },
+      "deep_dive": {
+        "thesis": "AI data services company with 47% ROE. 95 Sentiment + 90 Quality shows this is a high-conviction name. Provides data training services for AI models - picks and shovels for AI.",
+        "bull_case": [
+          "47% ROE - exceptional profitability",
+          "95 Sentiment - Wall Street is bullish",
+          "AI data training is essential infrastructure",
+          "80 Momentum - technical strength"
+        ],
+        "bear_case": [
+          "40 Growth score lower than peers",
+          "45 Risk - some volatility",
+          "Smaller market cap, less liquidity"
+        ],
+        "key_insight": "Every AI model needs training data. INOD provides it and has the margins to prove it's valuable."
+      }
+    },
+    {
+      "rank": 7,
+      "ticker": "TOST",
+      "company": "Toast, Inc.",
+      "sector": "Technology",
+      "industry": "Software - Infrastructure",
+      "total_score": 68,
+      "signal": "ADD",
+      "signal_color": "#64DD17",
+      "prices": {
+        "current": 34.21,
+        "entry_price": 34.15,
+        "entry_date": "2026-01-22",
+        "target": 50.00,
+        "stop_loss": 28.00
+      },
+      "score_breakdown": {
+        "growth": 90,
+        "value": 70,
+        "quality": 75,
+        "momentum": 35,
+        "sentiment": 80,
+        "risk": 55
+      },
+      "metrics": {
+        "market_cap": "$19B",
+        "revenue_growth": "25%",
+        "roe": "16%",
+        "rsi": 45
+      },
+      "deep_dive": {
+        "thesis": "Restaurant tech platform with 90 Growth score and 25% revenue growth. Dominates the restaurant POS market with sticky SaaS revenue. 70 Value score suggests reasonable entry.",
+        "bull_case": [
+          "90 Growth score - 25% revenue growth",
+          "70 Value - not overpriced for growth",
+          "Sticky restaurant POS relationships",
+          "Expanding into payments and payroll"
+        ],
+        "bear_case": [
+          "35 Momentum - near-term weakness",
+          "Restaurant industry cyclicality",
+          "Competition from Square/Block"
+        ],
+        "key_insight": "Once a restaurant is on Toast, switching costs are enormous. That's the moat."
+      }
+    },
+    {
+      "rank": 8,
+      "ticker": "PANW",
+      "company": "Palo Alto Networks, Inc.",
+      "sector": "Technology",
+      "industry": "Software - Infrastructure",
+      "total_score": 66,
+      "signal": "ADD",
+      "signal_color": "#64DD17",
+      "prices": {
+        "current": 182.27,
+        "entry_price": 182.76,
+        "entry_date": "2026-01-22",
+        "target": 230.00,
+        "stop_loss": 155.00
+      },
+      "score_breakdown": {
+        "growth": 50,
+        "value": 55,
+        "quality": 85,
+        "momentum": 55,
+        "sentiment": 85,
+        "risk": 85
+      },
+      "metrics": {
+        "market_cap": "$120B",
+        "revenue_growth": "16%",
+        "roe": "15%",
+        "rsi": 47
+      },
+      "deep_dive": {
+        "thesis": "Cybersecurity leader with 85 Quality and 85 Sentiment. Essential spending category that companies can't cut. 85 Risk score means lower volatility than peers.",
+        "bull_case": [
+          "85 Quality + 85 Sentiment + 85 Risk - very balanced",
+          "Cybersecurity is non-discretionary spending",
+          "Platform consolidation driving growth",
+          "RSI at 47 - neutral entry point"
+        ],
+        "bear_case": [
+          "50 Growth - slowing from earlier pace",
+          "Competitive market with CRWD, FTNT, etc.",
+          "Valuation still premium"
+        ],
+        "key_insight": "Cybersecurity is the one area where CIOs can't cut budgets. PANW is the safe way to play it."
+      }
+    },
+    {
+      "rank": 9,
+      "ticker": "ADBE",
+      "company": "Adobe Inc.",
+      "sector": "Technology",
+      "industry": "Software - Application",
+      "total_score": 64,
+      "signal": "HOLD",
+      "signal_color": "#2196F3",
+      "prices": {
+        "current": 299.73,
+        "entry_price": 300.70,
+        "entry_date": "2026-01-22",
+        "target": 380.00,
+        "stop_loss": 260.00
+      },
+      "score_breakdown": {
+        "growth": 70,
+        "value": 65,
+        "quality": 100,
+        "momentum": 20,
+        "sentiment": 85,
+        "risk": 40
+      },
+      "metrics": {
+        "market_cap": "$130B",
+        "revenue_growth": "11%",
+        "roe": "55%",
+        "rsi": 20
+      },
+      "deep_dive": {
+        "thesis": "Creative software monopoly with perfect 100 Quality score and 55% ROE. RSI at 20 is extremely oversold - potential bounce candidate. AI concerns overblown.",
+        "bull_case": [
+          "Perfect 100 Quality score - 55% ROE",
+          "RSI at 20 - deeply oversold",
+          "Creative Cloud has no real substitute",
+          "AI features are additive, not disruptive"
+        ],
+        "bear_case": [
+          "20 Momentum - in a downtrend",
+          "40 Risk - higher volatility recently",
+          "AI disruption narrative overhang"
+        ],
+        "key_insight": "ADBE is being punished for AI fears, but Photoshop isn't going anywhere. RSI at 20 is a gift."
+      }
+    },
+    {
+      "rank": 10,
+      "ticker": "CRWD",
+      "company": "CrowdStrike Holdings, Inc.",
+      "sector": "Technology",
+      "industry": "Software - Infrastructure",
+      "total_score": 57,
+      "signal": "HOLD",
+      "signal_color": "#2196F3",
+      "prices": {
+        "current": 453.77,
+        "entry_price": 454.97,
+        "entry_date": "2026-01-22",
+        "target": 550.00,
+        "stop_loss": 380.00
+      },
+      "score_breakdown": {
+        "growth": 70,
+        "value": 35,
+        "quality": 35,
+        "momentum": 65,
+        "sentiment": 90,
+        "risk": 70
+      },
+      "metrics": {
+        "market_cap": "$111B",
+        "revenue_growth": "22%",
+        "roe": "-9%",
+        "rsi": 43
+      },
+      "deep_dive": {
+        "thesis": "Best-in-class endpoint security with 90 Sentiment but still losing money (negative ROE). 22% revenue growth is solid but valuation is stretched at 35 Value score.",
+        "bull_case": [
+          "90 Sentiment - Street loves the story",
+          "22% revenue growth in cybersecurity",
+          "Best-in-class product reputation",
+          "Platform expansion opportunity"
+        ],
+        "bear_case": [
+          "35 Quality - negative ROE",
+          "35 Value - expensive valuation",
+          "July 2025 outage still in memory",
+          "Needs to prove profitability"
+        ],
+        "key_insight": "CRWD is a great product but not yet a great business. Hold until profitability improves."
+      }
+    }
+  ],
+  "scoring_system": {
+    "title": "The 6-Factor Scoring System",
+    "description": "Every pick is ranked using our proprietary weighted scoring model",
+    "factors": [
+      {"name": "Growth", "weight": 20, "description": "Revenue growth rate, earnings trajectory"},
+      {"name": "Value", "weight": 20, "description": "PEG ratio, Price/Sales, forward PE discount"},
+      {"name": "Quality", "weight": 20, "description": "ROE, gross margins, FCF yield"},
+      {"name": "Momentum", "weight": 20, "description": "RSI, price vs moving averages"},
+      {"name": "Sentiment", "weight": 10, "description": "Analyst ratings, price targets"},
+      {"name": "Risk", "weight": 10, "description": "Beta, debt levels (lower = better)"}
+    ],
+    "signals": {
+      "BUY": {"min_score": 75, "color": "#00C853", "action": "Strong conviction - full position"},
+      "ADD": {"min_score": 65, "color": "#64DD17", "action": "Good setup - build position"},
+      "HOLD": {"min_score": 50, "color": "#2196F3", "action": "Maintain position"},
+      "TRIM": {"min_score": 35, "color": "#FF9800", "action": "Consider reducing"},
+      "SELL": {"min_score": 0, "color": "#F44336", "action": "Exit position"}
+    }
+  },
+  "tracking": {
+    "start_date": "2026-01-22",
+    "benchmark": "SPY"
+  },
+  "disclaimer": "These are my actual holdings, not recommendations. Always do your own research before investing.",
+  "last_updated": "2026-01-22T20:00:00.000000"
+}

@@ -3,8 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>What Really Happens When You Trade Biotech Options | PowersBioStrikes</title>
+    <title>Fishing the Spread: How to Buy Illiquid Biotech Options | PowersBioStrikes</title>
     <meta name="description" content="A retail investor's guide to understanding market makers, bid/ask spreads, IV crush, and how to find an edge in biotech options trading.">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://powersbiostrikes.com/blog/what-really-happens-trading-biotech-options.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://powersbiostrikes.com/blog/what-really-happens-trading-biotech-options.html">
+    <meta property="og:title" content="Fishing the Spread: How to Buy Illiquid Biotech Options">
+    <meta property="og:description" content="A retail investor's guide to understanding market makers, bid/ask spreads, IV crush, and how to find an edge in biotech options trading.">
+    <meta property="og:image" content="https://powersbiostrikes.com/images/og-image.png">
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@PowersBioStrike">
+    <meta name="twitter:creator" content="@PowersBioStrike">
+    <meta name="twitter:title" content="Fishing the Spread: How to Buy Illiquid Biotech Options">
+    <meta name="twitter:description" content="A retail investor's guide to understanding market makers, bid/ask spreads, IV crush, and how to find an edge in biotech options trading.">
+    <meta name="twitter:image" content="https://powersbiostrikes.com/images/og-image.png">
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -39,7 +67,21 @@
     <!-- Navigation -->
     <nav class="fixed top-0 left-0 right-0 z-50 bg-dark-bg/95 backdrop-blur-sm border-b border-steel-dark/50">
         <div class="max-w-4xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="../" class="text-gold font-bold text-xl tracking-wider">PowersBioStrikes</a>
+            <a href="../" class="flex items-center gap-3">
+                <svg class="h-10 w-10" viewBox="0 0 80 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="boltGradNav" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#D4AF37"/>
+                            <stop offset="100%" style="stop-color:#8B6914"/>
+                        </linearGradient>
+                    </defs>
+                    <path d="M45 5 L25 45 L38 45 L20 95 L55 40 L40 40 Z" fill="url(#boltGradNav)"/>
+                    <circle cx="20" cy="95" r="6" fill="#D4AF37" opacity="0.9"/>
+                    <circle cx="45" cy="5" r="5" fill="#8B6914" opacity="0.9"/>
+                    <circle cx="55" cy="40" r="4" fill="#D4AF37" opacity="0.7"/>
+                </svg>
+                <span class="text-gold font-bold text-xl tracking-wider">PowersBioStrikes</span>
+            </a>
             <div class="flex items-center space-x-6">
                 <a href="../#active-positions" class="text-gray-400 hover:text-gold transition-colors text-sm">Live Trades</a>
                 <a href="./" class="text-gray-400 hover:text-gold transition-colors text-sm">Learn</a>
@@ -60,7 +102,7 @@
                 Back to Learn
             </a>
             <h1 class="text-3xl md:text-4xl font-bold mb-4">
-                What Really Happens When You Trade Biotech Options: A Retail Investor's Guide
+                Fishing the Spread: How to Buy Illiquid Biotech Options
             </h1>
             <div class="flex items-center gap-4 text-sm text-gray-500">
                 <span>January 2026</span>

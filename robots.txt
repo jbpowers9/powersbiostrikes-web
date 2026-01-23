@@ -1,0 +1,11 @@
+# PowersBioStrikes robots.txt
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://powersbiostrikes.com/sitemap.xml
+
+# Disallow auth pages from indexing
+Disallow: /auth-callback.html
+Disallow: /reset-password.html
+Disallow: /dashboard.html

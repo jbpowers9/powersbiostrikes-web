@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | PowersBioStrikes</title>
+    <meta name="description" content="Your PowersBioStrikes member dashboard.">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        mahogany: { dark: '#4A0E0E', DEFAULT: '#6B1414', light: '#8B2323' },
+                        steel: { dark: '#2C3E50', DEFAULT: '#34495E', light: '#5D6D7E' },
+                        gold: { dark: '#8B6914', DEFAULT: '#D4AF37', light: '#E8C547' },
+                        dark: { bg: '#1a1a1a', card: '#242424', elevated: '#2d2d2d' }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body { background: #1a1a1a; font-family: 'Inter', sans-serif; }
+        .dashboard-card {
+            background: #242424;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        .feature-card {
+            background: linear-gradient(135deg, rgba(212,175,55,0.05) 0%, transparent 100%);
+            border: 1px solid rgba(212,175,55,0.2);
+        }
+    </style>
+</head>
+<body class="min-h-screen text-white">
+    <!-- Loading State -->
+    <div id="loading" class="fixed inset-0 bg-dark-bg flex items-center justify-center z-50">
+        <div class="text-center">
+            <div class="w-12 h-12 border-2 border-gold border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+            <p class="text-gray-400">Loading your dashboard...</p>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-40 bg-dark-bg/95 backdrop-blur-sm border-b border-white/5">
+        <div class="max-w-6xl mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="index.html" class="flex flex-col">
+                    <span class="text-gold font-bold text-xl tracking-wider">PowersBioStrikes</span>
+                    <span class="text-gray-500 text-xs">Member Dashboard</span>
+                </a>
+                <div class="flex items-center gap-6">
+                    <a href="top10-picks.html" class="text-gray-400 hover:text-gold transition-colors text-sm">Top 10 Picks</a>
+                    <a href="index.html#active-positions" class="text-gray-400 hover:text-gold transition-colors text-sm">Live Trades</a>
+                    <a href="blog/" class="text-gray-400 hover:text-gold transition-colors text-sm">Blog</a>
+                    <button id="logout-btn" class="px-4 py-2 border border-white/20 rounded-lg text-sm hover:bg-white/5 transition-all">
+                        Sign Out
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-24 pb-16 px-6">
+        <div class="max-w-6xl mx-auto">
+            <!-- Welcome Section -->
+            <div class="mb-10">
+                <h1 class="text-3xl font-bold mb-2">Welcome back, <span id="user-name" class="text-gold">Member</span>!</h1>
+                <p class="text-gray-400">Here's what's available to you as a free member.</p>
+            </div>
+
+            <!-- Account Info Card -->
+            <div class="dashboard-card rounded-2xl p-6 mb-8">
+                <div class="flex flex-wrap items-center justify-between gap-4">
+                    <div class="flex items-center gap-4">
+                        <div class="w-14 h-14 bg-gold/20 rounded-full flex items-center justify-center">
+                            <span id="user-initials" class="text-gold font-bold text-xl">?</span>
+                        </div>
+                        <div>
+                            <div id="user-email" class="text-white font-medium">loading@email.com</div>
+                            <div class="flex items-center gap-2 mt-1">
+                                <span class="px-2 py-0.5 bg-green-500/20 text-green-400 text-xs font-medium rounded">FREE TIER</span>
+                                <span id="member-since" class="text-gray-500 text-xs">Member since Jan 2026</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex gap-3">
+                        <a href="top10-picks.html" class="px-5 py-2.5 bg-gradient-to-r from-gold to-gold-dark text-dark-bg font-semibold rounded-lg hover:shadow-lg hover:shadow-gold/20 transition-all">
+                            View Top 10 Picks
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Features Grid -->
+            <h2 class="text-xl font-semibold mb-4">Your Free Member Benefits</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+                <!-- Top 10 Picks -->
+                <a href="top10-picks.html" class="feature-card rounded-xl p-6 hover:border-gold/40 transition-all group">
+                    <div class="w-12 h-12 bg-gold/10 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <span class="text-2xl">📊</span>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Top 10 Stock Picks</h3>
+                    <p class="text-gray-400 text-sm mb-4">Full access to our data-driven stock picks with deep dive analysis.</p>
+                    <span class="text-gold text-sm font-medium">View Picks →</span>
+                </a>
+
+                <!-- Live Trades -->
+                <a href="index.html#active-positions" class="feature-card rounded-xl p-6 hover:border-gold/40 transition-all group">
+                    <div class="w-12 h-12 bg-gold/10 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <span class="text-2xl">🎯</span>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Live Positions</h3>
+                    <p class="text-gray-400 text-sm mb-4">See our current biotech options positions with real-time ENR scores.</p>
+                    <span class="text-gold text-sm font-medium">View Trades →</span>
+                </a>
+
+                <!-- Blog -->
+                <a href="blog/" class="feature-card rounded-xl p-6 hover:border-gold/40 transition-all group">
+                    <div class="w-12 h-12 bg-gold/10 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <span class="text-2xl">📚</span>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Educational Content</h3>
+                    <p class="text-gray-400 text-sm mb-4">Learn biotech options trading strategies and market mechanics.</p>
+                    <span class="text-gold text-sm font-medium">Read Articles →</span>
+                </a>
+            </div>
+
+            <!-- Upgrade CTA -->
+            <div class="bg-gradient-to-r from-gold/10 to-mahogany/10 border border-gold/20 rounded-2xl p-8">
+                <div class="flex flex-wrap items-center justify-between gap-6">
+                    <div>
+                        <span class="px-3 py-1 bg-gold/20 text-gold text-xs font-semibold rounded-full">COMING SOON</span>
+                        <h3 class="text-2xl font-bold mt-3 mb-2">Premium Membership</h3>
+                        <p class="text-gray-400 max-w-lg">Get real-time trade alerts, position sizing recommendations, and direct access to our trading methodology.</p>
+                    </div>
+                    <button disabled class="px-6 py-3 bg-white/10 text-white/50 font-semibold rounded-lg cursor-not-allowed">
+                        Coming Soon
+                    </button>
+                </div>
+            </div>
+
+            <!-- Quick Stats -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
+                <div class="dashboard-card rounded-xl p-5 text-center">
+                    <div class="text-2xl font-bold text-gold">10</div>
+                    <div class="text-gray-500 text-sm">Stock Picks</div>
+                </div>
+                <div class="dashboard-card rounded-xl p-5 text-center">
+                    <div class="text-2xl font-bold text-white">6</div>
+                    <div class="text-gray-500 text-sm">Scoring Factors</div>
+                </div>
+                <div class="dashboard-card rounded-xl p-5 text-center">
+                    <div class="text-2xl font-bold text-green-400">68.5%</div>
+                    <div class="text-gray-500 text-sm">Win Rate</div>
+                </div>
+                <div class="dashboard-card rounded-xl p-5 text-center">
+                    <div class="text-2xl font-bold text-white">54</div>
+                    <div class="text-gray-500 text-sm">Verified Trades</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-8 border-t border-white/5">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <p class="text-gray-600 text-sm">&copy; 2026 PowersBioStrikes. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Supabase SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase-config.js"></script>
+
+    <script>
+        const loadingEl = document.getElementById('loading');
+        const userNameEl = document.getElementById('user-name');
+        const userEmailEl = document.getElementById('user-email');
+        const userInitialsEl = document.getElementById('user-initials');
+        const memberSinceEl = document.getElementById('member-since');
+        const logoutBtn = document.getElementById('logout-btn');
+
+        async function loadDashboard() {
+            try {
+                const user = await pbsAuth.getUser();
+
+                if (!user) {
+                    // Not logged in - redirect to login
+                    window.location.href = 'login.html';
+                    return;
+                }
+
+                // Populate user info
+                const fullName = user.user_metadata?.full_name || 'Member';
+                const email = user.email;
+                const createdAt = new Date(user.created_at);
+
+                userNameEl.textContent = fullName.split(' ')[0]; // First name only
+                userEmailEl.textContent = email;
+
+                // Generate initials
+                const names = fullName.split(' ');
+                const initials = names.length > 1
+                    ? names[0][0] + names[names.length - 1][0]
+                    : names[0].substring(0, 2);
+                userInitialsEl.textContent = initials.toUpperCase();
+
+                // Member since
+                const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+                memberSinceEl.textContent = `Member since ${monthNames[createdAt.getMonth()]} ${createdAt.getFullYear()}`;
+
+                // Hide loading
+                loadingEl.classList.add('hidden');
+
+            } catch (err) {
+                console.error('Dashboard error:', err);
+                window.location.href = 'login.html';
+            }
+        }
+
+        // Logout handler
+        logoutBtn.addEventListener('click', async () => {
+            await pbsAuth.signOut();
+            window.location.href = 'index.html';
+        });
+
+        // Load dashboard on page load
+        loadDashboard();
+    </script>
+</body>
+</html>

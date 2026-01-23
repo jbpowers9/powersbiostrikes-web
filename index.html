@@ -6,6 +6,33 @@
     <title>PowersBioStrikes | Systematic Biotech Catalyst Trading</title>
     <meta name="description" content="176% annualized returns. 54 verified trades. Every position public. An engineer's systematic approach to FDA catalyst options.">
 
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://powersbiostrikes.com/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://powersbiostrikes.com/">
+    <meta property="og:title" content="PowersBioStrikes | Systematic Biotech Catalyst Trading">
+    <meta property="og:description" content="176% annualized returns. 54 verified trades. Every position public. An engineer's systematic approach to FDA catalyst options.">
+    <meta property="og:image" content="https://powersbiostrikes.com/images/og-image.png">
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@PowersBioStrike">
+    <meta name="twitter:creator" content="@PowersBioStrike">
+    <meta name="twitter:title" content="PowersBioStrikes | Systematic Biotech Catalyst Trading">
+    <meta name="twitter:description" content="176% annualized returns. 54 verified trades. Every position public. An engineer's systematic approach to FDA catalyst options.">
+    <meta name="twitter:image" content="https://powersbiostrikes.com/images/og-image.png">
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -52,17 +79,36 @@
     <nav class="fixed top-0 left-0 right-0 z-50 bg-dark-bg/95 backdrop-blur-sm border-b border-steel-dark/50">
         <div class="max-w-6xl mx-auto px-6 py-4">
             <div class="flex justify-between items-center">
-                <a href="#" class="flex flex-col">
-                    <span class="text-gold font-bold text-xl tracking-wider">PowersBioStrikes</span>
-                    <span class="text-white text-xs tracking-wide">Powered by Powers Capital Investments</span>
+                <a href="#" class="flex items-center gap-3">
+                    <!-- Lightning bolt icon -->
+                    <svg class="h-10 w-10" viewBox="0 0 80 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="boltGradNav" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#D4AF37"/>
+                                <stop offset="100%" style="stop-color:#8B6914"/>
+                            </linearGradient>
+                        </defs>
+                        <path d="M45 5 L25 45 L38 45 L20 95 L55 40 L40 40 Z" fill="url(#boltGradNav)"/>
+                        <circle cx="20" cy="95" r="6" fill="#D4AF37" opacity="0.9"/>
+                        <circle cx="45" cy="5" r="5" fill="#8B6914" opacity="0.9"/>
+                        <circle cx="55" cy="40" r="4" fill="#D4AF37" opacity="0.7"/>
+                    </svg>
+                    <div class="flex flex-col">
+                        <span class="text-gold font-bold text-xl tracking-wider">PowersBioStrikes</span>
+                        <span class="text-gray-400 text-xs tracking-wide">Powered by Powers Capital Investments</span>
+                    </div>
                 </a>
-                <div class="hidden md:flex space-x-8">
+                <div class="hidden md:flex items-center space-x-8">
                     <a href="#problem" class="text-gray-300 hover:text-gold transition-colors text-sm uppercase tracking-wide">The Problem</a>
                     <a href="#solution" class="text-gray-300 hover:text-gold transition-colors text-sm uppercase tracking-wide">Our Approach</a>
                     <a href="#track-record" class="text-gray-300 hover:text-gold transition-colors text-sm uppercase tracking-wide">Track Record</a>
                     <a href="#active-positions" class="text-gray-300 hover:text-gold transition-colors text-sm uppercase tracking-wide">Live Trades</a>
+                    <a href="top10-picks.html" class="text-gray-300 hover:text-gold transition-colors text-sm uppercase tracking-wide">Top 10 Picks</a>
                     <a href="blog/" class="text-gray-300 hover:text-gold transition-colors text-sm uppercase tracking-wide">Blog</a>
-                    <a href="#about" class="text-gray-300 hover:text-gold transition-colors text-sm uppercase tracking-wide">About</a>
+                    <div id="auth-nav" class="flex items-center gap-3 ml-4">
+                        <a href="login.html" class="text-gray-300 hover:text-gold transition-colors text-sm">Sign In</a>
+                        <a href="signup.html" class="px-4 py-2 bg-gold text-dark-bg font-semibold rounded-lg text-sm hover:bg-gold-light transition-colors">Join Free</a>
+                    </div>
                 </div>
                 <button id="mobile-menu-btn" class="md:hidden text-gold">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -76,8 +122,12 @@
                 <a href="#solution" class="block text-gray-300 hover:text-gold transition-colors text-sm uppercase tracking-wide">Our Approach</a>
                 <a href="#track-record" class="block text-gray-300 hover:text-gold transition-colors text-sm uppercase tracking-wide">Track Record</a>
                 <a href="#active-positions" class="block text-gray-300 hover:text-gold transition-colors text-sm uppercase tracking-wide">Live Trades</a>
+                <a href="top10-picks.html" class="block text-gray-300 hover:text-gold transition-colors text-sm uppercase tracking-wide">Top 10 Picks</a>
                 <a href="blog/" class="block text-gray-300 hover:text-gold transition-colors text-sm uppercase tracking-wide">Blog</a>
-                <a href="#about" class="block text-gray-300 hover:text-gold transition-colors text-sm uppercase tracking-wide">About</a>
+                <div class="pt-4 border-t border-steel-dark/50 flex gap-3">
+                    <a href="login.html" class="flex-1 py-2 border border-white/20 rounded-lg text-center text-sm text-gray-300 hover:bg-white/5">Sign In</a>
+                    <a href="signup.html" class="flex-1 py-2 bg-gold text-dark-bg font-semibold rounded-lg text-center text-sm">Join Free</a>
+                </div>
             </div>
         </div>
     </nav>
@@ -595,11 +645,9 @@
                         </svg>
                     </div>
                     <div>
-                        <h4 class="text-yellow-400 font-semibold mb-1">Important: This Is Not "Safe" Investing</h4>
+                        <h4 class="text-yellow-400 font-semibold mb-1">Know What You're Trading</h4>
                         <p class="text-gray-400 text-sm">
-                            Biotech options are high-risk, high-reward instruments. You should only trade with money you can afford to lose completely.
-                            Never put rent money, emergency funds, or money you need into these trades.
-                            The strategy works over many trades, not on any single position.
+                            Options trading requires understanding leverage and position sizing. Our systematic approach aims to put the odds in your favor through disciplined analysis and risk management. As with any investment, only use capital you've allocated for trading.
                         </p>
                     </div>
                 </div>
@@ -1321,7 +1369,7 @@
                     <div class="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Legal</div>
                     <ul class="space-y-2 text-sm text-gray-500">
                         <li>J. B. Powers & Co.</li>
-                        <li><a href="mailto:john@powersbiostrikes.com" class="hover:text-gold transition-colors">john@powersbiostrikes.com</a></li>
+                        <li><a href="mailto:jon@powersbiostrikes.com" class="hover:text-gold transition-colors">jon@powersbiostrikes.com</a></li>
                     </ul>
                 </div>
             </div>

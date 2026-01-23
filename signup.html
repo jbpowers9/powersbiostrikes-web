@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up | PowersBioStrikes</title>
+    <meta name="description" content="Create your free PowersBioStrikes account for access to our Top 10 stock picks and trade alerts.">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://powersbiostrikes.com/signup.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://powersbiostrikes.com/signup.html">
+    <meta property="og:title" content="Join PowersBioStrikes - Free">
+    <meta property="og:description" content="Get free access to our Top 10 stock picks and trade alerts. No credit card required.">
+    <meta property="og:image" content="https://powersbiostrikes.com/images/og-image.png">
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@PowersBioStrike">
+    <meta name="twitter:creator" content="@PowersBioStrike">
+    <meta name="twitter:title" content="Join PowersBioStrikes - Free">
+    <meta name="twitter:description" content="Get free access to our Top 10 stock picks and trade alerts. No credit card required.">
+    <meta name="twitter:image" content="https://powersbiostrikes.com/images/og-image.png">
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        mahogany: { dark: '#4A0E0E', DEFAULT: '#6B1414', light: '#8B2323' },
+                        steel: { dark: '#2C3E50', DEFAULT: '#34495E', light: '#5D6D7E' },
+                        gold: { dark: '#8B6914', DEFAULT: '#D4AF37', light: '#E8C547' },
+                        dark: { bg: '#1a1a1a', card: '#242424', elevated: '#2d2d2d' }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body { background: #1a1a1a; font-family: 'Inter', sans-serif; }
+        .auth-card {
+            background: linear-gradient(135deg, #242424 0%, #1a1a1a 100%);
+            border: 1px solid rgba(212,175,55,0.2);
+        }
+        .auth-input {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.2s;
+        }
+        .auth-input:focus {
+            outline: none;
+            border-color: #D4AF37;
+            box-shadow: 0 0 0 3px rgba(212,175,55,0.1);
+        }
+        .auth-btn {
+            background: linear-gradient(135deg, #D4AF37 0%, #8B6914 100%);
+            transition: all 0.2s;
+        }
+        .auth-btn:hover {
+            box-shadow: 0 4px 20px rgba(212,175,55,0.3);
+            transform: translateY(-1px);
+        }
+        .auth-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center px-4 py-12">
+    <!-- Background -->
+    <div class="fixed inset-0 bg-gradient-to-br from-dark-bg via-mahogany-dark/10 to-dark-bg -z-10"></div>
+    <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-gold/5 rounded-full blur-3xl -z-10"></div>
+
+    <div class="w-full max-w-md">
+        <!-- Logo -->
+        <div class="text-center mb-8">
+            <a href="index.html" class="inline-flex items-center justify-center gap-3">
+                <svg class="h-12 w-12" viewBox="0 0 80 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="boltGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#D4AF37"/>
+                            <stop offset="100%" style="stop-color:#8B6914"/>
+                        </linearGradient>
+                    </defs>
+                    <path d="M45 5 L25 45 L38 45 L20 95 L55 40 L40 40 Z" fill="url(#boltGrad)"/>
+                    <circle cx="20" cy="95" r="6" fill="#D4AF37" opacity="0.9"/>
+                    <circle cx="45" cy="5" r="5" fill="#8B6914" opacity="0.9"/>
+                    <circle cx="55" cy="40" r="4" fill="#D4AF37" opacity="0.7"/>
+                </svg>
+                <span class="text-gold font-bold text-2xl tracking-wider">PowersBioStrikes</span>
+            </a>
+            <p class="text-gray-500 text-sm mt-2">Powered by Powers Capital Investments</p>
+        </div>
+
+        <!-- Signup Card -->
+        <div class="auth-card rounded-2xl p-8">
+            <h1 class="text-2xl font-bold text-white text-center mb-2">Create Your Account</h1>
+            <p class="text-gray-400 text-center mb-8">Get free access to our Top 10 picks</p>
+
+            <!-- Success Message (hidden by default) -->
+            <div id="success-message" class="hidden bg-green-500/10 border border-green-500/30 rounded-xl p-4 mb-6">
+                <div class="flex items-start gap-3">
+                    <svg class="w-6 h-6 text-green-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    <div>
+                        <h3 class="text-green-400 font-semibold">Check your email!</h3>
+                        <p class="text-gray-400 text-sm mt-1">We sent a verification link to <span id="sent-email" class="text-white"></span></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Error Message (hidden by default) -->
+            <div id="error-message" class="hidden bg-red-500/10 border border-red-500/30 rounded-xl p-4 mb-6">
+                <div class="flex items-start gap-3">
+                    <svg class="w-6 h-6 text-red-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    <div>
+                        <h3 class="text-red-400 font-semibold">Signup Failed</h3>
+                        <p id="error-text" class="text-gray-400 text-sm mt-1"></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Signup Form -->
+            <form id="signup-form" class="space-y-5">
+                <div>
+                    <label for="fullName" class="block text-sm font-medium text-gray-300 mb-2">Full Name</label>
+                    <input
+                        type="text"
+                        id="fullName"
+                        name="fullName"
+                        required
+                        autocomplete="name"
+                        class="auth-input w-full px-4 py-3 rounded-lg text-white placeholder-gray-500"
+                        placeholder="Jon Powers"
+                    >
+                </div>
+
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Email Address</label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        required
+                        autocomplete="email"
+                        class="auth-input w-full px-4 py-3 rounded-lg text-white placeholder-gray-500"
+                        placeholder="you@example.com"
+                    >
+                </div>
+
+                <div>
+                    <label for="password" class="block text-sm font-medium text-gray-300 mb-2">Password</label>
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        required
+                        minlength="8"
+                        autocomplete="new-password"
+                        class="auth-input w-full px-4 py-3 rounded-lg text-white placeholder-gray-500"
+                        placeholder="Min. 8 characters"
+                    >
+                </div>
+
+                <div>
+                    <label for="confirmPassword" class="block text-sm font-medium text-gray-300 mb-2">Confirm Password</label>
+                    <input
+                        type="password"
+                        id="confirmPassword"
+                        name="confirmPassword"
+                        required
+                        minlength="8"
+                        class="auth-input w-full px-4 py-3 rounded-lg text-white placeholder-gray-500"
+                        placeholder="Confirm your password"
+                    >
+                </div>
+
+                <button
+                    type="submit"
+                    id="submit-btn"
+                    class="auth-btn w-full py-3 rounded-lg text-dark-bg font-semibold text-lg"
+                >
+                    Create Free Account
+                </button>
+            </form>
+
+            <!-- Benefits -->
+            <div class="mt-8 pt-6 border-t border-white/10">
+                <p class="text-gray-500 text-sm text-center mb-4">Free members get:</p>
+                <ul class="space-y-2">
+                    <li class="flex items-center gap-3 text-gray-300 text-sm">
+                        <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                        </svg>
+                        Full access to Top 10 stock picks
+                    </li>
+                    <li class="flex items-center gap-3 text-gray-300 text-sm">
+                        <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                        </svg>
+                        Weekly market insights email
+                    </li>
+                    <li class="flex items-center gap-3 text-gray-300 text-sm">
+                        <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                        </svg>
+                        Educational blog content
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Login Link -->
+            <p class="text-center text-gray-400 text-sm mt-8">
+                Already have an account?
+                <a href="login.html" class="text-gold hover:underline font-medium">Sign in</a>
+            </p>
+        </div>
+
+        <!-- Footer -->
+        <p class="text-center text-gray-600 text-xs mt-8">
+            By signing up, you agree to our Terms of Service and Privacy Policy
+        </p>
+    </div>
+
+    <!-- Supabase SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase-config.js"></script>
+
+    <script>
+        const form = document.getElementById('signup-form');
+        const submitBtn = document.getElementById('submit-btn');
+        const successMsg = document.getElementById('success-message');
+        const errorMsg = document.getElementById('error-message');
+        const errorText = document.getElementById('error-text');
+        const sentEmail = document.getElementById('sent-email');
+
+        // Check if already logged in
+        pbsAuth.getUser().then(user => {
+            if (user) {
+                window.location.href = 'dashboard.html';
+            }
+        });
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // Reset messages
+            successMsg.classList.add('hidden');
+            errorMsg.classList.add('hidden');
+
+            const fullName = document.getElementById('fullName').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            // Validate passwords match
+            if (password !== confirmPassword) {
+                errorText.textContent = 'Passwords do not match.';
+                errorMsg.classList.remove('hidden');
+                return;
+            }
+
+            // Disable button
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Creating account...';
+
+            try {
+                const { data, error } = await pbsAuth.signUp(email, password, fullName);
+
+                if (error) {
+                    errorText.textContent = error.message;
+                    errorMsg.classList.remove('hidden');
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Create Free Account';
+                    return;
+                }
+
+                // Success - show message
+                sentEmail.textContent = email;
+                successMsg.classList.remove('hidden');
+                form.classList.add('hidden');
+
+            } catch (err) {
+                errorText.textContent = 'An unexpected error occurred. Please try again.';
+                errorMsg.classList.remove('hidden');
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Create Free Account';
+            }
+        });
+    </script>
+</body>
+</html>

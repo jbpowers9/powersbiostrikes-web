@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top 10 Stock Picks 2026 | PowersBioStrikes</title>
+    <meta name="description" content="Our data-driven Top 10 stock picks for 2026, using the PowersBioStrikes 6-factor scoring system inspired by Jim Cramer's Mad Money principles.">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://powersbiostrikes.com/top10-picks.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://powersbiostrikes.com/top10-picks.html">
+    <meta property="og:title" content="Top 10 Stock Picks 2026 | PowersBioStrikes">
+    <meta property="og:description" content="Data-driven Top 10 stock picks using our 6-factor scoring system. Real holdings, real analysis.">
+    <meta property="og:image" content="https://powersbiostrikes.com/images/og-image.png">
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@PowersBioStrike">
+    <meta name="twitter:creator" content="@PowersBioStrike">
+    <meta name="twitter:title" content="Top 10 Stock Picks 2026 | PowersBioStrikes">
+    <meta name="twitter:description" content="Data-driven Top 10 stock picks using our 6-factor scoring system. Real holdings, real analysis.">
+    <meta name="twitter:image" content="https://powersbiostrikes.com/images/og-image.png">
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        mahogany: { dark: '#4A0E0E', DEFAULT: '#6B1414', light: '#8B2323' },
+                        steel: { dark: '#2C3E50', DEFAULT: '#34495E', light: '#5D6D7E' },
+                        gold: { dark: '#8B6914', DEFAULT: '#D4AF37', light: '#E8C547' },
+                        dark: { bg: '#1a1a1a', card: '#242424', elevated: '#2d2d2d' }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body { background: #1a1a1a; }
+        .gradient-border {
+            background: linear-gradient(135deg, #D4AF37 0%, #8B6914 100%);
+            padding: 1px;
+        }
+        .gradient-border-inner {
+            background: #242424;
+        }
+        .score-ring {
+            background: conic-gradient(from 0deg, #00C853 0%, #64DD17 25%, #2196F3 50%, #FF9800 75%, #F44336 100%);
+        }
+        .factor-bar {
+            height: 6px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        .factor-fill {
+            height: 100%;
+            border-radius: 3px;
+            transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .pick-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .pick-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+        .deep-dive-section {
+            background: linear-gradient(180deg, rgba(212,175,55,0.03) 0%, transparent 100%);
+        }
+        .metric-badge {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .bull-item::before { content: ""; display: inline-block; width: 8px; height: 8px; background: #00C853; border-radius: 50%; margin-right: 12px; }
+        .bear-item::before { content: ""; display: inline-block; width: 8px; height: 8px; background: #F44336; border-radius: 50%; margin-right: 12px; }
+        .live-pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .5; } }
+        .tab-active { background: linear-gradient(135deg, #D4AF37 0%, #8B6914 100%); color: #1a1a1a; }
+
+        /* Soft Gate Styles */
+        .locked-card { position: relative; }
+        .locked-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 0%, rgba(26,26,26,0.95) 30%);
+            z-index: 10;
+            border-radius: 1rem;
+        }
+        .locked-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 20;
+            padding: 2rem;
+        }
+        .unlock-form {
+            background: linear-gradient(135deg, #242424 0%, #1a1a1a 100%);
+            border: 1px solid rgba(212,175,55,0.3);
+            border-radius: 1rem;
+            padding: 2rem;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+        .unlock-input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 0.5rem;
+            color: white;
+            margin-bottom: 1rem;
+        }
+        .unlock-input:focus {
+            outline: none;
+            border-color: #D4AF37;
+        }
+        .unlock-btn {
+            width: 100%;
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(135deg, #D4AF37 0%, #8B6914 100%);
+            color: #1a1a1a;
+            font-weight: 600;
+            border-radius: 0.5rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .unlock-btn:hover {
+            box-shadow: 0 4px 20px rgba(212,175,55,0.3);
+        }
+        .teaser-row {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.5rem;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 0.75rem;
+            margin-bottom: 0.5rem;
+        }
+        .teaser-rank {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, rgba(212,175,55,0.2) 0%, rgba(212,175,55,0.05) 100%);
+            border: 1px solid rgba(212,175,55,0.2);
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #D4AF37;
+            font-weight: 700;
+        }
+        .teaser-blur {
+            filter: blur(6px);
+            user-select: none;
+        }
+        .line-clamp-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="text-white font-['Inter']">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-dark-bg/95 backdrop-blur-md border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="index.html" class="flex items-center gap-3">
+                    <!-- Lightning bolt icon -->
+                    <svg class="h-10 w-10" viewBox="0 0 80 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="boltGradNav" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#D4AF37"/>
+                                <stop offset="100%" style="stop-color:#8B6914"/>
+                            </linearGradient>
+                        </defs>
+                        <path d="M45 5 L25 45 L38 45 L20 95 L55 40 L40 40 Z" fill="url(#boltGradNav)"/>
+                        <circle cx="20" cy="95" r="6" fill="#D4AF37" opacity="0.9"/>
+                        <circle cx="45" cy="5" r="5" fill="#8B6914" opacity="0.9"/>
+                        <circle cx="55" cy="40" r="4" fill="#D4AF37" opacity="0.7"/>
+                    </svg>
+                    <div class="flex flex-col">
+                        <span class="text-gold font-bold text-xl tracking-wider">PowersBioStrikes</span>
+                        <span class="text-gray-500 text-xs tracking-wide">Powered by Powers Capital Investments</span>
+                    </div>
+                </a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-400 hover:text-white transition-colors text-sm">Home</a>
+                    <a href="#philosophy" class="text-gray-400 hover:text-white transition-colors text-sm">Philosophy</a>
+                    <a href="#scoring" class="text-gray-400 hover:text-white transition-colors text-sm">Scoring</a>
+                    <a href="#picks" class="text-gold font-medium text-sm">Top 10 Picks</a>
+                    <a href="blog/" class="text-gray-400 hover:text-white transition-colors text-sm">Blog</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="pt-28 pb-16 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-gold/5 via-transparent to-transparent"></div>
+        <div class="absolute top-20 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-gold/5 rounded-full blur-3xl"></div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-6">
+            <div class="flex items-center justify-center gap-2 mb-6">
+                <span class="w-2 h-2 bg-green-500 rounded-full live-pulse"></span>
+                <span class="text-sm text-gray-400">Live prices updated every 30 minutes</span>
+            </div>
+
+            <h1 class="text-5xl md:text-7xl font-bold text-center mb-6">
+                Top <span class="text-gold">10</span> Picks
+                <span class="block text-3xl md:text-4xl text-gray-400 font-normal mt-2">for 2026</span>
+            </h1>
+
+            <p class="text-xl text-gray-400 text-center max-w-2xl mx-auto mb-10">
+                Data-driven stock selection using our 6-factor scoring system,
+                inspired by Jim Cramer's principles and enhanced with quantitative rigor.
+            </p>
+
+            <div class="flex justify-center gap-4">
+                <a href="#picks" class="px-8 py-3 bg-gradient-to-r from-gold to-gold-dark text-dark-bg font-semibold rounded-lg hover:shadow-lg hover:shadow-gold/20 transition-all">
+                    View Picks
+                </a>
+                <a href="#philosophy" class="px-8 py-3 border border-white/20 text-white rounded-lg hover:bg-white/5 transition-all">
+                    Our Approach
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Stats Bar -->
+    <section class="py-6 border-y border-white/5 bg-dark-card/50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                <div>
+                    <div class="text-3xl font-bold text-gold">15</div>
+                    <div class="text-sm text-gray-500">Active Positions</div>
+                </div>
+                <div>
+                    <div class="text-3xl font-bold text-white">6</div>
+                    <div class="text-sm text-gray-500">Scoring Factors</div>
+                </div>
+                <div>
+                    <div class="text-3xl font-bold text-green-400">7</div>
+                    <div class="text-sm text-gray-500">BUY Signals</div>
+                </div>
+                <div>
+                    <div class="text-3xl font-bold text-white">7</div>
+                    <div class="text-sm text-gray-500">Sectors Covered</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Philosophy Section -->
+    <section id="philosophy" class="py-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-gold text-sm font-medium tracking-wider uppercase">Our Approach</span>
+                <h2 class="text-4xl font-bold mt-4 mb-6">Cramer Meets Quant</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">
+                    We combine Jim Cramer's time-tested principles from "Real Money"
+                    with modern quantitative analysis for a systematic edge.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="gradient-border rounded-2xl">
+                    <div class="gradient-border-inner rounded-2xl p-8">
+                        <div class="flex items-start gap-4">
+                            <div class="w-14 h-14 bg-gold/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <span class="text-2xl">📚</span>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-white mb-2">Do Your Homework</h3>
+                                <p class="text-gray-500 text-sm italic mb-3">"Behind every stock is a company. Find out what it's doing."</p>
+                                <p class="text-gray-300 text-sm">
+                                    <span class="text-gold">Our Enhancement:</span> We scan 330+ stocks across multiple universes, scoring each on 6 quantitative factors automatically.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gradient-border rounded-2xl">
+                    <div class="gradient-border-inner rounded-2xl p-8">
+                        <div class="flex items-start gap-4">
+                            <div class="w-14 h-14 bg-gold/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <span class="text-2xl">🛡️</span>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-white mb-2">Diversification is Protection</h3>
+                                <p class="text-gray-500 text-sm italic mb-3">"Own 5-10 stocks across different sectors."</p>
+                                <p class="text-gray-300 text-sm">
+                                    <span class="text-gold">Our Enhancement:</span> Our Top 10 spans Healthcare, Technology, Financial Services, Consumer, and Industrials.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gradient-border rounded-2xl">
+                    <div class="gradient-border-inner rounded-2xl p-8">
+                        <div class="flex items-start gap-4">
+                            <div class="w-14 h-14 bg-gold/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <span class="text-2xl">💰</span>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-white mb-2">Bulls & Bears Make Money...</h3>
+                                <p class="text-gray-500 text-sm italic mb-3">"Take profits when you have them. Ring the register!"</p>
+                                <p class="text-gray-300 text-sm">
+                                    <span class="text-gold">Our Enhancement:</span> Our scoring identifies when stocks move from BUY to HOLD territory - time to trim positions.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gradient-border rounded-2xl">
+                    <div class="gradient-border-inner rounded-2xl p-8">
+                        <div class="flex items-start gap-4">
+                            <div class="w-14 h-14 bg-gold/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <span class="text-2xl">🏛️</span>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-white mb-2">Don't Fight the Fed</h3>
+                                <p class="text-gray-500 text-sm italic mb-3">"The market environment matters more than individual stocks."</p>
+                                <p class="text-gray-300 text-sm">
+                                    <span class="text-gold">Our Enhancement:</span> We factor market regime and momentum into every score via our 6-factor model.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p class="text-center text-gray-500 text-sm mt-10">
+                Special thanks to Jim Cramer and his book "Real Money" for the foundational investment principles.
+            </p>
+        </div>
+    </section>
+
+    <!-- Scoring System -->
+    <section id="scoring" class="py-20 bg-dark-card/30">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-gold text-sm font-medium tracking-wider uppercase">Methodology</span>
+                <h2 class="text-4xl font-bold mt-4 mb-6">6-Factor Scoring System</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">
+                    Every pick is ranked using our proprietary weighted model. Each factor is scored 0-100.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-4 mb-12">
+                <div class="bg-dark-elevated rounded-xl p-6 border border-white/5">
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="font-semibold">Growth</span>
+                        <span class="text-gold font-bold">20%</span>
+                    </div>
+                    <p class="text-gray-500 text-sm">Revenue & earnings trajectory</p>
+                </div>
+                <div class="bg-dark-elevated rounded-xl p-6 border border-white/5">
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="font-semibold">Value</span>
+                        <span class="text-gold font-bold">20%</span>
+                    </div>
+                    <p class="text-gray-500 text-sm">PEG, P/S, forward PE discount</p>
+                </div>
+                <div class="bg-dark-elevated rounded-xl p-6 border border-white/5">
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="font-semibold">Quality</span>
+                        <span class="text-gold font-bold">20%</span>
+                    </div>
+                    <p class="text-gray-500 text-sm">ROE, margins, FCF yield</p>
+                </div>
+                <div class="bg-dark-elevated rounded-xl p-6 border border-white/5">
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="font-semibold">Momentum</span>
+                        <span class="text-gold font-bold">20%</span>
+                    </div>
+                    <p class="text-gray-500 text-sm">RSI, moving averages</p>
+                </div>
+                <div class="bg-dark-elevated rounded-xl p-6 border border-white/5">
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="font-semibold">Sentiment</span>
+                        <span class="text-gold font-bold">10%</span>
+                    </div>
+                    <p class="text-gray-500 text-sm">Analyst ratings, targets</p>
+                </div>
+                <div class="bg-dark-elevated rounded-xl p-6 border border-white/5">
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="font-semibold">Risk</span>
+                        <span class="text-gold font-bold">10%</span>
+                    </div>
+                    <p class="text-gray-500 text-sm">Beta, debt (lower = better)</p>
+                </div>
+            </div>
+
+            <!-- Signal Legend -->
+            <div class="flex flex-wrap justify-center gap-6 p-6 bg-dark-elevated rounded-xl border border-white/5">
+                <div class="flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-green-500"></span>
+                    <span class="text-sm"><span class="font-semibold text-green-400">BUY</span> 75+</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-lime-500"></span>
+                    <span class="text-sm"><span class="font-semibold text-lime-400">ADD</span> 65-74</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-blue-500"></span>
+                    <span class="text-sm"><span class="font-semibold text-blue-400">HOLD</span> 50-64</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-orange-500"></span>
+                    <span class="text-sm"><span class="font-semibold text-orange-400">TRIM</span> 35-49</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-red-500"></span>
+                    <span class="text-sm"><span class="font-semibold text-red-400">SELL</span> &lt;35</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Holdings Section -->
+    <section id="core-holdings" class="py-16 bg-dark-card/30">
+        <div class="max-w-7xl mx-auto px-6">
+            <div id="core-holdings-container">
+                <div class="text-center py-12">
+                    <div class="w-10 h-10 border-2 border-gold border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+                    <p class="text-gray-500">Loading core holdings...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Top 10 Picks -->
+    <section id="picks" class="py-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <span class="text-gold text-sm font-medium tracking-wider uppercase">The Picks</span>
+                <h2 class="text-4xl font-bold mt-4 mb-6">Top 10 Conviction Plays</h2>
+                <p class="text-gray-400 max-w-xl mx-auto mb-4">My highest-conviction holdings beyond the core. Each one scored and analyzed using the 6-factor system.</p>
+                <div class="flex justify-center items-center gap-2">
+                    <span class="w-2 h-2 bg-green-500 rounded-full live-pulse"></span>
+                    <span id="last-updated" class="text-sm text-gray-500">Loading...</span>
+                </div>
+            </div>
+
+            <div id="picks-container" class="space-y-8">
+                <div class="text-center py-20">
+                    <div class="w-10 h-10 border-2 border-gold border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+                    <p class="text-gray-500">Loading picks...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Disclaimer -->
+    <section class="py-12 border-t border-white/5">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <div class="bg-mahogany-dark/20 border border-mahogany/30 rounded-xl p-8">
+                <h3 class="text-gold font-semibold mb-4">Important Disclaimer</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    This is not financial advice. These picks represent our quantitative analysis and are for
+                    educational purposes only. Always do your own due diligence before investing. Past performance
+                    does not guarantee future results. Stock investing involves risk including potential loss of principal.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <p class="text-gold font-bold text-lg">PowersBioStrikes</p>
+            <p class="text-gray-600 text-sm mt-1">Powered by Powers Capital Investments</p>
+            <p class="text-gray-700 text-xs mt-4">&copy; 2026 PowersBioStrikes. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Supabase SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase-config.js"></script>
+
+    <script>
+        // Global auth state
+        let currentUser = null;
+
+        // Check if user is authenticated
+        async function checkAuth() {
+            try {
+                currentUser = await pbsAuth.getUser();
+                return !!currentUser;
+            } catch (err) {
+                return false;
+            }
+        }
+
+        async function loadPicks() {
+            try {
+                const response = await fetch('data/top10_picks.json');
+                const data = await response.json();
+
+                // Render Core Holdings (Mag 7) - always visible
+                if (data.core_holdings) {
+                    renderCoreHoldings(data.core_holdings);
+                }
+
+                // Render Top 10 Picks
+                await renderPicks(data.picks);
+                document.getElementById('last-updated').textContent =
+                    `Last updated: ${new Date(data.last_updated).toLocaleString()}`;
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('picks-container').innerHTML =
+                    '<p class="text-center text-red-400">Error loading picks. Please refresh.</p>';
+            }
+        }
+
+        function renderCoreHoldings(core) {
+            const container = document.getElementById('core-holdings-container');
+            if (!container) return;
+
+            container.innerHTML = `
+                <div class="mb-8">
+                    <h3 class="text-2xl font-bold mb-2">${core.title}</h3>
+                    <p class="text-gray-400">${core.description}</p>
+                </div>
+                <div class="grid md:grid-cols-5 gap-4">
+                    ${core.picks.map(pick => {
+                        const change = ((pick.prices.current - pick.prices.entry_price) / pick.prices.entry_price * 100);
+                        const changeColor = change >= 0 ? '#00C853' : '#F44336';
+                        const changeSign = change >= 0 ? '+' : '';
+                        return `
+                            <div class="bg-dark-card border border-white/5 rounded-xl p-4 hover:border-gold/30 transition-all">
+                                <div class="flex items-center justify-between mb-3">
+                                    <span class="text-xl font-bold">${pick.ticker}</span>
+                                    <span class="px-2 py-0.5 rounded text-xs font-bold"
+                                          style="background: ${pick.signal_color}; color: #1a1a1a">${pick.signal}</span>
+                                </div>
+                                <div class="text-2xl font-bold mb-1">$${pick.prices.current.toFixed(2)}</div>
+                                <div class="flex items-center gap-2 text-sm">
+                                    <span style="color: ${changeColor}">${changeSign}${change.toFixed(1)}%</span>
+                                    <span class="text-gray-600">since ${pick.prices.entry_date}</span>
+                                </div>
+                                <div class="mt-3 pt-3 border-t border-white/5">
+                                    <div class="text-xs text-gray-500">Score: <span class="text-white font-semibold">${pick.total_score}</span></div>
+                                    <p class="text-xs text-gray-500 mt-1 line-clamp-2">${pick.thesis}</p>
+                                </div>
+                            </div>
+                        `;
+                    }).join('')}
+                </div>
+            `;
+        }
+
+        function getScoreColor(score) {
+            if (score >= 90) return '#00C853';
+            if (score >= 75) return '#64DD17';
+            if (score >= 60) return '#2196F3';
+            if (score >= 40) return '#FF9800';
+            return '#F44336';
+        }
+
+        async function renderPicks(picks) {
+            const container = document.getElementById('picks-container');
+            const isAuthenticated = await checkAuth();
+
+            // Separate free picks (1-3) and gated picks (4-10)
+            const freePicks = picks.slice(0, 3);
+            const gatedPicks = picks.slice(3);
+
+            let html = '';
+
+            // Render free picks (1-3)
+            html += freePicks.map(pick => renderFullPick(pick)).join('');
+
+            // Render gated section
+            if (!isAuthenticated && gatedPicks.length > 0) {
+                html += `
+                    <div class="relative mt-12">
+                        <!-- Unlock CTA -->
+                        <div class="text-center py-12 mb-8 bg-gradient-to-b from-gold/5 to-transparent rounded-2xl border border-gold/20">
+                            <div class="w-16 h-16 bg-gold/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                                <svg class="w-8 h-8 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                                </svg>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-3">Unlock Picks #4-10</h3>
+                            <p class="text-gray-400 mb-6 max-w-md mx-auto">
+                                Create a free account to access our complete Top 10 list with full deep-dive analysis on each stock.
+                            </p>
+                            <div class="flex flex-col sm:flex-row gap-3 justify-center max-w-sm mx-auto px-4">
+                                <a href="signup.html" class="unlock-btn px-6 py-3 rounded-lg text-center">
+                                    🔓 Create Free Account
+                                </a>
+                                <a href="login.html" class="px-6 py-3 border border-white/20 rounded-lg text-white hover:bg-white/5 transition-all text-center">
+                                    Sign In
+                                </a>
+                            </div>
+                            <p class="text-gray-600 text-xs mt-4">Free forever. No credit card required.</p>
+                        </div>
+
+                        <!-- Teaser cards for locked picks -->
+                        <div class="space-y-3 opacity-60">
+                            ${gatedPicks.map(pick => `
+                                <div class="teaser-row">
+                                    <div class="teaser-rank">${pick.rank}</div>
+                                    <div class="flex-1">
+                                        <div class="flex items-center gap-3">
+                                            <span class="text-xl font-bold teaser-blur">████</span>
+                                            <span class="px-2 py-0.5 rounded-full text-xs font-bold teaser-blur"
+                                                  style="background: ${pick.signal_color}; color: #1a1a1a">
+                                                ${pick.signal}
+                                            </span>
+                                        </div>
+                                        <p class="text-gray-500 text-sm teaser-blur">████████ ██████████</p>
+                                    </div>
+                                    <div class="text-right">
+                                        <div class="text-2xl font-bold teaser-blur" style="color: ${pick.signal_color}">${pick.total_score}</div>
+                                    </div>
+                                    <svg class="w-5 h-5 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/>
+                                    </svg>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            } else {
+                // User is authenticated - show all picks
+                html += gatedPicks.map(pick => renderFullPick(pick)).join('');
+            }
+
+            container.innerHTML = html;
+        }
+
+        function renderFullPick(pick) {
+            // Calculate P&L since entry
+            const entryPrice = pick.prices.entry_price || pick.prices.current;
+            const pnlPercent = ((pick.prices.current - entryPrice) / entryPrice * 100);
+            const pnlColor = pnlPercent >= 0 ? '#00C853' : '#F44336';
+            const pnlSign = pnlPercent >= 0 ? '+' : '';
+
+            return `
+                <div class="pick-card bg-dark-card rounded-2xl border border-white/5 overflow-hidden">
+                    <!-- Header -->
+                    <div class="p-8 border-b border-white/5">
+                        <div class="flex flex-wrap items-start justify-between gap-6">
+                            <div class="flex items-center gap-6">
+                                <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-gold/20 to-gold/5 flex items-center justify-center border border-gold/20">
+                                    <span class="text-gold font-bold text-2xl">${pick.rank}</span>
+                                </div>
+                                <div>
+                                    <div class="flex items-center gap-3 mb-1">
+                                        <h3 class="text-3xl font-bold">${pick.ticker}</h3>
+                                        <span class="px-3 py-1 rounded-full text-xs font-bold"
+                                              style="background: ${pick.signal_color}; color: #1a1a1a">
+                                            ${pick.signal}
+                                        </span>
+                                    </div>
+                                    <p class="text-gray-400">${pick.company}</p>
+                                    <div class="flex gap-2 mt-2">
+                                        <span class="metric-badge px-2 py-1 rounded text-xs text-gray-400">${pick.sector}</span>
+                                        <span class="metric-badge px-2 py-1 rounded text-xs text-gray-400">${pick.industry}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-sm text-gray-500 mb-1">Total Score</div>
+                                <div class="text-5xl font-bold" style="color: ${pick.signal_color}">${pick.total_score}</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Price & Metrics -->
+                    <div class="p-8 border-b border-white/5 bg-white/[0.02]">
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <div>
+                                <div class="text-sm text-gray-500 mb-3 font-medium">PRICE TRACKING</div>
+                                <div class="flex items-baseline gap-4 mb-3">
+                                    <span class="text-4xl font-bold">$${pick.prices.current.toFixed(2)}</span>
+                                    <span class="text-lg font-semibold" style="color: ${pnlColor}">${pnlSign}${pnlPercent.toFixed(1)}%</span>
+                                </div>
+                                <div class="flex flex-wrap gap-4 text-sm mb-4">
+                                    <div>
+                                        <span class="text-gray-500">Entry:</span>
+                                        <span class="text-white ml-1">$${entryPrice.toFixed(2)}</span>
+                                        <span class="text-gray-600 ml-1">(${pick.prices.entry_date || 'N/A'})</span>
+                                    </div>
+                                </div>
+                                <div class="flex gap-6 text-sm">
+                                    <div>
+                                        <span class="text-gray-500">Target:</span>
+                                        <span class="text-green-400 ml-1">$${pick.prices.target.toFixed(2)}</span>
+                                        <span class="text-green-400/60 ml-1">(+${((pick.prices.target - pick.prices.current) / pick.prices.current * 100).toFixed(0)}%)</span>
+                                    </div>
+                                    <div>
+                                        <span class="text-gray-500">Stop:</span>
+                                        <span class="text-red-400 ml-1">$${pick.prices.stop_loss.toFixed(2)}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="text-sm text-gray-500 mb-3 font-medium">KEY METRICS</div>
+                                <div class="grid grid-cols-2 gap-3">
+                                    ${Object.entries(pick.metrics).map(([key, value]) => `
+                                        <div class="metric-badge px-3 py-2 rounded-lg">
+                                            <div class="text-xs text-gray-500 capitalize">${key.replace(/_/g, ' ')}</div>
+                                            <div class="text-white font-semibold">${value}</div>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Score Breakdown -->
+                    <div class="p-8 border-b border-white/5">
+                        <div class="text-sm text-gray-500 mb-4 font-medium">SCORE BREAKDOWN</div>
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-4">
+                            ${Object.entries(pick.score_breakdown).map(([factor, score]) => `
+                                <div>
+                                    <div class="flex justify-between text-sm mb-2">
+                                        <span class="text-gray-400 capitalize">${factor}</span>
+                                        <span class="font-semibold" style="color: ${getScoreColor(score)}">${score}</span>
+                                    </div>
+                                    <div class="factor-bar">
+                                        <div class="factor-fill" style="width: ${score}%; background: ${getScoreColor(score)}"></div>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+
+                    <!-- Deep Dive -->
+                    <div class="deep-dive-section p-8">
+                        <div class="text-sm text-gray-500 mb-4 font-medium">DEEP DIVE ANALYSIS</div>
+
+                        <p class="text-gray-300 leading-relaxed mb-8">${pick.deep_dive.thesis}</p>
+
+                        <div class="grid md:grid-cols-2 gap-8 mb-8">
+                            <div class="bg-green-500/5 border border-green-500/20 rounded-xl p-6">
+                                <h4 class="text-green-400 font-semibold mb-4 flex items-center gap-2">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                                    Bull Case
+                                </h4>
+                                <ul class="space-y-3">
+                                    ${pick.deep_dive.bull_case.map(item => `
+                                        <li class="bull-item text-sm text-gray-300">${item}</li>
+                                    `).join('')}
+                                </ul>
+                            </div>
+                            <div class="bg-red-500/5 border border-red-500/20 rounded-xl p-6">
+                                <h4 class="text-red-400 font-semibold mb-4 flex items-center gap-2">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>
+                                    Bear Case
+                                </h4>
+                                <ul class="space-y-3">
+                                    ${pick.deep_dive.bear_case.map(item => `
+                                        <li class="bear-item text-sm text-gray-300">${item}</li>
+                                    `).join('')}
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Key Insight -->
+                        <div class="bg-gold/5 border border-gold/20 rounded-xl p-6">
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 bg-gold/20 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <span class="text-xl">💡</span>
+                                </div>
+                                <div>
+                                    <h4 class="text-gold font-semibold mb-2">Key Insight</h4>
+                                    <p class="text-gray-300 text-sm">${pick.deep_dive.key_insight}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        document.addEventListener('DOMContentLoaded', loadPicks);
+        setInterval(loadPicks, 5 * 60 * 1000);
+    </script>
+</body>
+</html>
