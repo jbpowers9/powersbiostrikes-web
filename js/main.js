@@ -191,7 +191,6 @@
         { text: 'Win rate: <span class="text-gold font-semibold">68.5%</span>', type: 'stat' },
         { text: 'Avg hold: <span class="text-gold font-semibold">47 days</span>', type: 'stat' },
         { text: 'Recent: <span class="text-green-400 font-semibold">CRNX +114%</span>', type: 'win' },
-        { text: 'YTD return: <span class="text-green-400 font-semibold">+53%</span>', type: 'stat' },
         { text: 'Recent loss: <span class="text-red-400 font-semibold">IMVT -75%</span>', type: 'loss' },
         { text: 'Active positions: <span class="text-gold font-semibold">17</span>', type: 'stat' },
         { text: 'Recent: <span class="text-green-400 font-semibold">VRNA +129%</span>', type: 'win' }
