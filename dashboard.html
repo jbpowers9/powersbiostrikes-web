@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Member Dashboard | PowersBioStrikes</title>
-    <meta name="description" content="Your PowersBioStrikes member dashboard - trade alerts, live positions, and catalyst calendar.">
+    <meta name="description" content="Your PowersBioStrikes founding member dashboard - trade alerts, live positions, and catalyst calendar.">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -75,7 +75,7 @@
                     <span class="text-2xl">🐸</span>
                     <div class="flex flex-col">
                         <span class="text-gold font-bold text-xl tracking-wider">PowersBioStrikes</span>
-                        <span class="text-gray-500 text-xs">Member Dashboard</span>
+                        <span class="text-gray-500 text-xs">Founding Member Dashboard</span>
                     </div>
                 </a>
                 <div class="flex items-center gap-6">
@@ -103,7 +103,7 @@
             <div class="flex flex-wrap items-start justify-between gap-6 mb-8">
                 <div>
                     <h1 class="text-3xl font-bold mb-2">Welcome back, <span id="user-name" class="text-gold">Member</span>!</h1>
-                    <p class="text-gray-400">Your biotech catalyst command center.</p>
+                    <p class="text-gray-400">Here's what you receive as a <span class="text-gold">Founding Member</span>.</p>
                 </div>
                 <div class="dashboard-card rounded-xl p-4 flex items-center gap-4">
                     <div class="w-12 h-12 bg-gold/20 rounded-full flex items-center justify-center">
@@ -112,31 +112,41 @@
                     <div>
                         <div id="user-email" class="text-white font-medium text-sm">loading@email.com</div>
                         <div class="flex items-center gap-2 mt-1">
-                            <span id="member-tier" class="px-2 py-0.5 bg-gold/20 text-gold text-xs font-medium rounded">FOUNDING MEMBER</span>
+                            <span class="px-2 py-0.5 bg-gold/20 text-gold text-xs font-medium rounded">FOUNDING MEMBER</span>
                             <span id="member-since" class="text-gray-500 text-xs">Since Jan 2026</span>
                         </div>
+                        <div id="free-remaining" class="text-green-400 text-xs mt-1">6 months free remaining</div>
                     </div>
                 </div>
             </div>
 
-            <!-- Personal Message from Jon -->
-            <div class="dashboard-card rounded-2xl p-6 mb-8 border-l-4 border-gold">
-                <div class="flex items-start gap-4">
-                    <div class="text-3xl">👋</div>
-                    <div>
-                        <h3 class="font-semibold text-lg mb-2">A Note from Jon</h3>
-                        <p class="text-gray-300 leading-relaxed">
-                            Thanks for being a founding member! You're getting in early while I build this out.
-                            I'm trading these positions with my own money - every win and loss is real.
-                            <br><br>
-                            <span class="text-gold">New here?</span> Start with <a href="blog/" class="text-gold underline hover:text-gold-light">the blog article</a> -
-                            it explains how to read the positions, what ENR and CONT scores mean, and how I approach buying.
-                            Understanding the system first will help you make better decisions.
-                            <br><br>
-                            <span class="text-gold">Your feedback matters.</span> If you have questions about any trades,
-                            want to discuss strategy, or just want to chat biotech - I'm here. Hit me up anytime.
-                        </p>
-                        <div class="flex flex-wrap gap-3 mt-4">
+            <!-- Collapsible Message from Jon -->
+            <div id="jon-message-container" class="mb-8">
+                <button id="jon-message-toggle" class="w-full text-left dashboard-card rounded-2xl p-4 border-l-4 border-blue-500 hover:bg-dark-elevated transition-colors">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <span class="text-2xl">👋</span>
+                            <span class="font-semibold text-blue-400">A Note from Jon</span>
+                            <span id="message-badge" class="px-2 py-0.5 bg-blue-500/20 text-blue-400 text-xs rounded hidden">NEW</span>
+                        </div>
+                        <svg id="message-chevron" class="w-5 h-5 text-gray-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </div>
+                </button>
+                <div id="jon-message-content" class="dashboard-card rounded-b-2xl border-l-4 border-blue-500 border-t-0 p-6 hidden">
+                    <p class="text-gray-300 leading-relaxed">
+                        Thanks for being a founding member! You're getting in early while I build this out.
+                        I'm trading these positions with my own money - every win and loss is real.
+                    </p>
+                    <p class="text-gray-300 leading-relaxed mt-3">
+                        <span class="text-gold">New here?</span> Start with <a href="blog/" class="text-gold underline hover:text-gold-light">the blog article</a> -
+                        it explains how to read the positions, what ENR and CONT scores mean, and how I approach buying.
+                    </p>
+                    <p class="text-gray-300 leading-relaxed mt-3">
+                        <span class="text-gold">Your feedback matters.</span> Questions about trades or strategy? Hit me up anytime.
+                    </p>
+                    <div class="flex flex-wrap gap-3 mt-4">
                         <a href="blog/" class="inline-flex items-center gap-2 px-4 py-2 bg-gold text-dark-bg font-semibold rounded-lg text-sm hover:bg-gold-light transition-colors">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
@@ -147,8 +157,43 @@
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                             </svg>
-                            Send Feedback or Questions
+                            Send Feedback
                         </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Founding Member Benefits Banner -->
+            <div class="bg-gradient-to-r from-gold/10 to-gold/5 border border-gold/30 rounded-2xl p-6 mb-8">
+                <h2 class="text-xl font-bold text-gold mb-4">🎉 Your Founding Member Benefits</h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="flex items-start gap-3">
+                        <span class="text-green-400 text-xl">✓</span>
+                        <div>
+                            <div class="font-medium">6 Months Free Access</div>
+                            <div class="text-gray-500 text-sm">Full access from sign-up date</div>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <span class="text-green-400 text-xl">✓</span>
+                        <div>
+                            <div class="font-medium">Top 10 Stock Picks</div>
+                            <div class="text-gray-500 text-sm">Detailed CONT analysis</div>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <span class="text-green-400 text-xl">✓</span>
+                        <div>
+                            <div class="font-medium">Live Positions</div>
+                            <div class="text-gray-500 text-sm">Deep dive analysis included</div>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <span class="text-green-400 text-xl">✓</span>
+                        <div>
+                            <div class="font-medium">Catalyst Calendar</div>
+                            <div class="text-gray-500 text-sm">PDUFA dates & Phase 3 readouts</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -175,7 +220,7 @@
 
             <!-- Two Column Layout -->
             <div class="grid lg:grid-cols-3 gap-8">
-                <!-- Left Column: Live Positions -->
+                <!-- Left Column: Trade Alerts & Live Positions -->
                 <div class="lg:col-span-2">
                     <!-- Trade Alerts Section -->
                     <div class="mb-8">
@@ -183,15 +228,11 @@
                             <h2 class="text-xl font-semibold flex items-center gap-2">
                                 <span class="text-green-400">●</span> Trade Alerts
                             </h2>
-                            <span class="px-3 py-1 bg-gold/20 text-gold text-xs font-semibold rounded-full">PREMIUM COMING SOON</span>
+                            <span class="text-gray-500 text-sm">Email alerts when positions change</span>
                         </div>
-                        <div class="alert-card rounded-xl p-6">
-                            <p class="text-gray-300 mb-4">Real-time alerts when I enter or exit positions. Coming to premium members soon.</p>
-                            <div class="flex items-center gap-4 text-sm text-gray-500">
-                                <span>📱 Push notifications</span>
-                                <span>📧 Email alerts</span>
-                                <span>⚡ Real-time</span>
-                            </div>
+                        <div id="alerts-container" class="space-y-3">
+                            <!-- Alerts loaded by JS -->
+                            <div class="text-gray-500 text-center py-4">Loading recent alerts...</div>
                         </div>
                     </div>
 
@@ -199,7 +240,7 @@
                     <div>
                         <div class="flex items-center justify-between mb-4">
                             <h2 class="text-xl font-semibold">Live Positions</h2>
-                            <a href="index.html#active-positions" class="text-gold text-sm hover:underline">View All →</a>
+                            <span id="positions-count" class="text-gray-500 text-sm"></span>
                         </div>
                         <div id="positions-container" class="space-y-4">
                             <!-- Positions loaded by JS -->
@@ -241,20 +282,6 @@
                         <span class="text-gold text-sm font-medium">View Picks →</span>
                     </a>
 
-                    <!-- Blog -->
-                    <a href="blog/" class="feature-card rounded-xl p-6 block group">
-                        <div class="flex items-center gap-4 mb-3">
-                            <div class="w-12 h-12 bg-gold/10 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
-                                <span class="text-2xl">📚</span>
-                            </div>
-                            <div>
-                                <h3 class="text-lg font-semibold">Learn</h3>
-                                <p class="text-gray-500 text-sm">Biotech trading education</p>
-                            </div>
-                        </div>
-                        <span class="text-gold text-sm font-medium">Read Articles →</span>
-                    </a>
-
                     <!-- Community Card -->
                     <a href="community.html" class="feature-card rounded-xl p-6 block group">
                         <div class="flex items-center gap-4 mb-3">
@@ -267,6 +294,20 @@
                             </div>
                         </div>
                         <span class="text-gold text-sm font-medium">Join Discussion →</span>
+                    </a>
+
+                    <!-- Blog -->
+                    <a href="blog/" class="feature-card rounded-xl p-6 block group">
+                        <div class="flex items-center gap-4 mb-3">
+                            <div class="w-12 h-12 bg-gold/10 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                                <span class="text-2xl">📚</span>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold">Learn</h3>
+                                <p class="text-gray-500 text-sm">Biotech trading education</p>
+                            </div>
+                        </div>
+                        <span class="text-gold text-sm font-medium">Read Articles →</span>
                     </a>
 
                     <!-- Feedback Card -->
@@ -302,7 +343,7 @@
         const userInitialsEl = document.getElementById('user-initials');
         const userInitialsLgEl = document.getElementById('user-initials-lg');
         const memberSinceEl = document.getElementById('member-since');
-        const memberTierEl = document.getElementById('member-tier');
+        const freeRemainingEl = document.getElementById('free-remaining');
         const logoutBtn = document.getElementById('logout-btn');
 
         async function loadDashboard() {
@@ -334,26 +375,80 @@
                 const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
                 memberSinceEl.textContent = `Since ${monthNames[createdAt.getMonth()]} ${createdAt.getFullYear()}`;
 
-                // Check if founding member (within first 6 months or has special flag)
-                const isFoundingMember = true; // For now, all early users are founding members
-                if (isFoundingMember) {
-                    memberTierEl.textContent = 'FOUNDING MEMBER';
-                    memberTierEl.className = 'px-2 py-0.5 bg-gold/20 text-gold text-xs font-medium rounded';
+                // Calculate free months remaining (6 months from sign-up)
+                const sixMonthsLater = new Date(createdAt);
+                sixMonthsLater.setMonth(sixMonthsLater.getMonth() + 6);
+                const now = new Date();
+                const monthsRemaining = Math.max(0, Math.ceil((sixMonthsLater - now) / (1000 * 60 * 60 * 24 * 30)));
+
+                if (monthsRemaining > 0) {
+                    freeRemainingEl.textContent = `${monthsRemaining} month${monthsRemaining > 1 ? 's' : ''} free remaining`;
+                    freeRemainingEl.className = 'text-green-400 text-xs mt-1';
                 } else {
-                    memberTierEl.textContent = 'FREE TIER';
-                    memberTierEl.className = 'px-2 py-0.5 bg-green-500/20 text-green-400 text-xs font-medium rounded';
+                    freeRemainingEl.textContent = 'Free trial ended';
+                    freeRemainingEl.className = 'text-orange-400 text-xs mt-1';
                 }
 
                 // Hide loading
                 loadingEl.classList.add('hidden');
 
-                // Load positions and calendar data
+                // Load data
                 loadPositions();
                 loadCalendarPreview();
+                loadAlerts();
 
             } catch (err) {
                 console.error('Dashboard error:', err);
                 window.location.href = 'login.html';
+            }
+        }
+
+        async function loadAlerts() {
+            try {
+                const response = await fetch('data/positions.json');
+                const data = await response.json();
+                const positions = data.positions || [];
+
+                // Create "alerts" from recent positions (newest first based on entry date)
+                const recentPositions = positions
+                    .filter(p => p.timing?.entry_date)
+                    .sort((a, b) => new Date(b.timing.entry_date) - new Date(a.timing.entry_date))
+                    .slice(0, 3);
+
+                if (recentPositions.length === 0) {
+                    document.getElementById('alerts-container').innerHTML =
+                        '<p class="text-gray-500 text-center py-4">No recent trade alerts.</p>';
+                    return;
+                }
+
+                const html = recentPositions.map(pos => {
+                    const isLeap = pos.play_type === 'LEAP';
+                    const entryDate = new Date(pos.timing.entry_date);
+                    const dateStr = entryDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+
+                    return `
+                        <div class="alert-card rounded-lg p-4 flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <span class="text-2xl">${isLeap ? '🐸' : '🎯'}</span>
+                                <div>
+                                    <div class="font-semibold">NEW BUY: ${pos.ticker}</div>
+                                    <div class="text-gray-400 text-sm">$${pos.position?.strike} Call | Entry $${pos.prices?.entry?.toFixed(2)}</div>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-gold font-medium">CONT: ${pos.cont?.score || '--'}</div>
+                                <div class="text-gray-500 text-xs">${dateStr}</div>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+
+                document.getElementById('alerts-container').innerHTML = html;
+
+            } catch (err) {
+                console.error('Failed to load alerts:', err);
+                document.getElementById('alerts-container').innerHTML =
+                    '<p class="text-gray-500 text-center py-4">Failed to load alerts.</p>';
             }
         }
 
@@ -364,29 +459,42 @@
                 const positions = data.positions || [];
 
                 document.getElementById('stat-positions').textContent = positions.length;
+                document.getElementById('positions-count').textContent = `(${positions.length} active)`;
 
                 if (positions.length === 0) {
                     document.getElementById('positions-container').innerHTML =
                         '<p class="text-gray-500 text-center py-8">No active positions right now.</p>';
+                    document.getElementById('positions-count').textContent = '';
                     return;
                 }
 
-                // Sort by most recent first (or by some priority)
-                const html = positions.slice(0, 5).map(pos => {
+                // Show ALL positions (not limited)
+                const html = positions.map(pos => {
                     const isLeap = pos.play_type === 'LEAP';
                     const isPdufa = pos.catalyst?.event?.toLowerCase().includes('pdufa');
 
                     const badgeClass = isLeap ? 'leap-badge' : (isPdufa ? 'pdufa-badge' : 'buy-badge');
                     const badgeText = isLeap ? '🐸 LEAP' : (isPdufa ? '🎯 PDUFA' : '🔬 Phase 3');
 
+                    // Get current ENR from the enr object
                     const enr = pos.enr?.enr || 0;
                     const cont = pos.cont?.score || 0;
                     const maxBuy = pos.prices?.max_buy || 0;
                     const currentPrice = pos.prices?.current || pos.prices?.entry || 0;
                     const entryPrice = pos.prices?.entry || 0;
 
-                    // Calculate if still in buy zone
-                    const inBuyZone = currentPrice <= maxBuy;
+                    const inBuyZone = currentPrice <= maxBuy && maxBuy > 0;
+
+                    // Check if catalyst has passed
+                    const daysToCatalyst = pos.catalyst?.days_to_catalyst;
+                    const isPastCatalyst = daysToCatalyst !== undefined && daysToCatalyst < 0;
+
+                    // Get recommendation if available
+                    const rec = pos.recommendation?.action || 'HOLD';
+                    const recNotes = pos.recommendation?.notes || '';
+                    const recClass = rec === 'ACCUMULATE' ? 'text-green-400' :
+                                    rec === 'EXIT' ? 'text-red-400' :
+                                    rec === 'TRIM' ? 'text-orange-400' : 'text-gray-400';
 
                     return `
                         <div class="position-card rounded-xl p-4">
@@ -396,6 +504,7 @@
                                         <span class="text-xl font-bold">${pos.ticker}</span>
                                         <span class="text-xs px-2 py-0.5 rounded ${badgeClass}">${badgeText}</span>
                                         ${inBuyZone ? '<span class="text-xs px-2 py-0.5 rounded buy-badge">BUY ZONE</span>' : ''}
+                                        ${isPastCatalyst ? '<span class="text-xs px-2 py-0.5 rounded bg-gray-700 text-gray-400">PAST CATALYST</span>' : ''}
                                     </div>
                                     <div class="text-gray-400 text-sm">
                                         $${pos.position?.strike} Call | ${pos.position?.expiration_display || pos.position?.expiration}
@@ -408,16 +517,24 @@
                                     <div class="text-gray-500 text-sm">CONT: ${cont}</div>
                                 </div>
                             </div>
-                            <div class="flex justify-between items-center text-sm">
+                            <div class="flex justify-between items-center text-sm mb-2">
                                 <div class="text-gray-400">
-                                    Entry: $${entryPrice.toFixed(2)} | Max Buy: $${maxBuy.toFixed(2)}
+                                    Entry: $${entryPrice.toFixed(2)} ${maxBuy > 0 ? `| Max Buy: $${maxBuy.toFixed(2)}` : ''}
                                 </div>
-                                ${pos.catalyst?.date ? `
+                                ${pos.catalyst?.date && !isPastCatalyst ? `
                                     <div class="text-gold">
                                         ${pos.catalyst.event?.split(' ').slice(0,2).join(' ')} ${pos.catalyst.date_display || ''}
                                     </div>
                                 ` : ''}
                             </div>
+                            ${rec !== 'HOLD' || recNotes ? `
+                                <div class="border-t border-white/10 pt-2 mt-2">
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-xs font-semibold ${recClass}">${rec}</span>
+                                        ${recNotes ? `<span class="text-xs text-gray-500">- ${recNotes}</span>` : ''}
+                                    </div>
+                                </div>
+                            ` : ''}
                         </div>
                     `;
                 }).join('');
@@ -439,10 +556,7 @@
 
                 document.getElementById('stat-catalysts').textContent = data.summary?.total_catalysts || catalysts.length;
 
-                // Show next 3 catalysts
                 const preview = catalysts.slice(0, 3).map(cat => {
-                    const typeColor = cat.event.type === 'PDUFA' ? 'text-red-400' :
-                                     cat.event.type === 'Phase 3' ? 'text-orange-400' : 'text-blue-400';
                     return `
                         <div class="flex justify-between items-center py-2 border-b border-white/5 last:border-0">
                             <div>
@@ -466,6 +580,45 @@
             await pbsAuth.signOut();
             window.location.href = 'index.html';
         });
+
+        // Jon's Message Toggle with Read Tracking
+        const MESSAGE_VERSION = '2026-01-23'; // Update this when message content changes
+        const messageToggle = document.getElementById('jon-message-toggle');
+        const messageContent = document.getElementById('jon-message-content');
+        const messageChevron = document.getElementById('message-chevron');
+        const messageBadge = document.getElementById('message-badge');
+
+        function initMessageState() {
+            const lastRead = localStorage.getItem('jonMessageRead');
+            const isExpanded = localStorage.getItem('jonMessageExpanded') === 'true';
+
+            // Show NEW badge if not read this version
+            if (lastRead !== MESSAGE_VERSION) {
+                messageBadge.classList.remove('hidden');
+            }
+
+            // Restore expanded state
+            if (isExpanded) {
+                messageContent.classList.remove('hidden');
+                messageChevron.classList.add('rotate-180');
+            }
+        }
+
+        messageToggle.addEventListener('click', () => {
+            const isHidden = messageContent.classList.toggle('hidden');
+            messageChevron.classList.toggle('rotate-180', !isHidden);
+
+            // Save expanded state
+            localStorage.setItem('jonMessageExpanded', !isHidden);
+
+            // Mark as read when expanded
+            if (!isHidden) {
+                localStorage.setItem('jonMessageRead', MESSAGE_VERSION);
+                messageBadge.classList.add('hidden');
+            }
+        });
+
+        initMessageState();
 
         // Load dashboard on page load
         loadDashboard();

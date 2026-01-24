@@ -249,15 +249,15 @@ def calculate_break_even(strike: float, premium: float, option_type: str = 'CALL
         return strike - premium
 
 
-def calculate_days_to_date(target_date_str: str) -> int:
-    """Calculate days until a target date."""
+def calculate_days_to_date(target_date_str: str, allow_negative: bool = False) -> int:
+    """Calculate days until a target date. Returns negative for past dates if allow_negative=True."""
     try:
         target = datetime.strptime(target_date_str, '%Y-%m-%d')
         today = datetime.now()
         delta = target - today
-        return max(0, delta.days)
+        return delta.days if allow_negative else max(0, delta.days)
     except:
-        return -1
+        return -999 if allow_negative else -1
 
 
 def get_max_buy_price(entry_price: float) -> float:
@@ -471,7 +471,7 @@ def generate_position_data(position: Dict, stock_price: Optional[float] = None) 
 
     # Calculate days to expiry and catalyst
     days_to_expiry = calculate_days_to_date(expiration)
-    days_to_catalyst = calculate_days_to_date(catalyst_date)
+    days_to_catalyst = calculate_days_to_date(catalyst_date, allow_negative=True)  # Allow negative for past catalysts
 
     # Calculate break even
     break_even = calculate_break_even(strike, entry_price)
@@ -633,10 +633,18 @@ def generate_position_data(position: Dict, stock_price: Optional[float] = None) 
         except Exception as e:
             print(f"Error calculating ENR for {ticker}: {e}")
 
+    # Determine play type (LEAP if expiration > 180 days out)
+    play_type = 'LEAP' if days_to_expiry >= 180 else 'Standard'
+
+    # Also check if this is a Phase 3 catalyst (sequential play potential)
+    is_phase3 = 'phase 3' in (position.get('catalyst_event', '') or '').lower()
+
     # Build position object
     return {
         'ticker': ticker,
         'status': position.get('status', 'OPEN'),
+        'play_type': play_type,
+        'is_phase3_sequential': is_phase3 and play_type == 'LEAP',
         'category': get_category_from_indication(position.get('catalyst_event', '')),
 
         # Position details
@@ -766,6 +774,49 @@ def get_cont_rating(score: int) -> str:
         return 'LOW'
 
 
+def get_recommendations_from_db() -> Dict[str, Dict]:
+    """Get recommendations from the local database."""
+    recommendations = {}
+    if not os.path.exists(DB_PATH):
+        return recommendations
+
+    try:
+        conn = sqlite3.connect(DB_PATH)
+        conn.row_factory = sqlite3.Row
+        cursor = conn.cursor()
+        cursor.execute("""
+            SELECT ticker, strike, expiration, recommendation, notes, updated_at
+            FROM position_recommendations
+        """)
+        for row in cursor.fetchall():
+            key = f"{row['ticker']}_{row['strike']}_{row['expiration']}"
+            recommendations[key] = {
+                'action': row['recommendation'],
+                'notes': row['notes'] or '',
+                'updated': row['updated_at'],
+            }
+        conn.close()
+    except Exception as e:
+        print(f"Error loading recommendations: {e}")
+
+    return recommendations
+
+
+def load_existing_positions() -> Dict[str, Dict]:
+    """Load existing positions.json to preserve manual data like recommendations."""
+    existing = {}
+    if os.path.exists(OUTPUT_FILE):
+        try:
+            with open(OUTPUT_FILE, 'r') as f:
+                data = json.load(f)
+                for pos in data.get('positions', []):
+                    key = f"{pos['ticker']}_{pos['position']['strike']}_{pos['position']['expiration']}"
+                    existing[key] = pos
+        except Exception as e:
+            print(f"Error loading existing positions: {e}")
+    return existing
+
+
 def generate_all_positions() -> Dict:
     """Generate data for all open positions."""
 
@@ -782,6 +833,14 @@ def generate_all_positions() -> Dict:
     # Fetch live stock prices
     live_prices = get_live_prices(tickers)
 
+    # Load recommendations from database
+    recommendations = get_recommendations_from_db()
+    print(f"Loaded {len(recommendations)} recommendations from database")
+
+    # Load existing positions to preserve any manual data
+    existing_positions = load_existing_positions()
+    print(f"Loaded {len(existing_positions)} existing positions")
+
     # Process each position
     processed = []
     for pos in positions:
@@ -789,6 +848,16 @@ def generate_all_positions() -> Dict:
         stock_price = live_prices.get(ticker, {}).get('price')
 
         position_data = generate_position_data(pos, stock_price)
+
+        # Add recommendation from database
+        key = f"{ticker}_{pos.get('strike', 0)}_{pos.get('expiration', '')}"
+        if key in recommendations:
+            position_data['recommendation'] = recommendations[key]
+            print(f"  {ticker}: Added recommendation {recommendations[key]['action']}")
+        elif key in existing_positions and existing_positions[key].get('recommendation'):
+            # Preserve existing recommendation if not in database
+            position_data['recommendation'] = existing_positions[key]['recommendation']
+
         processed.append(position_data)
 
     # Generate summary stats

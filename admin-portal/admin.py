@@ -90,17 +90,17 @@ col1, col2, col3, col4 = st.columns(4)
 with col1:
     st.markdown(f"""
     <div class="premium-card" style="text-align: center; padding: 25px;">
-        <div style="font-size: 2rem; margin-bottom: 10px;">🐦</div>
+        <div style="font-size: 2rem; margin-bottom: 10px;">𝕏</div>
         <div style="color: {COLORS['text_primary']}; font-weight: 600; margin-bottom: 5px;">
-            Create Twitter Post
+            Create X Post
         </div>
         <div style="color: {COLORS['text_muted']}; font-size: 0.85rem;">
             Generate trade alerts, educational content, or track record updates
         </div>
     </div>
     """, unsafe_allow_html=True)
-    if st.button("Go to Twitter", key="twitter_btn", use_container_width=True):
-        st.switch_page("pages/1_Twitter_Generator.py")
+    if st.button("Go to X", key="x_btn", use_container_width=True):
+        st.switch_page("pages/1_X_Generator.py")
 
 with col2:
     st.markdown(f"""
@@ -221,7 +221,7 @@ with col1:
         <div style="display: flex; justify-content: space-between; align-items: center;">
             <div>
                 <div style="color: {COLORS['text_muted']}; font-size: 0.8rem; text-transform: uppercase;
-                            letter-spacing: 1px;">Twitter</div>
+                            letter-spacing: 1px;">X</div>
                 <div style="color: {COLORS['text_primary']}; font-size: 1.1rem; margin-top: 5px;">
                     Last post: <strong>{days_ago}</strong> {"days ago" if isinstance(days_ago, int) else ""}
                 </div>

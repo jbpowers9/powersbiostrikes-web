@@ -1,86 +1,13 @@
 {
   "positions": [
     {
-      "ticker": "MNKD",
-      "status": "OPEN",
-      "category": "Biotech",
-      "position": {
-        "strike": 7,
-        "expiration": "2027-01-15",
-        "expiration_display": "Jan 15, 2027",
-        "option_type": "CALL",
-        "quantity": 80
-      },
-      "prices": {
-        "entry": 1.2,
-        "current": 1.2000000000000002,
-        "stock_price": 6.02,
-        "break_even": 8.2,
-        "max_buy": 1.32,
-        "pnl_pct": 0.0
-      },
-      "entry_zone": {
-        "zone": "good",
-        "color": "green",
-        "message": "Within 0.0% of entry - still good",
-        "pct_from_entry": 2.220446049250313e-14
-      },
-      "enr": {
-        "enr": 188.7,
-        "win_prob": 90.0,
-        "enr_zone": {
-          "zone": "good",
-          "color": "green",
-          "message": "Strong expected return"
-        },
-        "is_live": true
-      },
-      "cont": {
-        "score": 75,
-        "rating": "MODERATE",
-        "display": "Moderate"
-      },
-      "catalyst": {
-        "date": "2026-05-29",
-        "date_display": "May 29, 2026",
-        "event": "PDUFA",
-        "drug": "Afrezza (insulin human) - Dose Conversion Label Update",
-        "days_to_catalyst": 126
-      },
-      "timing": {
-        "days_to_expiry": 357,
-        "entry_date": "2025-12-31 07:14:55"
-      },
-      "thesis": {
-        "drug_name": "Afrezza (insulin human) - Dose Conversion Label Update",
-        "indication": "PDUFA",
-        "highlights": [
-          "MNKD presents a novel dual-PDUFA catalyst setup with back-to-back approval decisions in May and July 2026. The massive open interest (4,374 contracts on $10 strike alone) suggests institutional positioning, which is intriguing. However, this fundamentally differs from high-ENR binary plays because b..."
-        ],
-        "risks": [
-          "Label expansions rarely drive 50%+ moves - may be priced in",
-          "Management selling, not buying their own stock",
-          "MNKD-101 failure removed key pipeline catalyst"
-        ],
-        "is_first_in_class": 1,
-        "is_orphan": 0,
-        "is_fast_track": 0,
-        "short_interest": 8.6
-      },
-      "oi": {
-        "current": 0,
-        "change_1d": 0,
-        "change_5d": 0,
-        "trend": "unknown"
-      },
-      "last_updated": "2026-01-22T22:05:01.646750"
-    },
-    {
       "ticker": "OMER",
       "status": "OPEN",
+      "play_type": "Standard",
+      "is_phase3_sequential": false,
       "category": "Biotech",
       "position": {
-        "strike": 5,
+        "strike": 5.0,
         "expiration": "2026-02-20",
         "expiration_display": "Feb 20, 2026",
         "option_type": "CALL",
@@ -88,20 +15,20 @@
       },
       "prices": {
         "entry": 1.91,
-        "current": 1.91,
-        "stock_price": 12.22,
+        "current": 0.805,
+        "stock_price": 12.49,
         "break_even": 6.91,
         "max_buy": 2.1,
-        "pnl_pct": 0.0
+        "pnl_pct": -57.9
       },
       "entry_zone": {
-        "zone": "good",
+        "zone": "excellent",
         "color": "green",
-        "message": "Within 0.0% of entry - still good",
-        "pct_from_entry": 0.0
+        "message": "Down 57.9% from entry - better value",
+        "pct_from_entry": -57.85340314136125
       },
       "enr": {
-        "enr": 657.9,
+        "enr": 1747.4,
         "win_prob": 85.0,
         "enr_zone": {
           "zone": "good",
@@ -120,10 +47,10 @@
         "date_display": "Dec 24, 2025",
         "event": "PDUFA APPROVED",
         "drug": "Narsoplimab/Yartemlia - TA-TMA (FDA APPROVED Dec 24, 2025)",
-        "days_to_catalyst": 0
+        "days_to_catalyst": -31
       },
       "timing": {
-        "days_to_expiry": 28,
+        "days_to_expiry": 27,
         "entry_date": "2025-12-31 07:14:59"
       },
       "thesis": {
@@ -142,161 +69,13 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-22T22:05:01.862627"
-    },
-    {
-      "ticker": "GOSS",
-      "status": "OPEN",
-      "category": "Biotech",
-      "position": {
-        "strike": 5,
-        "expiration": "2027-01-15",
-        "expiration_display": "Jan 15, 2027",
-        "option_type": "CALL",
-        "quantity": 60
-      },
-      "prices": {
-        "entry": 1.15,
-        "current": 1.525,
-        "stock_price": 2.89,
-        "break_even": 6.15,
-        "max_buy": 1.26,
-        "pnl_pct": 32.6
-      },
-      "entry_zone": {
-        "zone": "passed",
-        "color": "red",
-        "message": "Up 32.6% - wait for pullback",
-        "pct_from_entry": 32.60869565217392
-      },
-      "enr": {
-        "enr": 0,
-        "win_prob": 70.0,
-        "enr_zone": {
-          "zone": "avoid",
-          "color": "red",
-          "message": "Negative expected return"
-        },
-        "is_live": true
-      },
-      "cont": {
-        "score": 60,
-        "rating": "MODERATE",
-        "display": "Moderate"
-      },
-      "catalyst": {
-        "date": "2026-02-28",
-        "date_display": "Feb 28, 2026",
-        "event": "Phase 3",
-        "drug": "Seralutinib - Pulmonary Arterial Hypertension (PAH) - PROSERA Trial",
-        "days_to_catalyst": 36
-      },
-      "timing": {
-        "days_to_expiry": 357,
-        "entry_date": "2025-12-31 07:14:59"
-      },
-      "thesis": {
-        "drug_name": "Seralutinib - Pulmonary Arterial Hypertension (PAH) - PROSERA Trial",
-        "indication": "Phase 3",
-        "highlights": [
-          "GOSS presents a compelling contrarian LEAP opportunity with institutional validation via the concentrated 4,339 OI on the $3 Jan-2027 strike. The structural setup is textbook: proven management (Hasnain sold Receptos for $7.2B), heavy insider buying at $1.14-$1.82, first-in-class mechanism with comb..."
-        ],
-        "risks": [
-          "Phase 2 TORREY missed 6MWD endpoint - same endpoint used in Phase 3 PROSERA",
-          "Merck Winrevair first-mover advantage in PAH market with $238K/year pricing",
-          "Enriched FC II/III patient strategy relies on subgroup signal that may not replicate"
-        ],
-        "is_first_in_class": 1,
-        "is_orphan": 1,
-        "is_fast_track": 0,
-        "short_interest": 3.6
-      },
-      "oi": {
-        "current": 0,
-        "change_1d": 0,
-        "change_5d": 0,
-        "trend": "unknown"
-      },
-      "last_updated": "2026-01-22T22:05:02.099162"
-    },
-    {
-      "ticker": "VNDA",
-      "status": "OPEN",
-      "category": "Biotech",
-      "position": {
-        "strike": 6,
-        "expiration": "2026-03-20",
-        "expiration_display": "Mar 20, 2026",
-        "option_type": "CALL",
-        "quantity": 10
-      },
-      "prices": {
-        "entry": 1.675,
-        "current": 2.2750000000000004,
-        "stock_price": 8.08,
-        "break_even": 7.675,
-        "max_buy": 1.84,
-        "pnl_pct": 35.8
-      },
-      "entry_zone": {
-        "zone": "passed",
-        "color": "red",
-        "message": "Up 35.8% - wait for pullback",
-        "pct_from_entry": 35.82089552238807
-      },
-      "enr": {
-        "enr": 220.7,
-        "win_prob": 85.0,
-        "enr_zone": {
-          "zone": "good",
-          "color": "green",
-          "message": "Strong expected return"
-        },
-        "is_live": true
-      },
-      "cont": {
-        "score": 72,
-        "rating": "MODERATE",
-        "display": "Moderate"
-      },
-      "catalyst": {
-        "date": "2026-02-21",
-        "date_display": "Feb 21, 2026",
-        "event": "PDUFA",
-        "drug": "Bysanti (milsaperidone) - Bipolar I & Schizophrenia (NEREUS approved 12/30/25)",
-        "days_to_catalyst": 29
-      },
-      "timing": {
-        "days_to_expiry": 56,
-        "entry_date": "2025-12-31 07:15:00"
-      },
-      "thesis": {
-        "drug_name": "Bysanti (milsaperidone) - Bipolar I & Schizophrenia (NEREUS approved 12/30/25)",
-        "indication": "PDUFA",
-        "highlights": [
-          "VNDA presents a compelling multi-catalyst thesis for a 2026 LEAP: Bysanti PDUFA (Feb 21), imsidolimab PDUFA (~mid-2026), and NEREUS launch traction all captured in Dec 2026 expiration. The 1,931 OI at the $10 strike suggests institutional/retail conviction, and light insider buying is a rare positiv..."
-        ],
-        "risks": [
-          "140% bid-ask spread makes entry/exit treacherous",
-          "62% run-up means good news largely priced in",
-          "Jan 7 HETLIOZ CRL shows FDA willing to reject Vanda applications"
-        ],
-        "is_first_in_class": 0,
-        "is_orphan": 0,
-        "is_fast_track": 0,
-        "short_interest": 7.88
-      },
-      "oi": {
-        "current": 0,
-        "change_1d": 0,
-        "change_5d": 0,
-        "trend": "unknown"
-      },
-      "last_updated": "2026-01-22T22:05:02.458717"
+      "last_updated": "2026-01-23T20:35:49.257829"
     },
     {
       "ticker": "RGNX",
       "status": "OPEN",
+      "play_type": "Standard",
+      "is_phase3_sequential": false,
       "category": "Biotech",
       "position": {
         "strike": 12.5,
@@ -307,20 +86,20 @@
       },
       "prices": {
         "entry": 4.325,
-        "current": 5.5,
-        "stock_price": 15.87,
+        "current": 0.275,
+        "stock_price": 14.56,
         "break_even": 16.825,
         "max_buy": 4.76,
-        "pnl_pct": 27.2
+        "pnl_pct": -93.6
       },
       "entry_zone": {
-        "zone": "passed",
-        "color": "red",
-        "message": "Up 27.2% - wait for pullback",
-        "pct_from_entry": 27.16763005780347
+        "zone": "excellent",
+        "color": "green",
+        "message": "Down 93.6% from entry - better value",
+        "pct_from_entry": -93.64161849710982
       },
       "enr": {
-        "enr": 178.0,
+        "enr": 4636.0,
         "win_prob": 95.0,
         "enr_zone": {
           "zone": "good",
@@ -339,10 +118,10 @@
         "date_display": "Feb 08, 2026",
         "event": "PDUFA",
         "drug": "RGX-121 (clemidsogene lanparvovec) - Hunter Syndrome (MPS II)",
-        "days_to_catalyst": 16
+        "days_to_catalyst": 15
       },
       "timing": {
-        "days_to_expiry": 84,
+        "days_to_expiry": 83,
         "entry_date": "2025-12-31 07:15:01"
       },
       "thesis": {
@@ -367,239 +146,16 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-22T22:05:02.636336"
-    },
-    {
-      "ticker": "VNDA",
-      "status": "OPEN",
-      "category": "Biotech",
-      "position": {
-        "strike": 10,
-        "expiration": "2026-12-18",
-        "expiration_display": "Dec 18, 2026",
-        "option_type": "CALL",
-        "quantity": 30
-      },
-      "prices": {
-        "entry": 1.95,
-        "current": 3.3000000000000003,
-        "stock_price": 8.08,
-        "break_even": 11.95,
-        "max_buy": 2.15,
-        "pnl_pct": 69.2
-      },
-      "entry_zone": {
-        "zone": "passed",
-        "color": "red",
-        "message": "Up 69.2% - wait for pullback",
-        "pct_from_entry": 69.23076923076925
-      },
-      "enr": {
-        "enr": 18.5,
-        "win_prob": 85.0,
-        "enr_zone": {
-          "zone": "avoid",
-          "color": "red",
-          "message": "Negative expected return"
-        },
-        "is_live": true
-      },
-      "cont": {
-        "score": 72,
-        "rating": "MODERATE",
-        "display": "Moderate"
-      },
-      "catalyst": {
-        "date": "2026-02-21",
-        "date_display": "Feb 21, 2026",
-        "event": "PDUFA",
-        "drug": "Bysanti (milsaperidone) - Bipolar I & Schizophrenia (NEREUS approved 12/30/25)",
-        "days_to_catalyst": 29
-      },
-      "timing": {
-        "days_to_expiry": 329,
-        "entry_date": "2026-01-07 10:23:15"
-      },
-      "thesis": {
-        "drug_name": "Bysanti (milsaperidone) - Bipolar I & Schizophrenia (NEREUS approved 12/30/25)",
-        "indication": "PDUFA",
-        "highlights": [
-          "VNDA presents a compelling multi-catalyst thesis for a 2026 LEAP: Bysanti PDUFA (Feb 21), imsidolimab PDUFA (~mid-2026), and NEREUS launch traction all captured in Dec 2026 expiration. The 1,931 OI at the $10 strike suggests institutional/retail conviction, and light insider buying is a rare positiv..."
-        ],
-        "risks": [
-          "140% bid-ask spread makes entry/exit treacherous",
-          "62% run-up means good news largely priced in",
-          "Jan 7 HETLIOZ CRL shows FDA willing to reject Vanda applications"
-        ],
-        "is_first_in_class": 0,
-        "is_orphan": 0,
-        "is_fast_track": 0,
-        "short_interest": 7.88
-      },
-      "oi": {
-        "current": 0,
-        "change_1d": 0,
-        "change_5d": 0,
-        "trend": "unknown"
-      },
-      "last_updated": "2026-01-22T22:05:02.821236"
-    },
-    {
-      "ticker": "GOSS",
-      "status": "OPEN",
-      "category": "Biotech",
-      "position": {
-        "strike": 3,
-        "expiration": "2027-01-15",
-        "expiration_display": "Jan 15, 2027",
-        "option_type": "CALL",
-        "quantity": 50
-      },
-      "prices": {
-        "entry": 1.4,
-        "current": 1.725,
-        "stock_price": 2.89,
-        "break_even": 4.4,
-        "max_buy": 1.54,
-        "pnl_pct": 23.2
-      },
-      "entry_zone": {
-        "zone": "caution",
-        "color": "yellow",
-        "message": "Up 23.2% - consider smaller size",
-        "pct_from_entry": 23.214285714285722
-      },
-      "enr": {
-        "enr": 39.3,
-        "win_prob": 70.0,
-        "enr_zone": {
-          "zone": "avoid",
-          "color": "red",
-          "message": "Negative expected return"
-        },
-        "is_live": true
-      },
-      "cont": {
-        "score": 60,
-        "rating": "MODERATE",
-        "display": "Moderate"
-      },
-      "catalyst": {
-        "date": "2026-02-28",
-        "date_display": "Feb 28, 2026",
-        "event": "Phase 3",
-        "drug": "Seralutinib - Pulmonary Arterial Hypertension (PAH) - PROSERA Trial",
-        "days_to_catalyst": 36
-      },
-      "timing": {
-        "days_to_expiry": 357,
-        "entry_date": "2026-01-07 13:19:27"
-      },
-      "thesis": {
-        "drug_name": "Seralutinib - Pulmonary Arterial Hypertension (PAH) - PROSERA Trial",
-        "indication": "Phase 3",
-        "highlights": [
-          "GOSS presents a compelling contrarian LEAP opportunity with institutional validation via the concentrated 4,339 OI on the $3 Jan-2027 strike. The structural setup is textbook: proven management (Hasnain sold Receptos for $7.2B), heavy insider buying at $1.14-$1.82, first-in-class mechanism with comb..."
-        ],
-        "risks": [
-          "Phase 2 TORREY missed 6MWD endpoint - same endpoint used in Phase 3 PROSERA",
-          "Merck Winrevair first-mover advantage in PAH market with $238K/year pricing",
-          "Enriched FC II/III patient strategy relies on subgroup signal that may not replicate"
-        ],
-        "is_first_in_class": 1,
-        "is_orphan": 1,
-        "is_fast_track": 0,
-        "short_interest": 3.6
-      },
-      "oi": {
-        "current": 0,
-        "change_1d": 0,
-        "change_5d": 0,
-        "trend": "unknown"
-      },
-      "last_updated": "2026-01-22T22:05:03.018755"
-    },
-    {
-      "ticker": "ACHV",
-      "status": "OPEN",
-      "category": "Biotech",
-      "position": {
-        "strike": 5,
-        "expiration": "2026-12-18",
-        "expiration_display": "Dec 18, 2026",
-        "option_type": "CALL",
-        "quantity": 30
-      },
-      "prices": {
-        "entry": 2.25,
-        "current": 2.275,
-        "stock_price": 5.5947,
-        "break_even": 7.25,
-        "max_buy": 2.48,
-        "pnl_pct": 1.1
-      },
-      "entry_zone": {
-        "zone": "good",
-        "color": "green",
-        "message": "Within 1.1% of entry - still good",
-        "pct_from_entry": 1.1111111111111072
-      },
-      "enr": {
-        "enr": 112.2,
-        "win_prob": 95.0,
-        "enr_zone": {
-          "zone": "fair",
-          "color": "yellow",
-          "message": "Moderate expected return"
-        },
-        "is_live": true
-      },
-      "cont": {
-        "score": 55,
-        "rating": "MODERATE",
-        "display": "Moderate"
-      },
-      "catalyst": {
-        "date": "2026-06-20",
-        "date_display": "Jun 20, 2026",
-        "event": "PDUFA Approval decision",
-        "drug": "Cytisinicline - Smoking Cessation (Nicotine Dependence)",
-        "days_to_catalyst": 148
-      },
-      "timing": {
-        "days_to_expiry": 329,
-        "entry_date": "2026-01-08 12:29:02"
-      },
-      "thesis": {
-        "drug_name": "Cytisinicline - Smoking Cessation (Nicotine Dependence)",
-        "indication": "PDUFA Approval decision",
-        "highlights": [
-          "ACHV has a genuinely strong fundamental setup: two successful Phase 3 trials, Breakthrough Therapy designation, clean safety profile, and a real unmet need (first new smoking cessation drug in 20 years). The PDUFA date of June 20, 2026 is verified across multiple company press releases and FDA commu..."
-        ],
-        "risks": [
-          "Highlighted option expires 2 days BEFORE PDUFA date - cannot capture catalyst",
-          "Generic varenicline competition limits commercial upside",
-          "Tight cash runway with likely dilution before/after approval"
-        ],
-        "is_first_in_class": 1,
-        "is_orphan": 0,
-        "is_fast_track": 0,
-        "short_interest": null
-      },
-      "oi": {
-        "current": 0,
-        "change_1d": 0,
-        "change_5d": 0,
-        "trend": "unknown"
-      },
-      "last_updated": "2026-01-22T22:05:03.254105"
+      "last_updated": "2026-01-23T20:35:49.296353"
     },
     {
       "ticker": "RGNX",
       "status": "OPEN",
+      "play_type": "Standard",
+      "is_phase3_sequential": false,
       "category": "Biotech",
       "position": {
-        "strike": 15,
+        "strike": 15.0,
         "expiration": "2026-04-17",
         "expiration_display": "Apr 17, 2026",
         "option_type": "CALL",
@@ -607,20 +163,20 @@
       },
       "prices": {
         "entry": 4.6,
-        "current": 4.1,
-        "stock_price": 15.87,
+        "current": 0.2125,
+        "stock_price": 14.56,
         "break_even": 19.6,
         "max_buy": 5.06,
-        "pnl_pct": -10.9
+        "pnl_pct": -95.4
       },
       "entry_zone": {
         "zone": "excellent",
         "color": "green",
-        "message": "Down 10.9% from entry - better value",
-        "pct_from_entry": -10.869565217391308
+        "message": "Down 95.4% from entry - better value",
+        "pct_from_entry": -95.38043478260869
       },
       "enr": {
-        "enr": 214.8,
+        "enr": 4911.1,
         "win_prob": 95.0,
         "enr_zone": {
           "zone": "good",
@@ -639,10 +195,10 @@
         "date_display": "Feb 08, 2026",
         "event": "PDUFA",
         "drug": "RGX-121 (clemidsogene lanparvovec) - Hunter Syndrome (MPS II)",
-        "days_to_catalyst": 16
+        "days_to_catalyst": 15
       },
       "timing": {
-        "days_to_expiry": 84,
+        "days_to_expiry": 83,
         "entry_date": "2026-01-08 12:29:03"
       },
       "thesis": {
@@ -667,36 +223,38 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-22T22:05:03.455519"
+      "last_updated": "2026-01-23T20:35:49.363667"
     },
     {
-      "ticker": "CRMD",
+      "ticker": "VNDA",
       "status": "OPEN",
+      "play_type": "Standard",
+      "is_phase3_sequential": false,
       "category": "Biotech",
       "position": {
-        "strike": 8,
-        "expiration": "2026-08-21",
-        "expiration_display": "Aug 21, 2026",
+        "strike": 6.0,
+        "expiration": "2026-03-20",
+        "expiration_display": "Mar 20, 2026",
         "option_type": "CALL",
-        "quantity": 40
+        "quantity": 10
       },
       "prices": {
-        "entry": 1.4,
-        "current": 1.5499999999999998,
-        "stock_price": 7.43,
-        "break_even": 9.4,
-        "max_buy": 1.54,
-        "pnl_pct": 10.7
+        "entry": 1.675,
+        "current": 0.18,
+        "stock_price": 7.3,
+        "break_even": 7.675,
+        "max_buy": 1.84,
+        "pnl_pct": -89.3
       },
       "entry_zone": {
-        "zone": "caution",
-        "color": "yellow",
-        "message": "Up 10.7% - consider smaller size",
-        "pct_from_entry": 10.714285714285698
+        "zone": "excellent",
+        "color": "green",
+        "message": "Down 89.3% from entry - better value",
+        "pct_from_entry": -89.25373134328358
       },
       "enr": {
-        "enr": 269.3,
-        "win_prob": 68.0,
+        "enr": 3273.2,
+        "win_prob": 85.0,
         "enr_zone": {
           "zone": "good",
           "color": "green",
@@ -705,36 +263,36 @@
         "is_live": true
       },
       "cont": {
-        "score": 90,
-        "rating": "HIGH",
-        "display": "High (Hold Through)"
+        "score": 72,
+        "rating": "MODERATE",
+        "display": "Moderate"
       },
       "catalyst": {
-        "date": "2026-06-30",
-        "date_display": "Jun 30, 2026",
-        "event": "Phase 3 Data readout",
-        "drug": null,
-        "days_to_catalyst": 158
+        "date": "2026-02-21",
+        "date_display": "Feb 21, 2026",
+        "event": "PDUFA",
+        "drug": "Bysanti (milsaperidone) - Bipolar I & Schizophrenia (NEREUS approved 12/30/25)",
+        "days_to_catalyst": 28
       },
       "timing": {
-        "days_to_expiry": 210,
-        "entry_date": "2026-01-21"
+        "days_to_expiry": 55,
+        "entry_date": "2025-12-31 07:15:00"
       },
       "thesis": {
-        "drug_name": null,
-        "indication": "Phase 3 Data readout",
+        "drug_name": "Bysanti (milsaperidone) - Bipolar I & Schizophrenia (NEREUS approved 12/30/25)",
+        "indication": "PDUFA",
         "highlights": [
-          "CRMD presents an intriguing contrarian opportunity on paper: a profitable biotech trading at 3x P/E, down 61% from highs, with a binary Phase 3 catalyst for a $2B+ market opportunity and 21.6% short interest creating squeeze potential. The drug (REZZAYO) is already FDA-approved for treatment of fung..."
+          "VNDA presents a compelling multi-catalyst thesis for a 2026 LEAP: Bysanti PDUFA (Feb 21), imsidolimab PDUFA (~mid-2026), and NEREUS launch traction all captured in Dec 2026 expiration. The 1,931 OI at the $10 strike suggests institutional/retail conviction, and light insider buying is a rare positiv..."
         ],
         "risks": [
-          "Option expires June 18 but catalyst guided to Q2 2026 - data could come June 30, after expiration",
-          "No Phase 2 prophylaxis data exists - trial outcome is binary with no prior efficacy signal",
-          "Heavy insider selling and DefenCath reimbursement cliff (July 2026) suggest structural headwinds"
+          "140% bid-ask spread makes entry/exit treacherous",
+          "62% run-up means good news largely priced in",
+          "Jan 7 HETLIOZ CRL shows FDA willing to reject Vanda applications"
         ],
         "is_first_in_class": 0,
-        "is_orphan": 1,
-        "is_fast_track": 1,
-        "short_interest": 21.63
+        "is_orphan": 0,
+        "is_fast_track": 0,
+        "short_interest": 7.88
       },
       "oi": {
         "current": 0,
@@ -742,11 +300,244 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-22T22:05:03.610706"
+      "last_updated": "2026-01-23T20:35:49.407167"
+    },
+    {
+      "ticker": "VNDA",
+      "status": "OPEN",
+      "play_type": "LEAP",
+      "is_phase3_sequential": false,
+      "category": "Biotech",
+      "position": {
+        "strike": 10.0,
+        "expiration": "2026-12-18",
+        "expiration_display": "Dec 18, 2026",
+        "option_type": "CALL",
+        "quantity": 30
+      },
+      "prices": {
+        "entry": 1.95,
+        "current": 0.060833333333333336,
+        "stock_price": 7.3,
+        "break_even": 11.95,
+        "max_buy": 2.15,
+        "pnl_pct": -96.9
+      },
+      "entry_zone": {
+        "zone": "excellent",
+        "color": "green",
+        "message": "Down 96.9% from entry - better value",
+        "pct_from_entry": -96.88034188034187
+      },
+      "enr": {
+        "enr": 4288.9,
+        "win_prob": 85.0,
+        "enr_zone": {
+          "zone": "good",
+          "color": "green",
+          "message": "Strong expected return"
+        },
+        "is_live": true
+      },
+      "cont": {
+        "score": 72,
+        "rating": "MODERATE",
+        "display": "Moderate"
+      },
+      "catalyst": {
+        "date": "2026-02-21",
+        "date_display": "Feb 21, 2026",
+        "event": "PDUFA",
+        "drug": "Bysanti (milsaperidone) - Bipolar I & Schizophrenia (NEREUS approved 12/30/25)",
+        "days_to_catalyst": 28
+      },
+      "timing": {
+        "days_to_expiry": 328,
+        "entry_date": "2026-01-07 10:23:15"
+      },
+      "thesis": {
+        "drug_name": "Bysanti (milsaperidone) - Bipolar I & Schizophrenia (NEREUS approved 12/30/25)",
+        "indication": "PDUFA",
+        "highlights": [
+          "VNDA presents a compelling multi-catalyst thesis for a 2026 LEAP: Bysanti PDUFA (Feb 21), imsidolimab PDUFA (~mid-2026), and NEREUS launch traction all captured in Dec 2026 expiration. The 1,931 OI at the $10 strike suggests institutional/retail conviction, and light insider buying is a rare positiv..."
+        ],
+        "risks": [
+          "140% bid-ask spread makes entry/exit treacherous",
+          "62% run-up means good news largely priced in",
+          "Jan 7 HETLIOZ CRL shows FDA willing to reject Vanda applications"
+        ],
+        "is_first_in_class": 0,
+        "is_orphan": 0,
+        "is_fast_track": 0,
+        "short_interest": 7.88
+      },
+      "oi": {
+        "current": 0,
+        "change_1d": 0,
+        "change_5d": 0,
+        "trend": "unknown"
+      },
+      "last_updated": "2026-01-23T20:35:49.443107"
+    },
+    {
+      "ticker": "GOSS",
+      "status": "OPEN",
+      "play_type": "LEAP",
+      "is_phase3_sequential": true,
+      "category": "Biotech",
+      "position": {
+        "strike": 5.0,
+        "expiration": "2027-01-15",
+        "expiration_display": "Jan 15, 2027",
+        "option_type": "CALL",
+        "quantity": 60
+      },
+      "prices": {
+        "entry": 1.15,
+        "current": 0.017083333333333332,
+        "stock_price": 2.5,
+        "break_even": 6.15,
+        "max_buy": 1.26,
+        "pnl_pct": -98.5
+      },
+      "entry_zone": {
+        "zone": "excellent",
+        "color": "green",
+        "message": "Down 98.5% from entry - better value",
+        "pct_from_entry": -98.51449275362319
+      },
+      "enr": {
+        "enr": 1951.8,
+        "win_prob": 70.0,
+        "enr_zone": {
+          "zone": "good",
+          "color": "green",
+          "message": "Strong expected return"
+        },
+        "is_live": true
+      },
+      "cont": {
+        "score": 60,
+        "rating": "MODERATE",
+        "display": "Moderate"
+      },
+      "catalyst": {
+        "date": "2026-02-28",
+        "date_display": "Feb 28, 2026",
+        "event": "Phase 3",
+        "drug": "Seralutinib - Pulmonary Arterial Hypertension (PAH) - PROSERA Trial",
+        "days_to_catalyst": 35
+      },
+      "timing": {
+        "days_to_expiry": 356,
+        "entry_date": "2025-12-31 07:14:59"
+      },
+      "thesis": {
+        "drug_name": "Seralutinib - Pulmonary Arterial Hypertension (PAH) - PROSERA Trial",
+        "indication": "Phase 3",
+        "highlights": [
+          "GOSS presents a compelling contrarian LEAP opportunity with institutional validation via the concentrated 4,339 OI on the $3 Jan-2027 strike. The structural setup is textbook: proven management (Hasnain sold Receptos for $7.2B), heavy insider buying at $1.14-$1.82, first-in-class mechanism with comb..."
+        ],
+        "risks": [
+          "Phase 2 TORREY missed 6MWD endpoint - same endpoint used in Phase 3 PROSERA",
+          "Merck Winrevair first-mover advantage in PAH market with $238K/year pricing",
+          "Enriched FC II/III patient strategy relies on subgroup signal that may not replicate"
+        ],
+        "is_first_in_class": 1,
+        "is_orphan": 1,
+        "is_fast_track": 0,
+        "short_interest": 3.6
+      },
+      "oi": {
+        "current": 0,
+        "change_1d": 0,
+        "change_5d": 0,
+        "trend": "unknown"
+      },
+      "last_updated": "2026-01-23T20:35:49.483120"
+    },
+    {
+      "ticker": "GOSS",
+      "status": "OPEN",
+      "play_type": "LEAP",
+      "is_phase3_sequential": true,
+      "category": "Biotech",
+      "position": {
+        "strike": 3.0,
+        "expiration": "2027-01-15",
+        "expiration_display": "Jan 15, 2027",
+        "option_type": "CALL",
+        "quantity": 50
+      },
+      "prices": {
+        "entry": 1.4,
+        "current": 0.023,
+        "stock_price": 2.5,
+        "break_even": 4.4,
+        "max_buy": 1.54,
+        "pnl_pct": -98.4
+      },
+      "entry_zone": {
+        "zone": "excellent",
+        "color": "green",
+        "message": "Down 98.4% from entry - better value",
+        "pct_from_entry": -98.35714285714286
+      },
+      "enr": {
+        "enr": 7511.7,
+        "win_prob": 70.0,
+        "enr_zone": {
+          "zone": "good",
+          "color": "green",
+          "message": "Strong expected return"
+        },
+        "is_live": true
+      },
+      "cont": {
+        "score": 60,
+        "rating": "MODERATE",
+        "display": "Moderate"
+      },
+      "catalyst": {
+        "date": "2026-02-28",
+        "date_display": "Feb 28, 2026",
+        "event": "Phase 3",
+        "drug": "Seralutinib - Pulmonary Arterial Hypertension (PAH) - PROSERA Trial",
+        "days_to_catalyst": 35
+      },
+      "timing": {
+        "days_to_expiry": 356,
+        "entry_date": "2026-01-07 13:19:27"
+      },
+      "thesis": {
+        "drug_name": "Seralutinib - Pulmonary Arterial Hypertension (PAH) - PROSERA Trial",
+        "indication": "Phase 3",
+        "highlights": [
+          "GOSS presents a compelling contrarian LEAP opportunity with institutional validation via the concentrated 4,339 OI on the $3 Jan-2027 strike. The structural setup is textbook: proven management (Hasnain sold Receptos for $7.2B), heavy insider buying at $1.14-$1.82, first-in-class mechanism with comb..."
+        ],
+        "risks": [
+          "Phase 2 TORREY missed 6MWD endpoint - same endpoint used in Phase 3 PROSERA",
+          "Merck Winrevair first-mover advantage in PAH market with $238K/year pricing",
+          "Enriched FC II/III patient strategy relies on subgroup signal that may not replicate"
+        ],
+        "is_first_in_class": 1,
+        "is_orphan": 1,
+        "is_fast_track": 0,
+        "short_interest": 3.6
+      },
+      "oi": {
+        "current": 0,
+        "change_1d": 0,
+        "change_5d": 0,
+        "trend": "unknown"
+      },
+      "last_updated": "2026-01-23T20:35:49.516785"
     },
     {
       "ticker": "IMMP",
       "status": "OPEN",
+      "play_type": "Standard",
+      "is_phase3_sequential": false,
       "category": "Biotech",
       "position": {
         "strike": 2.5,
@@ -757,27 +548,27 @@
       },
       "prices": {
         "entry": 0.9,
-        "current": 0.95,
-        "stock_price": 2.9995,
+        "current": 0.9,
+        "stock_price": 0,
         "break_even": 3.4,
         "max_buy": 0.99,
-        "pnl_pct": 5.6
+        "pnl_pct": 0.0
       },
       "entry_zone": {
         "zone": "good",
         "color": "green",
-        "message": "Within 5.6% of entry - still good",
-        "pct_from_entry": 5.555555555555558
+        "message": "Within 0.0% of entry - still good",
+        "pct_from_entry": 0.0
       },
       "enr": {
-        "enr": 196.6,
-        "win_prob": 68.0,
+        "enr": 0,
+        "win_prob": 0,
         "enr_zone": {
-          "zone": "good",
-          "color": "green",
-          "message": "Strong expected return"
+          "zone": "avoid",
+          "color": "red",
+          "message": "Negative expected return"
         },
-        "is_live": true
+        "is_live": false
       },
       "cont": {
         "score": 55,
@@ -789,10 +580,10 @@
         "date_display": "Mar 31, 2026",
         "event": "Phase 3 Data readout",
         "drug": null,
-        "days_to_catalyst": 67
+        "days_to_catalyst": 66
       },
       "timing": {
-        "days_to_expiry": 175,
+        "days_to_expiry": 174,
         "entry_date": "2026-01-21"
       },
       "thesis": {
@@ -817,17 +608,242 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-22T22:05:03.834484"
+      "last_updated": "2026-01-23T20:35:49.556118"
+    },
+    {
+      "ticker": "MNKD",
+      "status": "OPEN",
+      "play_type": "LEAP",
+      "is_phase3_sequential": false,
+      "category": "Biotech",
+      "position": {
+        "strike": 7.0,
+        "expiration": "2027-01-15",
+        "expiration_display": "Jan 15, 2027",
+        "option_type": "CALL",
+        "quantity": 80
+      },
+      "prices": {
+        "entry": 1.2,
+        "current": 0.0165625,
+        "stock_price": 5.8544,
+        "break_even": 8.2,
+        "max_buy": 1.32,
+        "pnl_pct": -98.6
+      },
+      "entry_zone": {
+        "zone": "excellent",
+        "color": "green",
+        "message": "Down 98.6% from entry - better value",
+        "pct_from_entry": -98.61979166666667
+      },
+      "enr": {
+        "enr": 19125.9,
+        "win_prob": 90.0,
+        "enr_zone": {
+          "zone": "good",
+          "color": "green",
+          "message": "Strong expected return"
+        },
+        "is_live": true
+      },
+      "cont": {
+        "score": 75,
+        "rating": "MODERATE",
+        "display": "Moderate"
+      },
+      "catalyst": {
+        "date": "2026-05-29",
+        "date_display": "May 29, 2026",
+        "event": "PDUFA",
+        "drug": "Afrezza (insulin human) - Dose Conversion Label Update",
+        "days_to_catalyst": 125
+      },
+      "timing": {
+        "days_to_expiry": 356,
+        "entry_date": "2025-12-31 07:14:55"
+      },
+      "thesis": {
+        "drug_name": "Afrezza (insulin human) - Dose Conversion Label Update",
+        "indication": "PDUFA",
+        "highlights": [
+          "MNKD presents a novel dual-PDUFA catalyst setup with back-to-back approval decisions in May and July 2026. The massive open interest (4,374 contracts on $10 strike alone) suggests institutional positioning, which is intriguing. However, this fundamentally differs from high-ENR binary plays because b..."
+        ],
+        "risks": [
+          "Label expansions rarely drive 50%+ moves - may be priced in",
+          "Management selling, not buying their own stock",
+          "MNKD-101 failure removed key pipeline catalyst"
+        ],
+        "is_first_in_class": 1,
+        "is_orphan": 0,
+        "is_fast_track": 0,
+        "short_interest": 8.6
+      },
+      "oi": {
+        "current": 0,
+        "change_1d": 0,
+        "change_5d": 0,
+        "trend": "unknown"
+      },
+      "last_updated": "2026-01-23T20:35:49.594673"
+    },
+    {
+      "ticker": "ACHV",
+      "status": "OPEN",
+      "play_type": "LEAP",
+      "is_phase3_sequential": false,
+      "category": "Biotech",
+      "position": {
+        "strike": 5.0,
+        "expiration": "2026-12-18",
+        "expiration_display": "Dec 18, 2026",
+        "option_type": "CALL",
+        "quantity": 30
+      },
+      "prices": {
+        "entry": 2.25,
+        "current": 0.07583333333333334,
+        "stock_price": 5.429,
+        "break_even": 7.25,
+        "max_buy": 2.48,
+        "pnl_pct": -96.6
+      },
+      "entry_zone": {
+        "zone": "excellent",
+        "color": "green",
+        "message": "Down 96.6% from entry - better value",
+        "pct_from_entry": -96.62962962962963
+      },
+      "enr": {
+        "enr": 5878.9,
+        "win_prob": 95.0,
+        "enr_zone": {
+          "zone": "good",
+          "color": "green",
+          "message": "Strong expected return"
+        },
+        "is_live": true
+      },
+      "cont": {
+        "score": 45,
+        "rating": "LOW",
+        "display": "Low (Exit Early)"
+      },
+      "catalyst": {
+        "date": "2026-06-20",
+        "date_display": "Jun 20, 2026",
+        "event": "PDUFA Approval decision",
+        "drug": "Cytisinicline - Smoking Cessation (Nicotine Dependence)",
+        "days_to_catalyst": 147
+      },
+      "timing": {
+        "days_to_expiry": 328,
+        "entry_date": "2026-01-08 12:29:02"
+      },
+      "thesis": {
+        "drug_name": "Cytisinicline - Smoking Cessation (Nicotine Dependence)",
+        "indication": "PDUFA Approval decision",
+        "highlights": [
+          "ACHV has a genuinely strong fundamental setup: two successful Phase 3 trials, Breakthrough Therapy designation, clean safety profile, and a real unmet need (first new smoking cessation drug in 20 years). The PDUFA date of June 20, 2026 is verified across multiple company press releases and FDA commu..."
+        ],
+        "risks": [
+          "Highlighted option expires 2 days BEFORE PDUFA date - cannot capture catalyst",
+          "Generic varenicline competition limits commercial upside",
+          "Tight cash runway with likely dilution before/after approval"
+        ],
+        "is_first_in_class": 1,
+        "is_orphan": 0,
+        "is_fast_track": 0,
+        "short_interest": null
+      },
+      "oi": {
+        "current": 0,
+        "change_1d": 0,
+        "change_5d": 0,
+        "trend": "unknown"
+      },
+      "last_updated": "2026-01-23T20:35:49.647022"
+    },
+    {
+      "ticker": "CRMD",
+      "status": "OPEN",
+      "play_type": "LEAP",
+      "is_phase3_sequential": true,
+      "category": "Biotech",
+      "position": {
+        "strike": 8.0,
+        "expiration": "2026-08-21",
+        "expiration_display": "Aug 21, 2026",
+        "option_type": "CALL",
+        "quantity": 40
+      },
+      "prices": {
+        "entry": 1.4,
+        "current": 1.4,
+        "stock_price": 0,
+        "break_even": 9.4,
+        "max_buy": 1.54,
+        "pnl_pct": 0.0
+      },
+      "entry_zone": {
+        "zone": "good",
+        "color": "green",
+        "message": "Within 0.0% of entry - still good",
+        "pct_from_entry": 0.0
+      },
+      "enr": {
+        "enr": 0,
+        "win_prob": 0,
+        "enr_zone": {
+          "zone": "avoid",
+          "color": "red",
+          "message": "Negative expected return"
+        },
+        "is_live": false
+      },
+      "cont": {
+        "score": 90,
+        "rating": "HIGH",
+        "display": "High (Hold Through)"
+      },
+      "catalyst": {
+        "date": "2026-06-30",
+        "date_display": "Jun 30, 2026",
+        "event": "Phase 3 Data readout",
+        "drug": null,
+        "days_to_catalyst": 157
+      },
+      "timing": {
+        "days_to_expiry": 209,
+        "entry_date": "2026-01-21"
+      },
+      "thesis": {
+        "drug_name": null,
+        "indication": "Phase 3 Data readout",
+        "highlights": [],
+        "risks": [],
+        "is_first_in_class": 0,
+        "is_orphan": 1,
+        "is_fast_track": 1,
+        "short_interest": 21.63
+      },
+      "oi": {
+        "current": 0,
+        "change_1d": 0,
+        "change_5d": 0,
+        "trend": "unknown"
+      },
+      "last_updated": "2026-01-23T20:35:49.696715"
     }
   ],
   "summary": {
     "total_positions": 11,
-    "total_value": 76535.0,
-    "avg_days_to_catalyst": 60.0
+    "total_value": 11020.0,
+    "avg_days_to_catalyst": 56.0
   },
   "market_status": {
     "is_open": true,
-    "last_updated": "2026-01-22T22:05:03.834518"
+    "last_updated": "2026-01-23T20:35:49.696797"
   },
-  "last_updated": "2026-01-22T22:05:03.834520"
+  "last_updated": "2026-01-23T20:35:49.696801"
 }

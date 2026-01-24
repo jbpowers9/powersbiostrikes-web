@@ -31,8 +31,8 @@ SCHEDULE_FILE = os.path.join(DATA_DIR, 'schedule.json')
 # Recommended posting frequency
 POSTING_GUIDELINES = {
     "twitter": {
-        "name": "Twitter",
-        "icon": "🐦",
+        "name": "X",
+        "icon": "𝕏",
         "recommended_per_week": 7,  # Daily
         "min_per_week": 3,
         "best_times": ["8:00 AM", "12:00 PM", "5:00 PM"],
@@ -129,7 +129,7 @@ col1, col2, col3, col4 = st.columns(4)
 with col1:
     delta_color = "positive" if twitter_this_week >= POSTING_GUIDELINES['twitter']['min_per_week'] else "negative"
     metric_card(
-        "Twitter Posts",
+        "X Posts",
         str(twitter_this_week),
         f"Goal: {POSTING_GUIDELINES['twitter']['recommended_per_week']}/week",
         delta_color
@@ -311,7 +311,7 @@ with st.expander("➕ Add Content Idea"):
         idea_platform = st.selectbox(
             "Platform",
             options=["twitter", "reddit", "both"],
-            format_func=lambda x: {"twitter": "🐦 Twitter", "reddit": "📝 Reddit", "both": "🔄 Both"}[x]
+            format_func=lambda x: {"twitter": "𝕏 X", "reddit": "📝 Reddit", "both": "🔄 Both"}[x]
         )
 
     with col2:

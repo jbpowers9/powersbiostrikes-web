@@ -389,6 +389,59 @@
         }
     };
 
+    // ===== Members Authentication Check =====
+    function isUserAuthenticated() {
+        // Check localStorage for auth token or session
+        const authToken = localStorage.getItem('pbs_auth_token');
+        const foundingMember = localStorage.getItem('pbs_founding_members');
+
+        // For founding members, check if any are active
+        if (foundingMember) {
+            try {
+                const members = JSON.parse(foundingMember);
+                const activeMembers = members.filter(m => m.status === 'active');
+                if (activeMembers.length > 0) {
+                    return true;
+                }
+            } catch (e) {
+                console.log('Error parsing founding members:', e);
+            }
+        }
+
+        return !!authToken;
+    }
+
+    // ===== Handle Members-Only Positions =====
+    function handleMembersOnlyPositions() {
+        const membersOnlyCards = document.querySelectorAll('.position-card.members-only');
+        const isAuthenticated = isUserAuthenticated();
+
+        membersOnlyCards.forEach(function(card) {
+            if (isAuthenticated) {
+                card.classList.add('unlocked');
+            } else {
+                card.classList.remove('unlocked');
+
+                // Add members gate if not present
+                if (!card.querySelector('.members-gate')) {
+                    const gate = document.createElement('div');
+                    gate.className = 'members-gate';
+                    gate.innerHTML = `
+                        <div class="members-gate-box">
+                            <h4>Members Only</h4>
+                            <p>Sign in to view full position details</p>
+                            <a href="login.html" class="login-btn">Sign In</a>
+                        </div>
+                    `;
+                    card.querySelector('.position-content').appendChild(gate);
+                }
+            }
+        });
+    }
+
+    // Run on page load
+    handleMembersOnlyPositions();
+
     // ===== Console Easter Egg =====
     console.log('%c PowersBioStrikes ', 'background: #D4AF37; color: #1C1C1C; font-size: 24px; font-weight: bold; padding: 10px 20px;');
     console.log('%c Systematic. Quantitative. Transparent. ', 'color: #D4AF37; font-size: 14px;');

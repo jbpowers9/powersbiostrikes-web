@@ -30,11 +30,11 @@ ACCOUNTS_FILE = os.path.join(DATA_DIR, 'accounts.json')
 # Platform configurations
 PLATFORMS = {
     "twitter": {
-        "name": "Twitter / X",
-        "icon": "🐦",
-        "color": "#1DA1F2",
-        "login_url": "https://twitter.com/login",
-        "profile_url_template": "https://twitter.com/{username}"
+        "name": "X",
+        "icon": "𝕏",
+        "color": "#000000",
+        "login_url": "https://x.com/login",
+        "profile_url_template": "https://x.com/{username}"
     },
     "reddit": {
         "name": "Reddit",
