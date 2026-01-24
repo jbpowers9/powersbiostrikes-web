@@ -773,14 +773,37 @@ def generate_position_data(position: Dict, stock_price: Optional[float] = None) 
         play_type = 'LEAP' if days_to_expiry >= 180 else 'Standard'
 
     # Also check if this is a Phase 3 catalyst (sequential play potential)
-    is_phase3 = 'phase 3' in (position.get('catalyst_event', '') or '').lower()
+    catalyst_event = position.get('catalyst_event', '') or ''
+    catalyst_lower = catalyst_event.lower()
+    is_phase3 = any(p in catalyst_lower for p in ['phase 3', 'phase3', 'pivotal', 'ph3'])
+    is_pdufa = any(p in catalyst_lower for p in ['pdufa', 'nda', 'bla', 'approval'])
+
+    # Calculate compound move for Phase 3 LEAPs
+    compound_move = None
+    is_phase3_leap = False
+    if play_type == 'LEAP':
+        if is_phase3 and not is_pdufa:
+            is_phase3_leap = True
+            # Calculate compound move using CONT-adjusted Phase 3 up move
+            pos_cont = cont_data.get('cont_score') or 70
+            if pos_cont >= 100:
+                phase3_up = 0.75 + (pos_cont - 100) * 0.005
+            elif pos_cont >= 80:
+                phase3_up = 0.55 + (pos_cont - 80) * 0.01
+            elif pos_cont >= 60:
+                phase3_up = 0.40 + (pos_cont - 60) * 0.0075
+            else:
+                phase3_up = 0.25 + (pos_cont - 40) * 0.0075
+            pdufa_up = 0.30
+            compound_move = (1 + phase3_up) * (1 + pdufa_up) - 1
 
     # Build position object
     return {
         'ticker': ticker,
         'status': position.get('status', 'OPEN'),
         'play_type': play_type,
-        'is_phase3_sequential': is_phase3 and play_type == 'LEAP',
+        'is_phase3_sequential': is_phase3_leap,
+        'compound_move': round(compound_move * 100, 1) if compound_move else None,
         'category': get_category_from_indication(position.get('catalyst_event', '')),
 
         # Position details

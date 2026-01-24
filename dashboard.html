@@ -471,30 +471,53 @@
                 // Show ALL positions (not limited)
                 const html = positions.map(pos => {
                     const isLeap = pos.play_type === 'LEAP';
-                    const isPdufa = pos.catalyst?.event?.toLowerCase().includes('pdufa');
+                    const catalystEvent = (pos.catalyst?.event || '').toLowerCase();
+                    const isPdufa = catalystEvent.includes('pdufa') || catalystEvent.includes('approval') || catalystEvent.includes('nda') || catalystEvent.includes('bla');
+                    const isPhase3 = catalystEvent.includes('phase 3') || catalystEvent.includes('phase3') || catalystEvent.includes('pivotal') || catalystEvent.includes('ph3');
 
-                    const badgeClass = isLeap ? 'leap-badge' : (isPdufa ? 'pdufa-badge' : 'buy-badge');
-                    const badgeText = isLeap ? '🐸 LEAP' : (isPdufa ? '🎯 PDUFA' : '🔬 Phase 3');
+                    // Catalyst type badge - consistent for all positions
+                    const catalystBadgeClass = isPdufa ? 'pdufa-badge' : (isPhase3 ? 'buy-badge' : 'buy-badge');
+                    const catalystBadgeText = isPdufa ? '🎯 PDUFA' : (isPhase3 ? '🔬 Phase 3' : '🔬 Catalyst');
 
                     // Get current ENR from the enr object
                     const enr = pos.enr?.enr || 0;
                     const cont = pos.cont?.score || 0;
+                    const compoundMove = pos.compound_move; // For Phase 3 LEAPs
                     const maxBuy = pos.prices?.max_buy || 0;
                     const currentPrice = pos.prices?.current || pos.prices?.entry || 0;
                     const entryPrice = pos.prices?.entry || 0;
-
-                    const inBuyZone = currentPrice <= maxBuy && maxBuy > 0;
 
                     // Check if catalyst has passed
                     const daysToCatalyst = pos.catalyst?.days_to_catalyst;
                     const isPastCatalyst = daysToCatalyst !== undefined && daysToCatalyst < 0;
 
                     // Get recommendation if available
-                    const rec = pos.recommendation?.action || 'HOLD';
+                    const rec = pos.recommendation?.action || null;
                     const recNotes = pos.recommendation?.notes || '';
                     const recClass = rec === 'ACCUMULATE' ? 'text-green-400' :
                                     rec === 'EXIT' ? 'text-red-400' :
                                     rec === 'TRIM' ? 'text-orange-400' : 'text-gray-400';
+
+                    // Only show BUY ZONE if no recommendation set or recommendation is ACCUMULATE
+                    const inBuyZone = currentPrice <= maxBuy && maxBuy > 0;
+                    const showBuyZone = inBuyZone && (!rec || rec === 'ACCUMULATE');
+
+                    // For LEAPs: show Compound Move if available, otherwise skip ENR display
+                    // For Standard: show ENR
+                    let metricLabel, metricValue, metricPositive;
+                    if (isLeap && compoundMove) {
+                        metricLabel = 'CM';
+                        metricValue = compoundMove.toFixed(0);
+                        metricPositive = true;
+                    } else if (isLeap && !compoundMove) {
+                        metricLabel = 'CM';
+                        metricValue = 'Skip';
+                        metricPositive = false;
+                    } else {
+                        metricLabel = 'ENR';
+                        metricValue = enr.toFixed(0);
+                        metricPositive = enr > 0;
+                    }
 
                     return `
                         <div class="position-card rounded-xl p-4">
@@ -502,8 +525,9 @@
                                 <div>
                                     <div class="flex items-center gap-2 mb-1">
                                         <span class="text-xl font-bold">${pos.ticker}</span>
-                                        <span class="text-xs px-2 py-0.5 rounded ${badgeClass}">${badgeText}</span>
-                                        ${inBuyZone ? '<span class="text-xs px-2 py-0.5 rounded buy-badge">BUY ZONE</span>' : ''}
+                                        ${isLeap ? '<span class="text-xs px-2 py-0.5 rounded leap-badge">🐸 LEAP</span>' : ''}
+                                        <span class="text-xs px-2 py-0.5 rounded ${catalystBadgeClass}">${catalystBadgeText}</span>
+                                        ${showBuyZone ? '<span class="text-xs px-2 py-0.5 rounded buy-badge">BUY ZONE</span>' : ''}
                                         ${isPastCatalyst ? '<span class="text-xs px-2 py-0.5 rounded bg-gray-700 text-gray-400">PAST CATALYST</span>' : ''}
                                     </div>
                                     <div class="text-gray-400 text-sm">
@@ -511,8 +535,8 @@
                                     </div>
                                 </div>
                                 <div class="text-right">
-                                    <div class="text-lg font-semibold ${enr > 0 ? 'text-green-400' : 'text-white'}">
-                                        ENR: ${enr.toFixed(0)}%
+                                    <div class="text-lg font-semibold ${metricPositive ? 'text-green-400' : 'text-white'}">
+                                        ${metricLabel}: ${metricValue}${metricLabel !== 'CM' || metricValue !== 'Skip' ? '%' : ''}
                                     </div>
                                     <div class="text-gray-500 text-sm">CONT: ${cont}</div>
                                 </div>
@@ -527,7 +551,7 @@
                                     </div>
                                 ` : ''}
                             </div>
-                            ${rec !== 'HOLD' || recNotes ? `
+                            ${rec ? `
                                 <div class="border-t border-white/10 pt-2 mt-2">
                                     <div class="flex items-center gap-2">
                                         <span class="text-xs font-semibold ${recClass}">${rec}</span>

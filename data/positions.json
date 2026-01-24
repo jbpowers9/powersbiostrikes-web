@@ -5,6 +5,7 @@
       "status": "OPEN",
       "play_type": "Standard",
       "is_phase3_sequential": false,
+      "compound_move": null,
       "category": "Biotech",
       "position": {
         "strike": 5.0,
@@ -28,8 +29,8 @@
         "pct_from_entry": 321.46596858638753
       },
       "enr": {
-        "enr": 28.7,
-        "win_prob": 91.0,
+        "enr": 29.6,
+        "win_prob": 91.6,
         "enr_zone": {
           "zone": "avoid",
           "color": "red",
@@ -70,7 +71,7 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-24T08:50:16.189230",
+      "last_updated": "2026-01-24T09:08:04.009874",
       "recommendation": {
         "action": "EXIT",
         "notes": "",
@@ -82,6 +83,7 @@
       "status": "OPEN",
       "play_type": "Standard",
       "is_phase3_sequential": false,
+      "compound_move": null,
       "category": "Biotech",
       "position": {
         "strike": 12.5,
@@ -105,8 +107,8 @@
         "pct_from_entry": 1.7341040462427681
       },
       "enr": {
-        "enr": 90.9,
-        "win_prob": 93.3,
+        "enr": 93.0,
+        "win_prob": 93.7,
         "enr_zone": {
           "zone": "weak",
           "color": "orange",
@@ -153,7 +155,7 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-24T08:50:17.065490",
+      "last_updated": "2026-01-24T09:08:04.744262",
       "recommendation": {
         "action": "HOLD",
         "notes": "Well same comments as my $15 strikes here but this one is in the money and i'm goign to let it ride past the PDUFA.  - I've had this one for a while now but it hasn't moved much.  not much ENR left but my continuation score tells me this will run after approval.  I expect it will still move.  as of 1/23/26  i don't now i would get in here but  i have plenty of expiration time to hold past the PDUFA approval and OI is still increasing.",
@@ -165,6 +167,7 @@
       "status": "OPEN",
       "play_type": "Standard",
       "is_phase3_sequential": false,
+      "compound_move": null,
       "category": "Biotech",
       "position": {
         "strike": 15.0,
@@ -188,8 +191,8 @@
         "pct_from_entry": -16.30434782608696
       },
       "enr": {
-        "enr": 60.7,
-        "win_prob": 85.2,
+        "enr": 60.9,
+        "win_prob": 85.4,
         "enr_zone": {
           "zone": "weak",
           "color": "orange",
@@ -236,13 +239,14 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-24T08:50:17.716138"
+      "last_updated": "2026-01-24T09:08:05.446323"
     },
     {
       "ticker": "VNDA",
       "status": "OPEN",
       "play_type": "Standard",
       "is_phase3_sequential": false,
+      "compound_move": null,
       "category": "Biotech",
       "position": {
         "strike": 6.0,
@@ -266,8 +270,8 @@
         "pct_from_entry": 23.880597014925375
       },
       "enr": {
-        "enr": 149.4,
-        "win_prob": 86.6,
+        "enr": 148.2,
+        "win_prob": 86.5,
         "enr_zone": {
           "zone": "good",
           "color": "green",
@@ -314,96 +318,14 @@
         "change_5d": 0,
         "trend": "stable"
       },
-      "last_updated": "2026-01-24T08:50:18.390515"
-    },
-    {
-      "ticker": "VNDA",
-      "status": "OPEN",
-      "play_type": "LEAP",
-      "is_phase3_sequential": false,
-      "category": "Biotech",
-      "position": {
-        "strike": 10.0,
-        "expiration": "2026-12-18",
-        "expiration_display": "Dec 18, 2026",
-        "option_type": "CALL",
-        "quantity": 30
-      },
-      "prices": {
-        "entry": 1.95,
-        "current": 2.85,
-        "stock_price": 8.0672,
-        "break_even": 11.95,
-        "max_buy": 2.15,
-        "pnl_pct": 46.2
-      },
-      "entry_zone": {
-        "zone": "passed",
-        "color": "red",
-        "message": "Up 46.2% - wait for pullback",
-        "pct_from_entry": 46.15384615384617
-      },
-      "enr": {
-        "enr": -26.3,
-        "win_prob": 30.7,
-        "enr_zone": {
-          "zone": "avoid",
-          "color": "red",
-          "message": "Negative expected return"
-        },
-        "research_found": true,
-        "is_live": true
-      },
-      "cont": {
-        "score": 72,
-        "rating": "MODERATE",
-        "display": "Moderate"
-      },
-      "catalyst": {
-        "date": "2026-02-21",
-        "date_display": "Feb 21, 2026",
-        "event": "PDUFA",
-        "drug": "Bysanti (milsaperidone) - Bipolar I & Schizophrenia (NEREUS approved 12/30/25)",
-        "days_to_catalyst": 27
-      },
-      "timing": {
-        "days_to_expiry": 327,
-        "entry_date": "2026-01-07 10:23:15"
-      },
-      "thesis": {
-        "drug_name": "Bysanti (milsaperidone) - Bipolar I & Schizophrenia (NEREUS approved 12/30/25)",
-        "indication": "PDUFA",
-        "highlights": [
-          "VNDA presents a compelling multi-catalyst thesis for a 2026 LEAP: Bysanti PDUFA (Feb 21), imsidolimab PDUFA (~mid-2026), and NEREUS launch traction all captured in Dec 2026 expiration. The 1,931 OI at the $10 strike suggests institutional/retail conviction, and light insider buying is a rare positiv..."
-        ],
-        "risks": [
-          "140% bid-ask spread makes entry/exit treacherous",
-          "62% run-up means good news largely priced in",
-          "Jan 7 HETLIOZ CRL shows FDA willing to reject Vanda applications"
-        ],
-        "is_first_in_class": 0,
-        "is_orphan": 0,
-        "is_fast_track": 0,
-        "short_interest": 7.88
-      },
-      "oi": {
-        "current": 1957,
-        "change_1d": 0,
-        "change_5d": 0,
-        "trend": "stable"
-      },
-      "last_updated": "2026-01-24T08:50:17.771044",
-      "recommendation": {
-        "action": "HOLD",
-        "notes": "This is an early shot at a leap thinking about the upcoming PDUFA and the Phase 3 DataBysantiMajor Depressive Disorder2026 data.  not sure this will play out like a major binary event but letting this one ride..  Not recommended but sometimes you have to take some moonshots.  ",
-        "updated": "2026-01-23T21:59:11.785188"
-      }
+      "last_updated": "2026-01-24T09:08:06.092856"
     },
     {
       "ticker": "GOSS",
       "status": "OPEN",
       "play_type": "LEAP",
       "is_phase3_sequential": true,
+      "compound_move": 82.0,
       "category": "Biotech",
       "position": {
         "strike": 5.0,
@@ -427,8 +349,8 @@
         "pct_from_entry": 8.69565217391306
       },
       "enr": {
-        "enr": -28.0,
-        "win_prob": 34.6,
+        "enr": -26.8,
+        "win_prob": 35.7,
         "enr_zone": {
           "zone": "avoid",
           "color": "red",
@@ -475,13 +397,14 @@
         "change_5d": 0,
         "trend": "stable"
       },
-      "last_updated": "2026-01-24T08:50:18.485075"
+      "last_updated": "2026-01-24T09:08:06.717515"
     },
     {
       "ticker": "GOSS",
       "status": "OPEN",
       "play_type": "LEAP",
       "is_phase3_sequential": true,
+      "compound_move": 82.0,
       "category": "Biotech",
       "position": {
         "strike": 3.0,
@@ -505,8 +428,8 @@
         "pct_from_entry": 21.42857142857144
       },
       "enr": {
-        "enr": 39.2,
-        "win_prob": 68.2,
+        "enr": 39.7,
+        "win_prob": 67.7,
         "enr_zone": {
           "zone": "avoid",
           "color": "red",
@@ -553,13 +476,14 @@
         "change_5d": 0,
         "trend": "stable"
       },
-      "last_updated": "2026-01-24T08:50:19.393402"
+      "last_updated": "2026-01-24T09:08:07.373641"
     },
     {
       "ticker": "IMMP",
       "status": "OPEN",
       "play_type": "Standard",
       "is_phase3_sequential": false,
+      "compound_move": null,
       "category": "Biotech",
       "position": {
         "strike": 2.5,
@@ -583,8 +507,8 @@
         "pct_from_entry": 11.111111111111116
       },
       "enr": {
-        "enr": 322.1,
-        "win_prob": 71.9,
+        "enr": 322.2,
+        "win_prob": 72.3,
         "enr_zone": {
           "zone": "good",
           "color": "green",
@@ -631,7 +555,7 @@
         "change_5d": 0,
         "trend": "stable"
       },
-      "last_updated": "2026-01-24T08:50:19.996396",
+      "last_updated": "2026-01-24T09:08:07.966451",
       "recommendation": {
         "action": "ACCUMULATE",
         "notes": "This is a new buy for me.  I love the set up .  ",
@@ -639,166 +563,11 @@
       }
     },
     {
-      "ticker": "MNKD",
-      "status": "OPEN",
-      "play_type": "LEAP",
-      "is_phase3_sequential": false,
-      "category": "Biotech",
-      "position": {
-        "strike": 7.0,
-        "expiration": "2027-01-15",
-        "expiration_display": "Jan 15, 2027",
-        "option_type": "CALL",
-        "quantity": 80
-      },
-      "prices": {
-        "entry": 1.2,
-        "current": 1.0,
-        "stock_price": 5.57,
-        "break_even": 8.2,
-        "max_buy": 1.32,
-        "pnl_pct": -16.7
-      },
-      "entry_zone": {
-        "zone": "excellent",
-        "color": "green",
-        "message": "Down 16.7% from entry - better value",
-        "pct_from_entry": -16.666666666666664
-      },
-      "enr": {
-        "enr": 7.2,
-        "win_prob": 53.1,
-        "enr_zone": {
-          "zone": "avoid",
-          "color": "red",
-          "message": "Negative expected return"
-        },
-        "research_found": true,
-        "is_live": true
-      },
-      "cont": {
-        "score": 75,
-        "rating": "MODERATE",
-        "display": "Moderate"
-      },
-      "catalyst": {
-        "date": "2026-05-29",
-        "date_display": "May 29, 2026",
-        "event": "PDUFA",
-        "drug": "Afrezza (insulin human) - Dose Conversion Label Update",
-        "days_to_catalyst": 124
-      },
-      "timing": {
-        "days_to_expiry": 355,
-        "entry_date": "2025-12-31 07:14:55"
-      },
-      "thesis": {
-        "drug_name": "Afrezza (insulin human) - Dose Conversion Label Update",
-        "indication": "PDUFA",
-        "highlights": [
-          "MNKD presents a novel dual-PDUFA catalyst setup with back-to-back approval decisions in May and July 2026. The massive open interest (4,374 contracts on $10 strike alone) suggests institutional positioning, which is intriguing. However, this fundamentally differs from high-ENR binary plays because b..."
-        ],
-        "risks": [
-          "Label expansions rarely drive 50%+ moves - may be priced in",
-          "Management selling, not buying their own stock",
-          "MNKD-101 failure removed key pipeline catalyst"
-        ],
-        "is_first_in_class": 1,
-        "is_orphan": 0,
-        "is_fast_track": 0,
-        "short_interest": 8.6
-      },
-      "oi": {
-        "current": 3046,
-        "change_1d": 0,
-        "change_5d": 0,
-        "trend": "stable"
-      },
-      "last_updated": "2026-01-24T08:50:20.659467"
-    },
-    {
-      "ticker": "ACHV",
-      "status": "OPEN",
-      "play_type": "LEAP",
-      "is_phase3_sequential": false,
-      "category": "Biotech",
-      "position": {
-        "strike": 5.0,
-        "expiration": "2026-12-18",
-        "expiration_display": "Dec 18, 2026",
-        "option_type": "CALL",
-        "quantity": 30
-      },
-      "prices": {
-        "entry": 2.25,
-        "current": 2.35,
-        "stock_price": 5.6302,
-        "break_even": 7.25,
-        "max_buy": 2.48,
-        "pnl_pct": 4.4
-      },
-      "entry_zone": {
-        "zone": "good",
-        "color": "green",
-        "message": "Within 4.4% of entry - still good",
-        "pct_from_entry": 4.444444444444451
-      },
-      "enr": {
-        "enr": 106.6,
-        "win_prob": 93.9,
-        "enr_zone": {
-          "zone": "fair",
-          "color": "yellow",
-          "message": "Moderate expected return"
-        },
-        "research_found": true,
-        "is_live": true
-      },
-      "cont": {
-        "score": 45,
-        "rating": "LOW",
-        "display": "Low (Exit Early)"
-      },
-      "catalyst": {
-        "date": "2026-06-20",
-        "date_display": "Jun 20, 2026",
-        "event": "PDUFA Approval decision",
-        "drug": "Cytisinicline - Smoking Cessation (Nicotine Dependence)",
-        "days_to_catalyst": 146
-      },
-      "timing": {
-        "days_to_expiry": 327,
-        "entry_date": "2026-01-08 12:29:02"
-      },
-      "thesis": {
-        "drug_name": "Cytisinicline - Smoking Cessation (Nicotine Dependence)",
-        "indication": "PDUFA Approval decision",
-        "highlights": [
-          "ACHV has a genuinely strong fundamental setup: two successful Phase 3 trials, Breakthrough Therapy designation, clean safety profile, and a real unmet need (first new smoking cessation drug in 20 years). The PDUFA date of June 20, 2026 is verified across multiple company press releases and FDA commu..."
-        ],
-        "risks": [
-          "Highlighted option expires 2 days BEFORE PDUFA date - cannot capture catalyst",
-          "Generic varenicline competition limits commercial upside",
-          "Tight cash runway with likely dilution before/after approval"
-        ],
-        "is_first_in_class": 1,
-        "is_orphan": 0,
-        "is_fast_track": 0,
-        "short_interest": null
-      },
-      "oi": {
-        "current": 3039,
-        "change_1d": 0,
-        "change_5d": 0,
-        "trend": "stable"
-      },
-      "last_updated": "2026-01-24T08:50:21.294460"
-    },
-    {
       "ticker": "CRMD",
       "status": "OPEN",
       "play_type": "Standard",
       "is_phase3_sequential": false,
+      "compound_move": null,
       "category": "Biotech",
       "position": {
         "strike": 8.0,
@@ -822,8 +591,8 @@
         "pct_from_entry": 16.07142857142858
       },
       "enr": {
-        "enr": 218.8,
-        "win_prob": 67.7,
+        "enr": 223.0,
+        "win_prob": 68.8,
         "enr_zone": {
           "zone": "good",
           "color": "green",
@@ -864,7 +633,7 @@
         "change_5d": 0,
         "trend": "stable"
       },
-      "last_updated": "2026-01-24T08:50:21.883907",
+      "last_updated": "2026-01-24T09:08:08.508334",
       "recommendation": {
         "action": "ACCUMULATE",
         "notes": "",
@@ -876,6 +645,7 @@
       "status": "OPEN",
       "play_type": "LEAP",
       "is_phase3_sequential": true,
+      "compound_move": 114.5,
       "category": "Biotech",
       "position": {
         "strike": 10.0,
@@ -899,8 +669,8 @@
         "pct_from_entry": -9.57446808510638
       },
       "enr": {
-        "enr": 213.7,
-        "win_prob": 67.2,
+        "enr": 204.9,
+        "win_prob": 66.5,
         "enr_zone": {
           "zone": "good",
           "color": "green",
@@ -941,17 +711,17 @@
         "change_5d": 0,
         "trend": "stable"
       },
-      "last_updated": "2026-01-24T08:50:22.545281"
+      "last_updated": "2026-01-24T09:08:09.094496"
     }
   ],
   "summary": {
-    "total_positions": 12,
-    "total_value": 80825.0,
-    "avg_days_to_catalyst": 64.0
+    "total_positions": 9,
+    "total_value": 57225.0,
+    "avg_days_to_catalyst": 52.0
   },
   "market_status": {
     "is_open": false,
-    "last_updated": "2026-01-24T08:50:22.545463"
+    "last_updated": "2026-01-24T09:08:09.094623"
   },
-  "last_updated": "2026-01-24T08:50:22.545468"
+  "last_updated": "2026-01-24T09:08:09.094627"
 }
