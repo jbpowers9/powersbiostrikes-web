@@ -764,8 +764,12 @@ def generate_position_data(position: Dict, stock_price: Optional[float] = None) 
         except Exception as e:
             print(f"  Error calculating cloud ENR for {ticker}: {e}")
 
-    # Determine play type (LEAP if expiration > 180 days out)
-    play_type = 'LEAP' if days_to_expiry >= 180 else 'Standard'
+    # Determine play type - use database field if set, otherwise calculate from expiration
+    db_play_type = position.get('play_type')
+    if db_play_type and db_play_type in ('LEAP', 'Standard'):
+        play_type = db_play_type
+    else:
+        play_type = 'LEAP' if days_to_expiry >= 180 else 'Standard'
 
     # Also check if this is a Phase 3 catalyst (sequential play potential)
     is_phase3 = 'phase 3' in (position.get('catalyst_event', '') or '').lower()
