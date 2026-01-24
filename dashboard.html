@@ -71,7 +71,7 @@
     <nav class="fixed top-0 left-0 right-0 z-40 bg-dark-bg/95 backdrop-blur-sm border-b border-white/5">
         <div class="max-w-7xl mx-auto px-6 py-4">
             <div class="flex justify-between items-center">
-                <a href="index.html" class="flex items-center gap-3">
+                <a href="dashboard.html" class="flex items-center gap-3">
                     <span class="text-2xl">🐸</span>
                     <div class="flex flex-col">
                         <span class="text-gold font-bold text-xl tracking-wider">PowersBioStrikes</span>
@@ -519,12 +519,19 @@
                         metricPositive = enr > 0;
                     }
 
+                    // Recommendation badge style
+                    const recBadgeClass = rec === 'ACCUMULATE' ? 'bg-green-500/20 text-green-400 border border-green-500/30' :
+                                         rec === 'EXIT' ? 'bg-red-500/20 text-red-400 border border-red-500/30' :
+                                         rec === 'TRIM' ? 'bg-orange-500/20 text-orange-400 border border-orange-500/30' :
+                                         rec === 'HOLD' ? 'bg-blue-500/20 text-blue-400 border border-blue-500/30' : '';
+
                     return `
                         <div class="position-card rounded-xl p-4">
                             <div class="flex justify-between items-start mb-3">
                                 <div>
                                     <div class="flex items-center gap-2 mb-1">
                                         <span class="text-xl font-bold">${pos.ticker}</span>
+                                        ${rec ? `<span class="text-xs px-2 py-0.5 rounded font-semibold ${recBadgeClass}">${rec}</span>` : ''}
                                         ${isLeap ? '<span class="text-xs px-2 py-0.5 rounded leap-badge">🐸 LEAP</span>' : ''}
                                         <span class="text-xs px-2 py-0.5 rounded ${catalystBadgeClass}">${catalystBadgeText}</span>
                                         ${showBuyZone ? '<span class="text-xs px-2 py-0.5 rounded buy-badge">BUY ZONE</span>' : ''}
@@ -551,12 +558,9 @@
                                     </div>
                                 ` : ''}
                             </div>
-                            ${rec ? `
+                            ${recNotes ? `
                                 <div class="border-t border-white/10 pt-2 mt-2">
-                                    <div class="flex items-center gap-2">
-                                        <span class="text-xs font-semibold ${recClass}">${rec}</span>
-                                        ${recNotes ? `<span class="text-xs text-gray-500">- ${recNotes}</span>` : ''}
-                                    </div>
+                                    <div class="text-xs text-gray-500">${recNotes}</div>
                                 </div>
                             ` : ''}
                         </div>
