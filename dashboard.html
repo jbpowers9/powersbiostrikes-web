@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard | PowersBioStrikes</title>
-    <meta name="description" content="Your PowersBioStrikes member dashboard.">
+    <title>Member Dashboard | PowersBioStrikes</title>
+    <meta name="description" content="Your PowersBioStrikes member dashboard - trade alerts, live positions, and catalyst calendar.">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -36,6 +36,25 @@
         .feature-card {
             background: linear-gradient(135deg, rgba(212,175,55,0.05) 0%, transparent 100%);
             border: 1px solid rgba(212,175,55,0.2);
+            transition: all 0.3s ease;
+        }
+        .feature-card:hover {
+            border-color: rgba(212,175,55,0.4);
+            transform: translateY(-2px);
+        }
+        .position-card {
+            background: linear-gradient(145deg, #2a2a2a 0%, #1f1f1f 100%);
+            border: 1px solid #333;
+        }
+        .position-card:hover {
+            border-color: #D4AF37;
+        }
+        .leap-badge { background: rgba(59, 130, 246, 0.2); color: #60A5FA; }
+        .pdufa-badge { background: rgba(255, 99, 71, 0.2); color: #FF6B6B; }
+        .buy-badge { background: rgba(0, 200, 83, 0.2); color: #00C853; }
+        .alert-card {
+            background: linear-gradient(135deg, rgba(0,200,83,0.1) 0%, transparent 100%);
+            border: 1px solid rgba(0,200,83,0.3);
         }
     </style>
 </head>
@@ -50,19 +69,28 @@
 
     <!-- Navigation -->
     <nav class="fixed top-0 left-0 right-0 z-40 bg-dark-bg/95 backdrop-blur-sm border-b border-white/5">
-        <div class="max-w-6xl mx-auto px-6 py-4">
+        <div class="max-w-7xl mx-auto px-6 py-4">
             <div class="flex justify-between items-center">
-                <a href="index.html" class="flex flex-col">
-                    <span class="text-gold font-bold text-xl tracking-wider">PowersBioStrikes</span>
-                    <span class="text-gray-500 text-xs">Member Dashboard</span>
+                <a href="index.html" class="flex items-center gap-3">
+                    <span class="text-2xl">🐸</span>
+                    <div class="flex flex-col">
+                        <span class="text-gold font-bold text-xl tracking-wider">PowersBioStrikes</span>
+                        <span class="text-gray-500 text-xs">Member Dashboard</span>
+                    </div>
                 </a>
                 <div class="flex items-center gap-6">
+                    <a href="calendar.html" class="text-gray-400 hover:text-gold transition-colors text-sm">Catalyst Calendar</a>
+                    <a href="community.html" class="text-gray-400 hover:text-gold transition-colors text-sm">Community</a>
                     <a href="top10-picks.html" class="text-gray-400 hover:text-gold transition-colors text-sm">Top 10 Picks</a>
-                    <a href="index.html#active-positions" class="text-gray-400 hover:text-gold transition-colors text-sm">Live Trades</a>
                     <a href="blog/" class="text-gray-400 hover:text-gold transition-colors text-sm">Blog</a>
-                    <button id="logout-btn" class="px-4 py-2 border border-white/20 rounded-lg text-sm hover:bg-white/5 transition-all">
-                        Sign Out
-                    </button>
+                    <div class="flex items-center gap-3">
+                        <div id="user-avatar" class="w-9 h-9 bg-gold/20 rounded-full flex items-center justify-center">
+                            <span id="user-initials" class="text-gold font-bold text-sm">?</span>
+                        </div>
+                        <button id="logout-btn" class="px-4 py-2 border border-white/20 rounded-lg text-sm hover:bg-white/5 transition-all">
+                            Sign Out
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -70,93 +98,70 @@
 
     <!-- Main Content -->
     <main class="pt-24 pb-16 px-6">
-        <div class="max-w-6xl mx-auto">
-            <!-- Welcome Section -->
-            <div class="mb-10">
-                <h1 class="text-3xl font-bold mb-2">Welcome back, <span id="user-name" class="text-gold">Member</span>!</h1>
-                <p class="text-gray-400">Here's what's available to you as a free member.</p>
-            </div>
-
-            <!-- Account Info Card -->
-            <div class="dashboard-card rounded-2xl p-6 mb-8">
-                <div class="flex flex-wrap items-center justify-between gap-4">
-                    <div class="flex items-center gap-4">
-                        <div class="w-14 h-14 bg-gold/20 rounded-full flex items-center justify-center">
-                            <span id="user-initials" class="text-gold font-bold text-xl">?</span>
-                        </div>
-                        <div>
-                            <div id="user-email" class="text-white font-medium">loading@email.com</div>
-                            <div class="flex items-center gap-2 mt-1">
-                                <span class="px-2 py-0.5 bg-green-500/20 text-green-400 text-xs font-medium rounded">FREE TIER</span>
-                                <span id="member-since" class="text-gray-500 text-xs">Member since Jan 2026</span>
-                            </div>
+        <div class="max-w-7xl mx-auto">
+            <!-- Welcome Header -->
+            <div class="flex flex-wrap items-start justify-between gap-6 mb-8">
+                <div>
+                    <h1 class="text-3xl font-bold mb-2">Welcome back, <span id="user-name" class="text-gold">Member</span>!</h1>
+                    <p class="text-gray-400">Your biotech catalyst command center.</p>
+                </div>
+                <div class="dashboard-card rounded-xl p-4 flex items-center gap-4">
+                    <div class="w-12 h-12 bg-gold/20 rounded-full flex items-center justify-center">
+                        <span id="user-initials-lg" class="text-gold font-bold text-lg">?</span>
+                    </div>
+                    <div>
+                        <div id="user-email" class="text-white font-medium text-sm">loading@email.com</div>
+                        <div class="flex items-center gap-2 mt-1">
+                            <span id="member-tier" class="px-2 py-0.5 bg-gold/20 text-gold text-xs font-medium rounded">FOUNDING MEMBER</span>
+                            <span id="member-since" class="text-gray-500 text-xs">Since Jan 2026</span>
                         </div>
                     </div>
-                    <div class="flex gap-3">
-                        <a href="top10-picks.html" class="px-5 py-2.5 bg-gradient-to-r from-gold to-gold-dark text-dark-bg font-semibold rounded-lg hover:shadow-lg hover:shadow-gold/20 transition-all">
-                            View Top 10 Picks
+                </div>
+            </div>
+
+            <!-- Personal Message from Jon -->
+            <div class="dashboard-card rounded-2xl p-6 mb-8 border-l-4 border-gold">
+                <div class="flex items-start gap-4">
+                    <div class="text-3xl">👋</div>
+                    <div>
+                        <h3 class="font-semibold text-lg mb-2">A Note from Jon</h3>
+                        <p class="text-gray-300 leading-relaxed">
+                            Thanks for being a founding member! You're getting in early while I build this out.
+                            I'm trading these positions with my own money - every win and loss is real.
+                            <br><br>
+                            <span class="text-gold">New here?</span> Start with <a href="blog/" class="text-gold underline hover:text-gold-light">the blog article</a> -
+                            it explains how to read the positions, what ENR and CONT scores mean, and how I approach buying.
+                            Understanding the system first will help you make better decisions.
+                            <br><br>
+                            <span class="text-gold">Your feedback matters.</span> If you have questions about any trades,
+                            want to discuss strategy, or just want to chat biotech - I'm here. Hit me up anytime.
+                        </p>
+                        <div class="flex flex-wrap gap-3 mt-4">
+                        <a href="blog/" class="inline-flex items-center gap-2 px-4 py-2 bg-gold text-dark-bg font-semibold rounded-lg text-sm hover:bg-gold-light transition-colors">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                            </svg>
+                            Read: How to Use This System
+                        </a>
+                        <a href="mailto:jon@powersbiostrikes.com" class="inline-flex items-center gap-2 px-4 py-2 bg-gold/10 border border-gold/30 rounded-lg text-gold text-sm hover:bg-gold/20 transition-colors">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                            Send Feedback or Questions
                         </a>
                     </div>
                 </div>
             </div>
 
-            <!-- Features Grid -->
-            <h2 class="text-xl font-semibold mb-4">Your Free Member Benefits</h2>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-                <!-- Top 10 Picks -->
-                <a href="top10-picks.html" class="feature-card rounded-xl p-6 hover:border-gold/40 transition-all group">
-                    <div class="w-12 h-12 bg-gold/10 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                        <span class="text-2xl">📊</span>
-                    </div>
-                    <h3 class="text-lg font-semibold mb-2">Top 10 Stock Picks</h3>
-                    <p class="text-gray-400 text-sm mb-4">Full access to our data-driven stock picks with deep dive analysis.</p>
-                    <span class="text-gold text-sm font-medium">View Picks →</span>
-                </a>
-
-                <!-- Live Trades -->
-                <a href="index.html#active-positions" class="feature-card rounded-xl p-6 hover:border-gold/40 transition-all group">
-                    <div class="w-12 h-12 bg-gold/10 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                        <span class="text-2xl">🎯</span>
-                    </div>
-                    <h3 class="text-lg font-semibold mb-2">Live Positions</h3>
-                    <p class="text-gray-400 text-sm mb-4">See our current biotech options positions with real-time ENR scores.</p>
-                    <span class="text-gold text-sm font-medium">View Trades →</span>
-                </a>
-
-                <!-- Blog -->
-                <a href="blog/" class="feature-card rounded-xl p-6 hover:border-gold/40 transition-all group">
-                    <div class="w-12 h-12 bg-gold/10 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                        <span class="text-2xl">📚</span>
-                    </div>
-                    <h3 class="text-lg font-semibold mb-2">Educational Content</h3>
-                    <p class="text-gray-400 text-sm mb-4">Learn biotech options trading strategies and market mechanics.</p>
-                    <span class="text-gold text-sm font-medium">Read Articles →</span>
-                </a>
-            </div>
-
-            <!-- Upgrade CTA -->
-            <div class="bg-gradient-to-r from-gold/10 to-mahogany/10 border border-gold/20 rounded-2xl p-8">
-                <div class="flex flex-wrap items-center justify-between gap-6">
-                    <div>
-                        <span class="px-3 py-1 bg-gold/20 text-gold text-xs font-semibold rounded-full">COMING SOON</span>
-                        <h3 class="text-2xl font-bold mt-3 mb-2">Premium Membership</h3>
-                        <p class="text-gray-400 max-w-lg">Get real-time trade alerts, position sizing recommendations, and direct access to our trading methodology.</p>
-                    </div>
-                    <button disabled class="px-6 py-3 bg-white/10 text-white/50 font-semibold rounded-lg cursor-not-allowed">
-                        Coming Soon
-                    </button>
-                </div>
-            </div>
-
-            <!-- Quick Stats -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
+            <!-- Quick Stats Row -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
                 <div class="dashboard-card rounded-xl p-5 text-center">
-                    <div class="text-2xl font-bold text-gold">10</div>
-                    <div class="text-gray-500 text-sm">Stock Picks</div>
+                    <div id="stat-positions" class="text-2xl font-bold text-gold">--</div>
+                    <div class="text-gray-500 text-sm">Active Positions</div>
                 </div>
                 <div class="dashboard-card rounded-xl p-5 text-center">
-                    <div class="text-2xl font-bold text-white">6</div>
-                    <div class="text-gray-500 text-sm">Scoring Factors</div>
+                    <div id="stat-catalysts" class="text-2xl font-bold text-white">--</div>
+                    <div class="text-gray-500 text-sm">Upcoming Catalysts</div>
                 </div>
                 <div class="dashboard-card rounded-xl p-5 text-center">
                     <div class="text-2xl font-bold text-green-400">68.5%</div>
@@ -167,13 +172,122 @@
                     <div class="text-gray-500 text-sm">Verified Trades</div>
                 </div>
             </div>
+
+            <!-- Two Column Layout -->
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- Left Column: Live Positions -->
+                <div class="lg:col-span-2">
+                    <!-- Trade Alerts Section -->
+                    <div class="mb-8">
+                        <div class="flex items-center justify-between mb-4">
+                            <h2 class="text-xl font-semibold flex items-center gap-2">
+                                <span class="text-green-400">●</span> Trade Alerts
+                            </h2>
+                            <span class="px-3 py-1 bg-gold/20 text-gold text-xs font-semibold rounded-full">PREMIUM COMING SOON</span>
+                        </div>
+                        <div class="alert-card rounded-xl p-6">
+                            <p class="text-gray-300 mb-4">Real-time alerts when I enter or exit positions. Coming to premium members soon.</p>
+                            <div class="flex items-center gap-4 text-sm text-gray-500">
+                                <span>📱 Push notifications</span>
+                                <span>📧 Email alerts</span>
+                                <span>⚡ Real-time</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Live Positions -->
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <h2 class="text-xl font-semibold">Live Positions</h2>
+                            <a href="index.html#active-positions" class="text-gold text-sm hover:underline">View All →</a>
+                        </div>
+                        <div id="positions-container" class="space-y-4">
+                            <!-- Positions loaded by JS -->
+                            <div class="text-gray-500 text-center py-8">Loading positions...</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Calendar & Resources -->
+                <div class="space-y-6">
+                    <!-- Catalyst Calendar Card -->
+                    <a href="calendar.html" class="feature-card rounded-xl p-6 block group">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-12 h-12 bg-gold/10 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                                <span class="text-2xl">📅</span>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold">Catalyst Calendar</h3>
+                                <p class="text-gray-500 text-sm">PDUFA dates & Phase 3 readouts</p>
+                            </div>
+                        </div>
+                        <div id="calendar-preview" class="space-y-2 text-sm">
+                            <!-- Preview loaded by JS -->
+                        </div>
+                        <div class="mt-4 text-gold text-sm font-medium">View Full Calendar →</div>
+                    </a>
+
+                    <!-- Top 10 Picks -->
+                    <a href="top10-picks.html" class="feature-card rounded-xl p-6 block group">
+                        <div class="flex items-center gap-4 mb-3">
+                            <div class="w-12 h-12 bg-gold/10 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                                <span class="text-2xl">📊</span>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold">Top 10 Stock Picks</h3>
+                                <p class="text-gray-500 text-sm">Data-driven CONT analysis</p>
+                            </div>
+                        </div>
+                        <span class="text-gold text-sm font-medium">View Picks →</span>
+                    </a>
+
+                    <!-- Blog -->
+                    <a href="blog/" class="feature-card rounded-xl p-6 block group">
+                        <div class="flex items-center gap-4 mb-3">
+                            <div class="w-12 h-12 bg-gold/10 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                                <span class="text-2xl">📚</span>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold">Learn</h3>
+                                <p class="text-gray-500 text-sm">Biotech trading education</p>
+                            </div>
+                        </div>
+                        <span class="text-gold text-sm font-medium">Read Articles →</span>
+                    </a>
+
+                    <!-- Community Card -->
+                    <a href="community.html" class="feature-card rounded-xl p-6 block group">
+                        <div class="flex items-center gap-4 mb-3">
+                            <div class="w-12 h-12 bg-gold/10 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                                <span class="text-2xl">💬</span>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold">Member Community</h3>
+                                <p class="text-gray-500 text-sm">Share wins, losses & lessons</p>
+                            </div>
+                        </div>
+                        <span class="text-gold text-sm font-medium">Join Discussion →</span>
+                    </a>
+
+                    <!-- Feedback Card -->
+                    <div class="dashboard-card rounded-xl p-6">
+                        <h3 class="font-semibold mb-3">Have Feedback?</h3>
+                        <p class="text-gray-400 text-sm mb-4">
+                            I'm building this for traders like you. Tell me what features you want to see.
+                        </p>
+                        <a href="mailto:jon@powersbiostrikes.com?subject=Dashboard Feedback" class="block w-full text-center px-4 py-2 border border-gold/30 text-gold rounded-lg text-sm hover:bg-gold/10 transition-colors">
+                            Send Feedback
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
 
     <!-- Footer -->
     <footer class="py-8 border-t border-white/5">
-        <div class="max-w-6xl mx-auto px-6 text-center">
-            <p class="text-gray-600 text-sm">&copy; 2026 PowersBioStrikes. All rights reserved.</p>
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <p class="text-gray-600 text-sm">&copy; 2026 PowersBioStrikes. All rights reserved. Not financial advice.</p>
         </div>
     </footer>
 
@@ -186,7 +300,9 @@
         const userNameEl = document.getElementById('user-name');
         const userEmailEl = document.getElementById('user-email');
         const userInitialsEl = document.getElementById('user-initials');
+        const userInitialsLgEl = document.getElementById('user-initials-lg');
         const memberSinceEl = document.getElementById('member-since');
+        const memberTierEl = document.getElementById('member-tier');
         const logoutBtn = document.getElementById('logout-btn');
 
         async function loadDashboard() {
@@ -194,7 +310,6 @@
                 const user = await pbsAuth.getUser();
 
                 if (!user) {
-                    // Not logged in - redirect to login
                     window.location.href = 'login.html';
                     return;
                 }
@@ -204,7 +319,7 @@
                 const email = user.email;
                 const createdAt = new Date(user.created_at);
 
-                userNameEl.textContent = fullName.split(' ')[0]; // First name only
+                userNameEl.textContent = fullName.split(' ')[0];
                 userEmailEl.textContent = email;
 
                 // Generate initials
@@ -213,17 +328,136 @@
                     ? names[0][0] + names[names.length - 1][0]
                     : names[0].substring(0, 2);
                 userInitialsEl.textContent = initials.toUpperCase();
+                userInitialsLgEl.textContent = initials.toUpperCase();
 
                 // Member since
                 const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-                memberSinceEl.textContent = `Member since ${monthNames[createdAt.getMonth()]} ${createdAt.getFullYear()}`;
+                memberSinceEl.textContent = `Since ${monthNames[createdAt.getMonth()]} ${createdAt.getFullYear()}`;
+
+                // Check if founding member (within first 6 months or has special flag)
+                const isFoundingMember = true; // For now, all early users are founding members
+                if (isFoundingMember) {
+                    memberTierEl.textContent = 'FOUNDING MEMBER';
+                    memberTierEl.className = 'px-2 py-0.5 bg-gold/20 text-gold text-xs font-medium rounded';
+                } else {
+                    memberTierEl.textContent = 'FREE TIER';
+                    memberTierEl.className = 'px-2 py-0.5 bg-green-500/20 text-green-400 text-xs font-medium rounded';
+                }
 
                 // Hide loading
                 loadingEl.classList.add('hidden');
 
+                // Load positions and calendar data
+                loadPositions();
+                loadCalendarPreview();
+
             } catch (err) {
                 console.error('Dashboard error:', err);
                 window.location.href = 'login.html';
+            }
+        }
+
+        async function loadPositions() {
+            try {
+                const response = await fetch('data/positions.json');
+                const data = await response.json();
+                const positions = data.positions || [];
+
+                document.getElementById('stat-positions').textContent = positions.length;
+
+                if (positions.length === 0) {
+                    document.getElementById('positions-container').innerHTML =
+                        '<p class="text-gray-500 text-center py-8">No active positions right now.</p>';
+                    return;
+                }
+
+                // Sort by most recent first (or by some priority)
+                const html = positions.slice(0, 5).map(pos => {
+                    const isLeap = pos.play_type === 'LEAP';
+                    const isPdufa = pos.catalyst?.event?.toLowerCase().includes('pdufa');
+
+                    const badgeClass = isLeap ? 'leap-badge' : (isPdufa ? 'pdufa-badge' : 'buy-badge');
+                    const badgeText = isLeap ? '🐸 LEAP' : (isPdufa ? '🎯 PDUFA' : '🔬 Phase 3');
+
+                    const enr = pos.enr?.enr || 0;
+                    const cont = pos.cont?.score || 0;
+                    const maxBuy = pos.prices?.max_buy || 0;
+                    const currentPrice = pos.prices?.current || pos.prices?.entry || 0;
+                    const entryPrice = pos.prices?.entry || 0;
+
+                    // Calculate if still in buy zone
+                    const inBuyZone = currentPrice <= maxBuy;
+
+                    return `
+                        <div class="position-card rounded-xl p-4">
+                            <div class="flex justify-between items-start mb-3">
+                                <div>
+                                    <div class="flex items-center gap-2 mb-1">
+                                        <span class="text-xl font-bold">${pos.ticker}</span>
+                                        <span class="text-xs px-2 py-0.5 rounded ${badgeClass}">${badgeText}</span>
+                                        ${inBuyZone ? '<span class="text-xs px-2 py-0.5 rounded buy-badge">BUY ZONE</span>' : ''}
+                                    </div>
+                                    <div class="text-gray-400 text-sm">
+                                        $${pos.position?.strike} Call | ${pos.position?.expiration_display || pos.position?.expiration}
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <div class="text-lg font-semibold ${enr > 0 ? 'text-green-400' : 'text-white'}">
+                                        ENR: ${enr.toFixed(0)}%
+                                    </div>
+                                    <div class="text-gray-500 text-sm">CONT: ${cont}</div>
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center text-sm">
+                                <div class="text-gray-400">
+                                    Entry: $${entryPrice.toFixed(2)} | Max Buy: $${maxBuy.toFixed(2)}
+                                </div>
+                                ${pos.catalyst?.date ? `
+                                    <div class="text-gold">
+                                        ${pos.catalyst.event?.split(' ').slice(0,2).join(' ')} ${pos.catalyst.date_display || ''}
+                                    </div>
+                                ` : ''}
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+
+                document.getElementById('positions-container').innerHTML = html;
+
+            } catch (err) {
+                console.error('Failed to load positions:', err);
+                document.getElementById('positions-container').innerHTML =
+                    '<p class="text-gray-500 text-center py-8">Failed to load positions.</p>';
+            }
+        }
+
+        async function loadCalendarPreview() {
+            try {
+                const response = await fetch('data/calendar.json');
+                const data = await response.json();
+                const catalysts = data.catalysts || [];
+
+                document.getElementById('stat-catalysts').textContent = data.summary?.total_catalysts || catalysts.length;
+
+                // Show next 3 catalysts
+                const preview = catalysts.slice(0, 3).map(cat => {
+                    const typeColor = cat.event.type === 'PDUFA' ? 'text-red-400' :
+                                     cat.event.type === 'Phase 3' ? 'text-orange-400' : 'text-blue-400';
+                    return `
+                        <div class="flex justify-between items-center py-2 border-b border-white/5 last:border-0">
+                            <div>
+                                <span class="font-semibold">${cat.ticker}</span>
+                                <span class="text-gray-500 text-xs ml-2">${cat.event.type}</span>
+                            </div>
+                            <div class="text-gray-400 text-xs">${cat.date_display}</div>
+                        </div>
+                    `;
+                }).join('');
+
+                document.getElementById('calendar-preview').innerHTML = preview || '<p class="text-gray-500 text-sm">No upcoming catalysts</p>';
+
+            } catch (err) {
+                console.error('Failed to load calendar:', err);
             }
         }
 

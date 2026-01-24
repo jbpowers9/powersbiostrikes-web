@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Member Community | PowersBioStrikes</title>
+    <meta name="description" content="Share your biotech trading wins, losses, and lessons with fellow members.">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        mahogany: { dark: '#4A0E0E', DEFAULT: '#6B1414', light: '#8B2323' },
+                        steel: { dark: '#2C3E50', DEFAULT: '#34495E', light: '#5D6D7E' },
+                        gold: { dark: '#8B6914', DEFAULT: '#D4AF37', light: '#E8C547' },
+                        dark: { bg: '#1a1a1a', card: '#242424', elevated: '#2d2d2d' }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body { background: #1a1a1a; font-family: 'Inter', sans-serif; }
+        .post-card {
+            background: #242424;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        .post-card.win { border-left: 3px solid #00C853; }
+        .post-card.loss { border-left: 3px solid #FF6B6B; }
+        .post-card.lesson { border-left: 3px solid #D4AF37; }
+        .tag-win { background: rgba(0, 200, 83, 0.2); color: #00C853; }
+        .tag-loss { background: rgba(255, 107, 107, 0.2); color: #FF6B6B; }
+        .tag-lesson { background: rgba(212, 175, 55, 0.2); color: #D4AF37; }
+    </style>
+</head>
+<body class="min-h-screen text-white">
+    <!-- Loading State -->
+    <div id="loading" class="fixed inset-0 bg-dark-bg flex items-center justify-center z-50">
+        <div class="text-center">
+            <div class="w-12 h-12 border-2 border-gold border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+            <p class="text-gray-400">Loading community...</p>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-40 bg-dark-bg/95 backdrop-blur-sm border-b border-white/5">
+        <div class="max-w-4xl mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="dashboard.html" class="flex items-center gap-3">
+                    <span class="text-2xl">🐸</span>
+                    <div class="flex flex-col">
+                        <span class="text-gold font-bold text-xl tracking-wider">PowersBioStrikes</span>
+                        <span class="text-gray-500 text-xs">Member Community</span>
+                    </div>
+                </a>
+                <div class="flex items-center gap-4">
+                    <a href="dashboard.html" class="text-gray-400 hover:text-gold transition-colors text-sm">← Dashboard</a>
+                    <div id="user-avatar" class="w-9 h-9 bg-gold/20 rounded-full flex items-center justify-center">
+                        <span id="user-initials" class="text-gold font-bold text-sm">?</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-24 pb-16 px-6">
+        <div class="max-w-4xl mx-auto">
+            <!-- Header -->
+            <div class="text-center mb-8">
+                <h1 class="text-3xl font-bold mb-2">Member Community</h1>
+                <p class="text-gray-400">Share your wins, losses, and lessons learned. We're all here to get better.</p>
+            </div>
+
+            <!-- New Post Form -->
+            <div class="post-card rounded-xl p-6 mb-8">
+                <h2 class="font-semibold mb-4">Share with the Community</h2>
+                <form id="post-form">
+                    <div class="flex gap-3 mb-4">
+                        <button type="button" class="tag-btn px-4 py-2 rounded-lg text-sm font-medium border border-transparent transition-all" data-tag="win">
+                            🎉 Win
+                        </button>
+                        <button type="button" class="tag-btn px-4 py-2 rounded-lg text-sm font-medium border border-transparent transition-all" data-tag="loss">
+                            📉 Loss
+                        </button>
+                        <button type="button" class="tag-btn px-4 py-2 rounded-lg text-sm font-medium border border-transparent transition-all" data-tag="lesson">
+                            💡 Lesson
+                        </button>
+                    </div>
+                    <input type="hidden" id="post-tag" value="">
+                    <div class="mb-4">
+                        <input type="text" id="post-ticker" placeholder="Ticker (optional, e.g. CRMD)"
+                            class="w-full md:w-48 px-4 py-2 bg-dark-bg border border-white/10 rounded-lg text-white placeholder-gray-500 focus:border-gold focus:outline-none">
+                    </div>
+                    <div class="mb-4">
+                        <textarea id="post-content" rows="3" placeholder="What happened? What did you learn?"
+                            class="w-full px-4 py-3 bg-dark-bg border border-white/10 rounded-lg text-white placeholder-gray-500 focus:border-gold focus:outline-none resize-none"></textarea>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-500 text-sm">Posts are visible to all members</span>
+                        <button type="submit" id="submit-btn" disabled
+                            class="px-6 py-2 bg-gold text-dark-bg font-semibold rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gold-light transition-colors">
+                            Post
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Posts Feed -->
+            <div class="space-y-4">
+                <h2 class="font-semibold text-lg flex items-center gap-2">
+                    Recent Posts
+                    <span id="post-count" class="text-gray-500 text-sm font-normal">(loading...)</span>
+                </h2>
+                <div id="posts-container">
+                    <!-- Posts loaded by JS -->
+                    <div class="text-gray-500 text-center py-8">Loading posts...</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-8 border-t border-white/5">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <p class="text-gray-600 text-sm">Be respectful. No financial advice. Share to learn together.</p>
+        </div>
+    </footer>
+
+    <!-- Supabase SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase-config.js"></script>
+
+    <script>
+        let currentUser = null;
+        let selectedTag = '';
+
+        const loadingEl = document.getElementById('loading');
+        const userInitialsEl = document.getElementById('user-initials');
+        const postForm = document.getElementById('post-form');
+        const postContent = document.getElementById('post-content');
+        const postTicker = document.getElementById('post-ticker');
+        const postTagInput = document.getElementById('post-tag');
+        const submitBtn = document.getElementById('submit-btn');
+        const postsContainer = document.getElementById('posts-container');
+        const postCount = document.getElementById('post-count');
+
+        // Tag selection
+        document.querySelectorAll('.tag-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const tag = btn.dataset.tag;
+
+                // Toggle selection
+                if (selectedTag === tag) {
+                    selectedTag = '';
+                    btn.classList.remove('tag-' + tag, 'border-current');
+                } else {
+                    // Deselect others
+                    document.querySelectorAll('.tag-btn').forEach(b => {
+                        b.classList.remove('tag-win', 'tag-loss', 'tag-lesson', 'border-current');
+                    });
+                    selectedTag = tag;
+                    btn.classList.add('tag-' + tag, 'border-current');
+                }
+
+                postTagInput.value = selectedTag;
+                validateForm();
+            });
+        });
+
+        // Form validation
+        postContent.addEventListener('input', validateForm);
+
+        function validateForm() {
+            const hasContent = postContent.value.trim().length > 10;
+            const hasTag = selectedTag !== '';
+            submitBtn.disabled = !(hasContent && hasTag);
+        }
+
+        // Load page
+        async function loadPage() {
+            try {
+                currentUser = await pbsAuth.getUser();
+
+                if (!currentUser) {
+                    window.location.href = 'login.html';
+                    return;
+                }
+
+                // Set user initials
+                const fullName = currentUser.user_metadata?.full_name || 'Member';
+                const names = fullName.split(' ');
+                const initials = names.length > 1
+                    ? names[0][0] + names[names.length - 1][0]
+                    : names[0].substring(0, 2);
+                userInitialsEl.textContent = initials.toUpperCase();
+
+                loadingEl.classList.add('hidden');
+                loadPosts();
+
+            } catch (err) {
+                console.error('Page error:', err);
+                window.location.href = 'login.html';
+            }
+        }
+
+        // Load posts from Supabase
+        async function loadPosts() {
+            try {
+                const { data: posts, error } = await supabase
+                    .from('community_posts')
+                    .select('*')
+                    .order('created_at', { ascending: false })
+                    .limit(50);
+
+                if (error) {
+                    // Table might not exist yet - show empty state
+                    console.log('Posts table may not exist yet:', error.message);
+                    postsContainer.innerHTML = `
+                        <div class="text-center py-12">
+                            <div class="text-4xl mb-4">🐸</div>
+                            <p class="text-gray-400 mb-2">No posts yet - be the first!</p>
+                            <p class="text-gray-500 text-sm">Share a win, loss, or lesson learned.</p>
+                        </div>
+                    `;
+                    postCount.textContent = '(0 posts)';
+                    return;
+                }
+
+                if (!posts || posts.length === 0) {
+                    postsContainer.innerHTML = `
+                        <div class="text-center py-12">
+                            <div class="text-4xl mb-4">🐸</div>
+                            <p class="text-gray-400 mb-2">No posts yet - be the first!</p>
+                            <p class="text-gray-500 text-sm">Share a win, loss, or lesson learned.</p>
+                        </div>
+                    `;
+                    postCount.textContent = '(0 posts)';
+                    return;
+                }
+
+                postCount.textContent = `(${posts.length} posts)`;
+                postsContainer.innerHTML = posts.map(post => renderPost(post)).join('');
+
+            } catch (err) {
+                console.error('Failed to load posts:', err);
+                postsContainer.innerHTML = '<p class="text-gray-500 text-center py-8">Failed to load posts.</p>';
+            }
+        }
+
+        // Render a single post
+        function renderPost(post) {
+            const tagEmoji = post.tag === 'win' ? '🎉' : post.tag === 'loss' ? '📉' : '💡';
+            const tagLabel = post.tag.charAt(0).toUpperCase() + post.tag.slice(1);
+            const tagClass = `tag-${post.tag}`;
+
+            const date = new Date(post.created_at);
+            const timeAgo = getTimeAgo(date);
+
+            const tickerHtml = post.ticker
+                ? `<span class="text-gold font-semibold">$${post.ticker.toUpperCase()}</span> · `
+                : '';
+
+            return `
+                <div class="post-card ${post.tag} rounded-xl p-5">
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 bg-gold/20 rounded-full flex items-center justify-center flex-shrink-0">
+                            <span class="text-gold font-bold text-sm">${post.user_initials || '??'}</span>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <div class="flex items-center gap-2 mb-2 flex-wrap">
+                                <span class="font-medium">${post.user_name || 'Member'}</span>
+                                <span class="px-2 py-0.5 rounded text-xs font-medium ${tagClass}">${tagEmoji} ${tagLabel}</span>
+                                <span class="text-gray-500 text-sm">${timeAgo}</span>
+                            </div>
+                            <p class="text-gray-300 leading-relaxed">
+                                ${tickerHtml}${escapeHtml(post.content)}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Submit new post
+        postForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            if (!currentUser || !selectedTag || postContent.value.trim().length < 10) return;
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Posting...';
+
+            try {
+                const fullName = currentUser.user_metadata?.full_name || 'Member';
+                const names = fullName.split(' ');
+                const initials = names.length > 1
+                    ? names[0][0] + names[names.length - 1][0]
+                    : names[0].substring(0, 2);
+
+                const { error } = await supabase
+                    .from('community_posts')
+                    .insert({
+                        user_id: currentUser.id,
+                        user_name: fullName.split(' ')[0], // First name only for privacy
+                        user_initials: initials.toUpperCase(),
+                        tag: selectedTag,
+                        ticker: postTicker.value.trim().toUpperCase() || null,
+                        content: postContent.value.trim()
+                    });
+
+                if (error) throw error;
+
+                // Reset form
+                postContent.value = '';
+                postTicker.value = '';
+                selectedTag = '';
+                postTagInput.value = '';
+                document.querySelectorAll('.tag-btn').forEach(b => {
+                    b.classList.remove('tag-win', 'tag-loss', 'tag-lesson', 'border-current');
+                });
+
+                // Reload posts
+                loadPosts();
+
+            } catch (err) {
+                console.error('Failed to post:', err);
+                alert('Failed to post. Please try again.');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Post';
+                validateForm();
+            }
+        });
+
+        // Helper: Time ago
+        function getTimeAgo(date) {
+            const seconds = Math.floor((new Date() - date) / 1000);
+
+            if (seconds < 60) return 'just now';
+            if (seconds < 3600) return Math.floor(seconds / 60) + 'm ago';
+            if (seconds < 86400) return Math.floor(seconds / 3600) + 'h ago';
+            if (seconds < 604800) return Math.floor(seconds / 86400) + 'd ago';
+
+            return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+        }
+
+        // Helper: Escape HTML
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Initialize
+        loadPage();
+    </script>
+</body>
+</html>
