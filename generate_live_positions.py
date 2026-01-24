@@ -627,7 +627,9 @@ def generate_position_data(position: Dict, stock_price: Optional[float] = None) 
     # If we have local database access, recalculate for accuracy
     if IMPORTS_AVAILABLE and db and not USE_SUPABASE:
         try:
-            research = db.get_catalyst_research(ticker, catalyst_date, position.get('catalyst_event'))
+            # Note: positions table uses 'catalyst_type', not 'catalyst_event'
+            catalyst_event = position.get('catalyst_type') or position.get('catalyst_event')
+            research = db.get_catalyst_research(ticker, catalyst_date, catalyst_event)
             if research:
                 cont_result = calculate_cont_score(
                     is_first_in_class=bool(research.get('is_first_in_class')),
