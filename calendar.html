@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biotech Catalyst Calendar | PowersBioStrikes</title>
+    <meta name="description" content="Upcoming PDUFA dates, Phase 3 readouts, and biotech catalysts. Free 7-day preview, full calendar for members.">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'dark': '#1C1C1C',
+                        'dark-card': '#242424',
+                        'dark-border': '#333333',
+                        'gold': '#D4AF37',
+                        'gold-dark': '#8B6914',
+                        'steel': '#5D6D7E',
+                        'steel-light': '#85929E',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .catalyst-card {
+            background: linear-gradient(145deg, #2a2a2a 0%, #1f1f1f 100%);
+            border: 1px solid #333;
+            transition: all 0.3s ease;
+        }
+        .catalyst-card:hover {
+            border-color: #D4AF37;
+            transform: translateY(-2px);
+        }
+        .catalyst-card.public {
+            border-left: 3px solid #00C853;
+        }
+        .catalyst-card.members-only {
+            border-left: 3px solid #D4AF37;
+        }
+        .type-badge {
+            font-size: 10px;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+        .type-pdufa { background: rgba(255, 99, 71, 0.2); color: #FF6B6B; border: 1px solid rgba(255, 99, 71, 0.3); }
+        .type-phase3 { background: rgba(255, 165, 0, 0.2); color: #FFA500; border: 1px solid rgba(255, 165, 0, 0.3); }
+        .type-phase2 { background: rgba(100, 149, 237, 0.2); color: #6495ED; border: 1px solid rgba(100, 149, 237, 0.3); }
+        .type-adcom { background: rgba(255, 0, 255, 0.2); color: #FF00FF; border: 1px solid rgba(255, 0, 255, 0.3); }
+
+        .designation-badge {
+            font-size: 9px;
+            padding: 1px 6px;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+        .blur-content {
+            filter: blur(5px);
+            user-select: none;
+            pointer-events: none;
+        }
+        .members-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(28, 28, 28, 0.7);
+            backdrop-filter: blur(2px);
+            z-index: 10;
+        }
+        .expand-btn {
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .expand-btn.expanded {
+            transform: rotate(180deg);
+        }
+        .details-panel {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        .details-panel.expanded {
+            max-height: 500px;
+        }
+        .risk-high { color: #FF6B6B; }
+        .risk-medium-high { color: #FFA500; }
+        .risk-medium { color: #FFD700; }
+        .risk-low { color: #888; }
+    </style>
+</head>
+<body class="bg-dark text-white min-h-screen">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-dark/95 backdrop-blur-sm border-b border-dark-border">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-2">
+                <span class="text-2xl">🐸</span>
+                <span class="text-xl font-bold text-gold">PowersBioStrikes</span>
+            </a>
+            <div class="flex items-center space-x-6">
+                <a href="index.html" class="text-gray-300 hover:text-gold transition-colors">Home</a>
+                <a href="positions.html" class="text-gray-300 hover:text-gold transition-colors">Positions</a>
+                <a href="calendar.html" class="text-gold font-semibold">Calendar</a>
+                <a href="login.html" class="px-4 py-2 bg-gold text-dark rounded-lg font-semibold hover:bg-gold/90 transition-colors">Members</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <section class="pt-24 pb-8 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-8">
+                <h1 class="text-4xl font-bold mb-4">
+                    <span class="text-gold">Biotech Catalyst</span> Calendar
+                </h1>
+                <p class="text-gray-400 text-lg max-w-2xl mx-auto">
+                    Upcoming PDUFA dates, Phase 2/3 readouts, and AdCom meetings.
+                    <span class="text-gold">Next 7 days free</span> - full calendar for members.
+                </p>
+            </div>
+
+            <!-- Summary Stats -->
+            <div id="summary-stats" class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Calendar Content -->
+    <section class="pb-16 px-4">
+        <div class="max-w-7xl mx-auto">
+            <!-- Filter Tabs -->
+            <div class="flex flex-wrap gap-2 mb-6">
+                <button onclick="filterCatalysts('all')" class="filter-btn active px-4 py-2 rounded-lg bg-dark-card border border-dark-border hover:border-gold transition-colors" data-filter="all">
+                    All Events
+                </button>
+                <button onclick="filterCatalysts('PDUFA')" class="filter-btn px-4 py-2 rounded-lg bg-dark-card border border-dark-border hover:border-gold transition-colors" data-filter="PDUFA">
+                    PDUFA
+                </button>
+                <button onclick="filterCatalysts('Phase 3')" class="filter-btn px-4 py-2 rounded-lg bg-dark-card border border-dark-border hover:border-gold transition-colors" data-filter="Phase 3">
+                    Phase 3
+                </button>
+                <button onclick="filterCatalysts('Phase 2')" class="filter-btn px-4 py-2 rounded-lg bg-dark-card border border-dark-border hover:border-gold transition-colors" data-filter="Phase 2">
+                    Phase 2
+                </button>
+                <button onclick="filterCatalysts('AdCom')" class="filter-btn px-4 py-2 rounded-lg bg-dark-card border border-dark-border hover:border-gold transition-colors" data-filter="AdCom">
+                    AdCom
+                </button>
+            </div>
+
+            <!-- Public Section: This Week -->
+            <div class="mb-12">
+                <h2 class="text-2xl font-bold mb-4 flex items-center">
+                    <span class="text-green-400 mr-2">●</span>
+                    This Week <span class="text-gray-500 text-lg ml-2">(Free Preview)</span>
+                </h2>
+                <div id="public-catalysts" class="grid gap-4">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+
+            <!-- Members Section: Full Calendar -->
+            <div class="relative">
+                <h2 class="text-2xl font-bold mb-4 flex items-center">
+                    <span class="text-gold mr-2">●</span>
+                    Full Calendar <span class="text-gray-500 text-lg ml-2">(Members Only)</span>
+                </h2>
+
+                <div id="members-catalysts" class="grid gap-4">
+                    <!-- Populated by JS -->
+                </div>
+
+                <!-- Members Gate Overlay (shown for non-members) -->
+                <div id="members-gate" class="hidden absolute inset-0 bg-dark/80 backdrop-blur-sm flex items-center justify-center rounded-lg">
+                    <div class="text-center p-8 bg-dark-card border border-gold/30 rounded-xl max-w-md">
+                        <div class="text-4xl mb-4">🔒</div>
+                        <h3 class="text-xl font-bold text-gold mb-2">Members Only</h3>
+                        <p class="text-gray-400 mb-4">
+                            Get access to the full catalyst calendar with 88+ upcoming events, detailed analysis, and CONT scores.
+                        </p>
+                        <a href="index.html#founding" class="inline-block px-6 py-3 bg-gold text-dark font-bold rounded-lg hover:bg-gold/90 transition-colors">
+                            Become a Founding Member
+                        </a>
+                        <p class="text-sm text-gray-500 mt-3">Free for 6 months - limited spots</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 px-4 bg-dark-card border-t border-dark-border">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-4">Want the Full Calendar + Trade Alerts?</h2>
+            <p class="text-gray-400 mb-6">
+                Founding members get 6 months free access to all catalysts, CONT scores, and live trade alerts.
+            </p>
+            <a href="index.html#founding" class="inline-block px-8 py-4 bg-gold text-dark font-bold rounded-lg text-lg hover:bg-gold/90 transition-colors">
+                Join Founding Members
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 px-4 border-t border-dark-border">
+        <div class="max-w-7xl mx-auto text-center text-gray-500 text-sm">
+            <p>Catalyst dates are sourced from public FDA filings and ClinicalTrials.gov.</p>
+            <p class="mt-2">&copy; 2025 PowersBioStrikes. Not financial advice.</p>
+        </div>
+    </footer>
+
+    <script>
+        let calendarData = null;
+        let currentFilter = 'all';
+
+        // Check if user is authenticated
+        function isAuthenticated() {
+            const foundingMembers = localStorage.getItem('pbs_founding_members');
+            if (foundingMembers) {
+                try {
+                    const members = JSON.parse(foundingMembers);
+                    return members.some(m => m.status === 'active');
+                } catch (e) {}
+            }
+            return !!localStorage.getItem('pbs_auth_token');
+        }
+
+        // Load calendar data
+        async function loadCalendar() {
+            try {
+                const response = await fetch('data/calendar.json');
+                calendarData = await response.json();
+                renderSummary();
+                renderCatalysts();
+            } catch (error) {
+                console.error('Failed to load calendar:', error);
+                document.getElementById('public-catalysts').innerHTML =
+                    '<p class="text-gray-500">Failed to load calendar data.</p>';
+            }
+        }
+
+        // Render summary stats
+        function renderSummary() {
+            const summary = calendarData.summary;
+            const html = `
+                <div class="bg-dark-card border border-dark-border rounded-lg p-4 text-center">
+                    <div class="text-3xl font-bold text-gold">${summary.total_catalysts}</div>
+                    <div class="text-gray-500 text-sm">Total Catalysts</div>
+                </div>
+                <div class="bg-dark-card border border-dark-border rounded-lg p-4 text-center">
+                    <div class="text-3xl font-bold text-green-400">${summary.this_week}</div>
+                    <div class="text-gray-500 text-sm">This Week</div>
+                </div>
+                <div class="bg-dark-card border border-dark-border rounded-lg p-4 text-center">
+                    <div class="text-3xl font-bold text-red-400">${summary.by_type.PDUFA}</div>
+                    <div class="text-gray-500 text-sm">PDUFA Dates</div>
+                </div>
+                <div class="bg-dark-card border border-dark-border rounded-lg p-4 text-center">
+                    <div class="text-3xl font-bold text-orange-400">${summary.by_type['Phase 3']}</div>
+                    <div class="text-gray-500 text-sm">Phase 3</div>
+                </div>
+                <div class="bg-dark-card border border-dark-border rounded-lg p-4 text-center">
+                    <div class="text-3xl font-bold text-blue-400">${summary.by_type['Phase 2']}</div>
+                    <div class="text-gray-500 text-sm">Phase 2</div>
+                </div>
+            `;
+            document.getElementById('summary-stats').innerHTML = html;
+        }
+
+        // Render catalyst card
+        function renderCatalystCard(catalyst, isBlurred = false) {
+            const typeClass = `type-${catalyst.event.type.toLowerCase().replace(' ', '')}`;
+            const riskClass = `risk-${catalyst.risk.level.toLowerCase().replace('-', '')}`;
+
+            const designationBadges = catalyst.designations.map(d =>
+                `<span class="designation-badge" style="background: ${d.color}20; color: ${d.color}; border: 1px solid ${d.color}40">${d.code}</span>`
+            ).join('');
+
+            const contScore = catalyst.analysis.cont_score
+                ? `<span class="text-gold font-bold">CONT: ${catalyst.analysis.cont_score}</span>`
+                : '';
+
+            const positionBadge = catalyst.meta.has_position
+                ? `<span class="text-xs px-2 py-1 bg-green-500/20 text-green-400 rounded">POSITION</span>`
+                : '';
+
+            return `
+                <div class="catalyst-card ${catalyst.is_public ? 'public' : 'members-only'} rounded-lg p-4 ${isBlurred ? 'blur-content' : ''}" data-type="${catalyst.event.type}">
+                    <div class="flex justify-between items-start mb-3">
+                        <div class="flex items-center gap-3">
+                            <span class="text-2xl font-bold">${catalyst.ticker}</span>
+                            <span class="type-badge ${typeClass}">${catalyst.event.type}</span>
+                            ${positionBadge}
+                        </div>
+                        <div class="text-right">
+                            <div class="text-lg font-semibold">${catalyst.date_display}</div>
+                            <div class="text-gray-500 text-sm">${catalyst.weekday} • ${catalyst.days_until}d</div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="text-gray-300">${catalyst.event.description || catalyst.event.type}</div>
+                        ${catalyst.event.drug_name ? `<div class="text-gold text-sm">${catalyst.event.drug_name}</div>` : ''}
+                        ${catalyst.event.indication ? `<div class="text-gray-500 text-sm">${catalyst.event.indication}</div>` : ''}
+                    </div>
+
+                    <div class="flex flex-wrap gap-2 mb-3">
+                        ${designationBadges}
+                    </div>
+
+                    <div class="flex justify-between items-center text-sm">
+                        <div class="${riskClass}">
+                            ⚠️ ${catalyst.risk.level} binary risk
+                        </div>
+                        <div class="flex items-center gap-3">
+                            ${contScore}
+                            ${catalyst.analysis.is_leap_play ? '<span class="text-xl">🐸</span>' : ''}
+                        </div>
+                    </div>
+
+                    ${!isBlurred && catalyst.event.indication ? `
+                        <div class="mt-3 pt-3 border-t border-dark-border">
+                            <button onclick="toggleDetails(this)" class="expand-btn text-gray-500 hover:text-gold text-sm flex items-center gap-1">
+                                <span>Details</span>
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div class="details-panel mt-2 text-sm text-gray-400">
+                                <p><strong>Indication:</strong> ${catalyst.event.indication}</p>
+                                ${catalyst.company.mcap_millions ? `<p><strong>Market Cap:</strong> $${catalyst.company.mcap_millions.toFixed(0)}M</p>` : ''}
+                                ${catalyst.company.short_interest_pct ? `<p><strong>Short Interest:</strong> ${catalyst.company.short_interest_pct.toFixed(1)}%</p>` : ''}
+                                <p class="mt-2 text-xs text-gray-500">${catalyst.risk.note}</p>
+                            </div>
+                        </div>
+                    ` : ''}
+                </div>
+            `;
+        }
+
+        // Toggle details panel
+        function toggleDetails(btn) {
+            btn.classList.toggle('expanded');
+            const panel = btn.nextElementSibling;
+            panel.classList.toggle('expanded');
+        }
+
+        // Render all catalysts
+        function renderCatalysts() {
+            const isAuth = isAuthenticated();
+            const catalysts = calendarData.catalysts.filter(c =>
+                currentFilter === 'all' || c.event.type === currentFilter
+            );
+
+            const publicCatalysts = catalysts.filter(c => c.is_public);
+            const membersCatalysts = catalysts.filter(c => !c.is_public);
+
+            // Public section
+            if (publicCatalysts.length > 0) {
+                document.getElementById('public-catalysts').innerHTML =
+                    publicCatalysts.map(c => renderCatalystCard(c, false)).join('');
+            } else {
+                document.getElementById('public-catalysts').innerHTML =
+                    '<p class="text-gray-500 p-4 bg-dark-card rounded-lg">No catalysts in the next 7 days. Check back soon!</p>';
+            }
+
+            // Members section
+            if (membersCatalysts.length > 0) {
+                // Show first 3 blurred if not authenticated, all if authenticated
+                if (isAuth) {
+                    document.getElementById('members-catalysts').innerHTML =
+                        membersCatalysts.map(c => renderCatalystCard(c, false)).join('');
+                    document.getElementById('members-gate').classList.add('hidden');
+                } else {
+                    // Show first 5 blurred as teaser
+                    document.getElementById('members-catalysts').innerHTML =
+                        membersCatalysts.slice(0, 5).map(c => renderCatalystCard(c, true)).join('');
+                    document.getElementById('members-gate').classList.remove('hidden');
+                }
+            }
+        }
+
+        // Filter catalysts
+        function filterCatalysts(filter) {
+            currentFilter = filter;
+
+            // Update active button
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active', 'border-gold', 'text-gold');
+                if (btn.dataset.filter === filter) {
+                    btn.classList.add('active', 'border-gold', 'text-gold');
+                }
+            });
+
+            renderCatalysts();
+        }
+
+        // Initialize
+        loadCalendar();
+    </script>
+</body>
+</html>

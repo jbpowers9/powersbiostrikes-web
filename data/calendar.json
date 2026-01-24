@@ -1,0 +1,2612 @@
+{
+  "generated_at": "2026-01-23T19:25:27.801404",
+  "public_days": 7,
+  "summary": {
+    "total_catalysts": 53,
+    "this_week": 0,
+    "next_week": 1,
+    "this_month": 3,
+    "by_type": {
+      "PDUFA": 6,
+      "Phase 3": 46,
+      "Phase 2": 1,
+      "AdCom": 0,
+      "Other": 0
+    }
+  },
+  "catalysts": [
+    {
+      "ticker": "XNCR",
+      "date": "2026-01-31",
+      "date_display": "Jan 31, 2026",
+      "weekday": "Saturday",
+      "days_until": 8,
+      "is_public": false,
+      "event": {
+        "type": "Phase 3",
+        "description": "Phase 3",
+        "drug_name": null,
+        "indication": null
+      },
+      "risk": {
+        "level": "MEDIUM-HIGH",
+        "color": "orange",
+        "note": "Pivotal data - significant move likely"
+      },
+      "designations": [
+        {
+          "code": "FIC",
+          "label": "First-in-Class",
+          "color": "gold"
+        }
+      ],
+      "company": {
+        "mcap_millions": 1010.0,
+        "short_interest_pct": null
+      },
+      "analysis": {
+        "cont_score": null,
+        "play_type": null,
+        "is_leap_play": false,
+        "estimated_pdufa": null,
+        "data_completeness": null
+      },
+      "meta": {
+        "has_position": false,
+        "research_available": true
+      }
+    },
+    {
+      "ticker": "RGNX",
+      "date": "2026-02-08",
+      "date_display": "Feb 08, 2026",
+      "weekday": "Sunday",
+      "days_until": 16,
+      "is_public": false,
+      "event": {
+        "type": "PDUFA",
+        "description": "PDUFA Approval decision",
+        "drug_name": null,
+        "indication": null
+      },
+      "risk": {
+        "level": "HIGH",
+        "color": "red",
+        "note": "FDA decision - binary outcome"
+      },
+      "designations": [
+        {
+          "code": "ORPHAN",
+          "label": "Orphan Drug",
+          "color": "purple"
+        },
+        {
+          "code": "FT",
+          "label": "Fast Track",
+          "color": "blue"
+        },
+        {
+          "code": "PR",
+          "label": "Priority Review",
+          "color": "orange"
+        },
+        {
+          "code": "AA",
+          "label": "Accelerated Approval",
+          "color": "yellow"
+        },
+        {
+          "code": "RMAT",
+          "label": "RMAT",
+          "color": "teal"
+        },
+        {
+          "code": "FIC",
+          "label": "First-in-Class",
+          "color": "gold"
+        },
+        {
+          "code": "BIC",
+          "label": "Best-in-Class",
+          "color": "gold"
+        },
+        {
+          "code": "UMN",
+          "label": "Unmet Medical Need",
+          "color": "red"
+        }
+      ],
+      "company": {
+        "mcap_millions": 715.0,
+        "short_interest_pct": null
+      },
+      "analysis": {
+        "cont_score": 65,
+        "play_type": "Standard",
+        "is_leap_play": false,
+        "estimated_pdufa": null,
+        "data_completeness": 89.3
+      },
+      "meta": {
+        "has_position": true,
+        "research_available": true
+      }
+    },
+    {
+      "ticker": "VNDA",
+      "date": "2026-02-21",
+      "date_display": "Feb 21, 2026",
+      "weekday": "Saturday",
+      "days_until": 29,
+      "is_public": false,
+      "event": {
+        "type": "PDUFA",
+        "description": "PDUFA Approval decision",
+        "drug_name": null,
+        "indication": null
+      },
+      "risk": {
+        "level": "HIGH",
+        "color": "red",
+        "note": "FDA decision - binary outcome"
+      },
+      "designations": [],
+      "company": {
+        "mcap_millions": 456.0,
+        "short_interest_pct": 7.88
+      },
+      "analysis": {
+        "cont_score": 72,
+        "play_type": "LEAP",
+        "is_leap_play": false,
+        "estimated_pdufa": null,
+        "data_completeness": 100.0
+      },
+      "meta": {
+        "has_position": true,
+        "research_available": true
+      }
+    },
+    {
+      "ticker": "GOSS",
+      "date": "2026-02-28",
+      "date_display": "Feb 28, 2026",
+      "weekday": "Saturday",
+      "days_until": 36,
+      "is_public": false,
+      "event": {
+        "type": "Phase 3",
+        "description": "Phase 3 Data",
+        "drug_name": "Seralutinib (GB002)",
+        "indication": "Pulmonary Arterial Hypertension (PAH)"
+      },
+      "risk": {
+        "level": "MEDIUM-HIGH",
+        "color": "orange",
+        "note": "Pivotal data - significant move likely"
+      },
+      "designations": [
+        {
+          "code": "ORPHAN",
+          "label": "Orphan Drug",
+          "color": "purple"
+        },
+        {
+          "code": "FIC",
+          "label": "First-in-Class",
+          "color": "gold"
+        },
+        {
+          "code": "UMN",
+          "label": "Unmet Medical Need",
+          "color": "red"
+        }
+      ],
+      "company": {
+        "mcap_millions": 590.0,
+        "short_interest_pct": 3.6
+      },
+      "analysis": {
+        "cont_score": 60,
+        "play_type": "LEAP",
+        "is_leap_play": false,
+        "estimated_pdufa": null,
+        "data_completeness": 96.4
+      },
+      "meta": {
+        "has_position": true,
+        "research_available": true
+      }
+    },
+    {
+      "ticker": "LNTH",
+      "date": "2026-03-06",
+      "date_display": "Mar 06, 2026",
+      "weekday": "Friday",
+      "days_until": 42,
+      "is_public": false,
+      "event": {
+        "type": "PDUFA",
+        "description": "PDUFA Approval decision",
+        "drug_name": "PYLARIFY (Piflufolastat F 18)",
+        "indication": "PSMA PET Imaging Agent in Prostate cancer"
+      },
+      "risk": {
+        "level": "HIGH",
+        "color": "red",
+        "note": "FDA decision - binary outcome"
+      },
+      "designations": [],
+      "company": {
+        "mcap_millions": 4340.0,
+        "short_interest_pct": 8.89
+      },
+      "analysis": {
+        "cont_score": null,
+        "play_type": null,
+        "is_leap_play": false,
+        "estimated_pdufa": null,
+        "data_completeness": 96.4
+      },
+      "meta": {
+        "has_position": false,
+        "research_available": true
+      }
+    },
+    {
+      "ticker": "IMMP",
+      "date": "2026-03-31",
+      "date_display": "Mar 31, 2026",
+      "weekday": "Tuesday",
+      "days_until": 67,
+      "is_public": false,
+      "event": {
+        "type": "Phase 3",
+        "description": "Phase 3 Data readout",
+        "drug_name": "Eftilagimod alfa (efti) + Keytruda",
+        "indication": "Non-small cell lung carcinoma (1L NSCLC)"
+      },
+      "risk": {
+        "level": "MEDIUM-HIGH",
+        "color": "orange",
+        "note": "Pivotal data - significant move likely"
+      },
+      "designations": [
+        {
+          "code": "FT",
+          "label": "Fast Track",
+          "color": "blue"
+        },
+        {
+          "code": "FIC",
+          "label": "First-in-Class",
+          "color": "gold"
+        },
+        {
+          "code": "UMN",
+          "label": "Unmet Medical Need",
+          "color": "red"
+        }
+      ],
+      "company": {
+        "mcap_millions": 447.46,
+        "short_interest_pct": 3.59
+      },
+      "analysis": {
+        "cont_score": 55,
+        "play_type": "Standard",
+        "is_leap_play": false,
+        "estimated_pdufa": null,
+        "data_completeness": 96.4
+      },
+      "meta": {
+        "has_position": true,
+        "research_available": true
+      }
+    },
+    {
+      "ticker": "ARQT",
+      "date": "2026-03-31",
+      "date_display": "Mar 31, 2026",
+      "weekday": "Tuesday",
+      "days_until": 67,
+      "is_public": false,
+      "event": {
+        "type": "Phase 2",
+        "description": "Phase 2 Data readout",
+        "drug_name": "ZORYVE\u00ae (ARQ-151) topical roflumilast cream 0.05%",
+        "indication": "Atopic dermatitis"
+      },
+      "risk": {
+        "level": "MEDIUM",
+        "color": "yellow",
+        "note": "Early efficacy data"
+      },
+      "designations": [
+        {
+          "code": "BIC",
+          "label": "Best-in-Class",
+          "color": "gold"
+        }
+      ],
+      "company": {
+        "mcap_millions": 3498.0,
+        "short_interest_pct": 22.16
+      },
+      "analysis": {
+        "cont_score": null,
+        "play_type": null,
+        "is_leap_play": false,
+        "estimated_pdufa": null,
+        "data_completeness": 96.4
+      },
+      "meta": {
+        "has_position": false,
+        "research_available": true
+      }
+    },
+    {
+      "ticker": "TBPH",
+      "date": "2026-03-31",
+      "date_display": "Mar 31, 2026",
+      "weekday": "Tuesday",
+      "days_until": 67,
+      "is_public": false,
+      "event": {
+        "type": "Phase 3",
+        "description": "Phase 3 Data readout",
+        "drug_name": "Ampreloxetine (TD-9855)",
+        "indication": "Multiple System Atrophy, Neurogenic orthostatic hypotension"
+      },
+      "risk": {
+        "level": "MEDIUM-HIGH",
+        "color": "orange",
+        "note": "Pivotal data - significant move likely"
+      },
+      "designations": [
+        {
+          "code": "ORPHAN",
+          "label": "Orphan Drug",
+          "color": "purple"
+        },
+        {
+          "code": "FIC",
+          "label": "First-in-Class",
+          "color": "gold"
+        },
+        {
+          "code": "BIC",
+          "label": "Best-in-Class",
+          "color": "gold"
+        },
+        {
+          "code": "UMN",
+          "label": "Unmet Medical Need",
+          "color": "red"
+        }
+      ],
+      "company": {
+        "mcap_millions": 965.0,
+        "short_interest_pct": 9.7
+      },
+      "analysis": {
+        "cont_score": null,
+        "play_type": null,
+        "is_leap_play": false,
+        "estimated_pdufa": null,
+        "data_completeness": 100.0
+      },
+      "meta": {
+        "has_position": false,
+        "research_available": true
+      }
+    },
+    {
+      "ticker": "AVBP",
+      "date": "2026-03-31",
+      "date_display": "Mar 31, 2026",
+      "weekday": "Tuesday",
+      "days_until": 67,
+      "is_public": false,
+      "event": {
+        "type": "Phase 3",
+        "description": "Phase 3",
+        "drug_name": null,
+        "indication": null
+      },
+      "risk": {
+        "level": "MEDIUM-HIGH",
+        "color": "orange",
+        "note": "Pivotal data - significant move likely"
+      },
+      "designations": [
+        {
+          "code": "ORPHAN",
+          "label": "Orphan Drug",
+          "color": "purple"
+        },
+        {
+          "code": "BTD",
+          "label": "Breakthrough Therapy",
+          "color": "green"
+        }
+      ],
+      "company": {
+        "mcap_millions": 900.0,
+        "short_interest_pct": null
+      },
+      "analysis": {
+        "cont_score": null,
+        "play_type": null,
+        "is_leap_play": false,
+        "estimated_pdufa": null,
+        "data_completeness": null
+      },
+      "meta": {
+        "has_position": false,
+        "research_available": true
+      }
+    },
+    {
+      "ticker": "KPTI",
+      "date": "2026-03-31",
+      "date_display": "Mar 31, 2026",
+      "weekday": "Tuesday",
+      "days_until": 67,
+      "is_public": false,
+      "event": {
+        "type": "Phase 3",
+        "description": "Phase 3",
+        "drug_name": null,
+        "indication": null
+      },
+      "risk": {
+        "level": "MEDIUM-HIGH",
+        "color": "orange",
+        "note": "Pivotal data - significant move likely"
+      },
+      "designations": [
+        {
+          "code": "ORPHAN",
+          "label": "Orphan Drug",
+          "color": "purple"
+        },
+        {
+          "code": "FIC",
+          "label": "First-in-Class",
+          "color": "gold"
+        }
+      ],
+      "company": {
+        "mcap_millions": 145.0,
+        "short_interest_pct": null
+      },
+      "analysis": {
+        "cont_score": null,
+        "play_type": null,
+        "is_leap_play": false,
+        "estimated_pdufa": null,
+        "data_completeness": null
+      },
+      "meta": {
+        "has_position": false,
+        "research_available": true
+      }
+    },
+    {
+      "ticker": "KOD",
+      "date": "2026-03-31",
+      "date_display": "Mar 31, 2026",
+      "weekday": "Tuesday",
+      "days_until": 67,
+      "is_public": false,
+      "event": {
+        "type": "Phase 3",
+        "description": "Phase 3 Data readout",
+        "drug_name": "Tarcocimab (KSI-301) (anti-VEGF)",
+        "indication": "Non-proliferative diabetic retinopathy"
+      },
+      "risk": {
+        "level": "MEDIUM-HIGH",
+        "color": "orange",
+        "note": "Pivotal data - significant move likely"
+      },
+      "designations": [
+        {
+          "code": "FIC",
+          "label": "First-in-Class",
+          "color": "gold"
+        },
+        {
+          "code": "UMN",
+          "label": "Unmet Medical Need",
+          "color": "red"
+        }
+      ],
+      "company": {
+        "mcap_millions": 1650.0,
+        "short_interest_pct": 21.9
+      },
+      "analysis": {
+        "cont_score": null,
+        "play_type": null,
+        "is_leap_play": false,
+        "estimated_pdufa": null,
+        "data_completeness": 100.0
+      },
+      "meta": {
+        "has_position": false,
+        "research_available": true
+      }
+    },
+    {
+      "ticker": "KPTI",
+      "date": "2026-03-31",
+      "date_display": "Mar 31, 2026",
+      "weekday": "Tuesday",
+      "days_until": 67,
+      "is_public": false,
+      "event": {
+        "type": "Phase 3",
+        "description": "Phase 3 Data readout",
+        "drug_name": "XPOVIO (Selinexor) (XPO1 inhibitor) + ruxolitinib",
+        "indication": "Myelofibrosis"
+      },
+      "risk": {
+        "level": "MEDIUM-HIGH",
+        "color": "orange",
+        "note": "Pivotal data - significant move likely"
+      },
+      "designations": [
+        {
+          "code": "ORPHAN",
+          "label": "Orphan Drug",
+          "color": "purple"
+        },
+        {
+          "code": "FT",
+          "label": "Fast Track",
+          "color": "blue"
+        },
+        {
+          "code": "FIC",
+          "label": "First-in-Class",
+          "color": "gold"
+        },
+        {
+          "code": "UMN",
+          "label": "Unmet Medical Need",
+          "color": "red"
+        }
+      ],
+      "company": {
+        "mcap_millions": 115.54,
+        "short_interest_pct": 19.0
+      },
+      "analysis": {
+        "cont_score": null,
+        "play_type": null,
+        "is_leap_play": false,
+        "estimated_pdufa": null,
+        "data_completeness": 100.0
+      },
+      "meta": {
+        "has_position": false,
+        "research_available": true
+      }
+    },
+    {
+      "ticker": "ARGX",
+      "date": "2026-03-31",
+      "date_display": "Mar 31, 2026",
+      "weekday": "Tuesday",
+      "days_until": 67,
+      "is_public": false,
+      "event": {
+        "type": "Phase 3",
+        "description": "Phase 3 Data readout",
+        "drug_name": "VYVGART/Efgartigimod (ARGX-113) (FcRn Blocker)",
+        "indication": "Ocular Myasthenia Gravis"
+      },
+      "risk": {
+        "level": "MEDIUM-HIGH",
+        "color": "orange",
+        "note": "Pivotal data - significant move likely"
+      },
+      "designations": [
+        {
+          "code": "FIC",
+          "label": "First-in-Class",
+          "color": "gold"
+        },
+        {
+          "code": "BIC",
+          "label": "Best-in-Class",
+          "color": "gold"
+        },
+        {
+          "code": "UMN",
+          "label": "Unmet Medical Need",
+          "color": "red"
+        }
+      ],
+      "company": {
+        "mcap_millions": 49500.0,
+        "short_interest_pct": 3.68
+      },
+      "analysis": {
+        "cont_score": null,
+        "play_type": null,
+        "is_leap_play": false,
+        "estimated_pdufa": null,
+        "data_completeness": 96.4
+      },
+      "meta": {
+        "has_position": false,
+        "research_available": true
+      }
+    },
+    {
+      "ticker": "DNLI",
+      "date": "2026-04-05",
+      "date_display": "Apr 05, 2026",
+      "weekday": "Sunday",
+      "days_until": 72,
+      "is_public": false,
+      "event": {
+        "type": "PDUFA",
+        "description": "PDUFA Approval decision",
+        "drug_name": "DNL310 (tividenofusp alfa)",
+        "indication": "Hunter syndrome MPS II"
+      },
+      "risk": {
+        "level": "HIGH",
+        "color": "red",
+        "note": "FDA decision - binary outcome"
+      },
+      "designations": [
+        {
+          "code": "ORPHAN",
+          "label": "Orphan Drug",
+          "color": "purple"
+        },
+        {
+          "code": "FT",
+          "label": "Fast Track",
+          "color": "blue"
+        },
+        {
+          "code": "BTD",
+          "label": "Breakthrough Therapy",
+          "color": "green"
+        },
+        {
+          "code": "PR",
+          "label": "Priority Review",
+          "color": "orange"
+        },
+        {
+          "code": "AA",
+          "label": "Accelerated Approval",
+          "color": "yellow"
+        },
+        {
+          "code": "FIC",
+          "label": "First-in-Class",
+          "color": "gold"
+        },
+        {
+          "code": "BIC",
+          "label": "Best-in-Class",
+          "color": "gold"
+        },
+        {
+          "code": "UMN",
+          "label": "Unmet Medical Need",
+          "color": "red"
+        }
+      ],
+      "company": {
+        "mcap_millions": 2540.0,
+        "short_interest_pct": 4.5
+      },
+      "analysis": {
+        "cont_score": null,
+        "play_type": null,
+        "is_leap_play": false,
+        "estimated_pdufa": null,
+        "data_completeness": 100.0
+      },
+      "meta": {
+        "has_position": false,
+        "research_available": true
+      }
+    },
+    {
+      "ticker": "MESO",
+      "date": "2026-04-30",
+      "date_display": "Apr 30, 2026",
+      "weekday": "Thursday",
+      "days_until": 97,
+      "is_public": false,
+      "event": {
+        "type": "Phase 3",
+        "description": "Phase 3 Update",
+        "drug_name": "Rexlemestrocel",
+        "indication": "Chronic lower back pain (CLBP)"
+      },
+      "risk": {
+        "level": "MEDIUM-HIGH",
+        "color": "orange",
+        "note": "Pivotal data - significant move likely"
+      },
+      "designations": [
+        {
+          "code": "FT",
+          "label": "Fast Track",
+          "color": "blue"
+        },
+        {
+          "code": "PR",
+          "label": "Priority Review",
+          "color": "orange"
+        },
+        {
+          "code": "RMAT",
+          "label": "RMAT",
+          "color": "teal"
+        },
+        {
+          "code": "FIC",
+          "label": "First-in-Class",
+          "color": "gold"
+        },
+        {
+          "code": "BIC",
+          "label": "Best-in-Class",
+          "color": "gold"
+        },
+        {
+          "code": "UMN",
+          "label": "Unmet Medical Need",
+          "color": "red"
+        }
+      ],
+      "company": {
+        "mcap_millions": 2380.0,
+        "short_interest_pct": 1.58
+      },
+      "analysis": {
+        "cont_score": null,
+        "play_type": null,
+        "is_leap_play": false,
+        "estimated_pdufa": null,
+        "data_completeness": 100.0
+      },
+      "meta": {
+        "has_position": false,
+        "research_available": true
+      }
+    },
+    {
+      "ticker": "MNKD",
+      "date": "2026-05-29",
+      "date_display": "May 29, 2026",
+      "weekday": "Friday",
+      "days_until": 126,
+      "is_public": false,
+      "event": {
+        "type": "PDUFA",
+        "description": "PDUFA Approval decision",
+        "drug_name": null,
+        "indication": null
+      },
+      "risk": {
+        "level": "HIGH",
+        "color": "red",
+        "note": "FDA decision - binary outcome"
+      },
+      "designations": [
+        {
+          "code": "FIC",
+          "label": "First-in-Class",
+          "color": "gold"
+        }
+      ],
+      "company": {
+        "mcap_millions": 1650.0,
+        "short_interest_pct": 8.6
+      },
+      "analysis": {
+        "cont_score": 75,
+        "play_type": "LEAP",
+        "is_leap_play": false,
+        "estimated_pdufa": null,
+        "data_completeness": 100.0
+      },
+      "meta": {
+        "has_position": true,
+        "research_available": true
+      }
+    },
+    {
+      "ticker": "ACHV",
+      "date": "2026-06-20",
+      "date_display": "Jun 20, 2026",
+      "weekday": "Saturday",
+      "days_until": 148,
+      "is_public": false,
+      "event": {
+        "type": "PDUFA",
+        "description": "PDUFA Approval decision",
+        "drug_name": "Cytisinicline",
+        "indication": "Smoking cessation"
+      },
+      "risk": {
+        "level": "HIGH",
+        "color": "red",
+        "note": "FDA decision - binary outcome"
+      },
+      "designations": [
+        {
+          "code": "BTD",
+          "label": "Breakthrough Therapy",
+          "color": "green"
+        },
+        {
+          "code": "FIC",
+          "label": "First-in-Class",
+          "color": "gold"
+        },
+        {
+          "code": "BIC",
+          "label": "Best-in-Class",
+          "color": "gold"
+        }
+      ],
+      "company": {
+        "mcap_millions": 290.0,
+        "short_interest_pct": null
+      },
+      "analysis": {
+        "cont_score": 55,
+        "play_type": "LEAP",
+        "is_leap_play": false,
+        "estimated_pdufa": null,
+        "data_completeness": 92.9
+      },
+      "meta": {
+        "has_position": true,
+        "research_available": true
+      }
+    },
+    {
+      "ticker": "CRMD",
+      "date": "2026-06-30",
+      "date_display": "Jun 30, 2026",
+      "weekday": "Tuesday",
+      "days_until": 158,
+      "is_public": false,
+      "event": {
+        "type": "Phase 3",
+        "description": "Phase 3 Data readout",
+        "drug_name": "REZZAYO (rezafungin)",
+        "indication": "Prophylaxis of Fungal Infections"
+      },
+      "risk": {
+        "level": "MEDIUM-HIGH",
+        "color": "orange",
+        "note": "Pivotal data - significant move likely"
+      },
+      "designations": [
+        {
+          "code": "ORPHAN",
+          "label": "Orphan Drug",
+          "color": "purple"
+        },
+        {
+          "code": "FT",
+          "label": "Fast Track",
+          "color": "blue"
+        },
+        {
+          "code": "UMN",
+          "label": "Unmet Medical Need",
+          "color": "red"
+        }
+      ],
+      "company": {
+        "mcap_millions": 530.81,
+        "short_interest_pct": 21.63
+      },
+      "analysis": {
+        "cont_score": 90,
+        "play_type": "LEAP",
+        "is_leap_play": false,
+        "estimated_pdufa": null,
+        "data_completeness": 62.5
+      },
+      "meta": {
+        "has_position": true,
+        "research_available": true
+      }
+    },
+    {
+      "ticker": "MIRM",
+      "date": "2026-06-30",
+      "date_display": "Jun 30, 2026",
+      "weekday": "Tuesday",
+      "days_until": 158,
+      "is_public": false,
+      "event": {
+        "type": "Phase 3",
+        "description": "Phase 3 Interim Update",
+        "drug_name": "Brelovitug (Monoclonal Antibody)",
+        "indication": "Chronic Hepatitis Delta Virus (HDV)"
+      },
+      "risk": {
+        "level": "MEDIUM-HIGH",
+        "color": "orange",
+        "note": "Pivotal data - significant move likely"
+      },
+      "designations": [
+        {
+          "code": "ORPHAN",
+          "label": "Orphan Drug",
+          "color": "purple"
+        },
+        {
+          "code": "BTD",
+          "label": "Breakthrough Therapy",
+          "color": "green"
+        },
+        {
+          "code": "UMN",
+          "label": "Unmet Medical Need",
+          "color": "red"
+        }
+      ],
+      "company": {
+        "mcap_millions": 4740.0,
+        "short_interest_pct": null
+      },
+      "analysis": {
+        "cont_score": null,
+        "play_type": null,
+        "is_leap_play": false,
+        "estimated_pdufa": null,
+        "data_completeness": 89.3
+      },
+      "meta": {
+        "has_position": false,
+        "research_available": true
+      }
+    },
+    {
+      "ticker": "ARWR",
+      "date": "2026-06-30",
+      "date_display": "Jun 30, 2026",
+      "weekday": "Tuesday",
+      "days_until": 158,
+      "is_public": false,
+      "event": {
+        "type": "Phase 3",
+        "description": "Phase 3",
+        "drug_name": null,
+        "indication": null
+      },
+      "risk": {
+        "level": "MEDIUM-HIGH",
+        "color": "orange",
+        "note": "Pivotal data - significant move likely"
+      },
+      "designations": [
+        {
+          "code": "BTD",
+          "label": "Breakthrough Therapy",
+          "color": "green"
+        },
+        {
+          "code": "FIC",
+          "label": "First-in-Class",
+          "color": "gold"
+        }
+      ],
+      "company": {
+        "mcap_millions": 9000.0,
+        "short_interest_pct": null
+      },
+      "analysis": {
+        "cont_score": null,
+        "play_type": null,
+        "is_leap_play": false,
+        "estimated_pdufa": null,
+        "data_completeness": null
+      },
+      "meta": {
+        "has_position": false,
+        "research_available": true
+      }
+    },
+    {
+      "ticker": "ATAI",
+      "date": "2026-06-30",
+      "date_display": "Jun 30, 2026",
+      "weekday": "Tuesday",
+      "days_until": 158,
+      "is_public": false,
+      "event": {
+        "type": "Phase 3",
+        "description": "Phase 3",
+        "drug_name": null,
+        "indication": null
+      },
+      "risk": {
+        "level": "MEDIUM-HIGH",
+        "color": "orange",
+        "note": "Pivotal data - significant move likely"
+      },
+      "designations": [
+        {
+          "code": "BTD",
+          "label": "Breakthrough Therapy",
+          "color": "green"
+        },
+        {
+          "code": "FIC",
+          "label": "First-in-Class",
+          "color": "gold"
+        }
+      ],
+      "company": {
+        "mcap_millions": 1350.0,
+        "short_interest_pct": null
+      },
+      "analysis": {
+        "cont_score": null,
+        "play_type": null,
+        "is_leap_play": false,
+        "estimated_pdufa": null,
+        "data_completeness": null
+      },
+      "meta": {
+        "has_position": false,
+        "research_available": true
+      }
+    },
+    {
+      "ticker": "AVDL",
+      "date": "2026-06-30",
+      "date_display": "Jun 30, 2026",
+      "weekday": "Tuesday",
+      "days_until": 158,
+      "is_public": false,
+      "event": {
+        "type": "Phase 3",
+        "description": "Phase 3",
+        "drug_name": null,
+        "indication": null
+      },
+      "risk": {
+        "level": "MEDIUM-HIGH",
+        "color": "orange",
+        "note": "Pivotal data - significant move likely"
+      },
+      "designations": [
+        {
+          "code": "ORPHAN",
+          "label": "Orphan Drug",
+          "color": "purple"
+        }
+      ],
+      "company": {
+        "mcap_millions": 2090.0,
+        "short_interest_pct": null
+      },
+      "analysis": {
+        "cont_score": null,
+        "play_type": null,
+        "is_leap_play": false,
+        "estimated_pdufa": null,
+        "data_completeness": null
+      },
+      "meta": {
+        "has_position": false,
+        "research_available": true
+      }
+    },
+    {
+      "ticker": "IPHA",
+      "date": "2026-06-30",
+      "date_display": "Jun 30, 2026",
+      "weekday": "Tuesday",
+      "days_until": 158,
+      "is_public": false,
+      "event": {
+        "type": "Phase 3",
+        "description": "Phase 3",
+        "drug_name": null,
+        "indication": null
+      },
+      "risk": {
+        "level": "MEDIUM-HIGH",
+        "color": "orange",
+        "note": "Pivotal data - significant move likely"
+      },
+      "designations": [
+        {
+          "code": "ORPHAN",
+          "label": "Orphan Drug",
+          "color": "purple"
+        },
+        {
+          "code": "BTD",
+          "label": "Breakthrough Therapy",
+          "color": "green"
+        },
+        {
+          "code": "FIC",
+          "label": "First-in-Class",
+          "color": "gold"
+        }
+      ],
+      "company": {
+        "mcap_millions": 165.0,
+        "short_interest_pct": null
+      },
+      "analysis": {
+        "cont_score": null,
+        "play_type": null,
+        "is_leap_play": false,
+        "estimated_pdufa": null,
+        "data_completeness": null
+      },
+      "meta": {
+        "has_position": false,
+        "research_available": true
+      }
+    },
+    {
+      "ticker": "RNA",
+      "date": "2026-06-30",
+      "date_display": "Jun 30, 2026",
+      "weekday": "Tuesday",
+      "days_until": 158,
+      "is_public": false,
+      "event": {
+        "type": "Phase 3",
+        "description": "Phase 3",
+        "drug_name": null,
+        "indication": null
+      },
+      "risk": {
+        "level": "MEDIUM-HIGH",
+        "color": "orange",
+        "note": "Pivotal data - significant move likely"
+      },
+      "designations": [
+        {
+          "code": "ORPHAN",
+          "label": "Orphan Drug",
+          "color": "purple"
+        },
+        {
+          "code": "BTD",
+          "label": "Breakthrough Therapy",
+          "color": "green"
+        },
+        {
+          "code": "FIC",
+          "label": "First-in-Class",
+          "color": "gold"
+        },
+        {
+          "code": "UMN",
+          "label": "Unmet Medical Need",
+          "color": "red"
+        }
+      ],
+      "company": {
+        "mcap_millions": 10860.0,
+        "short_interest_pct": null
+      },
+      "analysis": {
+        "cont_score": null,
+        "play_type": null,
+        "is_leap_play": false,
+        "estimated_pdufa": null,
+        "data_completeness": null
+      },
+      "meta": {
+        "has_position": false,
+        "research_available": true
+      }
+    },
+    {
+      "ticker": "IONS",
+      "date": "2026-06-30",
+      "date_display": "Jun 30, 2026",
+      "weekday": "Tuesday",
+      "days_until": 158,
+      "is_public": false,
+      "event": {
+        "type": "Phase 3",
+        "description": "Phase 3 Data readout",
+        "drug_name": "Pelacarsen",
+        "indication": "Heart disease, Cardiovascular disease"
+      },
+      "risk": {
+        "level": "MEDIUM-HIGH",
+        "color": "orange",
+        "note": "Pivotal data - significant move likely"
+      },
+      "designations": [
+        {
+          "code": "FIC",
+          "label": "First-in-Class",
+          "color": "gold"
+        },
+        {
+          "code": "BIC",
+          "label": "Best-in-Class",
+          "color": "gold"
+        },
+        {
+          "code": "UMN",
+          "label": "Unmet Medical Need",
+          "color": "red"
+        }
+      ],
+      "company": {
+        "mcap_millions": 13250.0,
+        "short_interest_pct": 6.59
+      },
+      "analysis": {
+        "cont_score": null,
+        "play_type": null,
+        "is_leap_play": false,
+        "estimated_pdufa": null,
+        "data_completeness": 92.9
+      },
+      "meta": {
+        "has_position": false,
+        "research_available": true
+      }
+    },
+    {
+      "ticker": "LLY",
+      "date": "2026-06-30",
+      "date_display": "Jun 30, 2026",
+      "weekday": "Tuesday",
+      "days_until": 158,
+      "is_public": false,
+      "event": {
+        "type": "Phase 3",
+        "description": "Phase 3 Data readout",
+        "drug_name": "Taltz + Zepbound (Combination Therapy)",
+        "indication": "Plaque Psoriasis With Obesity Or Overweight"
+      },
+      "risk": {
+        "level": "MEDIUM-HIGH",
+        "color": "orange",
+        "note": "Pivotal data - significant move likely"
+      },
+      "designations": [],
+      "company": {
+        "mcap_millions": null,
+        "short_interest_pct": null
+      },
+      "analysis": {
+        "cont_score": null,
+        "play_type": null,
+        "is_leap_play": false,
+        "estimated_pdufa": null,
+        "data_completeness": 0.0
+      },
+      "meta": {
+        "has_position": false,
+        "research_available": false
+      }
+    },
+    {
+      "ticker": "ARWR",
+      "date": "2026-08-15",
+      "date_display": "Aug 15, 2026",
+      "weekday": "Saturday",
+      "days_until": 204,
+      "is_public": false,
+      "event": {
+        "type": "Phase 3",
+        "description": "Phase 3 Data readout",
+        "drug_name": "Plozasiran (ARO-APOC3)",
+        "indication": "Severe hypertriglyceridemia"
+      },
+      "risk": {
+        "level": "MEDIUM-HIGH",
+        "color": "orange",
+        "note": "Pivotal data - significant move likely"
+      },
+      "designations": [
+        {
+          "code": "ORPHAN",
+          "label": "Orphan Drug",
+          "color": "purple"
+        },
+        {
+          "code": "FT",
+          "label": "Fast Track",
+          "color": "blue"
+        },
+        {
+          "code": "BTD",
+          "label": "Breakthrough Therapy",
+          "color": "green"
+        },
+        {
+          "code": "FIC",
+          "label": "First-in-Class",
+          "color": "gold"
+        },
+        {
+          "code": "BIC",
+          "label": "Best-in-Class",
+          "color": "gold"
+        },
+        {
+          "code": "UMN",
+          "label": "Unmet Medical Need",
+          "color": "red"
+        }
+      ],
+      "company": {
+        "mcap_millions": 9180.0,
+        "short_interest_pct": null
+      },
+      "analysis": {
+        "cont_score": null,
+        "play_type": null,
+        "is_leap_play": false,
+        "estimated_pdufa": null,
+        "data_completeness": 92.9
+      },
+      "meta": {
+        "has_position": false,
+        "research_available": true
+      }
+    },
+    {
+      "ticker": "KPTI",
+      "date": "2026-08-15",
+      "date_display": "Aug 15, 2026",
+      "weekday": "Saturday",
+      "days_until": 204,
+      "is_public": false,
+      "event": {
+        "type": "Phase 3",
+        "description": "Phase 3 Data readout",
+        "drug_name": "XPOVIO (Selinexor) (XPO1 inhibitor)",
+        "indication": "Endometrial cancer"
+      },
+      "risk": {
+        "level": "MEDIUM-HIGH",
+        "color": "orange",
+        "note": "Pivotal data - significant move likely"
+      },
+      "designations": [
+        {
+          "code": "BIC",
+          "label": "Best-in-Class",
+          "color": "gold"
+        }
+      ],
+      "company": {
+        "mcap_millions": 115.5,
+        "short_interest_pct": 16.7
+      },
+      "analysis": {
+        "cont_score": null,
+        "play_type": null,
+        "is_leap_play": false,
+        "estimated_pdufa": null,
+        "data_completeness": 89.3
+      },
+      "meta": {
+        "has_position": false,
+        "research_available": true
+      }
+    },
+    {
+      "ticker": "KOD",
+      "date": "2026-09-30",
+      "date_display": "Sep 30, 2026",
+      "weekday": "Wednesday",
+      "days_until": 250,
+      "is_public": false,
+      "event": {
+        "type": "Phase 3",
+        "description": "Phase 3 Data readout",
+        "drug_name": "Tarcocimab (KSI-301) (anti-VEGF)",
+        "indication": "Non-proliferative diabetic retinopathy"
+      },
+      "risk": {
+        "level": "MEDIUM-HIGH",
+        "color": "orange",
+        "note": "Pivotal data - significant move likely"
+      },
+      "designations": [
+        {
+          "code": "FIC",
+          "label": "First-in-Class",
+          "color": "gold"
+        }
+      ],
+      "company": {
+        "mcap_millions": 1500.0,
+        "short_interest_pct": 21.9
+      },
+      "analysis": {
+        "cont_score": null,
+        "play_type": null,
+        "is_leap_play": false,
+        "estimated_pdufa": null,
+        "data_completeness": 100.0
+      },
+      "meta": {
+        "has_position": false,
+        "research_available": true
+      }
+    },
+    {
+      "ticker": "AARD",
+      "date": "2026-09-30",
+      "date_display": "Sep 30, 2026",
+      "weekday": "Wednesday",
+      "days_until": 250,
+      "is_public": false,
+      "event": {
+        "type": "Phase 3",
+        "description": "Phase 3",
+        "drug_name": null,
+        "indication": null
+      },
+      "risk": {
+        "level": "MEDIUM-HIGH",
+        "color": "orange",
+        "note": "Pivotal data - significant move likely"
+      },
+      "designations": [
+        {
+          "code": "ORPHAN",
+          "label": "Orphan Drug",
+          "color": "purple"
+        },
+        {
+          "code": "FIC",
+          "label": "First-in-Class",
+          "color": "gold"
+        }
+      ],
+      "company": {
+        "mcap_millions": 335.0,
+        "short_interest_pct": null
+      },
+      "analysis": {
+        "cont_score": null,
+        "play_type": null,
+        "is_leap_play": false,
+        "estimated_pdufa": null,
+        "data_completeness": null
+      },
+      "meta": {
+        "has_position": false,
+        "research_available": true
+      }
+    },
+    {
+      "ticker": "GERN",
+      "date": "2026-09-30",
+      "date_display": "Sep 30, 2026",
+      "weekday": "Wednesday",
+      "days_until": 250,
+      "is_public": false,
+      "event": {
+        "type": "Phase 3",
+        "description": "Phase 3",
+        "drug_name": null,
+        "indication": null
+      },
+      "risk": {
+        "level": "MEDIUM-HIGH",
+        "color": "orange",
+        "note": "Pivotal data - significant move likely"
+      },
+      "designations": [
+        {
+          "code": "ORPHAN",
+          "label": "Orphan Drug",
+          "color": "purple"
+        },
+        {
+          "code": "FIC",
+          "label": "First-in-Class",
+          "color": "gold"
+        }
+      ],
+      "company": {
+        "mcap_millions": 830.0,
+        "short_interest_pct": null
+      },
+      "analysis": {
+        "cont_score": null,
+        "play_type": null,
+        "is_leap_play": false,
+        "estimated_pdufa": null,
+        "data_completeness": null
+      },
+      "meta": {
+        "has_position": false,
+        "research_available": true
+      }
+    },
+    {
+      "ticker": "GNLX",
+      "date": "2026-09-30",
+      "date_display": "Sep 30, 2026",
+      "weekday": "Wednesday",
+      "days_until": 250,
+      "is_public": false,
+      "event": {
+        "type": "Phase 3",
+        "description": "Phase 3",
+        "drug_name": null,
+        "indication": null
+      },
+      "risk": {
+        "level": "MEDIUM-HIGH",
+        "color": "orange",
+        "note": "Pivotal data - significant move likely"
+      },
+      "designations": [
+        {
+          "code": "ORPHAN",
+          "label": "Orphan Drug",
+          "color": "purple"
+        },
+        {
+          "code": "FIC",
+          "label": "First-in-Class",
+          "color": "gold"
+        },
+        {
+          "code": "UMN",
+          "label": "Unmet Medical Need",
+          "color": "red"
+        }
+      ],
+      "company": {
+        "mcap_millions": 114.0,
+        "short_interest_pct": null
+      },
+      "analysis": {
+        "cont_score": null,
+        "play_type": null,
+        "is_leap_play": false,
+        "estimated_pdufa": null,
+        "data_completeness": null
+      },
+      "meta": {
+        "has_position": false,
+        "research_available": true
+      }
+    },
+    {
+      "ticker": "IMCR",
+      "date": "2026-09-30",
+      "date_display": "Sep 30, 2026",
+      "weekday": "Wednesday",
+      "days_until": 250,
+      "is_public": false,
+      "event": {
+        "type": "Phase 3",
+        "description": "Phase 3",
+        "drug_name": null,
+        "indication": null
+      },
+      "risk": {
+        "level": "MEDIUM-HIGH",
+        "color": "orange",
+        "note": "Pivotal data - significant move likely"
+      },
+      "designations": [
+        {
+          "code": "ORPHAN",
+          "label": "Orphan Drug",
+          "color": "purple"
+        },
+        {
+          "code": "BTD",
+          "label": "Breakthrough Therapy",
+          "color": "green"
+        },
+        {
+          "code": "FIC",
+          "label": "First-in-Class",
+          "color": "gold"
+        }
+      ],
+      "company": {
+        "mcap_millions": 1720.0,
+        "short_interest_pct": null
+      },
+      "analysis": {
+        "cont_score": null,
+        "play_type": null,
+        "is_leap_play": false,
+        "estimated_pdufa": null,
+        "data_completeness": null
+      },
+      "meta": {
+        "has_position": false,
+        "research_available": true
+      }
+    },
+    {
+      "ticker": "IVA",
+      "date": "2026-09-30",
+      "date_display": "Sep 30, 2026",
+      "weekday": "Wednesday",
+      "days_until": 250,
+      "is_public": false,
+      "event": {
+        "type": "Phase 3",
+        "description": "Phase 3",
+        "drug_name": null,
+        "indication": null
+      },
+      "risk": {
+        "level": "MEDIUM-HIGH",
+        "color": "orange",
+        "note": "Pivotal data - significant move likely"
+      },
+      "designations": [
+        {
+          "code": "BTD",
+          "label": "Breakthrough Therapy",
+          "color": "green"
+        },
+        {
+          "code": "FIC",
+          "label": "First-in-Class",
+          "color": "gold"
+        }
+      ],
+      "company": {
+        "mcap_millions": 850.0,
+        "short_interest_pct": null
+      },
+      "analysis": {
+        "cont_score": null,
+        "play_type": null,
+        "is_leap_play": false,
+        "estimated_pdufa": null,
+        "data_completeness": null
+      },
+      "meta": {
+        "has_position": false,
+        "research_available": true
+      }
+    },
+    {
+      "ticker": "QNRX",
+      "date": "2026-09-30",
+      "date_display": "Sep 30, 2026",
+      "weekday": "Wednesday",
+      "days_until": 250,
+      "is_public": false,
+      "event": {
+        "type": "Phase 3",
+        "description": "Phase 3",
+        "drug_name": null,
+        "indication": null
+      },
+      "risk": {
+        "level": "MEDIUM-HIGH",
+        "color": "orange",
+        "note": "Pivotal data - significant move likely"
+      },
+      "designations": [
+        {
+          "code": "ORPHAN",
+          "label": "Orphan Drug",
+          "color": "purple"
+        },
+        {
+          "code": "FIC",
+          "label": "First-in-Class",
+          "color": "gold"
+        },
+        {
+          "code": "UMN",
+          "label": "Unmet Medical Need",
+          "color": "red"
+        }
+      ],
+      "company": {
+        "mcap_millions": 16.0,
+        "short_interest_pct": null
+      },
+      "analysis": {
+        "cont_score": null,
+        "play_type": null,
+        "is_leap_play": false,
+        "estimated_pdufa": null,
+        "data_completeness": null
+      },
+      "meta": {
+        "has_position": false,
+        "research_available": true
+      }
+    },
+    {
+      "ticker": "RCUS",
+      "date": "2026-09-30",
+      "date_display": "Sep 30, 2026",
+      "weekday": "Wednesday",
+      "days_until": 250,
+      "is_public": false,
+      "event": {
+        "type": "Phase 3",
+        "description": "Phase 3",
+        "drug_name": null,
+        "indication": null
+      },
+      "risk": {
+        "level": "MEDIUM-HIGH",
+        "color": "orange",
+        "note": "Pivotal data - significant move likely"
+      },
+      "designations": [
+        {
+          "code": "ORPHAN",
+          "label": "Orphan Drug",
+          "color": "purple"
+        },
+        {
+          "code": "FIC",
+          "label": "First-in-Class",
+          "color": "gold"
+        }
+      ],
+      "company": {
+        "mcap_millions": 2350.0,
+        "short_interest_pct": null
+      },
+      "analysis": {
+        "cont_score": null,
+        "play_type": null,
+        "is_leap_play": false,
+        "estimated_pdufa": null,
+        "data_completeness": null
+      },
+      "meta": {
+        "has_position": false,
+        "research_available": true
+      }
+    },
+    {
+      "ticker": "RZLT",
+      "date": "2026-09-30",
+      "date_display": "Sep 30, 2026",
+      "weekday": "Wednesday",
+      "days_until": 250,
+      "is_public": false,
+      "event": {
+        "type": "Phase 3",
+        "description": "Phase 3",
+        "drug_name": null,
+        "indication": null
+      },
+      "risk": {
+        "level": "MEDIUM-HIGH",
+        "color": "orange",
+        "note": "Pivotal data - significant move likely"
+      },
+      "designations": [
+        {
+          "code": "ORPHAN",
+          "label": "Orphan Drug",
+          "color": "purple"
+        },
+        {
+          "code": "BTD",
+          "label": "Breakthrough Therapy",
+          "color": "green"
+        },
+        {
+          "code": "FIC",
+          "label": "First-in-Class",
+          "color": "gold"
+        },
+        {
+          "code": "UMN",
+          "label": "Unmet Medical Need",
+          "color": "red"
+        }
+      ],
+      "company": {
+        "mcap_millions": 180.0,
+        "short_interest_pct": null
+      },
+      "analysis": {
+        "cont_score": null,
+        "play_type": null,
+        "is_leap_play": false,
+        "estimated_pdufa": null,
+        "data_completeness": null
+      },
+      "meta": {
+        "has_position": false,
+        "research_available": true
+      }
+    },
+    {
+      "ticker": "HRMY",
+      "date": "2026-12-31",
+      "date_display": "Dec 31, 2026",
+      "weekday": "Thursday",
+      "days_until": 342,
+      "is_public": false,
+      "event": {
+        "type": "Phase 3",
+        "description": "Phase 3 TEMPO study data readout",
+        "drug_name": "WAKIX\u00ae (pitolisant) ",
+        "indication": "Muscle weakness, Muscle degeneration, Myotonic Dystrophy Type 1"
+      },
+      "risk": {
+        "level": "MEDIUM-HIGH",
+        "color": "orange",
+        "note": "Pivotal data - significant move likely"
+      },
+      "designations": [
+        {
+          "code": "ORPHAN",
+          "label": "Orphan Drug",
+          "color": "purple"
+        },
+        {
+          "code": "FIC",
+          "label": "First-in-Class",
+          "color": "gold"
+        },
+        {
+          "code": "UMN",
+          "label": "Unmet Medical Need",
+          "color": "red"
+        }
+      ],
+      "company": {
+        "mcap_millions": 2117.0,
+        "short_interest_pct": 3.5
+      },
+      "analysis": {
+        "cont_score": null,
+        "play_type": null,
+        "is_leap_play": false,
+        "estimated_pdufa": null,
+        "data_completeness": 50.0
+      },
+      "meta": {
+        "has_position": false,
+        "research_available": false
+      }
+    },
+    {
+      "ticker": "CRVS",
+      "date": "2026-12-31",
+      "date_display": "Dec 31, 2026",
+      "weekday": "Thursday",
+      "days_until": 342,
+      "is_public": false,
+      "event": {
+        "type": "Phase 3",
+        "description": "Phase 3",
+        "drug_name": null,
+        "indication": null
+      },
+      "risk": {
+        "level": "MEDIUM-HIGH",
+        "color": "orange",
+        "note": "Pivotal data - significant move likely"
+      },
+      "designations": [
+        {
+          "code": "ORPHAN",
+          "label": "Orphan Drug",
+          "color": "purple"
+        },
+        {
+          "code": "FIC",
+          "label": "First-in-Class",
+          "color": "gold"
+        },
+        {
+          "code": "UMN",
+          "label": "Unmet Medical Need",
+          "color": "red"
+        }
+      ],
+      "company": {
+        "mcap_millions": 1780.0,
+        "short_interest_pct": null
+      },
+      "analysis": {
+        "cont_score": null,
+        "play_type": null,
+        "is_leap_play": false,
+        "estimated_pdufa": null,
+        "data_completeness": null
+      },
+      "meta": {
+        "has_position": false,
+        "research_available": true
+      }
+    },
+    {
+      "ticker": "FGEN",
+      "date": "2026-12-31",
+      "date_display": "Dec 31, 2026",
+      "weekday": "Thursday",
+      "days_until": 342,
+      "is_public": false,
+      "event": {
+        "type": "Phase 3",
+        "description": "Phase 3",
+        "drug_name": null,
+        "indication": null
+      },
+      "risk": {
+        "level": "MEDIUM-HIGH",
+        "color": "orange",
+        "note": "Pivotal data - significant move likely"
+      },
+      "designations": [
+        {
+          "code": "ORPHAN",
+          "label": "Orphan Drug",
+          "color": "purple"
+        }
+      ],
+      "company": {
+        "mcap_millions": 30.0,
+        "short_interest_pct": null
+      },
+      "analysis": {
+        "cont_score": null,
+        "play_type": null,
+        "is_leap_play": false,
+        "estimated_pdufa": null,
+        "data_completeness": null
+      },
+      "meta": {
+        "has_position": false,
+        "research_available": true
+      }
+    },
+    {
+      "ticker": "RVMD",
+      "date": "2026-12-31",
+      "date_display": "Dec 31, 2026",
+      "weekday": "Thursday",
+      "days_until": 342,
+      "is_public": false,
+      "event": {
+        "type": "Phase 3",
+        "description": "Phase 3",
+        "drug_name": null,
+        "indication": null
+      },
+      "risk": {
+        "level": "MEDIUM-HIGH",
+        "color": "orange",
+        "note": "Pivotal data - significant move likely"
+      },
+      "designations": [
+        {
+          "code": "ORPHAN",
+          "label": "Orphan Drug",
+          "color": "purple"
+        },
+        {
+          "code": "BTD",
+          "label": "Breakthrough Therapy",
+          "color": "green"
+        },
+        {
+          "code": "FIC",
+          "label": "First-in-Class",
+          "color": "gold"
+        }
+      ],
+      "company": {
+        "mcap_millions": 22500.0,
+        "short_interest_pct": null
+      },
+      "analysis": {
+        "cont_score": null,
+        "play_type": null,
+        "is_leap_play": false,
+        "estimated_pdufa": null,
+        "data_completeness": null
+      },
+      "meta": {
+        "has_position": false,
+        "research_available": true
+      }
+    },
+    {
+      "ticker": "XFOR",
+      "date": "2026-12-31",
+      "date_display": "Dec 31, 2026",
+      "weekday": "Thursday",
+      "days_until": 342,
+      "is_public": false,
+      "event": {
+        "type": "Phase 3",
+        "description": "Phase 3",
+        "drug_name": null,
+        "indication": null
+      },
+      "risk": {
+        "level": "MEDIUM-HIGH",
+        "color": "orange",
+        "note": "Pivotal data - significant move likely"
+      },
+      "designations": [
+        {
+          "code": "ORPHAN",
+          "label": "Orphan Drug",
+          "color": "purple"
+        },
+        {
+          "code": "BTD",
+          "label": "Breakthrough Therapy",
+          "color": "green"
+        },
+        {
+          "code": "FIC",
+          "label": "First-in-Class",
+          "color": "gold"
+        }
+      ],
+      "company": {
+        "mcap_millions": 393.0,
+        "short_interest_pct": null
+      },
+      "analysis": {
+        "cont_score": null,
+        "play_type": null,
+        "is_leap_play": false,
+        "estimated_pdufa": null,
+        "data_completeness": null
+      },
+      "meta": {
+        "has_position": false,
+        "research_available": true
+      }
+    },
+    {
+      "ticker": "ZNTL",
+      "date": "2026-12-31",
+      "date_display": "Dec 31, 2026",
+      "weekday": "Thursday",
+      "days_until": 342,
+      "is_public": false,
+      "event": {
+        "type": "Phase 3",
+        "description": "Phase 3",
+        "drug_name": null,
+        "indication": null
+      },
+      "risk": {
+        "level": "MEDIUM-HIGH",
+        "color": "orange",
+        "note": "Pivotal data - significant move likely"
+      },
+      "designations": [
+        {
+          "code": "FIC",
+          "label": "First-in-Class",
+          "color": "gold"
+        }
+      ],
+      "company": {
+        "mcap_millions": 214.0,
+        "short_interest_pct": null
+      },
+      "analysis": {
+        "cont_score": null,
+        "play_type": null,
+        "is_leap_play": false,
+        "estimated_pdufa": null,
+        "data_completeness": null
+      },
+      "meta": {
+        "has_position": false,
+        "research_available": true
+      }
+    },
+    {
+      "ticker": "CRVS",
+      "date": "2026-12-31",
+      "date_display": "Dec 31, 2026",
+      "weekday": "Thursday",
+      "days_until": 342,
+      "is_public": false,
+      "event": {
+        "type": "Phase 3",
+        "description": "Phase 3 Interim Update",
+        "drug_name": "Soquelitinib (CPI-818)",
+        "indication": "Peripheral T-cell Lymphomas"
+      },
+      "risk": {
+        "level": "MEDIUM-HIGH",
+        "color": "orange",
+        "note": "Pivotal data - significant move likely"
+      },
+      "designations": [
+        {
+          "code": "AA",
+          "label": "Accelerated Approval",
+          "color": "yellow"
+        },
+        {
+          "code": "BIC",
+          "label": "Best-in-Class",
+          "color": "gold"
+        }
+      ],
+      "company": {
+        "mcap_millions": 1910.0,
+        "short_interest_pct": 10.34
+      },
+      "analysis": {
+        "cont_score": null,
+        "play_type": null,
+        "is_leap_play": false,
+        "estimated_pdufa": null,
+        "data_completeness": 82.1
+      },
+      "meta": {
+        "has_position": false,
+        "research_available": true
+      }
+    },
+    {
+      "ticker": "BMY",
+      "date": "2026-12-31",
+      "date_display": "Dec 31, 2026",
+      "weekday": "Thursday",
+      "days_until": 342,
+      "is_public": false,
+      "event": {
+        "type": "Phase 3",
+        "description": "Phase 3 Data readout",
+        "drug_name": "KarXT (M1/M4 muscarinic agonist)",
+        "indication": "Schizophrenia, Mental health, Alzheimers disease"
+      },
+      "risk": {
+        "level": "MEDIUM-HIGH",
+        "color": "orange",
+        "note": "Pivotal data - significant move likely"
+      },
+      "designations": [],
+      "company": {
+        "mcap_millions": null,
+        "short_interest_pct": null
+      },
+      "analysis": {
+        "cont_score": null,
+        "play_type": null,
+        "is_leap_play": false,
+        "estimated_pdufa": null,
+        "data_completeness": 0.0
+      },
+      "meta": {
+        "has_position": false,
+        "research_available": false
+      }
+    },
+    {
+      "ticker": "MRNA",
+      "date": "2026-12-31",
+      "date_display": "Dec 31, 2026",
+      "weekday": "Thursday",
+      "days_until": 342,
+      "is_public": false,
+      "event": {
+        "type": "Phase 3",
+        "description": "Phase 3 Data readout",
+        "drug_name": "mRNA-4157/V940 +KEYTRUDA",
+        "indication": "Cancer, Non-small cell lung carcinoma"
+      },
+      "risk": {
+        "level": "MEDIUM-HIGH",
+        "color": "orange",
+        "note": "Pivotal data - significant move likely"
+      },
+      "designations": [],
+      "company": {
+        "mcap_millions": null,
+        "short_interest_pct": null
+      },
+      "analysis": {
+        "cont_score": null,
+        "play_type": null,
+        "is_leap_play": false,
+        "estimated_pdufa": null,
+        "data_completeness": 0.0
+      },
+      "meta": {
+        "has_position": false,
+        "research_available": false
+      }
+    },
+    {
+      "ticker": "RARE",
+      "date": "2026-12-31",
+      "date_display": "Dec 31, 2026",
+      "weekday": "Thursday",
+      "days_until": 342,
+      "is_public": false,
+      "event": {
+        "type": "Phase 3",
+        "description": "Phase 3 Data readout",
+        "drug_name": "GTX-102",
+        "indication": "Angelman Syndrome"
+      },
+      "risk": {
+        "level": "MEDIUM-HIGH",
+        "color": "orange",
+        "note": "Pivotal data - significant move likely"
+      },
+      "designations": [
+        {
+          "code": "ORPHAN",
+          "label": "Orphan Drug",
+          "color": "purple"
+        },
+        {
+          "code": "FT",
+          "label": "Fast Track",
+          "color": "blue"
+        },
+        {
+          "code": "BTD",
+          "label": "Breakthrough Therapy",
+          "color": "green"
+        },
+        {
+          "code": "FIC",
+          "label": "First-in-Class",
+          "color": "gold"
+        },
+        {
+          "code": "BIC",
+          "label": "Best-in-Class",
+          "color": "gold"
+        },
+        {
+          "code": "UMN",
+          "label": "Unmet Medical Need",
+          "color": "red"
+        }
+      ],
+      "company": {
+        "mcap_millions": 2277.0,
+        "short_interest_pct": 9.24
+      },
+      "analysis": {
+        "cont_score": null,
+        "play_type": null,
+        "is_leap_play": false,
+        "estimated_pdufa": null,
+        "data_completeness": 100.0
+      },
+      "meta": {
+        "has_position": false,
+        "research_available": true
+      }
+    },
+    {
+      "ticker": "SMMT",
+      "date": "2026-12-31",
+      "date_display": "Dec 31, 2026",
+      "weekday": "Thursday",
+      "days_until": 342,
+      "is_public": false,
+      "event": {
+        "type": "Phase 3",
+        "description": "Phase 3 Data readout",
+        "drug_name": "Ivonescimab (SMT112)",
+        "indication": "1L Non-small cell lung carcinoma"
+      },
+      "risk": {
+        "level": "MEDIUM-HIGH",
+        "color": "orange",
+        "note": "Pivotal data - significant move likely"
+      },
+      "designations": [
+        {
+          "code": "FT",
+          "label": "Fast Track",
+          "color": "blue"
+        },
+        {
+          "code": "BTD",
+          "label": "Breakthrough Therapy",
+          "color": "green"
+        },
+        {
+          "code": "FIC",
+          "label": "First-in-Class",
+          "color": "gold"
+        },
+        {
+          "code": "BIC",
+          "label": "Best-in-Class",
+          "color": "gold"
+        }
+      ],
+      "company": {
+        "mcap_millions": 14000.0,
+        "short_interest_pct": 30.19
+      },
+      "analysis": {
+        "cont_score": null,
+        "play_type": null,
+        "is_leap_play": false,
+        "estimated_pdufa": null,
+        "data_completeness": 100.0
+      },
+      "meta": {
+        "has_position": false,
+        "research_available": true
+      }
+    },
+    {
+      "ticker": "BLTE",
+      "date": "2027-06-30",
+      "date_display": "Jun 30, 2027",
+      "weekday": "Wednesday",
+      "days_until": 523,
+      "is_public": false,
+      "event": {
+        "type": "Phase 3",
+        "description": "Phase 3",
+        "drug_name": null,
+        "indication": null
+      },
+      "risk": {
+        "level": "MEDIUM-HIGH",
+        "color": "orange",
+        "note": "Pivotal data - significant move likely"
+      },
+      "designations": [
+        {
+          "code": "ORPHAN",
+          "label": "Orphan Drug",
+          "color": "purple"
+        },
+        {
+          "code": "BTD",
+          "label": "Breakthrough Therapy",
+          "color": "green"
+        },
+        {
+          "code": "FIC",
+          "label": "First-in-Class",
+          "color": "gold"
+        }
+      ],
+      "company": {
+        "mcap_millions": 6010.0,
+        "short_interest_pct": null
+      },
+      "analysis": {
+        "cont_score": null,
+        "play_type": null,
+        "is_leap_play": false,
+        "estimated_pdufa": null,
+        "data_completeness": null
+      },
+      "meta": {
+        "has_position": false,
+        "research_available": true
+      }
+    },
+    {
+      "ticker": "NBTX",
+      "date": "2027-06-30",
+      "date_display": "Jun 30, 2027",
+      "weekday": "Wednesday",
+      "days_until": 523,
+      "is_public": false,
+      "event": {
+        "type": "Phase 3",
+        "description": "Phase 3",
+        "drug_name": null,
+        "indication": null
+      },
+      "risk": {
+        "level": "MEDIUM-HIGH",
+        "color": "orange",
+        "note": "Pivotal data - significant move likely"
+      },
+      "designations": [
+        {
+          "code": "FIC",
+          "label": "First-in-Class",
+          "color": "gold"
+        }
+      ],
+      "company": {
+        "mcap_millions": 1100.0,
+        "short_interest_pct": null
+      },
+      "analysis": {
+        "cont_score": null,
+        "play_type": null,
+        "is_leap_play": false,
+        "estimated_pdufa": null,
+        "data_completeness": null
+      },
+      "meta": {
+        "has_position": false,
+        "research_available": true
+      }
+    },
+    {
+      "ticker": "PROK",
+      "date": "2027-06-30",
+      "date_display": "Jun 30, 2027",
+      "weekday": "Wednesday",
+      "days_until": 523,
+      "is_public": false,
+      "event": {
+        "type": "Phase 3",
+        "description": "Phase 3",
+        "drug_name": null,
+        "indication": null
+      },
+      "risk": {
+        "level": "MEDIUM-HIGH",
+        "color": "orange",
+        "note": "Pivotal data - significant move likely"
+      },
+      "designations": [
+        {
+          "code": "FIC",
+          "label": "First-in-Class",
+          "color": "gold"
+        },
+        {
+          "code": "UMN",
+          "label": "Unmet Medical Need",
+          "color": "red"
+        }
+      ],
+      "company": {
+        "mcap_millions": 300.0,
+        "short_interest_pct": null
+      },
+      "analysis": {
+        "cont_score": null,
+        "play_type": null,
+        "is_leap_play": false,
+        "estimated_pdufa": null,
+        "data_completeness": null
+      },
+      "meta": {
+        "has_position": false,
+        "research_available": true
+      }
+    },
+    {
+      "ticker": "KRYS",
+      "date": "2027-12-31",
+      "date_display": "Dec 31, 2027",
+      "weekday": "Friday",
+      "days_until": 707,
+      "is_public": false,
+      "event": {
+        "type": "Phase 3",
+        "description": "Phase 3",
+        "drug_name": null,
+        "indication": null
+      },
+      "risk": {
+        "level": "MEDIUM-HIGH",
+        "color": "orange",
+        "note": "Pivotal data - significant move likely"
+      },
+      "designations": [
+        {
+          "code": "FIC",
+          "label": "First-in-Class",
+          "color": "gold"
+        }
+      ],
+      "company": {
+        "mcap_millions": 8300.0,
+        "short_interest_pct": null
+      },
+      "analysis": {
+        "cont_score": null,
+        "play_type": null,
+        "is_leap_play": false,
+        "estimated_pdufa": null,
+        "data_completeness": null
+      },
+      "meta": {
+        "has_position": false,
+        "research_available": true
+      }
+    },
+    {
+      "ticker": "LXEO",
+      "date": "2027-12-31",
+      "date_display": "Dec 31, 2027",
+      "weekday": "Friday",
+      "days_until": 707,
+      "is_public": false,
+      "event": {
+        "type": "Phase 3",
+        "description": "Phase 3",
+        "drug_name": null,
+        "indication": null
+      },
+      "risk": {
+        "level": "MEDIUM-HIGH",
+        "color": "orange",
+        "note": "Pivotal data - significant move likely"
+      },
+      "designations": [
+        {
+          "code": "ORPHAN",
+          "label": "Orphan Drug",
+          "color": "purple"
+        },
+        {
+          "code": "BTD",
+          "label": "Breakthrough Therapy",
+          "color": "green"
+        },
+        {
+          "code": "FIC",
+          "label": "First-in-Class",
+          "color": "gold"
+        },
+        {
+          "code": "UMN",
+          "label": "Unmet Medical Need",
+          "color": "red"
+        }
+      ],
+      "company": {
+        "mcap_millions": 550.0,
+        "short_interest_pct": null
+      },
+      "analysis": {
+        "cont_score": null,
+        "play_type": null,
+        "is_leap_play": false,
+        "estimated_pdufa": null,
+        "data_completeness": null
+      },
+      "meta": {
+        "has_position": false,
+        "research_available": true
+      }
+    }
+  ]
+}
