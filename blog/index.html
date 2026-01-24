@@ -60,7 +60,7 @@
     <!-- Navigation -->
     <nav class="fixed top-0 left-0 right-0 z-50 bg-dark-bg/95 backdrop-blur-sm border-b border-steel-dark/50">
         <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="../" class="flex items-center gap-3">
+            <a id="nav-logo-link" href="../" class="flex items-center gap-3">
                 <svg class="h-10 w-10" viewBox="0 0 80 100" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <defs>
                         <linearGradient id="boltGradNav" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -76,8 +76,10 @@
                 <span class="text-gold font-bold text-xl tracking-wider">PowersBioStrikes</span>
             </a>
             <div class="flex items-center space-x-6">
-                <a href="../#active-positions" class="text-gray-400 hover:text-gold transition-colors text-sm">Live Trades</a>
-                <a href="../#track-record" class="text-gray-400 hover:text-gold transition-colors text-sm">Track Record</a>
+                <!-- Dynamic: shows Dashboard for members, landing page links for visitors -->
+                <a id="nav-home-link" href="../" class="text-gray-400 hover:text-gold transition-colors text-sm hidden">← Dashboard</a>
+                <a id="nav-live-trades" href="../#active-positions" class="text-gray-400 hover:text-gold transition-colors text-sm">Live Trades</a>
+                <a id="nav-track-record" href="../#track-record" class="text-gray-400 hover:text-gold transition-colors text-sm">Track Record</a>
                 <a href="./" class="text-gold text-sm">Learn</a>
                 <a href="https://twitter.com/PowersBioStrike" target="_blank" class="text-gray-400 hover:text-gold transition-colors">
                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
@@ -150,5 +152,39 @@
             </div>
         </div>
     </footer>
+
+    <!-- Supabase SDK for auth check -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/supabase-config.js"></script>
+    <script>
+        // Update navigation for logged-in members
+        async function updateNavForMember() {
+            try {
+                const user = await pbsAuth.getUser();
+                if (user) {
+                    // Update logo link to dashboard
+                    const logoLink = document.getElementById('nav-logo-link');
+                    if (logoLink) logoLink.href = '../dashboard.html';
+
+                    // Show and update Dashboard link
+                    const homeLink = document.getElementById('nav-home-link');
+                    if (homeLink) {
+                        homeLink.href = '../dashboard.html';
+                        homeLink.classList.remove('hidden');
+                    }
+
+                    // Hide landing page links for members
+                    const liveTradesLink = document.getElementById('nav-live-trades');
+                    const trackRecordLink = document.getElementById('nav-track-record');
+                    if (liveTradesLink) liveTradesLink.classList.add('hidden');
+                    if (trackRecordLink) trackRecordLink.classList.add('hidden');
+                }
+            } catch (err) {
+                // Not logged in, keep default nav
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', updateNavForMember);
+    </script>
 </body>
 </html>

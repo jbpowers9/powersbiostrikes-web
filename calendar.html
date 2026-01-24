@@ -100,15 +100,15 @@
     <!-- Navigation -->
     <nav class="fixed top-0 left-0 right-0 z-50 bg-dark/95 backdrop-blur-sm border-b border-dark-border">
         <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="index.html" class="flex items-center space-x-2">
+            <a id="nav-logo-link" href="index.html" class="flex items-center space-x-2">
                 <span class="text-2xl">🐸</span>
                 <span class="text-xl font-bold text-gold">PowersBioStrikes</span>
             </a>
             <div class="flex items-center space-x-6">
-                <a href="index.html" class="text-gray-300 hover:text-gold transition-colors">Home</a>
-                <a href="positions.html" class="text-gray-300 hover:text-gold transition-colors">Positions</a>
+                <a id="nav-home-link" href="index.html" class="text-gray-300 hover:text-gold transition-colors">Home</a>
+                <a id="nav-positions-link" href="positions.html" class="text-gray-300 hover:text-gold transition-colors">Positions</a>
                 <a href="calendar.html" class="text-gold font-semibold">Calendar</a>
-                <a href="login.html" class="px-4 py-2 bg-gold text-dark rounded-lg font-semibold hover:bg-gold/90 transition-colors">Members</a>
+                <a id="nav-members-link" href="login.html" class="px-4 py-2 bg-gold text-dark rounded-lg font-semibold hover:bg-gold/90 transition-colors">Members</a>
             </div>
         </div>
     </nav>
@@ -216,9 +216,45 @@
         </div>
     </footer>
 
+    <!-- Supabase SDK for auth check -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase-config.js"></script>
+
     <script>
         let calendarData = null;
         let currentFilter = 'all';
+
+        // Update navigation for logged-in members
+        async function updateNavForMember() {
+            try {
+                const user = await pbsAuth.getUser();
+                if (user) {
+                    // Update logo link to dashboard
+                    const logoLink = document.getElementById('nav-logo-link');
+                    if (logoLink) logoLink.href = 'dashboard.html';
+
+                    // Update Home link to Dashboard
+                    const homeLink = document.getElementById('nav-home-link');
+                    if (homeLink) {
+                        homeLink.href = 'dashboard.html';
+                        homeLink.textContent = '← Dashboard';
+                    }
+
+                    // Hide Positions link (they have it on dashboard)
+                    const positionsLink = document.getElementById('nav-positions-link');
+                    if (positionsLink) positionsLink.classList.add('hidden');
+
+                    // Hide Members button (already logged in)
+                    const membersLink = document.getElementById('nav-members-link');
+                    if (membersLink) membersLink.classList.add('hidden');
+                }
+            } catch (err) {
+                // Not logged in, keep default nav
+            }
+        }
+
+        // Run on load
+        document.addEventListener('DOMContentLoaded', updateNavForMember);
 
         // Check if user is authenticated
         function isAuthenticated() {
