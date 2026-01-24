@@ -405,7 +405,7 @@
 
         async function loadAlerts() {
             try {
-                const response = await fetch('data/positions.json');
+                const response = await fetch('data/positions.json?v=' + Date.now());
                 const data = await response.json();
                 const positions = data.positions || [];
 
@@ -454,7 +454,7 @@
 
         async function loadPositions() {
             try {
-                const response = await fetch('data/positions.json');
+                const response = await fetch('data/positions.json?v=' + Date.now());
                 const data = await response.json();
                 const positions = data.positions || [];
 
@@ -550,7 +550,7 @@
 
         async function loadCalendarPreview() {
             try {
-                const response = await fetch('data/calendar.json');
+                const response = await fetch('data/calendar.json?v=' + Date.now());
                 const data = await response.json();
                 const catalysts = data.catalysts || [];
 
