@@ -625,31 +625,51 @@ def generate_position_data(position: Dict, stock_price: Optional[float] = None) 
     }
 
     # PREFERRED: Use real calculate_enr with local database (single source of truth)
+    # MUST use get_research_for_enr() - SAME as Positions page for consistency
     if IMPORTS_AVAILABLE and db and current_stock > 0 and current_option > 0:
         try:
-            enr_inputs = db.get_enr_inputs_for_catalyst(
+            catalyst_event = position.get('catalyst_event', '')
+
+            # Use get_research_for_enr - same method as Streamlit Positions page
+            market_data, adjustments = db.get_research_for_enr(
                 ticker=ticker,
                 catalyst_date=catalyst_date,
-                catalyst_event=position.get('catalyst_event')
+                catalyst_event=catalyst_event
             )
+
+            # Determine event type for ENR calculation
+            event_lower = catalyst_event.lower() if catalyst_event else ''
+            if 'pdufa' in event_lower:
+                event_type = 'PDUFA'
+            elif 'phase 3' in event_lower:
+                event_type = 'Phase 3'
+            elif 'phase 2' in event_lower:
+                event_type = 'Phase 2'
+            else:
+                event_type = catalyst_event or 'Unknown'
 
             enr_result = calculate_enr(
                 current_price=current_stock,
                 strike=strike,
                 premium=current_option,
                 days_to_expiry=days_to_expiry,
-                event_type=enr_inputs['event_type'],
-                indication=enr_inputs['indication'],
-                market_data=enr_inputs['market_data'],
-                adjustments=enr_inputs['adjustments'],
+                event_type=event_type,
+                indication=position.get('indication'),
+                market_data=market_data,
+                adjustments=adjustments,
             )
+
+            # Check if we actually found research data
+            research_found = bool(market_data.get('mcap') or adjustments.get('is_breakthrough'))
+
             enr_data = {
                 'enr': round(enr_result.get('enr', 0), 1),
                 'win_prob': round(enr_result.get('win_prob', 0), 1),  # Already a percentage
                 'enr_zone': get_enr_zone(enr_result.get('enr', 0)),
-                'research_found': enr_inputs.get('research_found', False),
+                'research_found': research_found,
                 'is_live': True
             }
+            print(f"  {ticker}: ENR={enr_data['enr']}% (research={research_found})")
         except Exception as e:
             print(f"Error calculating ENR for {ticker}: {e}")
 
