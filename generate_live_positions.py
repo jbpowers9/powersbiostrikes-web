@@ -312,6 +312,57 @@ def get_max_buy_price(entry_price: float) -> float:
     return round(entry_price * ZONE_GREEN_MAX, 2)
 
 
+def get_oi_data(ticker: str, expiration: str) -> Dict[str, Any]:
+    """Get Open Interest data for a position from the database."""
+    oi_data = {
+        'current': 0,
+        'change_1d': 0,
+        'change_5d': 0,
+        'trend': 'unknown',
+    }
+
+    if not DB_PATH or not os.path.exists(DB_PATH):
+        return oi_data
+
+    try:
+        conn = sqlite3.connect(DB_PATH)
+        conn.row_factory = sqlite3.Row
+        cursor = conn.cursor()
+
+        # Get the most recent OI snapshot for this ticker/expiration
+        cursor.execute("""
+            SELECT total_call_oi, call_oi_change, call_oi_change_pct, snapshot_date
+            FROM oi_expiration_snapshots
+            WHERE ticker = ? AND expiration = ?
+            ORDER BY snapshot_date DESC
+            LIMIT 1
+        """, (ticker, expiration))
+
+        row = cursor.fetchone()
+        if row:
+            oi_data['current'] = row['total_call_oi'] or 0
+            oi_data['change_1d'] = row['call_oi_change'] or 0
+
+            # Determine trend based on change
+            change_pct = row['call_oi_change_pct'] or 0
+            if change_pct > 5:
+                oi_data['trend'] = 'strong_increase'
+            elif change_pct > 0:
+                oi_data['trend'] = 'increasing'
+            elif change_pct < -5:
+                oi_data['trend'] = 'strong_decrease'
+            elif change_pct < 0:
+                oi_data['trend'] = 'decreasing'
+            else:
+                oi_data['trend'] = 'stable'
+
+        conn.close()
+    except Exception as e:
+        print(f"Error fetching OI data for {ticker}: {e}")
+
+    return oi_data
+
+
 # =============================================================================
 # DATA FETCHING
 # =============================================================================
@@ -535,11 +586,15 @@ def generate_position_data(position: Dict, stock_price: Optional[float] = None) 
         print(f"  {ticker}: Live option price = ${current_option:.2f}")
     else:
         # Fall back to stored current_price or entry_price
+        # current_price in DB might be per-contract (multiply by 100) or per-share
         raw_current = position.get('current_price')
-        if raw_current and entry_price and raw_current > entry_price * 10:
-            current_option = raw_current / (quantity * 100)
-        elif raw_current:
-            current_option = raw_current
+        if raw_current:
+            # If raw_current >> entry_price, it's likely per-contract value (need to divide by 100)
+            # Entry prices are per-share, so compare appropriately
+            if raw_current > entry_price * 50:  # Clearly a per-contract value
+                current_option = raw_current / 100  # Convert to per-share
+            else:
+                current_option = raw_current
         print(f"  {ticker}: Using stored option price = ${current_option:.2f}")
 
     entry_zone = get_entry_zone(current_option, entry_price)
@@ -636,6 +691,14 @@ def generate_position_data(position: Dict, stock_price: Optional[float] = None) 
                 catalyst_date=catalyst_date,
                 catalyst_event=catalyst_event
             )
+
+            # FALLBACK: If no research found, try with just ticker (same as Positions page line 3660-3666)
+            if not market_data.get('mcap') and ticker:
+                market_data_alt, adjustments_alt = db.get_research_for_enr(ticker, None, None)
+                if market_data_alt.get('mcap'):
+                    market_data = market_data_alt
+                    adjustments = adjustments_alt
+                    print(f"  {ticker}: Used fallback research lookup")
 
             # Determine event type for ENR calculation
             event_lower = catalyst_event.lower() if catalyst_event else ''
@@ -774,13 +837,8 @@ def generate_position_data(position: Dict, stock_price: Optional[float] = None) 
             'short_interest': position.get('short_interest_pct', 0),
         },
 
-        # OI tracking (placeholder - would need historical data)
-        'oi': {
-            'current': 0,
-            'change_1d': 0,
-            'change_5d': 0,
-            'trend': 'unknown',
-        },
+        # OI tracking from database
+        'oi': get_oi_data(ticker, expiration),
 
         # Metadata
         'last_updated': datetime.now().isoformat(),

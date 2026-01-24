@@ -15,25 +15,25 @@
       },
       "prices": {
         "entry": 1.91,
-        "current": 0.805,
+        "current": 8.05,
         "stock_price": 12.08,
         "break_even": 6.91,
         "max_buy": 2.1,
-        "pnl_pct": -57.9
+        "pnl_pct": 321.5
       },
       "entry_zone": {
-        "zone": "excellent",
-        "color": "green",
-        "message": "Down 57.9% from entry - better value",
-        "pct_from_entry": -57.85340314136125
+        "zone": "passed",
+        "color": "red",
+        "message": "Up 321.5% - wait for pullback",
+        "pct_from_entry": 321.46596858638753
       },
       "enr": {
-        "enr": 1175.1,
-        "win_prob": 96.8,
+        "enr": 29.1,
+        "win_prob": 91.2,
         "enr_zone": {
-          "zone": "good",
-          "color": "green",
-          "message": "Strong expected return"
+          "zone": "avoid",
+          "color": "red",
+          "message": "Negative expected return"
         },
         "research_found": false,
         "is_live": true
@@ -70,7 +70,7 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-23T22:45:27.833644",
+      "last_updated": "2026-01-23T23:01:46.208601",
       "recommendation": {
         "action": "EXIT",
         "notes": "",
@@ -105,14 +105,14 @@
         "pct_from_entry": 1.7341040462427681
       },
       "enr": {
-        "enr": 31.7,
-        "win_prob": 84.1,
+        "enr": 92.2,
+        "win_prob": 93.6,
         "enr_zone": {
-          "zone": "avoid",
-          "color": "red",
-          "message": "Negative expected return"
+          "zone": "weak",
+          "color": "orange",
+          "message": "Below target threshold"
         },
-        "research_found": false,
+        "research_found": true,
         "is_live": true
       },
       "cont": {
@@ -153,7 +153,7 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-23T22:45:28.474188",
+      "last_updated": "2026-01-23T23:01:46.853779",
       "recommendation": {
         "action": "HOLD",
         "notes": "Well same comments as my $15 strikes here but this one is in the money and i'm goign to let it ride past the PDUFA.  - I've had this one for a while now but it hasn't moved much.  not much ENR left but my continuation score tells me this will run after approval.  I expect it will still move.  as of 1/23/26  i don't now i would get in here but  i have plenty of expiration time to hold past the PDUFA approval and OI is still increasing.",
@@ -188,14 +188,14 @@
         "pct_from_entry": -16.30434782608696
       },
       "enr": {
-        "enr": -8.5,
-        "win_prob": 45.1,
+        "enr": 60.5,
+        "win_prob": 85.0,
         "enr_zone": {
-          "zone": "avoid",
-          "color": "red",
-          "message": "Negative expected return"
+          "zone": "weak",
+          "color": "orange",
+          "message": "Below target threshold"
         },
-        "research_found": false,
+        "research_found": true,
         "is_live": true
       },
       "cont": {
@@ -236,7 +236,7 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-23T22:45:29.157117"
+      "last_updated": "2026-01-23T23:01:47.584860"
     },
     {
       "ticker": "VNDA",
@@ -266,14 +266,14 @@
         "pct_from_entry": 23.880597014925375
       },
       "enr": {
-        "enr": 111.7,
-        "win_prob": 91.4,
+        "enr": 149.7,
+        "win_prob": 86.5,
         "enr_zone": {
-          "zone": "fair",
-          "color": "yellow",
-          "message": "Moderate expected return"
+          "zone": "good",
+          "color": "green",
+          "message": "Strong expected return"
         },
-        "research_found": false,
+        "research_found": true,
         "is_live": true
       },
       "cont": {
@@ -309,12 +309,12 @@
         "short_interest": 7.88
       },
       "oi": {
-        "current": 0,
+        "current": 5305,
         "change_1d": 0,
         "change_5d": 0,
-        "trend": "unknown"
+        "trend": "stable"
       },
-      "last_updated": "2026-01-23T22:45:29.918354"
+      "last_updated": "2026-01-23T23:01:48.306042"
     },
     {
       "ticker": "VNDA",
@@ -344,14 +344,14 @@
         "pct_from_entry": 46.15384615384617
       },
       "enr": {
-        "enr": -60.8,
-        "win_prob": 1.9,
+        "enr": -26.3,
+        "win_prob": 31.2,
         "enr_zone": {
           "zone": "avoid",
           "color": "red",
           "message": "Negative expected return"
         },
-        "research_found": false,
+        "research_found": true,
         "is_live": true
       },
       "cont": {
@@ -387,12 +387,12 @@
         "short_interest": 7.88
       },
       "oi": {
-        "current": 0,
+        "current": 1957,
         "change_1d": 0,
         "change_5d": 0,
-        "trend": "unknown"
+        "trend": "stable"
       },
-      "last_updated": "2026-01-23T22:45:30.625660",
+      "last_updated": "2026-01-23T23:01:49.150455",
       "recommendation": {
         "action": "HOLD",
         "notes": "This is an early shot at a leap thinking about the upcoming PDUFA and the Phase 3 DataBysantiMajor Depressive Disorder2026 data.  not sure this will play out like a major binary event but letting this one ride..  Not recommended but sometimes you have to take some moonshots.  ",
@@ -427,14 +427,14 @@
         "pct_from_entry": 8.69565217391306
       },
       "enr": {
-        "enr": -97.8,
-        "win_prob": 0.1,
+        "enr": -29.1,
+        "win_prob": 34.5,
         "enr_zone": {
           "zone": "avoid",
           "color": "red",
           "message": "Negative expected return"
         },
-        "research_found": false,
+        "research_found": true,
         "is_live": true
       },
       "cont": {
@@ -470,12 +470,12 @@
         "short_interest": 3.6
       },
       "oi": {
-        "current": 0,
+        "current": 5042,
         "change_1d": 0,
         "change_5d": 0,
-        "trend": "unknown"
+        "trend": "stable"
       },
-      "last_updated": "2026-01-23T22:45:31.230752"
+      "last_updated": "2026-01-23T23:01:49.908445"
     },
     {
       "ticker": "GOSS",
@@ -505,14 +505,14 @@
         "pct_from_entry": 21.42857142857144
       },
       "enr": {
-        "enr": -38.8,
-        "win_prob": 32.9,
+        "enr": 42.5,
+        "win_prob": 69.6,
         "enr_zone": {
           "zone": "avoid",
           "color": "red",
           "message": "Negative expected return"
         },
-        "research_found": false,
+        "research_found": true,
         "is_live": true
       },
       "cont": {
@@ -548,12 +548,12 @@
         "short_interest": 3.6
       },
       "oi": {
-        "current": 0,
+        "current": 5042,
         "change_1d": 0,
         "change_5d": 0,
-        "trend": "unknown"
+        "trend": "stable"
       },
-      "last_updated": "2026-01-23T22:45:31.824617"
+      "last_updated": "2026-01-23T23:01:50.553110"
     },
     {
       "ticker": "IMMP",
@@ -583,8 +583,8 @@
         "pct_from_entry": 11.111111111111116
       },
       "enr": {
-        "enr": 315.0,
-        "win_prob": 70.8,
+        "enr": 325.2,
+        "win_prob": 72.4,
         "enr_zone": {
           "zone": "good",
           "color": "green",
@@ -629,9 +629,9 @@
         "current": 0,
         "change_1d": 0,
         "change_5d": 0,
-        "trend": "unknown"
+        "trend": "stable"
       },
-      "last_updated": "2026-01-23T22:45:32.387586",
+      "last_updated": "2026-01-23T23:01:51.194598",
       "recommendation": {
         "action": "ACCUMULATE",
         "notes": "This is a new buy for me.  I love the set up .  ",
@@ -666,14 +666,14 @@
         "pct_from_entry": -16.666666666666664
       },
       "enr": {
-        "enr": -42.8,
-        "win_prob": 21.2,
+        "enr": 8.3,
+        "win_prob": 54.8,
         "enr_zone": {
           "zone": "avoid",
           "color": "red",
           "message": "Negative expected return"
         },
-        "research_found": false,
+        "research_found": true,
         "is_live": true
       },
       "cont": {
@@ -709,12 +709,12 @@
         "short_interest": 8.6
       },
       "oi": {
-        "current": 0,
+        "current": 3046,
         "change_1d": 0,
         "change_5d": 0,
-        "trend": "unknown"
+        "trend": "stable"
       },
-      "last_updated": "2026-01-23T22:45:33.155513"
+      "last_updated": "2026-01-23T23:01:51.866014"
     },
     {
       "ticker": "ACHV",
@@ -744,8 +744,8 @@
         "pct_from_entry": 4.444444444444451
       },
       "enr": {
-        "enr": 106.9,
-        "win_prob": 94.1,
+        "enr": 106.4,
+        "win_prob": 94.0,
         "enr_zone": {
           "zone": "fair",
           "color": "yellow",
@@ -787,12 +787,12 @@
         "short_interest": null
       },
       "oi": {
-        "current": 0,
+        "current": 3039,
         "change_1d": 0,
         "change_5d": 0,
-        "trend": "unknown"
+        "trend": "stable"
       },
-      "last_updated": "2026-01-23T22:45:33.752716"
+      "last_updated": "2026-01-23T23:01:52.508219"
     },
     {
       "ticker": "CRMD",
@@ -822,8 +822,8 @@
         "pct_from_entry": 16.07142857142858
       },
       "enr": {
-        "enr": 224.8,
-        "win_prob": 68.6,
+        "enr": 221.6,
+        "win_prob": 68.4,
         "enr_zone": {
           "zone": "good",
           "color": "green",
@@ -859,12 +859,12 @@
         "short_interest": 21.63
       },
       "oi": {
-        "current": 0,
+        "current": 3173,
         "change_1d": 0,
         "change_5d": 0,
-        "trend": "unknown"
+        "trend": "stable"
       },
-      "last_updated": "2026-01-23T22:45:34.501637",
+      "last_updated": "2026-01-23T23:01:53.117763",
       "recommendation": {
         "action": "ACCUMULATE",
         "notes": "",
@@ -874,12 +874,12 @@
   ],
   "summary": {
     "total_positions": 11,
-    "total_value": 68480.0,
+    "total_value": 75725.0,
     "avg_days_to_catalyst": 56.0
   },
   "market_status": {
     "is_open": true,
-    "last_updated": "2026-01-23T22:45:34.501723"
+    "last_updated": "2026-01-23T23:01:53.117984"
   },
-  "last_updated": "2026-01-23T22:45:34.501727"
+  "last_updated": "2026-01-23T23:01:53.117992"
 }
