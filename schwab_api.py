@@ -39,9 +39,22 @@ SCHWAB_AUTH_URL = "https://api.schwabapi.com/v1/oauth/authorize"
 SCHWAB_TOKEN_URL = "https://api.schwabapi.com/v1/oauth/token"
 SCHWAB_API_BASE = "https://api.schwabapi.com"
 
-# Token file (for local use)
+# Token file (for local use) - check multiple locations
 _script_dir = os.path.dirname(os.path.abspath(__file__))
-TOKEN_FILE = os.path.join(_script_dir, 'schwab_tokens.json')
+
+def _find_token_file():
+    """Find schwab_tokens.json in multiple locations"""
+    locations = [
+        os.path.join(_script_dir, 'schwab_tokens.json'),  # Same folder as script
+        r'C:\biotech-options-v2\schwab_tokens.json',      # Windows biotech folder
+        '/mnt/c/biotech-options-v2/schwab_tokens.json',   # WSL biotech folder
+    ]
+    for loc in locations:
+        if os.path.exists(loc):
+            return loc
+    return locations[0]  # Default to script dir
+
+TOKEN_FILE = _find_token_file()
 
 
 class SchwabAPI:

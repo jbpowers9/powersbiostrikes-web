@@ -23,12 +23,24 @@ from datetime import datetime
 from typing import Dict, Any, Optional
 import argparse
 
-# Add biotech-options-v2 to path for imports
-BIOTECH_DIR = os.environ.get('BIOTECH_OPTIONS_DIR', '/mnt/c/biotech-options-v2')
-if os.path.exists(BIOTECH_DIR):
+# Add biotech-options-v2 to path for imports - handle both Windows and WSL paths
+def get_biotech_dir():
+    env_dir = os.environ.get('BIOTECH_OPTIONS_DIR')
+    if env_dir and os.path.exists(env_dir):
+        return env_dir
+    win_path = r'C:\biotech-options-v2'
+    if os.path.exists(win_path):
+        return win_path
+    wsl_path = '/mnt/c/biotech-options-v2'
+    if os.path.exists(wsl_path):
+        return wsl_path
+    return None
+
+BIOTECH_DIR = get_biotech_dir()
+if BIOTECH_DIR:
     sys.path.insert(0, BIOTECH_DIR)
 
-DB_PATH = os.path.join(BIOTECH_DIR, 'biotech_options.db')
+DB_PATH = os.path.join(BIOTECH_DIR, 'biotech_options.db') if BIOTECH_DIR else None
 
 
 # =============================================================================

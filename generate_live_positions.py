@@ -31,6 +31,37 @@ from datetime import datetime, timedelta
 from typing import Dict, Any, List, Optional
 
 # =============================================================================
+# LOAD .ENV FROM BIOTECH FOLDER (for Schwab credentials)
+# =============================================================================
+
+def load_env_from_biotech():
+    """Load .env file from biotech-options-v2 folder"""
+    env_paths = [
+        r'C:\biotech-options-v2\.env',
+        '/mnt/c/biotech-options-v2/.env',
+    ]
+    for env_path in env_paths:
+        if os.path.exists(env_path):
+            try:
+                with open(env_path, 'r') as f:
+                    for line in f:
+                        line = line.strip()
+                        if line and not line.startswith('#') and '=' in line:
+                            key, value = line.split('=', 1)
+                            key = key.strip()
+                            value = value.strip()
+                            # Only set if not already in environment
+                            if key not in os.environ:
+                                os.environ[key] = value
+                print(f"Loaded environment from {env_path}")
+                return True
+            except Exception as e:
+                print(f"Error loading {env_path}: {e}")
+    return False
+
+load_env_from_biotech()
+
+# =============================================================================
 # SUPABASE CONFIGURATION (for GitHub Actions)
 # =============================================================================
 
@@ -71,8 +102,24 @@ except ImportError as e:
         return None
 
 # Add biotech-options-v2 to path for imports (local mode only)
-BIOTECH_DIR = os.environ.get('BIOTECH_OPTIONS_DIR', '/mnt/c/biotech-options-v2')
-if os.path.exists(BIOTECH_DIR):
+# Handle both Windows and WSL paths
+def get_biotech_dir():
+    # Check environment variable first
+    env_dir = os.environ.get('BIOTECH_OPTIONS_DIR')
+    if env_dir and os.path.exists(env_dir):
+        return env_dir
+    # Try Windows path
+    win_path = r'C:\biotech-options-v2'
+    if os.path.exists(win_path):
+        return win_path
+    # Try WSL path
+    wsl_path = '/mnt/c/biotech-options-v2'
+    if os.path.exists(wsl_path):
+        return wsl_path
+    return None
+
+BIOTECH_DIR = get_biotech_dir()
+if BIOTECH_DIR:
     sys.path.insert(0, BIOTECH_DIR)
 
 # Try to import additional modules from biotech-options-v2 (local mode)
@@ -98,7 +145,7 @@ IMPORTS_AVAILABLE = LOCAL_IMPORTS_AVAILABLE
 # CONFIGURATION
 # =============================================================================
 
-DB_PATH = os.path.join(BIOTECH_DIR, 'biotech_options.db')
+DB_PATH = os.path.join(BIOTECH_DIR, 'biotech_options.db') if BIOTECH_DIR else None
 OUTPUT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'data')
 OUTPUT_FILE = os.path.join(OUTPUT_DIR, 'positions.json')
 
@@ -577,35 +624,8 @@ def generate_position_data(position: Dict, stock_price: Optional[float] = None) 
         'is_live': False
     }
 
-    # Cloud mode: calculate ENR using research data + live stock/option prices
-    if SCHWAB_AVAILABLE and current_stock > 0 and current_option > 0:
-        try:
-            research_data = {
-                'is_first_in_class': position.get('is_first_in_class'),
-                'is_orphan': position.get('is_orphan'),
-                'is_fast_track': position.get('is_fast_track'),
-                'is_breakthrough': position.get('is_breakthrough'),
-            }
-            cloud_enr = calculate_cloud_enr(
-                stock_price=current_stock,
-                strike=strike,
-                premium=current_option,  # Use live option price
-                days_to_expiry=days_to_expiry,
-                catalyst_event=position.get('catalyst_event', ''),
-                research_data=research_data
-            )
-            enr_data = {
-                'enr': cloud_enr['enr'],
-                'win_prob': cloud_enr['win_prob'],
-                'enr_zone': get_enr_zone(cloud_enr['enr']),
-                'is_live': True
-            }
-            print(f"  {ticker}: Live ENR = {cloud_enr['enr']:.1f}%, Win Prob = {cloud_enr['win_prob']:.1f}%")
-        except Exception as e:
-            print(f"  Error calculating live ENR for {ticker}: {e}")
-
-    # If we have local database, calculate live ENR (more accurate)
-    elif IMPORTS_AVAILABLE and db and not USE_SUPABASE and current_stock > 0 and current_option > 0:
+    # PREFERRED: Use real calculate_enr with local database (single source of truth)
+    if IMPORTS_AVAILABLE and db and current_stock > 0 and current_option > 0:
         try:
             enr_inputs = db.get_enr_inputs_for_catalyst(
                 ticker=ticker,
@@ -632,6 +652,34 @@ def generate_position_data(position: Dict, stock_price: Optional[float] = None) 
             }
         except Exception as e:
             print(f"Error calculating ENR for {ticker}: {e}")
+
+    # FALLBACK: Cloud mode without local database - use simplified calculation
+    elif SCHWAB_AVAILABLE and current_stock > 0 and current_option > 0:
+        try:
+            research_data = {
+                'is_first_in_class': position.get('is_first_in_class'),
+                'is_orphan': position.get('is_orphan'),
+                'is_fast_track': position.get('is_fast_track'),
+                'is_breakthrough': position.get('is_breakthrough'),
+            }
+            cloud_enr = calculate_cloud_enr(
+                stock_price=current_stock,
+                strike=strike,
+                premium=current_option,
+                days_to_expiry=days_to_expiry,
+                catalyst_event=position.get('catalyst_event', ''),
+                research_data=research_data
+            )
+            enr_data = {
+                'enr': cloud_enr['enr'],
+                'win_prob': cloud_enr['win_prob'],
+                'enr_zone': get_enr_zone(cloud_enr['enr']),
+                'is_live': True,
+                'calculation_method': 'cloud_fallback'
+            }
+            print(f"  {ticker}: Cloud ENR = {cloud_enr['enr']:.1f}% (fallback mode)")
+        except Exception as e:
+            print(f"  Error calculating cloud ENR for {ticker}: {e}")
 
     # Determine play type (LEAP if expiration > 180 days out)
     play_type = 'LEAP' if days_to_expiry >= 180 else 'Standard'

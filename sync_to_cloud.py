@@ -49,12 +49,21 @@ def load_env_file():
 
 load_env_file()
 
-# Local database path
-BIOTECH_DIR = os.environ.get('BIOTECH_OPTIONS_DIR', '/mnt/c/biotech-options-v2')
-# Also check Windows path
-if not os.path.exists(BIOTECH_DIR):
-    BIOTECH_DIR = 'C:/biotech-options-v2'
-DB_PATH = os.path.join(BIOTECH_DIR, 'biotech_options.db')
+# Local database path - handle both Windows and WSL paths
+def get_biotech_dir():
+    env_dir = os.environ.get('BIOTECH_OPTIONS_DIR')
+    if env_dir and os.path.exists(env_dir):
+        return env_dir
+    win_path = r'C:\biotech-options-v2'
+    if os.path.exists(win_path):
+        return win_path
+    wsl_path = '/mnt/c/biotech-options-v2'
+    if os.path.exists(wsl_path):
+        return wsl_path
+    return None
+
+BIOTECH_DIR = get_biotech_dir()
+DB_PATH = os.path.join(BIOTECH_DIR, 'biotech_options.db') if BIOTECH_DIR else None
 
 # Supabase credentials - from environment or .env file
 SUPABASE_URL = os.environ.get('SUPABASE_URL', 'https://fnjnqtikxcspebobqdbe.supabase.co')

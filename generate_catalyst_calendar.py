@@ -19,9 +19,21 @@ import sqlite3
 from datetime import datetime, timedelta
 from typing import Dict, List, Any
 
-# Database path
-BIOTECH_DIR = os.environ.get('BIOTECH_OPTIONS_DIR', '/mnt/c/biotech-options-v2')
-DB_PATH = os.path.join(BIOTECH_DIR, 'biotech_options.db')
+# Database path - handle both Windows and WSL paths
+def get_biotech_dir():
+    env_dir = os.environ.get('BIOTECH_OPTIONS_DIR')
+    if env_dir and os.path.exists(env_dir):
+        return env_dir
+    win_path = r'C:\biotech-options-v2'
+    if os.path.exists(win_path):
+        return win_path
+    wsl_path = '/mnt/c/biotech-options-v2'
+    if os.path.exists(wsl_path):
+        return wsl_path
+    return None
+
+BIOTECH_DIR = get_biotech_dir()
+DB_PATH = os.path.join(BIOTECH_DIR, 'biotech_options.db') if BIOTECH_DIR else None
 
 # Output path
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
