@@ -443,6 +443,7 @@ def get_positions_from_sqlite() -> List[Dict]:
             ON p.ticker = cr.ticker
             AND p.catalyst_date = cr.catalyst_date
         WHERE p.status = 'OPEN'
+          AND (p.show_on_website = 1 OR p.show_on_website IS NULL)
         ORDER BY p.catalyst_date ASC
     """)
 
