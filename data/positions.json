@@ -29,8 +29,8 @@
         "pct_from_entry": 321.46596858638753
       },
       "enr": {
-        "enr": 29.6,
-        "win_prob": 91.6,
+        "enr": 28.9,
+        "win_prob": 91.0,
         "enr_zone": {
           "zone": "avoid",
           "color": "red",
@@ -71,11 +71,11 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-24T09:08:04.009874",
+      "last_updated": "2026-01-24T10:02:33.119661",
       "recommendation": {
         "action": "EXIT",
-        "notes": "",
-        "updated": "2026-01-23T20:44:31.384829"
+        "notes": "This was a great win for me and i trimmed multiple times some before the PDUFA and still hold a small amount.  waiting for a better exit price or I may convert to stocks for a long term hold and avoid more short term gains.  A good problem for a well ITM option.  ",
+        "updated": "2026-01-24T09:45:15.602877"
       }
     },
     {
@@ -107,8 +107,8 @@
         "pct_from_entry": 1.7341040462427681
       },
       "enr": {
-        "enr": 93.0,
-        "win_prob": 93.7,
+        "enr": 91.5,
+        "win_prob": 93.2,
         "enr_zone": {
           "zone": "weak",
           "color": "orange",
@@ -155,7 +155,7 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-24T09:08:04.744262",
+      "last_updated": "2026-01-24T10:02:33.473193",
       "recommendation": {
         "action": "HOLD",
         "notes": "Well same comments as my $15 strikes here but this one is in the money and i'm goign to let it ride past the PDUFA.  - I've had this one for a while now but it hasn't moved much.  not much ENR left but my continuation score tells me this will run after approval.  I expect it will still move.  as of 1/23/26  i don't now i would get in here but  i have plenty of expiration time to hold past the PDUFA approval and OI is still increasing.",
@@ -191,7 +191,7 @@
         "pct_from_entry": -16.30434782608696
       },
       "enr": {
-        "enr": 60.9,
+        "enr": 60.4,
         "win_prob": 85.4,
         "enr_zone": {
           "zone": "weak",
@@ -239,7 +239,12 @@
         "change_5d": 0,
         "trend": "unknown"
       },
-      "last_updated": "2026-01-24T09:08:05.446323"
+      "last_updated": "2026-01-24T10:02:33.778341",
+      "recommendation": {
+        "action": "HOLD",
+        "notes": " I've had this one for a while now but it hasn't moved much.  not much ENR left but my continuation score tells me this will run after approval.  I expect it will still move.  as of 1/23/26  i don't now i would get in here but  i have plenty of expiration time to hold past the PDUFA approval and OI is still increasing.",
+        "updated": "2026-01-24T09:46:38.409105"
+      }
     },
     {
       "ticker": "VNDA",
@@ -270,8 +275,8 @@
         "pct_from_entry": 23.880597014925375
       },
       "enr": {
-        "enr": 148.2,
-        "win_prob": 86.5,
+        "enr": 149.9,
+        "win_prob": 86.6,
         "enr_zone": {
           "zone": "good",
           "color": "green",
@@ -318,7 +323,12 @@
         "change_5d": 0,
         "trend": "stable"
       },
-      "last_updated": "2026-01-24T09:08:06.092856"
+      "last_updated": "2026-01-24T10:02:34.090709",
+      "recommendation": {
+        "action": "HOLD",
+        "notes": "ok this is a hold that I've had for some time.  but plan to start reducing prior to the PDUFA date.   High chance of sell the news.  I'm up quite a bit but it shows there is still ENR left.  Not sure i would buy now (wait for my new recommendations) , but your call on this one.",
+        "updated": "2026-01-24T09:51:39.404821"
+      }
     },
     {
       "ticker": "GOSS",
@@ -349,8 +359,8 @@
         "pct_from_entry": 8.69565217391306
       },
       "enr": {
-        "enr": -26.8,
-        "win_prob": 35.7,
+        "enr": -28.9,
+        "win_prob": 34.7,
         "enr_zone": {
           "zone": "avoid",
           "color": "red",
@@ -397,7 +407,12 @@
         "change_5d": 0,
         "trend": "stable"
       },
-      "last_updated": "2026-01-24T09:08:06.717515"
+      "last_updated": "2026-01-24T10:02:34.423773",
+      "recommendation": {
+        "action": "ACCUMULATE",
+        "notes": "ok there are two strike options here that I like as you can see I also own the $3 strike which offers a little less return at this point 1/24/26 and almost ATM for that one.  This is much farther out of the money but plenty of time which is why you get the better ENR.  I like to spread my bet a little between the two.  ",
+        "updated": "2026-01-24T09:56:43.750340"
+      }
     },
     {
       "ticker": "GOSS",
@@ -428,8 +443,8 @@
         "pct_from_entry": 21.42857142857144
       },
       "enr": {
-        "enr": 39.7,
-        "win_prob": 67.7,
+        "enr": 38.9,
+        "win_prob": 67.8,
         "enr_zone": {
           "zone": "avoid",
           "color": "red",
@@ -476,7 +491,12 @@
         "change_5d": 0,
         "trend": "stable"
       },
-      "last_updated": "2026-01-24T09:08:07.373641"
+      "last_updated": "2026-01-24T10:02:34.728008",
+      "recommendation": {
+        "action": "ACCUMULATE",
+        "notes": "This ENR has dropped some since purchase so only accumulate on pull backs.  watch the max buy.  Sometimes i still get in if it is a little below my 140% criteria.  This has a high continuation score but may expire prior to full PDUFA approval.  We may roll some of these over time.   ",
+        "updated": "2026-01-24T09:59:54.931043"
+      }
     },
     {
       "ticker": "IMMP",
@@ -507,7 +527,7 @@
         "pct_from_entry": 11.111111111111116
       },
       "enr": {
-        "enr": 322.2,
+        "enr": 323.7,
         "win_prob": 72.3,
         "enr_zone": {
           "zone": "good",
@@ -555,7 +575,7 @@
         "change_5d": 0,
         "trend": "stable"
       },
-      "last_updated": "2026-01-24T09:08:07.966451",
+      "last_updated": "2026-01-24T10:02:35.113145",
       "recommendation": {
         "action": "ACCUMULATE",
         "notes": "This is a new buy for me.  I love the set up .  ",
@@ -591,8 +611,8 @@
         "pct_from_entry": 16.07142857142858
       },
       "enr": {
-        "enr": 223.0,
-        "win_prob": 68.8,
+        "enr": 226.5,
+        "win_prob": 69.0,
         "enr_zone": {
           "zone": "good",
           "color": "green",
@@ -633,7 +653,7 @@
         "change_5d": 0,
         "trend": "stable"
       },
-      "last_updated": "2026-01-24T09:08:08.508334",
+      "last_updated": "2026-01-24T10:02:35.459049",
       "recommendation": {
         "action": "ACCUMULATE",
         "notes": "",
@@ -669,8 +689,8 @@
         "pct_from_entry": -9.57446808510638
       },
       "enr": {
-        "enr": 204.9,
-        "win_prob": 66.5,
+        "enr": 205.6,
+        "win_prob": 65.8,
         "enr_zone": {
           "zone": "good",
           "color": "green",
@@ -711,7 +731,7 @@
         "change_5d": 0,
         "trend": "stable"
       },
-      "last_updated": "2026-01-24T09:08:09.094496"
+      "last_updated": "2026-01-24T10:02:35.827028"
     }
   ],
   "summary": {
@@ -721,7 +741,7 @@
   },
   "market_status": {
     "is_open": false,
-    "last_updated": "2026-01-24T09:08:09.094623"
+    "last_updated": "2026-01-24T10:02:35.827125"
   },
-  "last_updated": "2026-01-24T09:08:09.094627"
+  "last_updated": "2026-01-24T10:02:35.827129"
 }
