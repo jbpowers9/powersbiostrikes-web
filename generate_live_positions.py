@@ -645,7 +645,7 @@ def generate_position_data(position: Dict, stock_price: Optional[float] = None) 
             )
             enr_data = {
                 'enr': round(enr_result.get('enr', 0), 1),
-                'win_prob': round(enr_result.get('win_prob', 0) * 100, 1),
+                'win_prob': round(enr_result.get('win_prob', 0), 1),  # Already a percentage
                 'enr_zone': get_enr_zone(enr_result.get('enr', 0)),
                 'research_found': enr_inputs.get('research_found', False),
                 'is_live': True
