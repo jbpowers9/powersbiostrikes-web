@@ -827,91 +827,100 @@
 
         // Open modal with catalyst details
         function openModal(catalyst) {
-            try {
-                console.log('Opening modal for:', catalyst.ticker);
-                const modal = document.getElementById('catalyst-modal');
-                if (!modal) { console.error('Modal element not found'); return; }
-                if (!catalyst) { console.error('No catalyst data'); return; }
+            console.log('openModal called with:', catalyst?.ticker);
 
-                const typeClass = `type-${catalyst.event.type.toLowerCase().replace(' ', '')}`;
-                const riskClass = `risk-${(catalyst.risk?.level || 'low').toLowerCase().replace('-', '')}`;
+            const modal = document.getElementById('catalyst-modal');
+            if (!modal) {
+                console.error('Modal element not found');
+                alert('Modal not found!');
+                return;
+            }
+            if (!catalyst) {
+                console.error('No catalyst data');
+                alert('No catalyst data!');
+                return;
+            }
+
+            const typeClass = `type-${(catalyst.event?.type || 'other').toLowerCase().replace(' ', '')}`;
+            const riskLevel = catalyst.risk?.level || 'LOW';
+            const riskClass = `risk-${riskLevel.toLowerCase().replace('-', '')}`;
 
             // Header
-            document.getElementById('modal-ticker').textContent = catalyst.ticker;
+            document.getElementById('modal-ticker').textContent = catalyst.ticker || 'N/A';
             document.getElementById('modal-type-badge').className = `type-badge ${typeClass}`;
-            document.getElementById('modal-type-badge').textContent = catalyst.event.type;
-            document.getElementById('modal-date').textContent = `${catalyst.date_display} (${catalyst.weekday}) • ${catalyst.days_until} days`;
+            document.getElementById('modal-type-badge').textContent = catalyst.event?.type || 'Unknown';
+            document.getElementById('modal-date').textContent = `${catalyst.date_display || ''} (${catalyst.weekday || ''}) • ${catalyst.days_until || 0} days`;
             document.getElementById('modal-company-name').textContent = catalyst.company?.name || '';
 
             // Big mover badge
             const bigMoverBadge = document.getElementById('modal-big-mover');
-            if (catalyst.movement?.is_big_mover) {
-                bigMoverBadge.classList.remove('hidden');
-            } else {
-                bigMoverBadge.classList.add('hidden');
+            if (bigMoverBadge) {
+                bigMoverBadge.classList.toggle('hidden', !catalyst.movement?.is_big_mover);
             }
 
             // Drug & Indication
-            document.getElementById('modal-drug').textContent = catalyst.event.drug_name || 'Drug name not available';
-            document.getElementById('modal-indication').textContent = catalyst.event.indication || '';
-            document.getElementById('modal-category').textContent = catalyst.event.category ? `Category: ${catalyst.event.category}` : '';
+            document.getElementById('modal-drug').textContent = catalyst.event?.drug_name || 'Drug name not available';
+            document.getElementById('modal-indication').textContent = catalyst.event?.indication || '';
+            document.getElementById('modal-category').textContent = catalyst.event?.category ? `Category: ${catalyst.event.category}` : '';
 
             // Designations
-            const designationsHtml = catalyst.designations.map(d =>
+            const designations = catalyst.designations || [];
+            const designationsHtml = designations.map(d =>
                 `<span class="px-2 py-0.5 text-xs rounded" style="background: ${d.color}20; color: ${d.color}; border: 1px solid ${d.color}40">${d.code}</span>`
             ).join('');
             document.getElementById('modal-designations').innerHTML = designationsHtml;
 
             // Movement Potential
             const movementSection = document.getElementById('modal-movement-section');
-            if (catalyst.movement?.success_prob || catalyst.movement?.upside_pct) {
-                movementSection.classList.remove('hidden');
-                document.getElementById('modal-success-prob').textContent = catalyst.movement.success_prob
-                    ? `${catalyst.movement.success_prob.toFixed(0)}%` : '-';
-                document.getElementById('modal-upside').textContent = catalyst.movement.upside_pct
-                    ? `+${catalyst.movement.upside_pct.toFixed(0)}%` : '-';
-                document.getElementById('modal-downside').textContent = catalyst.movement.downside_pct
-                    ? `-${catalyst.movement.downside_pct.toFixed(0)}%` : '-';
-            } else {
-                movementSection.classList.add('hidden');
+            if (movementSection) {
+                const hasMovementData = catalyst.movement?.success_prob || catalyst.movement?.upside_pct;
+                movementSection.classList.toggle('hidden', !hasMovementData);
+                if (hasMovementData) {
+                    const successEl = document.getElementById('modal-success-prob');
+                    const upsideEl = document.getElementById('modal-upside');
+                    const downsideEl = document.getElementById('modal-downside');
+                    if (successEl) successEl.textContent = catalyst.movement?.success_prob ? `${Math.round(catalyst.movement.success_prob)}%` : '-';
+                    if (upsideEl) upsideEl.textContent = catalyst.movement?.upside_pct ? `+${Math.round(catalyst.movement.upside_pct)}%` : '-';
+                    if (downsideEl) downsideEl.textContent = catalyst.movement?.downside_pct ? `-${Math.round(catalyst.movement.downside_pct)}%` : '-';
+                }
             }
 
             // Risk
-            document.getElementById('modal-risk').textContent = catalyst.risk.level;
+            document.getElementById('modal-risk').textContent = riskLevel;
             document.getElementById('modal-risk').className = riskClass + ' font-semibold';
-            document.getElementById('modal-risk-note').textContent = catalyst.risk.note;
+            document.getElementById('modal-risk-note').textContent = catalyst.risk?.note || '';
 
             // CRL Warning
             const crlWarning = document.getElementById('modal-crl-warning');
-            if (catalyst.risk_factors?.has_crl_history) {
-                crlWarning.classList.remove('hidden');
-                document.getElementById('modal-crl-count').textContent = `${catalyst.risk_factors.crl_count} prior rejection(s)`;
-            } else {
-                crlWarning.classList.add('hidden');
+            if (crlWarning) {
+                crlWarning.classList.toggle('hidden', !catalyst.risk_factors?.has_crl_history);
+                if (catalyst.risk_factors?.has_crl_history) {
+                    const crlCountEl = document.getElementById('modal-crl-count');
+                    if (crlCountEl) crlCountEl.textContent = `${catalyst.risk_factors.crl_count || 0} prior rejection(s)`;
+                }
             }
 
             // Company info
-            document.getElementById('modal-mcap').textContent = catalyst.company.mcap_millions
-                ? `$${catalyst.company.mcap_millions.toFixed(0)}M` : '-';
-            document.getElementById('modal-short').textContent = catalyst.company.short_interest_pct
-                ? `${catalyst.company.short_interest_pct.toFixed(1)}%` : '-';
+            const mcap = catalyst.company?.mcap_millions;
+            const shortInt = catalyst.company?.short_interest_pct;
+            document.getElementById('modal-mcap').textContent = mcap ? `$${Math.round(mcap)}M` : '-';
+            document.getElementById('modal-short').textContent = shortInt ? `${shortInt.toFixed(1)}%` : '-';
 
-            // Members-only analysis (only show if logged in and data available)
+            // Members-only analysis
             const analysisSection = document.getElementById('modal-analysis-section');
-            if (isUserAuthenticated && (catalyst.analysis?.cont_score || catalyst.analysis?.play_type)) {
-                analysisSection.classList.remove('hidden');
-                document.getElementById('modal-cont-score').textContent = catalyst.analysis.cont_score
-                    ? `${catalyst.analysis.cont_score}` : '-';
-                document.getElementById('modal-play-type').textContent = catalyst.analysis.play_type || '-';
-            } else {
-                analysisSection.classList.add('hidden');
+            if (analysisSection) {
+                const hasAnalysis = isUserAuthenticated && (catalyst.analysis?.cont_score || catalyst.analysis?.play_type);
+                analysisSection.classList.toggle('hidden', !hasAnalysis);
+                if (hasAnalysis) {
+                    const contEl = document.getElementById('modal-cont-score');
+                    const playEl = document.getElementById('modal-play-type');
+                    if (contEl) contEl.textContent = catalyst.analysis?.cont_score || '-';
+                    if (playEl) playEl.textContent = catalyst.analysis?.play_type || '-';
+                }
             }
 
             modal.classList.add('active');
-                console.log('Modal opened successfully');
-            } catch (error) {
-                console.error('Error opening modal:', error);
-            }
+            console.log('Modal should now be visible');
         }
 
         // Close modal
