@@ -827,9 +827,14 @@
 
         // Open modal with catalyst details
         function openModal(catalyst) {
-            const modal = document.getElementById('catalyst-modal');
-            const typeClass = `type-${catalyst.event.type.toLowerCase().replace(' ', '')}`;
-            const riskClass = `risk-${catalyst.risk.level.toLowerCase().replace('-', '')}`;
+            try {
+                console.log('Opening modal for:', catalyst.ticker);
+                const modal = document.getElementById('catalyst-modal');
+                if (!modal) { console.error('Modal element not found'); return; }
+                if (!catalyst) { console.error('No catalyst data'); return; }
+
+                const typeClass = `type-${catalyst.event.type.toLowerCase().replace(' ', '')}`;
+                const riskClass = `risk-${(catalyst.risk?.level || 'low').toLowerCase().replace('-', '')}`;
 
             // Header
             document.getElementById('modal-ticker').textContent = catalyst.ticker;
@@ -903,6 +908,10 @@
             }
 
             modal.classList.add('active');
+                console.log('Modal opened successfully');
+            } catch (error) {
+                console.error('Error opening modal:', error);
+            }
         }
 
         // Close modal
