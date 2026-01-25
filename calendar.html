@@ -27,21 +27,145 @@
     </script>
     <link rel="stylesheet" href="css/styles.css">
     <style>
-        .catalyst-card {
-            background: linear-gradient(145deg, #2a2a2a 0%, #1f1f1f 100%);
+        /* Calendar Grid Styles */
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 1px;
+            background: #333;
             border: 1px solid #333;
-            transition: all 0.3s ease;
+            border-radius: 8px;
+            overflow: hidden;
         }
-        .catalyst-card:hover {
-            border-color: #D4AF37;
-            transform: translateY(-2px);
+        .calendar-header-cell {
+            background: #2a2a2a;
+            padding: 12px 8px;
+            text-align: center;
+            font-weight: 600;
+            color: #888;
+            font-size: 12px;
+            text-transform: uppercase;
         }
-        .catalyst-card.public {
-            border-left: 3px solid #00C853;
+        .calendar-day {
+            background: #1f1f1f;
+            min-height: 100px;
+            padding: 8px;
+            position: relative;
+            transition: background 0.2s;
         }
-        .catalyst-card.members-only {
-            border-left: 3px solid #D4AF37;
+        .calendar-day:hover {
+            background: #252525;
         }
+        .calendar-day.other-month {
+            background: #1a1a1a;
+        }
+        .calendar-day.other-month .day-number {
+            color: #444;
+        }
+        .calendar-day.today {
+            background: rgba(212, 175, 55, 0.1);
+        }
+        .calendar-day.today .day-number {
+            background: #D4AF37;
+            color: #1C1C1C;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .day-number {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 4px;
+        }
+        .catalyst-chip {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 3px 6px;
+            margin-bottom: 2px;
+            border-radius: 4px;
+            font-size: 11px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .catalyst-chip:hover {
+            transform: scale(1.02);
+        }
+        .catalyst-chip.pdufa {
+            background: rgba(255, 99, 71, 0.2);
+            border-left: 2px solid #FF6B6B;
+        }
+        .catalyst-chip.phase3 {
+            background: rgba(255, 165, 0, 0.2);
+            border-left: 2px solid #FFA500;
+        }
+        .catalyst-chip.phase2 {
+            background: rgba(100, 149, 237, 0.2);
+            border-left: 2px solid #6495ED;
+        }
+        .catalyst-chip.adcom {
+            background: rgba(255, 0, 255, 0.2);
+            border-left: 2px solid #FF00FF;
+        }
+        .catalyst-chip.other {
+            background: rgba(136, 136, 136, 0.2);
+            border-left: 2px solid #888;
+        }
+        .catalyst-chip .ticker {
+            font-weight: 700;
+            color: #fff;
+        }
+        .catalyst-chip .type-abbr {
+            font-size: 9px;
+            opacity: 0.7;
+        }
+        .more-catalysts {
+            font-size: 10px;
+            color: #D4AF37;
+            cursor: pointer;
+            padding: 2px 4px;
+        }
+        .more-catalysts:hover {
+            text-decoration: underline;
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(4px);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+        }
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .modal-content {
+            background: #242424;
+            border: 1px solid #444;
+            border-radius: 12px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            transform: scale(0.9);
+            transition: transform 0.3s;
+        }
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+        }
+
+        /* Type badges */
         .type-badge {
             font-size: 10px;
             font-weight: 700;
@@ -53,47 +177,46 @@
         .type-phase3 { background: rgba(255, 165, 0, 0.2); color: #FFA500; border: 1px solid rgba(255, 165, 0, 0.3); }
         .type-phase2 { background: rgba(100, 149, 237, 0.2); color: #6495ED; border: 1px solid rgba(100, 149, 237, 0.3); }
         .type-adcom { background: rgba(255, 0, 255, 0.2); color: #FF00FF; border: 1px solid rgba(255, 0, 255, 0.3); }
+        .type-other { background: rgba(136, 136, 136, 0.2); color: #888; border: 1px solid rgba(136, 136, 136, 0.3); }
 
         .designation-badge {
             font-size: 9px;
-            padding: 1px 6px;
+            padding: 2px 6px;
             border-radius: 3px;
             font-weight: 600;
         }
+
+        /* Risk colors */
+        .risk-high { color: #FF6B6B; }
+        .risk-medium-high { color: #FFA500; }
+        .risk-medium { color: #FFD700; }
+        .risk-low { color: #888; }
+
+        /* Blur for non-members */
         .blur-content {
             filter: blur(5px);
             user-select: none;
             pointer-events: none;
         }
-        .members-overlay {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(28, 28, 28, 0.7);
-            backdrop-filter: blur(2px);
-            z-index: 10;
+
+        /* List view styles */
+        .list-view-card {
+            background: linear-gradient(145deg, #2a2a2a 0%, #1f1f1f 100%);
+            border: 1px solid #333;
+            transition: all 0.3s ease;
         }
-        .expand-btn {
-            cursor: pointer;
-            transition: transform 0.2s;
+        .list-view-card:hover {
+            border-color: #D4AF37;
         }
-        .expand-btn.expanded {
-            transform: rotate(180deg);
+
+        /* View toggle */
+        .view-toggle-btn {
+            transition: all 0.2s;
         }
-        .details-panel {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
+        .view-toggle-btn.active {
+            background: #D4AF37;
+            color: #1C1C1C;
         }
-        .details-panel.expanded {
-            max-height: 500px;
-        }
-        .risk-high { color: #FF6B6B; }
-        .risk-medium-high { color: #FFA500; }
-        .risk-medium { color: #FFD700; }
-        .risk-low { color: #888; }
     </style>
 </head>
 <body class="bg-dark text-white min-h-screen">
@@ -114,21 +237,72 @@
     </nav>
 
     <!-- Header -->
-    <section class="pt-24 pb-8 px-4">
+    <section class="pt-24 pb-6 px-4">
         <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-8">
-                <h1 class="text-4xl font-bold mb-4">
+            <div class="text-center mb-6">
+                <h1 class="text-4xl font-bold mb-3">
                     <span class="text-gold">Biotech Catalyst</span> Calendar
                 </h1>
-                <p class="text-gray-400 text-lg max-w-2xl mx-auto">
+                <p id="calendar-description" class="text-gray-400 text-lg max-w-2xl mx-auto">
                     Upcoming PDUFA dates, Phase 2/3 readouts, and AdCom meetings.
-                    <span class="text-gold">Next 7 days free</span> - full calendar for members.
+                    <span id="member-promo" class="text-gold">Next 7 days free</span><span id="member-promo-suffix"> - full calendar for members.</span>
                 </p>
             </div>
 
             <!-- Summary Stats -->
-            <div id="summary-stats" class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8">
+            <div id="summary-stats" class="grid grid-cols-2 md:grid-cols-5 gap-3 mb-6">
                 <!-- Populated by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Calendar Controls -->
+    <section class="px-4 pb-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-wrap items-center justify-between gap-4 mb-4">
+                <!-- Month Navigation -->
+                <div class="flex items-center gap-4">
+                    <button onclick="changeMonth(-1)" class="p-2 rounded-lg bg-dark-card border border-dark-border hover:border-gold transition-colors">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                        </svg>
+                    </button>
+                    <h2 id="current-month" class="text-2xl font-bold min-w-[200px] text-center">January 2025</h2>
+                    <button onclick="changeMonth(1)" class="p-2 rounded-lg bg-dark-card border border-dark-border hover:border-gold transition-colors">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </button>
+                    <button onclick="goToToday()" class="px-3 py-2 text-sm rounded-lg bg-dark-card border border-dark-border hover:border-gold transition-colors">
+                        Today
+                    </button>
+                </div>
+
+                <!-- View Toggle & Filters -->
+                <div class="flex items-center gap-3">
+                    <!-- View Toggle -->
+                    <div class="flex rounded-lg overflow-hidden border border-dark-border">
+                        <button onclick="setView('grid')" id="view-grid" class="view-toggle-btn active px-3 py-2 text-sm bg-dark-card">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>
+                            </svg>
+                        </button>
+                        <button onclick="setView('list')" id="view-list" class="view-toggle-btn px-3 py-2 text-sm bg-dark-card">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Filter Dropdown -->
+                    <select id="type-filter" onchange="filterCatalysts(this.value)" class="px-3 py-2 rounded-lg bg-dark-card border border-dark-border text-sm focus:border-gold outline-none">
+                        <option value="all">All Events</option>
+                        <option value="PDUFA">PDUFA</option>
+                        <option value="Phase 3">Phase 3</option>
+                        <option value="Phase 2">Phase 2</option>
+                        <option value="AdCom">AdCom</option>
+                    </select>
+                </div>
             </div>
         </div>
     </section>
@@ -136,67 +310,45 @@
     <!-- Calendar Content -->
     <section class="pb-16 px-4">
         <div class="max-w-7xl mx-auto">
-            <!-- Filter Tabs -->
-            <div class="flex flex-wrap gap-2 mb-6">
-                <button onclick="filterCatalysts('all')" class="filter-btn active px-4 py-2 rounded-lg bg-dark-card border border-dark-border hover:border-gold transition-colors" data-filter="all">
-                    All Events
-                </button>
-                <button onclick="filterCatalysts('PDUFA')" class="filter-btn px-4 py-2 rounded-lg bg-dark-card border border-dark-border hover:border-gold transition-colors" data-filter="PDUFA">
-                    PDUFA
-                </button>
-                <button onclick="filterCatalysts('Phase 3')" class="filter-btn px-4 py-2 rounded-lg bg-dark-card border border-dark-border hover:border-gold transition-colors" data-filter="Phase 3">
-                    Phase 3
-                </button>
-                <button onclick="filterCatalysts('Phase 2')" class="filter-btn px-4 py-2 rounded-lg bg-dark-card border border-dark-border hover:border-gold transition-colors" data-filter="Phase 2">
-                    Phase 2
-                </button>
-                <button onclick="filterCatalysts('AdCom')" class="filter-btn px-4 py-2 rounded-lg bg-dark-card border border-dark-border hover:border-gold transition-colors" data-filter="AdCom">
-                    AdCom
-                </button>
+            <!-- Grid View -->
+            <div id="calendar-grid-container">
+                <div class="calendar-grid" id="calendar-grid">
+                    <!-- Header row -->
+                    <div class="calendar-header-cell">Sun</div>
+                    <div class="calendar-header-cell">Mon</div>
+                    <div class="calendar-header-cell">Tue</div>
+                    <div class="calendar-header-cell">Wed</div>
+                    <div class="calendar-header-cell">Thu</div>
+                    <div class="calendar-header-cell">Fri</div>
+                    <div class="calendar-header-cell">Sat</div>
+                    <!-- Days populated by JS -->
+                </div>
             </div>
 
-            <!-- Public Section: This Week -->
-            <div class="mb-12">
-                <h2 class="text-2xl font-bold mb-4 flex items-center">
-                    <span class="text-green-400 mr-2">●</span>
-                    This Week <span class="text-gray-500 text-lg ml-2">(Free Preview)</span>
-                </h2>
-                <div id="public-catalysts" class="grid gap-4">
+            <!-- List View (hidden by default) -->
+            <div id="list-view-container" class="hidden">
+                <div id="list-view" class="space-y-3">
                     <!-- Populated by JS -->
                 </div>
             </div>
 
-            <!-- Members Section: Full Calendar -->
-            <div class="relative">
-                <h2 class="text-2xl font-bold mb-4 flex items-center">
-                    <span class="text-gold mr-2">●</span>
-                    Full Calendar <span class="text-gray-500 text-lg ml-2">(Members Only)</span>
-                </h2>
-
-                <div id="members-catalysts" class="grid gap-4">
-                    <!-- Populated by JS -->
-                </div>
-
-                <!-- Members Gate Overlay (shown for non-members) -->
-                <div id="members-gate" class="hidden absolute inset-0 bg-dark/80 backdrop-blur-sm flex items-center justify-center rounded-lg">
-                    <div class="text-center p-8 bg-dark-card border border-gold/30 rounded-xl max-w-md">
-                        <div class="text-4xl mb-4">🔒</div>
-                        <h3 class="text-xl font-bold text-gold mb-2">Members Only</h3>
-                        <p class="text-gray-400 mb-4">
-                            Get access to the full catalyst calendar with 88+ upcoming events, detailed analysis, and CONT scores.
-                        </p>
-                        <a href="index.html#founding" class="inline-block px-6 py-3 bg-gold text-dark font-bold rounded-lg hover:bg-gold/90 transition-colors">
-                            Become a Founding Member
-                        </a>
-                        <p class="text-sm text-gray-500 mt-3">Free for 6 months - limited spots</p>
-                    </div>
-                </div>
+            <!-- Members Gate (for non-members viewing beyond 7 days) -->
+            <div id="members-gate" class="hidden mt-8 text-center p-8 bg-dark-card border border-gold/30 rounded-xl max-w-md mx-auto">
+                <div class="text-4xl mb-4">🔒</div>
+                <h3 class="text-xl font-bold text-gold mb-2">Members Only</h3>
+                <p class="text-gray-400 mb-4">
+                    Get access to the full catalyst calendar with all upcoming events and detailed analysis.
+                </p>
+                <a href="index.html#founding" class="inline-block px-6 py-3 bg-gold text-dark font-bold rounded-lg hover:bg-gold/90 transition-colors">
+                    Become a Founding Member
+                </a>
+                <p class="text-sm text-gray-500 mt-3">Free for 6 months - limited spots</p>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="py-16 px-4 bg-dark-card border-t border-dark-border">
+    <!-- CTA Section (hidden for members) -->
+    <section id="cta-section" class="py-16 px-4 bg-dark-card border-t border-dark-border">
         <div class="max-w-4xl mx-auto text-center">
             <h2 class="text-3xl font-bold mb-4">Want the Full Calendar + Trade Alerts?</h2>
             <p class="text-gray-400 mb-6">
@@ -216,6 +368,61 @@
         </div>
     </footer>
 
+    <!-- Catalyst Detail Modal -->
+    <div id="catalyst-modal" class="modal-overlay" onclick="closeModal(event)">
+        <div class="modal-content p-6" onclick="event.stopPropagation()">
+            <div class="flex justify-between items-start mb-4">
+                <div>
+                    <div class="flex items-center gap-3 mb-2">
+                        <span id="modal-ticker" class="text-3xl font-bold"></span>
+                        <span id="modal-type-badge" class="type-badge"></span>
+                    </div>
+                    <div id="modal-date" class="text-gray-400"></div>
+                </div>
+                <button onclick="closeModal()" class="text-gray-500 hover:text-white p-1">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="space-y-4">
+                <!-- Drug & Indication -->
+                <div>
+                    <div id="modal-drug" class="text-gold font-semibold text-lg"></div>
+                    <div id="modal-indication" class="text-gray-400"></div>
+                </div>
+
+                <!-- Event Description -->
+                <div id="modal-description" class="text-gray-300"></div>
+
+                <!-- Designations -->
+                <div id="modal-designations" class="flex flex-wrap gap-2"></div>
+
+                <!-- Risk Level -->
+                <div class="flex items-center gap-2">
+                    <span class="text-gray-500">Binary Risk:</span>
+                    <span id="modal-risk" class="font-semibold"></span>
+                </div>
+                <div id="modal-risk-note" class="text-sm text-gray-500"></div>
+
+                <!-- Company Info -->
+                <div class="pt-4 border-t border-dark-border">
+                    <div class="grid grid-cols-2 gap-4 text-sm">
+                        <div>
+                            <span class="text-gray-500">Market Cap:</span>
+                            <span id="modal-mcap" class="text-white ml-2"></span>
+                        </div>
+                        <div>
+                            <span class="text-gray-500">Short Interest:</span>
+                            <span id="modal-short" class="text-white ml-2"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Supabase SDK for auth check -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="js/supabase-config.js"></script>
@@ -223,56 +430,52 @@
     <script>
         let calendarData = null;
         let currentFilter = 'all';
+        let currentView = 'grid';
+        let currentYear = new Date().getFullYear();
+        let currentMonth = new Date().getMonth();
+        let isUserAuthenticated = false;
 
         // Update navigation for logged-in members
         async function updateNavForMember() {
             try {
                 const user = await pbsAuth.getUser();
                 if (user) {
-                    // Update logo link to dashboard
                     const logoLink = document.getElementById('nav-logo-link');
                     if (logoLink) logoLink.href = 'dashboard.html';
 
-                    // Update Home link to Dashboard
                     const homeLink = document.getElementById('nav-home-link');
                     if (homeLink) {
                         homeLink.href = 'dashboard.html';
                         homeLink.textContent = '← Dashboard';
                     }
 
-                    // Hide Positions link (they have it on dashboard)
                     const positionsLink = document.getElementById('nav-positions-link');
                     if (positionsLink) positionsLink.classList.add('hidden');
 
-                    // Hide Members button (already logged in)
                     const membersLink = document.getElementById('nav-members-link');
                     if (membersLink) membersLink.classList.add('hidden');
                 }
-            } catch (err) {
-                // Not logged in, keep default nav
-            }
+            } catch (err) {}
         }
 
-        // Run on load
         document.addEventListener('DOMContentLoaded', updateNavForMember);
 
-        // Check if user is authenticated (using Supabase)
-        let isUserAuthenticated = false;
-
+        // Check authentication
         async function checkAuth() {
             try {
                 const user = await pbsAuth.getUser();
-                console.log('Calendar auth check - User:', user ? user.email : 'Not logged in');
                 isUserAuthenticated = !!user;
+
+                if (isUserAuthenticated) {
+                    // Hide non-member promotional elements
+                    document.getElementById('member-promo')?.classList.add('hidden');
+                    document.getElementById('member-promo-suffix')?.classList.add('hidden');
+                    document.getElementById('cta-section')?.classList.add('hidden');
+                    document.getElementById('members-gate')?.classList.add('hidden');
+                }
             } catch (e) {
-                console.error('Calendar auth check failed:', e);
                 isUserAuthenticated = false;
             }
-        }
-
-        function isAuthenticated() {
-            console.log('isAuthenticated called, returning:', isUserAuthenticated);
-            return isUserAuthenticated;
         }
 
         // Load calendar data
@@ -281,171 +484,308 @@
                 const response = await fetch('data/calendar.json');
                 calendarData = await response.json();
                 renderSummary();
-                renderCatalysts();
+                renderCalendar();
             } catch (error) {
                 console.error('Failed to load calendar:', error);
-                document.getElementById('public-catalysts').innerHTML =
-                    '<p class="text-gray-500">Failed to load calendar data.</p>';
             }
         }
 
         // Render summary stats
         function renderSummary() {
             const summary = calendarData.summary;
-            const html = `
-                <div class="bg-dark-card border border-dark-border rounded-lg p-4 text-center">
-                    <div class="text-3xl font-bold text-gold">${summary.total_catalysts}</div>
-                    <div class="text-gray-500 text-sm">Total Catalysts</div>
+            document.getElementById('summary-stats').innerHTML = `
+                <div class="bg-dark-card border border-dark-border rounded-lg p-3 text-center">
+                    <div class="text-2xl font-bold text-gold">${summary.total_catalysts}</div>
+                    <div class="text-gray-500 text-xs">Total</div>
                 </div>
-                <div class="bg-dark-card border border-dark-border rounded-lg p-4 text-center">
-                    <div class="text-3xl font-bold text-green-400">${summary.this_week}</div>
-                    <div class="text-gray-500 text-sm">This Week</div>
+                <div class="bg-dark-card border border-dark-border rounded-lg p-3 text-center">
+                    <div class="text-2xl font-bold text-green-400">${summary.this_week}</div>
+                    <div class="text-gray-500 text-xs">This Week</div>
                 </div>
-                <div class="bg-dark-card border border-dark-border rounded-lg p-4 text-center">
-                    <div class="text-3xl font-bold text-red-400">${summary.by_type.PDUFA}</div>
-                    <div class="text-gray-500 text-sm">PDUFA Dates</div>
+                <div class="bg-dark-card border border-dark-border rounded-lg p-3 text-center">
+                    <div class="text-2xl font-bold text-red-400">${summary.by_type.PDUFA}</div>
+                    <div class="text-gray-500 text-xs">PDUFA</div>
                 </div>
-                <div class="bg-dark-card border border-dark-border rounded-lg p-4 text-center">
-                    <div class="text-3xl font-bold text-orange-400">${summary.by_type['Phase 3']}</div>
-                    <div class="text-gray-500 text-sm">Phase 3</div>
+                <div class="bg-dark-card border border-dark-border rounded-lg p-3 text-center">
+                    <div class="text-2xl font-bold text-orange-400">${summary.by_type['Phase 3']}</div>
+                    <div class="text-gray-500 text-xs">Phase 3</div>
                 </div>
-                <div class="bg-dark-card border border-dark-border rounded-lg p-4 text-center">
-                    <div class="text-3xl font-bold text-blue-400">${summary.by_type['Phase 2']}</div>
-                    <div class="text-gray-500 text-sm">Phase 2</div>
+                <div class="bg-dark-card border border-dark-border rounded-lg p-3 text-center">
+                    <div class="text-2xl font-bold text-blue-400">${summary.by_type['Phase 2']}</div>
+                    <div class="text-gray-500 text-xs">Phase 2</div>
                 </div>
             `;
-            document.getElementById('summary-stats').innerHTML = html;
         }
 
-        // Render catalyst card
-        function renderCatalystCard(catalyst, isBlurred = false) {
+        // Get catalysts for a specific date
+        function getCatalystsForDate(year, month, day) {
+            const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+            return calendarData.catalysts.filter(c => {
+                if (currentFilter !== 'all' && c.event.type !== currentFilter) return false;
+                return c.date === dateStr;
+            });
+        }
+
+        // Check if date is within free preview period (7 days)
+        function isWithinFreePreview(dateStr) {
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            const targetDate = new Date(dateStr);
+            const diffDays = Math.ceil((targetDate - today) / (1000 * 60 * 60 * 24));
+            return diffDays <= 7 && diffDays >= 0;
+        }
+
+        // Get type class for chip
+        function getTypeClass(type) {
+            const typeMap = {
+                'PDUFA': 'pdufa',
+                'Phase 3': 'phase3',
+                'Phase 2': 'phase2',
+                'AdCom': 'adcom'
+            };
+            return typeMap[type] || 'other';
+        }
+
+        // Render calendar grid
+        function renderCalendar() {
+            if (currentView === 'grid') {
+                renderGridView();
+            } else {
+                renderListView();
+            }
+        }
+
+        // Render grid view
+        function renderGridView() {
+            document.getElementById('calendar-grid-container').classList.remove('hidden');
+            document.getElementById('list-view-container').classList.add('hidden');
+
+            // Update month title
+            const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+                               'July', 'August', 'September', 'October', 'November', 'December'];
+            document.getElementById('current-month').textContent = `${monthNames[currentMonth]} ${currentYear}`;
+
+            // Get first day of month and total days
+            const firstDay = new Date(currentYear, currentMonth, 1).getDay();
+            const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+            const daysInPrevMonth = new Date(currentYear, currentMonth, 0).getDate();
+
+            const today = new Date();
+            const isCurrentMonth = today.getFullYear() === currentYear && today.getMonth() === currentMonth;
+
+            // Build calendar grid
+            const grid = document.getElementById('calendar-grid');
+
+            // Keep header cells, remove day cells
+            const headerCells = Array.from(grid.querySelectorAll('.calendar-header-cell'));
+            grid.innerHTML = '';
+            headerCells.forEach(cell => grid.appendChild(cell));
+
+            // Previous month days
+            for (let i = firstDay - 1; i >= 0; i--) {
+                const day = daysInPrevMonth - i;
+                const prevMonth = currentMonth === 0 ? 11 : currentMonth - 1;
+                const prevYear = currentMonth === 0 ? currentYear - 1 : currentYear;
+                grid.appendChild(createDayCell(prevYear, prevMonth, day, true));
+            }
+
+            // Current month days
+            for (let day = 1; day <= daysInMonth; day++) {
+                const isToday = isCurrentMonth && today.getDate() === day;
+                grid.appendChild(createDayCell(currentYear, currentMonth, day, false, isToday));
+            }
+
+            // Next month days to complete the grid
+            const totalCells = firstDay + daysInMonth;
+            const remainingCells = totalCells % 7 === 0 ? 0 : 7 - (totalCells % 7);
+            for (let day = 1; day <= remainingCells; day++) {
+                const nextMonth = currentMonth === 11 ? 0 : currentMonth + 1;
+                const nextYear = currentMonth === 11 ? currentYear + 1 : currentYear;
+                grid.appendChild(createDayCell(nextYear, nextMonth, day, true));
+            }
+        }
+
+        // Create a day cell
+        function createDayCell(year, month, day, isOtherMonth, isToday = false) {
+            const cell = document.createElement('div');
+            cell.className = 'calendar-day' + (isOtherMonth ? ' other-month' : '') + (isToday ? ' today' : '');
+
+            const dayNum = document.createElement('div');
+            dayNum.className = 'day-number';
+            dayNum.textContent = day;
+            cell.appendChild(dayNum);
+
+            // Get catalysts for this day
+            const catalysts = getCatalystsForDate(year, month, day);
+            const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+            const isPreview = isWithinFreePreview(dateStr);
+            const canView = isUserAuthenticated || isPreview;
+
+            // Show up to 3 catalysts, then "more" link
+            const maxShow = 3;
+            catalysts.slice(0, maxShow).forEach(cat => {
+                const chip = document.createElement('div');
+                chip.className = `catalyst-chip ${getTypeClass(cat.event.type)}` + (!canView ? ' blur-content' : '');
+                chip.innerHTML = `
+                    <span class="ticker">${cat.ticker}</span>
+                    <span class="type-abbr">${cat.event.type === 'Phase 3' ? 'P3' : cat.event.type === 'Phase 2' ? 'P2' : cat.event.type}</span>
+                `;
+                if (canView) {
+                    chip.onclick = () => openModal(cat);
+                }
+                cell.appendChild(chip);
+            });
+
+            if (catalysts.length > maxShow) {
+                const more = document.createElement('div');
+                more.className = 'more-catalysts' + (!canView ? ' blur-content' : '');
+                more.textContent = `+${catalysts.length - maxShow} more`;
+                if (canView) {
+                    more.onclick = () => showDayModal(year, month, day, catalysts);
+                }
+                cell.appendChild(more);
+            }
+
+            return cell;
+        }
+
+        // Render list view
+        function renderListView() {
+            document.getElementById('calendar-grid-container').classList.add('hidden');
+            document.getElementById('list-view-container').classList.remove('hidden');
+
+            const listView = document.getElementById('list-view');
+
+            // Filter catalysts for current month
+            const catalysts = calendarData.catalysts.filter(c => {
+                if (currentFilter !== 'all' && c.event.type !== currentFilter) return false;
+                const date = new Date(c.date);
+                return date.getFullYear() === currentYear && date.getMonth() === currentMonth;
+            });
+
+            if (catalysts.length === 0) {
+                listView.innerHTML = '<p class="text-gray-500 text-center py-8">No catalysts this month.</p>';
+                return;
+            }
+
+            listView.innerHTML = catalysts.map(cat => {
+                const canView = isUserAuthenticated || isWithinFreePreview(cat.date);
+                const typeClass = `type-${cat.event.type.toLowerCase().replace(' ', '')}`;
+                const riskClass = `risk-${cat.risk.level.toLowerCase().replace('-', '')}`;
+
+                const designationBadges = cat.designations.map(d =>
+                    `<span class="designation-badge" style="background: ${d.color}20; color: ${d.color}; border: 1px solid ${d.color}40">${d.code}</span>`
+                ).join('');
+
+                return `
+                    <div class="list-view-card rounded-lg p-4 ${!canView ? 'blur-content' : ''}" ${canView ? `onclick="openModal(calendarData.catalysts.find(c => c.ticker === '${cat.ticker}' && c.date === '${cat.date}'))"` : ''} style="cursor: ${canView ? 'pointer' : 'default'}">
+                        <div class="flex justify-between items-start mb-2">
+                            <div class="flex items-center gap-3">
+                                <span class="text-xl font-bold">${cat.ticker}</span>
+                                <span class="type-badge ${typeClass}">${cat.event.type}</span>
+                            </div>
+                            <div class="text-right">
+                                <div class="font-semibold">${cat.date_display}</div>
+                                <div class="text-gray-500 text-sm">${cat.weekday}</div>
+                            </div>
+                        </div>
+                        <div class="text-gold text-sm">${cat.event.drug_name || ''}</div>
+                        <div class="text-gray-500 text-sm">${cat.event.indication || cat.event.description || ''}</div>
+                        ${designationBadges ? `<div class="flex flex-wrap gap-1 mt-2">${designationBadges}</div>` : ''}
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Open modal with catalyst details
+        function openModal(catalyst) {
+            const modal = document.getElementById('catalyst-modal');
             const typeClass = `type-${catalyst.event.type.toLowerCase().replace(' ', '')}`;
             const riskClass = `risk-${catalyst.risk.level.toLowerCase().replace('-', '')}`;
 
-            const designationBadges = catalyst.designations.map(d =>
-                `<span class="designation-badge" style="background: ${d.color}20; color: ${d.color}; border: 1px solid ${d.color}40">${d.code}</span>`
+            document.getElementById('modal-ticker').textContent = catalyst.ticker;
+            document.getElementById('modal-type-badge').className = `type-badge ${typeClass}`;
+            document.getElementById('modal-type-badge').textContent = catalyst.event.type;
+            document.getElementById('modal-date').textContent = `${catalyst.date_display} (${catalyst.weekday}) • ${catalyst.days_until} days`;
+            document.getElementById('modal-drug').textContent = catalyst.event.drug_name || '';
+            document.getElementById('modal-indication').textContent = catalyst.event.indication || '';
+            document.getElementById('modal-description').textContent = catalyst.event.description || '';
+
+            // Designations
+            const designationsHtml = catalyst.designations.map(d =>
+                `<span class="designation-badge" style="background: ${d.color}20; color: ${d.color}; border: 1px solid ${d.color}40">${d.code} - ${d.label}</span>`
             ).join('');
+            document.getElementById('modal-designations').innerHTML = designationsHtml;
 
-            const contScore = catalyst.analysis.cont_score
-                ? `<span class="text-gold font-bold">CONT: ${catalyst.analysis.cont_score}</span>`
-                : '';
+            // Risk
+            document.getElementById('modal-risk').textContent = catalyst.risk.level;
+            document.getElementById('modal-risk').className = riskClass + ' font-semibold';
+            document.getElementById('modal-risk-note').textContent = catalyst.risk.note;
 
-            const positionBadge = catalyst.meta.has_position
-                ? `<span class="text-xs px-2 py-1 bg-green-500/20 text-green-400 rounded">POSITION</span>`
-                : '';
+            // Company info
+            document.getElementById('modal-mcap').textContent = catalyst.company.mcap_millions
+                ? `$${catalyst.company.mcap_millions.toFixed(0)}M` : '-';
+            document.getElementById('modal-short').textContent = catalyst.company.short_interest_pct
+                ? `${catalyst.company.short_interest_pct.toFixed(1)}%` : '-';
 
-            return `
-                <div class="catalyst-card ${catalyst.is_public ? 'public' : 'members-only'} rounded-lg p-4 ${isBlurred ? 'blur-content' : ''}" data-type="${catalyst.event.type}">
-                    <div class="flex justify-between items-start mb-3">
-                        <div class="flex items-center gap-3">
-                            <span class="text-2xl font-bold">${catalyst.ticker}</span>
-                            <span class="type-badge ${typeClass}">${catalyst.event.type}</span>
-                            ${positionBadge}
-                        </div>
-                        <div class="text-right">
-                            <div class="text-lg font-semibold">${catalyst.date_display}</div>
-                            <div class="text-gray-500 text-sm">${catalyst.weekday} • ${catalyst.days_until}d</div>
-                        </div>
-                    </div>
-
-                    <div class="mb-3">
-                        <div class="text-gray-300">${catalyst.event.description || catalyst.event.type}</div>
-                        ${catalyst.event.drug_name ? `<div class="text-gold text-sm">${catalyst.event.drug_name}</div>` : ''}
-                        ${catalyst.event.indication ? `<div class="text-gray-500 text-sm">${catalyst.event.indication}</div>` : ''}
-                    </div>
-
-                    <div class="flex flex-wrap gap-2 mb-3">
-                        ${designationBadges}
-                    </div>
-
-                    <div class="flex justify-between items-center text-sm">
-                        <div class="${riskClass}">
-                            ⚠️ ${catalyst.risk.level} binary risk
-                        </div>
-                        <div class="flex items-center gap-3">
-                            ${contScore}
-                            ${catalyst.analysis.is_leap_play ? '<span class="text-xl">🐸</span>' : ''}
-                        </div>
-                    </div>
-
-                    ${!isBlurred && catalyst.event.indication ? `
-                        <div class="mt-3 pt-3 border-t border-dark-border">
-                            <button onclick="toggleDetails(this)" class="expand-btn text-gray-500 hover:text-gold text-sm flex items-center gap-1">
-                                <span>Details</span>
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                </svg>
-                            </button>
-                            <div class="details-panel mt-2 text-sm text-gray-400">
-                                <p><strong>Indication:</strong> ${catalyst.event.indication}</p>
-                                ${catalyst.company.mcap_millions ? `<p><strong>Market Cap:</strong> $${catalyst.company.mcap_millions.toFixed(0)}M</p>` : ''}
-                                ${catalyst.company.short_interest_pct ? `<p><strong>Short Interest:</strong> ${catalyst.company.short_interest_pct.toFixed(1)}%</p>` : ''}
-                                <p class="mt-2 text-xs text-gray-500">${catalyst.risk.note}</p>
-                            </div>
-                        </div>
-                    ` : ''}
-                </div>
-            `;
+            modal.classList.add('active');
         }
 
-        // Toggle details panel
-        function toggleDetails(btn) {
-            btn.classList.toggle('expanded');
-            const panel = btn.nextElementSibling;
-            panel.classList.toggle('expanded');
+        // Close modal
+        function closeModal(event) {
+            if (event && event.target !== event.currentTarget) return;
+            document.getElementById('catalyst-modal').classList.remove('active');
         }
 
-        // Render all catalysts
-        function renderCatalysts() {
-            const isAuth = isAuthenticated();
-            const catalysts = calendarData.catalysts.filter(c =>
-                currentFilter === 'all' || c.event.type === currentFilter
-            );
+        // Show all catalysts for a day (when clicking "+more")
+        function showDayModal(year, month, day, catalysts) {
+            // For simplicity, just open the first one
+            // Could be enhanced to show a list
+            openModal(catalysts[0]);
+        }
 
-            const publicCatalysts = catalysts.filter(c => c.is_public);
-            const membersCatalysts = catalysts.filter(c => !c.is_public);
-
-            // Public section
-            if (publicCatalysts.length > 0) {
-                document.getElementById('public-catalysts').innerHTML =
-                    publicCatalysts.map(c => renderCatalystCard(c, false)).join('');
-            } else {
-                document.getElementById('public-catalysts').innerHTML =
-                    '<p class="text-gray-500 p-4 bg-dark-card rounded-lg">No catalysts in the next 7 days. Check back soon!</p>';
+        // Change month
+        function changeMonth(delta) {
+            currentMonth += delta;
+            if (currentMonth > 11) {
+                currentMonth = 0;
+                currentYear++;
+            } else if (currentMonth < 0) {
+                currentMonth = 11;
+                currentYear--;
             }
+            renderCalendar();
+        }
 
-            // Members section
-            if (membersCatalysts.length > 0) {
-                // Show first 3 blurred if not authenticated, all if authenticated
-                if (isAuth) {
-                    document.getElementById('members-catalysts').innerHTML =
-                        membersCatalysts.map(c => renderCatalystCard(c, false)).join('');
-                    document.getElementById('members-gate').classList.add('hidden');
-                } else {
-                    // Show first 5 blurred as teaser
-                    document.getElementById('members-catalysts').innerHTML =
-                        membersCatalysts.slice(0, 5).map(c => renderCatalystCard(c, true)).join('');
-                    document.getElementById('members-gate').classList.remove('hidden');
-                }
-            }
+        // Go to today
+        function goToToday() {
+            const today = new Date();
+            currentYear = today.getFullYear();
+            currentMonth = today.getMonth();
+            renderCalendar();
+        }
+
+        // Set view (grid/list)
+        function setView(view) {
+            currentView = view;
+            document.getElementById('view-grid').classList.toggle('active', view === 'grid');
+            document.getElementById('view-list').classList.toggle('active', view === 'list');
+            renderCalendar();
         }
 
         // Filter catalysts
         function filterCatalysts(filter) {
             currentFilter = filter;
-
-            // Update active button
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.classList.remove('active', 'border-gold', 'text-gold');
-                if (btn.dataset.filter === filter) {
-                    btn.classList.add('active', 'border-gold', 'text-gold');
-                }
-            });
-
-            renderCatalysts();
+            document.getElementById('type-filter').value = filter;
+            renderCalendar();
         }
 
-        // Initialize - check auth first, then load calendar
+        // Close modal on escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        // Initialize
         async function init() {
             await checkAuth();
             await loadCalendar();
