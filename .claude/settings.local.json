@@ -10,7 +10,13 @@
       "Bash(sqlite3:*)",
       "Bash(ls:*)",
       "Bash(grep:*)",
-      "WebFetch(domain:powersbiostrikes.com)"
+      "WebFetch(domain:powersbiostrikes.com)",
+      "Bash(ssh-keygen:*)",
+      "Bash(ssh-add:*)",
+      "Bash(ssh:*)",
+      "Bash(git remote get-url:*)",
+      "Bash(git remote set-url:*)",
+      "Bash(git restore:*)"
     ]
   }
 }

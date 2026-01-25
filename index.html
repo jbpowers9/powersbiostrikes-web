@@ -204,6 +204,15 @@
                     <div class="text-2xl md:text-3xl font-bold text-gold">100%</div>
                     <div class="text-xs uppercase tracking-wide">Positions Disclosed</div>
                 </div>
+                <div class="w-px h-12 bg-steel-dark hidden md:block"></div>
+                <div class="text-center">
+                    <div id="member-count" class="text-2xl md:text-3xl font-bold text-green-400">--</div>
+                    <div class="text-xs uppercase tracking-wide">Community Members</div>
+                    <div class="text-xs text-green-400 flex items-center justify-center gap-1">
+                        <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+                        live
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -1394,6 +1403,53 @@
             </div>
         </div>
     </footer>
+
+    <!-- Supabase SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase-config.js"></script>
+
+    <!-- Live Member Counter -->
+    <script>
+    (async function() {
+        const memberCountEl = document.getElementById('member-count');
+        if (!memberCountEl) return;
+
+        try {
+            // Get member count from Supabase profiles table
+            const { count, error } = await supabaseClient
+                .from('profiles')
+                .select('*', { count: 'exact', head: true });
+
+            if (error) throw error;
+
+            // Animate the counter
+            const targetCount = count || 0;
+            let currentCount = 0;
+            const duration = 1500;
+            const startTime = Date.now();
+
+            function animateCount() {
+                const elapsed = Date.now() - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                // Ease out
+                const easeProgress = 1 - Math.pow(1 - progress, 3);
+                currentCount = Math.floor(easeProgress * targetCount);
+                memberCountEl.textContent = currentCount;
+
+                if (progress < 1) {
+                    requestAnimationFrame(animateCount);
+                } else {
+                    memberCountEl.textContent = targetCount;
+                }
+            }
+
+            animateCount();
+        } catch (err) {
+            console.log('Member count unavailable:', err.message);
+            memberCountEl.textContent = '--';
+        }
+    })();
+    </script>
 
     <!-- JavaScript -->
     <script src="js/main.js"></script>
