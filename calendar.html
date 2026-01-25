@@ -893,7 +893,7 @@
 
             // Members-only analysis (only show if logged in and data available)
             const analysisSection = document.getElementById('modal-analysis-section');
-            if (isAuthenticated && (catalyst.analysis?.cont_score || catalyst.analysis?.play_type)) {
+            if (isUserAuthenticated && (catalyst.analysis?.cont_score || catalyst.analysis?.play_type)) {
                 analysisSection.classList.remove('hidden');
                 document.getElementById('modal-cont-score').textContent = catalyst.analysis.cont_score
                     ? `${catalyst.analysis.cont_score}` : '-';
