@@ -89,7 +89,7 @@ def generate_calendar(public_days: int = 7) -> Dict:
     conn.row_factory = sqlite3.Row
     cursor = conn.cursor()
 
-    # Get all upcoming catalysts
+    # Get all upcoming catalysts with full data
     cursor.execute("""
         SELECT
             ticker, catalyst_date, catalyst_event, drug_name, indication,
@@ -97,7 +97,14 @@ def generate_calendar(public_days: int = 7) -> Dict:
             is_first_in_class, is_best_in_class, critical_unmet_need,
             is_leap_play, estimated_pdufa_date, data_completeness_pct,
             research_notes, is_priority_review, is_rmat, is_accelerated,
-            short_interest_pct
+            short_interest_pct,
+            -- Additional fields for richer display
+            stage, is_big_mover, mover_score,
+            success_prob, upside_pct, downside_pct,
+            cont_score, cont_rating, true_binary_score, true_binary_rating,
+            has_crl_history, crl_count,
+            is_binary, is_milestone, is_phase1, is_initiation, is_submission,
+            category_name, company_name
         FROM catalyst_research
         WHERE catalyst_date >= date('now')
         AND (excluded != 1 OR excluded IS NULL)
@@ -162,16 +169,29 @@ def generate_calendar(public_days: int = 7) -> Dict:
         if row['critical_unmet_need']:
             designations.append({'code': 'UMN', 'label': 'Unmet Medical Need', 'color': 'red'})
 
-        # Get CONT score from position if we have one
-        cont_score = None
+        # Get CONT score - prefer from research, fallback to position
+        cont_score = row['cont_score']
+        cont_rating = row['cont_rating']
         play_type = None
         if ticker in position_data:
-            cont_score = position_data[ticker].get('cont_score')
             play_type = position_data[ticker].get('play_type')
+            if not cont_score:
+                cont_score = position_data[ticker].get('cont_score')
 
         # Format date for display
         cat_display = cat_dt.strftime('%b %d, %Y')
         weekday = cat_dt.strftime('%A')
+
+        # Determine event classification
+        is_phase1 = bool(row['is_phase1']) if row['is_phase1'] else False
+        is_initiation = bool(row['is_initiation']) if row['is_initiation'] else False
+        is_submission = bool(row['is_submission']) if row['is_submission'] else False
+
+        # Override catalyst_type for special events
+        if is_initiation:
+            catalyst_type = 'Initiation'
+        elif is_submission:
+            catalyst_type = 'Submission'
 
         catalyst = {
             'ticker': ticker,
@@ -181,33 +201,63 @@ def generate_calendar(public_days: int = 7) -> Dict:
             'days_until': days_until,
             'is_public': is_public,
 
+            # Event info
             'event': {
                 'type': catalyst_type,
+                'stage': row['stage'] or catalyst_type,
                 'description': row['catalyst_event'],
                 'drug_name': row['drug_name'],
                 'indication': row['indication'],
+                'category': row['category_name'],
+                'is_binary': bool(row['is_binary']) if row['is_binary'] is not None else True,
+                'is_milestone': bool(row['is_milestone']) if row['is_milestone'] else False,
             },
 
-            'risk': binary_risk,
-            'designations': designations,
-
+            # Company info
             'company': {
+                'name': row['company_name'],
                 'mcap_millions': row['mcap_millions'],
                 'short_interest_pct': row['short_interest_pct'],
             },
 
-            # Members-only details
+            # Risk assessment
+            'risk': binary_risk,
+            'designations': designations,
+
+            # Movement potential (show for all catalysts if available)
+            'movement': {
+                'is_big_mover': bool(row['is_big_mover']) if row['is_big_mover'] else False,
+                'mover_score': row['mover_score'],
+                'success_prob': row['success_prob'],
+                'upside_pct': row['upside_pct'],
+                'downside_pct': row['downside_pct'],
+            },
+
+            # Risk factors
+            'risk_factors': {
+                'has_crl_history': bool(row['has_crl_history']) if row['has_crl_history'] else False,
+                'crl_count': row['crl_count'] or 0,
+                'true_binary_score': row['true_binary_score'],
+                'true_binary_rating': row['true_binary_rating'],
+            },
+
+            # Members-only analysis
             'analysis': {
                 'cont_score': cont_score,
+                'cont_rating': cont_rating,
                 'play_type': play_type,
-                'is_leap_play': bool(row['is_leap_play']),
+                'is_leap_play': bool(row['is_leap_play']) if row['is_leap_play'] else False,
                 'estimated_pdufa': row['estimated_pdufa_date'],
                 'data_completeness': row['data_completeness_pct'],
             },
 
+            # Metadata
             'meta': {
                 'has_position': ticker in position_data,
                 'research_available': bool(row['research_notes']),
+                'is_phase1': is_phase1,
+                'is_initiation': is_initiation,
+                'is_submission': is_submission,
             }
         }
 
@@ -217,11 +267,13 @@ def generate_calendar(public_days: int = 7) -> Dict:
     this_week = [c for c in catalysts if c['days_until'] <= 7]
     next_week = [c for c in catalysts if 7 < c['days_until'] <= 14]
     this_month = [c for c in catalysts if c['days_until'] <= 30]
+    big_movers = [c for c in catalysts if c['movement']['is_big_mover']]
 
-    pdufa_count = len([c for c in catalysts if c['event']['type'] == 'PDUFA'])
-    phase3_count = len([c for c in catalysts if c['event']['type'] == 'Phase 3'])
-    phase2_count = len([c for c in catalysts if c['event']['type'] == 'Phase 2'])
-    phase1_count = len([c for c in catalysts if c['event']['type'] == 'Phase 1'])
+    # Count by type
+    type_counts = {}
+    for c in catalysts:
+        t = c['event']['type']
+        type_counts[t] = type_counts.get(t, 0) + 1
 
     calendar_data = {
         'generated_at': datetime.now().isoformat(),
@@ -232,13 +284,16 @@ def generate_calendar(public_days: int = 7) -> Dict:
             'this_week': len(this_week),
             'next_week': len(next_week),
             'this_month': len(this_month),
+            'big_movers': len(big_movers),
             'by_type': {
-                'PDUFA': pdufa_count,
-                'Phase 3': phase3_count,
-                'Phase 2': phase2_count,
-                'Phase 1': phase1_count,
-                'AdCom': len([c for c in catalysts if c['event']['type'] == 'AdCom']),
-                'Other': len([c for c in catalysts if c['event']['type'] == 'Other']),
+                'PDUFA': type_counts.get('PDUFA', 0),
+                'AdCom': type_counts.get('AdCom', 0),
+                'Phase 3': type_counts.get('Phase 3', 0),
+                'Phase 2': type_counts.get('Phase 2', 0),
+                'Phase 1': type_counts.get('Phase 1', 0),
+                'Initiation': type_counts.get('Initiation', 0),
+                'Submission': type_counts.get('Submission', 0),
+                'Other': type_counts.get('Other', 0),
             }
         },
 
@@ -276,16 +331,19 @@ def main():
 
     print(f"\nCalendar generated successfully!")
     print(f"  Total catalysts: {calendar['summary']['total_catalysts']}")
+    print(f"  Big movers: {calendar['summary']['big_movers']}")
     print(f"  This week (public): {calendar['summary']['this_week']}")
     print(f"  This month: {calendar['summary']['this_month']}")
     print(f"\nBy type:")
     for cat_type, count in calendar['summary']['by_type'].items():
-        print(f"  {cat_type}: {count}")
+        if count > 0:
+            print(f"  {cat_type}: {count}")
 
     print(f"\nNext 5 catalysts:")
     for cat in calendar['catalysts'][:5]:
         status = "PUBLIC" if cat['is_public'] else "MEMBERS"
-        print(f"  [{status}] {cat['ticker']} - {cat['date_display']} - {cat['event']['type']}")
+        mover = " [BIG MOVER]" if cat['movement']['is_big_mover'] else ""
+        print(f"  [{status}] {cat['ticker']} - {cat['date_display']} - {cat['event']['type']}{mover}")
 
 
 if __name__ == '__main__':

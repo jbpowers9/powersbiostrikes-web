@@ -135,6 +135,17 @@
             background: rgba(136, 136, 136, 0.2);
             border-left: 2px solid #888;
         }
+        .catalyst-chip.initiation {
+            background: rgba(0, 191, 255, 0.2);
+            border-left: 2px solid #00BFFF;
+        }
+        .catalyst-chip.submission {
+            background: rgba(147, 112, 219, 0.2);
+            border-left: 2px solid #9370DB;
+        }
+        .catalyst-chip.big-mover {
+            box-shadow: 0 0 8px rgba(255, 165, 0, 0.4);
+        }
         .catalyst-chip .ticker {
             font-weight: 700;
             color: #fff;
@@ -319,11 +330,14 @@
                     <!-- Filter Dropdown -->
                     <select id="type-filter" onchange="filterCatalysts(this.value)" class="px-3 py-2 rounded-lg bg-dark-card border border-dark-border text-sm focus:border-gold outline-none">
                         <option value="all">All Events</option>
+                        <option value="big-movers">Big Movers Only</option>
                         <option value="PDUFA">PDUFA</option>
                         <option value="AdCom">AdCom</option>
                         <option value="Phase 3">Phase 3</option>
                         <option value="Phase 2">Phase 2</option>
                         <option value="Phase 1">Phase 1</option>
+                        <option value="Initiation">Initiations</option>
+                        <option value="Submission">Submissions</option>
                         <option value="Other">Other</option>
                     </select>
                 </div>
@@ -394,14 +408,17 @@
 
     <!-- Catalyst Detail Modal -->
     <div id="catalyst-modal" class="modal-overlay" onclick="closeModal(event)">
-        <div class="modal-content p-6" onclick="event.stopPropagation()">
+        <div class="modal-content p-6" onclick="event.stopPropagation()" style="max-width: 500px;">
+            <!-- Header -->
             <div class="flex justify-between items-start mb-4">
                 <div>
-                    <div class="flex items-center gap-3 mb-2">
+                    <div class="flex items-center gap-3 mb-1">
                         <span id="modal-ticker" class="text-3xl font-bold"></span>
                         <span id="modal-type-badge" class="type-badge"></span>
+                        <span id="modal-big-mover" class="hidden px-2 py-1 text-xs font-bold bg-orange-500/20 text-orange-400 rounded">BIG MOVER</span>
                     </div>
-                    <div id="modal-date" class="text-gray-400"></div>
+                    <div id="modal-company-name" class="text-gray-500 text-sm"></div>
+                    <div id="modal-date" class="text-gray-400 mt-1"></div>
                 </div>
                 <button onclick="closeModal()" class="text-gray-500 hover:text-white p-1">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -410,36 +427,76 @@
                 </button>
             </div>
 
-            <div class="space-y-4">
+            <div class="space-y-4 text-sm">
                 <!-- Drug & Indication -->
-                <div>
-                    <div id="modal-drug" class="text-gold font-semibold text-lg"></div>
-                    <div id="modal-indication" class="text-gray-400"></div>
+                <div class="bg-dark-card rounded-lg p-3">
+                    <div id="modal-drug" class="text-gold font-semibold"></div>
+                    <div id="modal-indication" class="text-gray-400 text-xs mt-1"></div>
+                    <div id="modal-category" class="text-gray-500 text-xs mt-1"></div>
                 </div>
-
-                <!-- Event Description -->
-                <div id="modal-description" class="text-gray-300"></div>
 
                 <!-- Designations -->
-                <div id="modal-designations" class="flex flex-wrap gap-2"></div>
+                <div id="modal-designations" class="flex flex-wrap gap-1"></div>
 
-                <!-- Risk Level -->
-                <div class="flex items-center gap-2">
-                    <span class="text-gray-500">Binary Risk:</span>
-                    <span id="modal-risk" class="font-semibold"></span>
-                </div>
-                <div id="modal-risk-note" class="text-sm text-gray-500"></div>
-
-                <!-- Company Info -->
-                <div class="pt-4 border-t border-dark-border">
-                    <div class="grid grid-cols-2 gap-4 text-sm">
+                <!-- Movement Potential (if available) -->
+                <div id="modal-movement-section" class="bg-dark-card rounded-lg p-3 hidden">
+                    <div class="text-gray-500 text-xs mb-2">MOVEMENT POTENTIAL</div>
+                    <div class="grid grid-cols-3 gap-2 text-center">
                         <div>
-                            <span class="text-gray-500">Market Cap:</span>
-                            <span id="modal-mcap" class="text-white ml-2"></span>
+                            <div id="modal-success-prob" class="text-lg font-bold text-green-400">-</div>
+                            <div class="text-gray-500 text-xs">Success</div>
                         </div>
                         <div>
-                            <span class="text-gray-500">Short Interest:</span>
-                            <span id="modal-short" class="text-white ml-2"></span>
+                            <div id="modal-upside" class="text-lg font-bold text-green-400">-</div>
+                            <div class="text-gray-500 text-xs">Upside</div>
+                        </div>
+                        <div>
+                            <div id="modal-downside" class="text-lg font-bold text-red-400">-</div>
+                            <div class="text-gray-500 text-xs">Downside</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Risk Assessment -->
+                <div class="bg-dark-card rounded-lg p-3">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <span class="text-gray-500 text-xs">RISK LEVEL</span>
+                            <div class="flex items-center gap-2 mt-1">
+                                <span id="modal-risk" class="font-semibold"></span>
+                            </div>
+                        </div>
+                        <div id="modal-crl-warning" class="hidden text-right">
+                            <span class="text-red-400 text-xs font-bold">CRL HISTORY</span>
+                            <div id="modal-crl-count" class="text-red-400 text-xs"></div>
+                        </div>
+                    </div>
+                    <div id="modal-risk-note" class="text-xs text-gray-500 mt-1"></div>
+                </div>
+
+                <!-- Company Stats -->
+                <div class="grid grid-cols-2 gap-2">
+                    <div class="bg-dark-card rounded-lg p-3 text-center">
+                        <div id="modal-mcap" class="text-lg font-bold text-white">-</div>
+                        <div class="text-gray-500 text-xs">Market Cap</div>
+                    </div>
+                    <div class="bg-dark-card rounded-lg p-3 text-center">
+                        <div id="modal-short" class="text-lg font-bold text-white">-</div>
+                        <div class="text-gray-500 text-xs">Short Interest</div>
+                    </div>
+                </div>
+
+                <!-- Members-Only Analysis Section -->
+                <div id="modal-analysis-section" class="bg-gradient-to-r from-gold/10 to-transparent rounded-lg p-3 hidden">
+                    <div class="text-gold text-xs mb-2 font-semibold">MEMBERS ANALYSIS</div>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <span class="text-gray-500 text-xs">CONT Score</span>
+                            <div id="modal-cont-score" class="font-bold text-white">-</div>
+                        </div>
+                        <div>
+                            <span class="text-gray-500 text-xs">Play Type</span>
+                            <div id="modal-play-type" class="font-bold text-white">-</div>
                         </div>
                     </div>
                 </div>
@@ -549,7 +606,8 @@
         function getCatalystsForDate(year, month, day) {
             const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
             return calendarData.catalysts.filter(c => {
-                if (currentFilter !== 'all' && c.event.type !== currentFilter) return false;
+                if (currentFilter === 'big-movers' && !c.movement?.is_big_mover) return false;
+                if (currentFilter !== 'all' && currentFilter !== 'big-movers' && c.event.type !== currentFilter) return false;
                 return c.date === dateStr;
             });
         }
@@ -570,7 +628,9 @@
                 'Phase 3': 'phase3',
                 'Phase 2': 'phase2',
                 'Phase 1': 'phase1',
-                'AdCom': 'adcom'
+                'AdCom': 'adcom',
+                'Initiation': 'initiation',
+                'Submission': 'submission'
             };
             return typeMap[type] || 'other';
         }
@@ -689,9 +749,11 @@
             const maxShow = 3;
             catalysts.slice(0, maxShow).forEach(cat => {
                 const chip = document.createElement('div');
-                chip.className = `catalyst-chip ${getTypeClass(cat.event.type)}` + (!canView ? ' blur-content' : '');
-                const typeAbbr = {'Phase 3': 'P3', 'Phase 2': 'P2', 'Phase 1': 'P1'}[cat.event.type] || cat.event.type;
+                const isBigMover = cat.movement?.is_big_mover;
+                chip.className = `catalyst-chip ${getTypeClass(cat.event.type)}${isBigMover ? ' big-mover' : ''}` + (!canView ? ' blur-content' : '');
+                const typeAbbr = {'Phase 3': 'P3', 'Phase 2': 'P2', 'Phase 1': 'P1', 'Initiation': 'INIT', 'Submission': 'SUB'}[cat.event.type] || cat.event.type;
                 chip.innerHTML = `
+                    ${isBigMover ? '<span style="color: #FFA500;">★</span>' : ''}
                     <span class="ticker">${cat.ticker}</span>
                     <span class="type-abbr">${typeAbbr}</span>
                 `;
@@ -723,7 +785,8 @@
 
             // Filter catalysts for current month
             const catalysts = calendarData.catalysts.filter(c => {
-                if (currentFilter !== 'all' && c.event.type !== currentFilter) return false;
+                if (currentFilter === 'big-movers' && !c.movement?.is_big_mover) return false;
+                if (currentFilter !== 'all' && currentFilter !== 'big-movers' && c.event.type !== currentFilter) return false;
                 const date = new Date(c.date);
                 return date.getFullYear() === currentYear && date.getMonth() === currentMonth;
             });
@@ -768,30 +831,76 @@
             const typeClass = `type-${catalyst.event.type.toLowerCase().replace(' ', '')}`;
             const riskClass = `risk-${catalyst.risk.level.toLowerCase().replace('-', '')}`;
 
+            // Header
             document.getElementById('modal-ticker').textContent = catalyst.ticker;
             document.getElementById('modal-type-badge').className = `type-badge ${typeClass}`;
             document.getElementById('modal-type-badge').textContent = catalyst.event.type;
             document.getElementById('modal-date').textContent = `${catalyst.date_display} (${catalyst.weekday}) • ${catalyst.days_until} days`;
-            document.getElementById('modal-drug').textContent = catalyst.event.drug_name || '';
+            document.getElementById('modal-company-name').textContent = catalyst.company?.name || '';
+
+            // Big mover badge
+            const bigMoverBadge = document.getElementById('modal-big-mover');
+            if (catalyst.movement?.is_big_mover) {
+                bigMoverBadge.classList.remove('hidden');
+            } else {
+                bigMoverBadge.classList.add('hidden');
+            }
+
+            // Drug & Indication
+            document.getElementById('modal-drug').textContent = catalyst.event.drug_name || 'Drug name not available';
             document.getElementById('modal-indication').textContent = catalyst.event.indication || '';
-            document.getElementById('modal-description').textContent = catalyst.event.description || '';
+            document.getElementById('modal-category').textContent = catalyst.event.category ? `Category: ${catalyst.event.category}` : '';
 
             // Designations
             const designationsHtml = catalyst.designations.map(d =>
-                `<span class="designation-badge" style="background: ${d.color}20; color: ${d.color}; border: 1px solid ${d.color}40">${d.code} - ${d.label}</span>`
+                `<span class="px-2 py-0.5 text-xs rounded" style="background: ${d.color}20; color: ${d.color}; border: 1px solid ${d.color}40">${d.code}</span>`
             ).join('');
             document.getElementById('modal-designations').innerHTML = designationsHtml;
+
+            // Movement Potential
+            const movementSection = document.getElementById('modal-movement-section');
+            if (catalyst.movement?.success_prob || catalyst.movement?.upside_pct) {
+                movementSection.classList.remove('hidden');
+                document.getElementById('modal-success-prob').textContent = catalyst.movement.success_prob
+                    ? `${catalyst.movement.success_prob.toFixed(0)}%` : '-';
+                document.getElementById('modal-upside').textContent = catalyst.movement.upside_pct
+                    ? `+${catalyst.movement.upside_pct.toFixed(0)}%` : '-';
+                document.getElementById('modal-downside').textContent = catalyst.movement.downside_pct
+                    ? `-${catalyst.movement.downside_pct.toFixed(0)}%` : '-';
+            } else {
+                movementSection.classList.add('hidden');
+            }
 
             // Risk
             document.getElementById('modal-risk').textContent = catalyst.risk.level;
             document.getElementById('modal-risk').className = riskClass + ' font-semibold';
             document.getElementById('modal-risk-note').textContent = catalyst.risk.note;
 
+            // CRL Warning
+            const crlWarning = document.getElementById('modal-crl-warning');
+            if (catalyst.risk_factors?.has_crl_history) {
+                crlWarning.classList.remove('hidden');
+                document.getElementById('modal-crl-count').textContent = `${catalyst.risk_factors.crl_count} prior rejection(s)`;
+            } else {
+                crlWarning.classList.add('hidden');
+            }
+
             // Company info
             document.getElementById('modal-mcap').textContent = catalyst.company.mcap_millions
                 ? `$${catalyst.company.mcap_millions.toFixed(0)}M` : '-';
             document.getElementById('modal-short').textContent = catalyst.company.short_interest_pct
                 ? `${catalyst.company.short_interest_pct.toFixed(1)}%` : '-';
+
+            // Members-only analysis (only show if logged in and data available)
+            const analysisSection = document.getElementById('modal-analysis-section');
+            if (isAuthenticated && (catalyst.analysis?.cont_score || catalyst.analysis?.play_type)) {
+                analysisSection.classList.remove('hidden');
+                document.getElementById('modal-cont-score').textContent = catalyst.analysis.cont_score
+                    ? `${catalyst.analysis.cont_score}` : '-';
+                document.getElementById('modal-play-type').textContent = catalyst.analysis.play_type || '-';
+            } else {
+                analysisSection.classList.add('hidden');
+            }
 
             modal.classList.add('active');
         }

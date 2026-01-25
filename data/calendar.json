@@ -1,17 +1,20 @@
 {
-  "generated_at": "2026-01-25T14:28:28.724788",
+  "generated_at": "2026-01-25T16:05:57.455658",
   "public_days": 7,
   "summary": {
     "total_catalysts": 53,
     "this_week": 1,
     "next_week": 1,
     "this_month": 3,
+    "big_movers": 0,
     "by_type": {
       "PDUFA": 6,
+      "AdCom": 0,
       "Phase 3": 46,
       "Phase 2": 1,
       "Phase 1": 0,
-      "AdCom": 0,
+      "Initiation": 0,
+      "Submission": 0,
       "Other": 0
     }
   },
@@ -25,9 +28,18 @@
       "is_public": true,
       "event": {
         "type": "Phase 3",
+        "stage": "Phase 3",
         "description": "Phase 3",
         "drug_name": null,
-        "indication": null
+        "indication": null,
+        "category": null,
+        "is_binary": true,
+        "is_milestone": false
+      },
+      "company": {
+        "name": null,
+        "mcap_millions": 1010.0,
+        "short_interest_pct": null
       },
       "risk": {
         "level": "MEDIUM-HIGH",
@@ -41,12 +53,22 @@
           "color": "gold"
         }
       ],
-      "company": {
-        "mcap_millions": 1010.0,
-        "short_interest_pct": null
+      "movement": {
+        "is_big_mover": false,
+        "mover_score": null,
+        "success_prob": null,
+        "upside_pct": null,
+        "downside_pct": null
+      },
+      "risk_factors": {
+        "has_crl_history": false,
+        "crl_count": 0,
+        "true_binary_score": null,
+        "true_binary_rating": null
       },
       "analysis": {
         "cont_score": null,
+        "cont_rating": null,
         "play_type": null,
         "is_leap_play": false,
         "estimated_pdufa": null,
@@ -54,7 +76,10 @@
       },
       "meta": {
         "has_position": false,
-        "research_available": true
+        "research_available": true,
+        "is_phase1": false,
+        "is_initiation": false,
+        "is_submission": false
       }
     },
     {
@@ -66,9 +91,18 @@
       "is_public": false,
       "event": {
         "type": "PDUFA",
+        "stage": "PDUFA",
         "description": "PDUFA Approval decision",
         "drug_name": null,
-        "indication": null
+        "indication": null,
+        "category": null,
+        "is_binary": true,
+        "is_milestone": false
+      },
+      "company": {
+        "name": null,
+        "mcap_millions": 715.0,
+        "short_interest_pct": null
       },
       "risk": {
         "level": "HIGH",
@@ -117,12 +151,22 @@
           "color": "red"
         }
       ],
-      "company": {
-        "mcap_millions": 715.0,
-        "short_interest_pct": null
+      "movement": {
+        "is_big_mover": false,
+        "mover_score": null,
+        "success_prob": null,
+        "upside_pct": null,
+        "downside_pct": null
+      },
+      "risk_factors": {
+        "has_crl_history": false,
+        "crl_count": 0,
+        "true_binary_score": null,
+        "true_binary_rating": null
       },
       "analysis": {
         "cont_score": 65,
+        "cont_rating": null,
         "play_type": "Standard",
         "is_leap_play": false,
         "estimated_pdufa": null,
@@ -130,7 +174,10 @@
       },
       "meta": {
         "has_position": true,
-        "research_available": true
+        "research_available": true,
+        "is_phase1": false,
+        "is_initiation": false,
+        "is_submission": false
       }
     },
     {
@@ -142,9 +189,18 @@
       "is_public": false,
       "event": {
         "type": "PDUFA",
+        "stage": "PDUFA",
         "description": "PDUFA Approval decision",
         "drug_name": null,
-        "indication": null
+        "indication": null,
+        "category": null,
+        "is_binary": true,
+        "is_milestone": false
+      },
+      "company": {
+        "name": null,
+        "mcap_millions": 456.0,
+        "short_interest_pct": 7.88
       },
       "risk": {
         "level": "HIGH",
@@ -152,12 +208,22 @@
         "note": "FDA decision - binary outcome"
       },
       "designations": [],
-      "company": {
-        "mcap_millions": 456.0,
-        "short_interest_pct": 7.88
+      "movement": {
+        "is_big_mover": false,
+        "mover_score": null,
+        "success_prob": null,
+        "upside_pct": null,
+        "downside_pct": null
+      },
+      "risk_factors": {
+        "has_crl_history": false,
+        "crl_count": 0,
+        "true_binary_score": null,
+        "true_binary_rating": null
       },
       "analysis": {
         "cont_score": 72,
+        "cont_rating": null,
         "play_type": "LEAP",
         "is_leap_play": false,
         "estimated_pdufa": null,
@@ -165,7 +231,10 @@
       },
       "meta": {
         "has_position": true,
-        "research_available": true
+        "research_available": true,
+        "is_phase1": false,
+        "is_initiation": false,
+        "is_submission": false
       }
     },
     {
@@ -177,9 +246,18 @@
       "is_public": false,
       "event": {
         "type": "Phase 3",
+        "stage": "Phase 3",
         "description": "Phase 3 Data",
         "drug_name": "Seralutinib (GB002)",
-        "indication": "Pulmonary Arterial Hypertension (PAH)"
+        "indication": "Pulmonary Arterial Hypertension (PAH)",
+        "category": null,
+        "is_binary": true,
+        "is_milestone": false
+      },
+      "company": {
+        "name": null,
+        "mcap_millions": 590.0,
+        "short_interest_pct": 3.6
       },
       "risk": {
         "level": "MEDIUM-HIGH",
@@ -203,12 +281,22 @@
           "color": "red"
         }
       ],
-      "company": {
-        "mcap_millions": 590.0,
-        "short_interest_pct": 3.6
+      "movement": {
+        "is_big_mover": false,
+        "mover_score": null,
+        "success_prob": null,
+        "upside_pct": null,
+        "downside_pct": null
+      },
+      "risk_factors": {
+        "has_crl_history": false,
+        "crl_count": 0,
+        "true_binary_score": null,
+        "true_binary_rating": null
       },
       "analysis": {
         "cont_score": 60,
+        "cont_rating": null,
         "play_type": "LEAP",
         "is_leap_play": false,
         "estimated_pdufa": null,
@@ -216,7 +304,10 @@
       },
       "meta": {
         "has_position": true,
-        "research_available": true
+        "research_available": true,
+        "is_phase1": false,
+        "is_initiation": false,
+        "is_submission": false
       }
     },
     {
@@ -228,9 +319,18 @@
       "is_public": false,
       "event": {
         "type": "PDUFA",
+        "stage": "PDUFA",
         "description": "PDUFA Approval decision",
         "drug_name": "PYLARIFY (Piflufolastat F 18)",
-        "indication": "PSMA PET Imaging Agent in Prostate cancer"
+        "indication": "PSMA PET Imaging Agent in Prostate cancer",
+        "category": null,
+        "is_binary": true,
+        "is_milestone": false
+      },
+      "company": {
+        "name": null,
+        "mcap_millions": 4340.0,
+        "short_interest_pct": 8.89
       },
       "risk": {
         "level": "HIGH",
@@ -238,12 +338,22 @@
         "note": "FDA decision - binary outcome"
       },
       "designations": [],
-      "company": {
-        "mcap_millions": 4340.0,
-        "short_interest_pct": 8.89
+      "movement": {
+        "is_big_mover": false,
+        "mover_score": null,
+        "success_prob": null,
+        "upside_pct": null,
+        "downside_pct": null
+      },
+      "risk_factors": {
+        "has_crl_history": false,
+        "crl_count": 0,
+        "true_binary_score": null,
+        "true_binary_rating": null
       },
       "analysis": {
         "cont_score": null,
+        "cont_rating": null,
         "play_type": null,
         "is_leap_play": false,
         "estimated_pdufa": null,
@@ -251,7 +361,10 @@
       },
       "meta": {
         "has_position": false,
-        "research_available": true
+        "research_available": true,
+        "is_phase1": false,
+        "is_initiation": false,
+        "is_submission": false
       }
     },
     {
@@ -263,9 +376,18 @@
       "is_public": false,
       "event": {
         "type": "Phase 3",
+        "stage": "Phase 3",
         "description": "Phase 3 Data readout",
         "drug_name": "Eftilagimod alfa (efti) + Keytruda",
-        "indication": "Non-small cell lung carcinoma (1L NSCLC)"
+        "indication": "Non-small cell lung carcinoma (1L NSCLC)",
+        "category": null,
+        "is_binary": true,
+        "is_milestone": false
+      },
+      "company": {
+        "name": null,
+        "mcap_millions": 447.46,
+        "short_interest_pct": 3.59
       },
       "risk": {
         "level": "MEDIUM-HIGH",
@@ -289,12 +411,22 @@
           "color": "red"
         }
       ],
-      "company": {
-        "mcap_millions": 447.46,
-        "short_interest_pct": 3.59
+      "movement": {
+        "is_big_mover": false,
+        "mover_score": null,
+        "success_prob": null,
+        "upside_pct": null,
+        "downside_pct": null
+      },
+      "risk_factors": {
+        "has_crl_history": false,
+        "crl_count": 0,
+        "true_binary_score": null,
+        "true_binary_rating": null
       },
       "analysis": {
         "cont_score": 55,
+        "cont_rating": null,
         "play_type": "Standard",
         "is_leap_play": false,
         "estimated_pdufa": null,
@@ -302,7 +434,10 @@
       },
       "meta": {
         "has_position": true,
-        "research_available": true
+        "research_available": true,
+        "is_phase1": false,
+        "is_initiation": false,
+        "is_submission": false
       }
     },
     {
@@ -314,9 +449,18 @@
       "is_public": false,
       "event": {
         "type": "Phase 2",
+        "stage": "Phase 2",
         "description": "Phase 2 Data readout",
         "drug_name": "ZORYVE\u00ae (ARQ-151) topical roflumilast cream 0.05%",
-        "indication": "Atopic dermatitis"
+        "indication": "Atopic dermatitis",
+        "category": null,
+        "is_binary": true,
+        "is_milestone": false
+      },
+      "company": {
+        "name": null,
+        "mcap_millions": 3498.0,
+        "short_interest_pct": 22.16
       },
       "risk": {
         "level": "MEDIUM",
@@ -330,12 +474,22 @@
           "color": "gold"
         }
       ],
-      "company": {
-        "mcap_millions": 3498.0,
-        "short_interest_pct": 22.16
+      "movement": {
+        "is_big_mover": false,
+        "mover_score": null,
+        "success_prob": null,
+        "upside_pct": null,
+        "downside_pct": null
+      },
+      "risk_factors": {
+        "has_crl_history": false,
+        "crl_count": 0,
+        "true_binary_score": null,
+        "true_binary_rating": null
       },
       "analysis": {
         "cont_score": null,
+        "cont_rating": null,
         "play_type": null,
         "is_leap_play": false,
         "estimated_pdufa": null,
@@ -343,7 +497,10 @@
       },
       "meta": {
         "has_position": false,
-        "research_available": true
+        "research_available": true,
+        "is_phase1": false,
+        "is_initiation": false,
+        "is_submission": false
       }
     },
     {
@@ -355,9 +512,18 @@
       "is_public": false,
       "event": {
         "type": "Phase 3",
+        "stage": "Phase 3",
         "description": "Phase 3 Data readout",
         "drug_name": "Ampreloxetine (TD-9855)",
-        "indication": "Multiple System Atrophy, Neurogenic orthostatic hypotension"
+        "indication": "Multiple System Atrophy, Neurogenic orthostatic hypotension",
+        "category": null,
+        "is_binary": true,
+        "is_milestone": false
+      },
+      "company": {
+        "name": null,
+        "mcap_millions": 965.0,
+        "short_interest_pct": 9.7
       },
       "risk": {
         "level": "MEDIUM-HIGH",
@@ -386,12 +552,22 @@
           "color": "red"
         }
       ],
-      "company": {
-        "mcap_millions": 965.0,
-        "short_interest_pct": 9.7
+      "movement": {
+        "is_big_mover": false,
+        "mover_score": null,
+        "success_prob": null,
+        "upside_pct": null,
+        "downside_pct": null
+      },
+      "risk_factors": {
+        "has_crl_history": false,
+        "crl_count": 0,
+        "true_binary_score": null,
+        "true_binary_rating": null
       },
       "analysis": {
         "cont_score": null,
+        "cont_rating": null,
         "play_type": null,
         "is_leap_play": false,
         "estimated_pdufa": null,
@@ -399,7 +575,10 @@
       },
       "meta": {
         "has_position": false,
-        "research_available": true
+        "research_available": true,
+        "is_phase1": false,
+        "is_initiation": false,
+        "is_submission": false
       }
     },
     {
@@ -411,9 +590,18 @@
       "is_public": false,
       "event": {
         "type": "Phase 3",
+        "stage": "Phase 3",
         "description": "Phase 3",
         "drug_name": null,
-        "indication": null
+        "indication": null,
+        "category": null,
+        "is_binary": true,
+        "is_milestone": false
+      },
+      "company": {
+        "name": null,
+        "mcap_millions": 900.0,
+        "short_interest_pct": null
       },
       "risk": {
         "level": "MEDIUM-HIGH",
@@ -432,12 +620,22 @@
           "color": "green"
         }
       ],
-      "company": {
-        "mcap_millions": 900.0,
-        "short_interest_pct": null
+      "movement": {
+        "is_big_mover": false,
+        "mover_score": null,
+        "success_prob": null,
+        "upside_pct": null,
+        "downside_pct": null
+      },
+      "risk_factors": {
+        "has_crl_history": false,
+        "crl_count": 0,
+        "true_binary_score": null,
+        "true_binary_rating": null
       },
       "analysis": {
         "cont_score": null,
+        "cont_rating": null,
         "play_type": null,
         "is_leap_play": false,
         "estimated_pdufa": null,
@@ -445,7 +643,10 @@
       },
       "meta": {
         "has_position": false,
-        "research_available": true
+        "research_available": true,
+        "is_phase1": false,
+        "is_initiation": false,
+        "is_submission": false
       }
     },
     {
@@ -457,9 +658,18 @@
       "is_public": false,
       "event": {
         "type": "Phase 3",
+        "stage": "Phase 3",
         "description": "Phase 3",
         "drug_name": null,
-        "indication": null
+        "indication": null,
+        "category": null,
+        "is_binary": true,
+        "is_milestone": false
+      },
+      "company": {
+        "name": null,
+        "mcap_millions": 145.0,
+        "short_interest_pct": null
       },
       "risk": {
         "level": "MEDIUM-HIGH",
@@ -478,12 +688,22 @@
           "color": "gold"
         }
       ],
-      "company": {
-        "mcap_millions": 145.0,
-        "short_interest_pct": null
+      "movement": {
+        "is_big_mover": false,
+        "mover_score": null,
+        "success_prob": null,
+        "upside_pct": null,
+        "downside_pct": null
+      },
+      "risk_factors": {
+        "has_crl_history": false,
+        "crl_count": 0,
+        "true_binary_score": null,
+        "true_binary_rating": null
       },
       "analysis": {
         "cont_score": null,
+        "cont_rating": null,
         "play_type": null,
         "is_leap_play": false,
         "estimated_pdufa": null,
@@ -491,7 +711,10 @@
       },
       "meta": {
         "has_position": false,
-        "research_available": true
+        "research_available": true,
+        "is_phase1": false,
+        "is_initiation": false,
+        "is_submission": false
       }
     },
     {
@@ -503,9 +726,18 @@
       "is_public": false,
       "event": {
         "type": "Phase 3",
+        "stage": "Phase 3",
         "description": "Phase 3 Data readout",
         "drug_name": "Tarcocimab (KSI-301) (anti-VEGF)",
-        "indication": "Non-proliferative diabetic retinopathy"
+        "indication": "Non-proliferative diabetic retinopathy",
+        "category": null,
+        "is_binary": true,
+        "is_milestone": false
+      },
+      "company": {
+        "name": null,
+        "mcap_millions": 1650.0,
+        "short_interest_pct": 21.9
       },
       "risk": {
         "level": "MEDIUM-HIGH",
@@ -524,12 +756,22 @@
           "color": "red"
         }
       ],
-      "company": {
-        "mcap_millions": 1650.0,
-        "short_interest_pct": 21.9
+      "movement": {
+        "is_big_mover": false,
+        "mover_score": null,
+        "success_prob": null,
+        "upside_pct": null,
+        "downside_pct": null
+      },
+      "risk_factors": {
+        "has_crl_history": false,
+        "crl_count": 0,
+        "true_binary_score": null,
+        "true_binary_rating": null
       },
       "analysis": {
         "cont_score": null,
+        "cont_rating": null,
         "play_type": null,
         "is_leap_play": false,
         "estimated_pdufa": null,
@@ -537,7 +779,10 @@
       },
       "meta": {
         "has_position": false,
-        "research_available": true
+        "research_available": true,
+        "is_phase1": false,
+        "is_initiation": false,
+        "is_submission": false
       }
     },
     {
@@ -549,9 +794,18 @@
       "is_public": false,
       "event": {
         "type": "Phase 3",
+        "stage": "Phase 3",
         "description": "Phase 3 Data readout",
         "drug_name": "XPOVIO (Selinexor) (XPO1 inhibitor) + ruxolitinib",
-        "indication": "Myelofibrosis"
+        "indication": "Myelofibrosis",
+        "category": null,
+        "is_binary": true,
+        "is_milestone": false
+      },
+      "company": {
+        "name": null,
+        "mcap_millions": 115.54,
+        "short_interest_pct": 19.0
       },
       "risk": {
         "level": "MEDIUM-HIGH",
@@ -580,12 +834,22 @@
           "color": "red"
         }
       ],
-      "company": {
-        "mcap_millions": 115.54,
-        "short_interest_pct": 19.0
+      "movement": {
+        "is_big_mover": false,
+        "mover_score": null,
+        "success_prob": null,
+        "upside_pct": null,
+        "downside_pct": null
+      },
+      "risk_factors": {
+        "has_crl_history": false,
+        "crl_count": 0,
+        "true_binary_score": null,
+        "true_binary_rating": null
       },
       "analysis": {
         "cont_score": null,
+        "cont_rating": null,
         "play_type": null,
         "is_leap_play": false,
         "estimated_pdufa": null,
@@ -593,7 +857,10 @@
       },
       "meta": {
         "has_position": false,
-        "research_available": true
+        "research_available": true,
+        "is_phase1": false,
+        "is_initiation": false,
+        "is_submission": false
       }
     },
     {
@@ -605,9 +872,18 @@
       "is_public": false,
       "event": {
         "type": "Phase 3",
+        "stage": "Phase 3",
         "description": "Phase 3 Data readout",
         "drug_name": "VYVGART/Efgartigimod (ARGX-113) (FcRn Blocker)",
-        "indication": "Ocular Myasthenia Gravis"
+        "indication": "Ocular Myasthenia Gravis",
+        "category": null,
+        "is_binary": true,
+        "is_milestone": false
+      },
+      "company": {
+        "name": null,
+        "mcap_millions": 49500.0,
+        "short_interest_pct": 3.68
       },
       "risk": {
         "level": "MEDIUM-HIGH",
@@ -631,12 +907,22 @@
           "color": "red"
         }
       ],
-      "company": {
-        "mcap_millions": 49500.0,
-        "short_interest_pct": 3.68
+      "movement": {
+        "is_big_mover": false,
+        "mover_score": null,
+        "success_prob": null,
+        "upside_pct": null,
+        "downside_pct": null
+      },
+      "risk_factors": {
+        "has_crl_history": false,
+        "crl_count": 0,
+        "true_binary_score": null,
+        "true_binary_rating": null
       },
       "analysis": {
         "cont_score": null,
+        "cont_rating": null,
         "play_type": null,
         "is_leap_play": false,
         "estimated_pdufa": null,
@@ -644,7 +930,10 @@
       },
       "meta": {
         "has_position": false,
-        "research_available": true
+        "research_available": true,
+        "is_phase1": false,
+        "is_initiation": false,
+        "is_submission": false
       }
     },
     {
@@ -656,9 +945,18 @@
       "is_public": false,
       "event": {
         "type": "PDUFA",
+        "stage": "PDUFA",
         "description": "PDUFA Approval decision",
         "drug_name": "DNL310 (tividenofusp alfa)",
-        "indication": "Hunter syndrome MPS II"
+        "indication": "Hunter syndrome MPS II",
+        "category": null,
+        "is_binary": true,
+        "is_milestone": false
+      },
+      "company": {
+        "name": null,
+        "mcap_millions": 2540.0,
+        "short_interest_pct": 4.5
       },
       "risk": {
         "level": "HIGH",
@@ -707,12 +1005,22 @@
           "color": "red"
         }
       ],
-      "company": {
-        "mcap_millions": 2540.0,
-        "short_interest_pct": 4.5
+      "movement": {
+        "is_big_mover": false,
+        "mover_score": null,
+        "success_prob": null,
+        "upside_pct": null,
+        "downside_pct": null
+      },
+      "risk_factors": {
+        "has_crl_history": false,
+        "crl_count": 0,
+        "true_binary_score": null,
+        "true_binary_rating": null
       },
       "analysis": {
         "cont_score": null,
+        "cont_rating": null,
         "play_type": null,
         "is_leap_play": false,
         "estimated_pdufa": null,
@@ -720,7 +1028,10 @@
       },
       "meta": {
         "has_position": false,
-        "research_available": true
+        "research_available": true,
+        "is_phase1": false,
+        "is_initiation": false,
+        "is_submission": false
       }
     },
     {
@@ -732,9 +1043,18 @@
       "is_public": false,
       "event": {
         "type": "Phase 3",
+        "stage": "Phase 3",
         "description": "Phase 3 Update",
         "drug_name": "Rexlemestrocel",
-        "indication": "Chronic lower back pain (CLBP)"
+        "indication": "Chronic lower back pain (CLBP)",
+        "category": null,
+        "is_binary": true,
+        "is_milestone": false
+      },
+      "company": {
+        "name": null,
+        "mcap_millions": 2380.0,
+        "short_interest_pct": 1.58
       },
       "risk": {
         "level": "MEDIUM-HIGH",
@@ -773,12 +1093,22 @@
           "color": "red"
         }
       ],
-      "company": {
-        "mcap_millions": 2380.0,
-        "short_interest_pct": 1.58
+      "movement": {
+        "is_big_mover": false,
+        "mover_score": null,
+        "success_prob": null,
+        "upside_pct": null,
+        "downside_pct": null
+      },
+      "risk_factors": {
+        "has_crl_history": false,
+        "crl_count": 0,
+        "true_binary_score": null,
+        "true_binary_rating": null
       },
       "analysis": {
         "cont_score": null,
+        "cont_rating": null,
         "play_type": null,
         "is_leap_play": false,
         "estimated_pdufa": null,
@@ -786,7 +1116,10 @@
       },
       "meta": {
         "has_position": false,
-        "research_available": true
+        "research_available": true,
+        "is_phase1": false,
+        "is_initiation": false,
+        "is_submission": false
       }
     },
     {
@@ -798,9 +1131,18 @@
       "is_public": false,
       "event": {
         "type": "PDUFA",
+        "stage": "PDUFA",
         "description": "PDUFA Approval decision",
         "drug_name": null,
-        "indication": null
+        "indication": null,
+        "category": null,
+        "is_binary": true,
+        "is_milestone": false
+      },
+      "company": {
+        "name": null,
+        "mcap_millions": 1650.0,
+        "short_interest_pct": 8.6
       },
       "risk": {
         "level": "HIGH",
@@ -814,12 +1156,22 @@
           "color": "gold"
         }
       ],
-      "company": {
-        "mcap_millions": 1650.0,
-        "short_interest_pct": 8.6
+      "movement": {
+        "is_big_mover": false,
+        "mover_score": null,
+        "success_prob": null,
+        "upside_pct": null,
+        "downside_pct": null
+      },
+      "risk_factors": {
+        "has_crl_history": false,
+        "crl_count": 0,
+        "true_binary_score": null,
+        "true_binary_rating": null
       },
       "analysis": {
         "cont_score": 75,
+        "cont_rating": null,
         "play_type": "LEAP",
         "is_leap_play": false,
         "estimated_pdufa": null,
@@ -827,7 +1179,10 @@
       },
       "meta": {
         "has_position": true,
-        "research_available": true
+        "research_available": true,
+        "is_phase1": false,
+        "is_initiation": false,
+        "is_submission": false
       }
     },
     {
@@ -839,9 +1194,18 @@
       "is_public": false,
       "event": {
         "type": "PDUFA",
+        "stage": "PDUFA",
         "description": "PDUFA Approval decision",
         "drug_name": "Cytisinicline",
-        "indication": "Smoking cessation"
+        "indication": "Smoking cessation",
+        "category": null,
+        "is_binary": true,
+        "is_milestone": false
+      },
+      "company": {
+        "name": null,
+        "mcap_millions": 290.0,
+        "short_interest_pct": null
       },
       "risk": {
         "level": "HIGH",
@@ -865,12 +1229,22 @@
           "color": "gold"
         }
       ],
-      "company": {
-        "mcap_millions": 290.0,
-        "short_interest_pct": null
+      "movement": {
+        "is_big_mover": false,
+        "mover_score": null,
+        "success_prob": null,
+        "upside_pct": null,
+        "downside_pct": null
+      },
+      "risk_factors": {
+        "has_crl_history": false,
+        "crl_count": 0,
+        "true_binary_score": null,
+        "true_binary_rating": null
       },
       "analysis": {
         "cont_score": 55,
+        "cont_rating": null,
         "play_type": "LEAP",
         "is_leap_play": false,
         "estimated_pdufa": null,
@@ -878,7 +1252,10 @@
       },
       "meta": {
         "has_position": true,
-        "research_available": true
+        "research_available": true,
+        "is_phase1": false,
+        "is_initiation": false,
+        "is_submission": false
       }
     },
     {
@@ -890,9 +1267,18 @@
       "is_public": false,
       "event": {
         "type": "Phase 3",
+        "stage": "Phase 3",
         "description": "Phase 3 Data readout",
         "drug_name": "REZZAYO (rezafungin)",
-        "indication": "Prophylaxis of Fungal Infections"
+        "indication": "Prophylaxis of Fungal Infections",
+        "category": null,
+        "is_binary": true,
+        "is_milestone": false
+      },
+      "company": {
+        "name": null,
+        "mcap_millions": 530.81,
+        "short_interest_pct": 21.63
       },
       "risk": {
         "level": "MEDIUM-HIGH",
@@ -916,12 +1302,22 @@
           "color": "red"
         }
       ],
-      "company": {
-        "mcap_millions": 530.81,
-        "short_interest_pct": 21.63
+      "movement": {
+        "is_big_mover": false,
+        "mover_score": null,
+        "success_prob": null,
+        "upside_pct": null,
+        "downside_pct": null
+      },
+      "risk_factors": {
+        "has_crl_history": false,
+        "crl_count": 0,
+        "true_binary_score": null,
+        "true_binary_rating": null
       },
       "analysis": {
         "cont_score": null,
+        "cont_rating": null,
         "play_type": "LEAP",
         "is_leap_play": false,
         "estimated_pdufa": null,
@@ -929,7 +1325,10 @@
       },
       "meta": {
         "has_position": true,
-        "research_available": true
+        "research_available": true,
+        "is_phase1": false,
+        "is_initiation": false,
+        "is_submission": false
       }
     },
     {
@@ -941,9 +1340,18 @@
       "is_public": false,
       "event": {
         "type": "Phase 3",
+        "stage": "Phase 3",
         "description": "Phase 3 Interim Update",
         "drug_name": "Brelovitug (Monoclonal Antibody)",
-        "indication": "Chronic Hepatitis Delta Virus (HDV)"
+        "indication": "Chronic Hepatitis Delta Virus (HDV)",
+        "category": null,
+        "is_binary": true,
+        "is_milestone": false
+      },
+      "company": {
+        "name": null,
+        "mcap_millions": 4740.0,
+        "short_interest_pct": null
       },
       "risk": {
         "level": "MEDIUM-HIGH",
@@ -967,12 +1375,22 @@
           "color": "red"
         }
       ],
-      "company": {
-        "mcap_millions": 4740.0,
-        "short_interest_pct": null
+      "movement": {
+        "is_big_mover": false,
+        "mover_score": null,
+        "success_prob": null,
+        "upside_pct": null,
+        "downside_pct": null
+      },
+      "risk_factors": {
+        "has_crl_history": false,
+        "crl_count": 0,
+        "true_binary_score": null,
+        "true_binary_rating": null
       },
       "analysis": {
         "cont_score": null,
+        "cont_rating": null,
         "play_type": null,
         "is_leap_play": false,
         "estimated_pdufa": null,
@@ -980,7 +1398,10 @@
       },
       "meta": {
         "has_position": false,
-        "research_available": true
+        "research_available": true,
+        "is_phase1": false,
+        "is_initiation": false,
+        "is_submission": false
       }
     },
     {
@@ -992,9 +1413,18 @@
       "is_public": false,
       "event": {
         "type": "Phase 3",
+        "stage": "Phase 3",
         "description": "Phase 3",
         "drug_name": null,
-        "indication": null
+        "indication": null,
+        "category": null,
+        "is_binary": true,
+        "is_milestone": false
+      },
+      "company": {
+        "name": null,
+        "mcap_millions": 9000.0,
+        "short_interest_pct": null
       },
       "risk": {
         "level": "MEDIUM-HIGH",
@@ -1013,12 +1443,22 @@
           "color": "gold"
         }
       ],
-      "company": {
-        "mcap_millions": 9000.0,
-        "short_interest_pct": null
+      "movement": {
+        "is_big_mover": false,
+        "mover_score": null,
+        "success_prob": null,
+        "upside_pct": null,
+        "downside_pct": null
+      },
+      "risk_factors": {
+        "has_crl_history": false,
+        "crl_count": 0,
+        "true_binary_score": null,
+        "true_binary_rating": null
       },
       "analysis": {
         "cont_score": null,
+        "cont_rating": null,
         "play_type": null,
         "is_leap_play": false,
         "estimated_pdufa": null,
@@ -1026,7 +1466,10 @@
       },
       "meta": {
         "has_position": false,
-        "research_available": true
+        "research_available": true,
+        "is_phase1": false,
+        "is_initiation": false,
+        "is_submission": false
       }
     },
     {
@@ -1038,9 +1481,18 @@
       "is_public": false,
       "event": {
         "type": "Phase 3",
+        "stage": "Phase 3",
         "description": "Phase 3",
         "drug_name": null,
-        "indication": null
+        "indication": null,
+        "category": null,
+        "is_binary": true,
+        "is_milestone": false
+      },
+      "company": {
+        "name": null,
+        "mcap_millions": 1350.0,
+        "short_interest_pct": null
       },
       "risk": {
         "level": "MEDIUM-HIGH",
@@ -1059,12 +1511,22 @@
           "color": "gold"
         }
       ],
-      "company": {
-        "mcap_millions": 1350.0,
-        "short_interest_pct": null
+      "movement": {
+        "is_big_mover": false,
+        "mover_score": null,
+        "success_prob": null,
+        "upside_pct": null,
+        "downside_pct": null
+      },
+      "risk_factors": {
+        "has_crl_history": false,
+        "crl_count": 0,
+        "true_binary_score": null,
+        "true_binary_rating": null
       },
       "analysis": {
         "cont_score": null,
+        "cont_rating": null,
         "play_type": null,
         "is_leap_play": false,
         "estimated_pdufa": null,
@@ -1072,7 +1534,10 @@
       },
       "meta": {
         "has_position": false,
-        "research_available": true
+        "research_available": true,
+        "is_phase1": false,
+        "is_initiation": false,
+        "is_submission": false
       }
     },
     {
@@ -1084,9 +1549,18 @@
       "is_public": false,
       "event": {
         "type": "Phase 3",
+        "stage": "Phase 3",
         "description": "Phase 3",
         "drug_name": null,
-        "indication": null
+        "indication": null,
+        "category": null,
+        "is_binary": true,
+        "is_milestone": false
+      },
+      "company": {
+        "name": null,
+        "mcap_millions": 2090.0,
+        "short_interest_pct": 3.1
       },
       "risk": {
         "level": "MEDIUM-HIGH",
@@ -1105,12 +1579,22 @@
           "color": "red"
         }
       ],
-      "company": {
-        "mcap_millions": 2090.0,
-        "short_interest_pct": 3.1
+      "movement": {
+        "is_big_mover": false,
+        "mover_score": null,
+        "success_prob": null,
+        "upside_pct": null,
+        "downside_pct": null
+      },
+      "risk_factors": {
+        "has_crl_history": false,
+        "crl_count": 0,
+        "true_binary_score": null,
+        "true_binary_rating": null
       },
       "analysis": {
         "cont_score": null,
+        "cont_rating": null,
         "play_type": null,
         "is_leap_play": false,
         "estimated_pdufa": null,
@@ -1118,7 +1602,10 @@
       },
       "meta": {
         "has_position": false,
-        "research_available": true
+        "research_available": true,
+        "is_phase1": false,
+        "is_initiation": false,
+        "is_submission": false
       }
     },
     {
@@ -1130,9 +1617,18 @@
       "is_public": false,
       "event": {
         "type": "Phase 3",
+        "stage": "Phase 3",
         "description": "Phase 3",
         "drug_name": null,
-        "indication": null
+        "indication": null,
+        "category": null,
+        "is_binary": true,
+        "is_milestone": false
+      },
+      "company": {
+        "name": null,
+        "mcap_millions": 165.0,
+        "short_interest_pct": null
       },
       "risk": {
         "level": "MEDIUM-HIGH",
@@ -1156,12 +1652,22 @@
           "color": "gold"
         }
       ],
-      "company": {
-        "mcap_millions": 165.0,
-        "short_interest_pct": null
+      "movement": {
+        "is_big_mover": false,
+        "mover_score": null,
+        "success_prob": null,
+        "upside_pct": null,
+        "downside_pct": null
+      },
+      "risk_factors": {
+        "has_crl_history": false,
+        "crl_count": 0,
+        "true_binary_score": null,
+        "true_binary_rating": null
       },
       "analysis": {
         "cont_score": null,
+        "cont_rating": null,
         "play_type": null,
         "is_leap_play": false,
         "estimated_pdufa": null,
@@ -1169,7 +1675,10 @@
       },
       "meta": {
         "has_position": false,
-        "research_available": true
+        "research_available": true,
+        "is_phase1": false,
+        "is_initiation": false,
+        "is_submission": false
       }
     },
     {
@@ -1181,9 +1690,18 @@
       "is_public": false,
       "event": {
         "type": "Phase 3",
+        "stage": "Phase 3",
         "description": "Phase 3",
         "drug_name": null,
-        "indication": null
+        "indication": null,
+        "category": null,
+        "is_binary": true,
+        "is_milestone": false
+      },
+      "company": {
+        "name": null,
+        "mcap_millions": 10860.0,
+        "short_interest_pct": null
       },
       "risk": {
         "level": "MEDIUM-HIGH",
@@ -1212,12 +1730,22 @@
           "color": "red"
         }
       ],
-      "company": {
-        "mcap_millions": 10860.0,
-        "short_interest_pct": null
+      "movement": {
+        "is_big_mover": false,
+        "mover_score": null,
+        "success_prob": null,
+        "upside_pct": null,
+        "downside_pct": null
+      },
+      "risk_factors": {
+        "has_crl_history": false,
+        "crl_count": 0,
+        "true_binary_score": null,
+        "true_binary_rating": null
       },
       "analysis": {
         "cont_score": null,
+        "cont_rating": null,
         "play_type": null,
         "is_leap_play": false,
         "estimated_pdufa": null,
@@ -1225,7 +1753,10 @@
       },
       "meta": {
         "has_position": false,
-        "research_available": true
+        "research_available": true,
+        "is_phase1": false,
+        "is_initiation": false,
+        "is_submission": false
       }
     },
     {
@@ -1237,9 +1768,18 @@
       "is_public": false,
       "event": {
         "type": "Phase 3",
+        "stage": "Phase 3",
         "description": "Phase 3 Data readout",
         "drug_name": "Pelacarsen",
-        "indication": "Heart disease, Cardiovascular disease"
+        "indication": "Heart disease, Cardiovascular disease",
+        "category": null,
+        "is_binary": true,
+        "is_milestone": false
+      },
+      "company": {
+        "name": null,
+        "mcap_millions": 13250.0,
+        "short_interest_pct": 6.59
       },
       "risk": {
         "level": "MEDIUM-HIGH",
@@ -1263,12 +1803,22 @@
           "color": "red"
         }
       ],
-      "company": {
-        "mcap_millions": 13250.0,
-        "short_interest_pct": 6.59
+      "movement": {
+        "is_big_mover": false,
+        "mover_score": null,
+        "success_prob": null,
+        "upside_pct": null,
+        "downside_pct": null
+      },
+      "risk_factors": {
+        "has_crl_history": false,
+        "crl_count": 0,
+        "true_binary_score": null,
+        "true_binary_rating": null
       },
       "analysis": {
         "cont_score": null,
+        "cont_rating": null,
         "play_type": null,
         "is_leap_play": false,
         "estimated_pdufa": null,
@@ -1276,7 +1826,10 @@
       },
       "meta": {
         "has_position": false,
-        "research_available": true
+        "research_available": true,
+        "is_phase1": false,
+        "is_initiation": false,
+        "is_submission": false
       }
     },
     {
@@ -1288,9 +1841,18 @@
       "is_public": false,
       "event": {
         "type": "Phase 3",
+        "stage": "Phase 3",
         "description": "Phase 3 Data readout",
         "drug_name": "Taltz + Zepbound (Combination Therapy)",
-        "indication": "Plaque Psoriasis With Obesity Or Overweight"
+        "indication": "Plaque Psoriasis With Obesity Or Overweight",
+        "category": null,
+        "is_binary": true,
+        "is_milestone": false
+      },
+      "company": {
+        "name": null,
+        "mcap_millions": null,
+        "short_interest_pct": null
       },
       "risk": {
         "level": "MEDIUM-HIGH",
@@ -1298,12 +1860,22 @@
         "note": "Pivotal data - significant move likely"
       },
       "designations": [],
-      "company": {
-        "mcap_millions": null,
-        "short_interest_pct": null
+      "movement": {
+        "is_big_mover": false,
+        "mover_score": null,
+        "success_prob": null,
+        "upside_pct": null,
+        "downside_pct": null
+      },
+      "risk_factors": {
+        "has_crl_history": false,
+        "crl_count": 0,
+        "true_binary_score": null,
+        "true_binary_rating": null
       },
       "analysis": {
         "cont_score": null,
+        "cont_rating": null,
         "play_type": null,
         "is_leap_play": false,
         "estimated_pdufa": null,
@@ -1311,7 +1883,10 @@
       },
       "meta": {
         "has_position": false,
-        "research_available": false
+        "research_available": false,
+        "is_phase1": false,
+        "is_initiation": false,
+        "is_submission": false
       }
     },
     {
@@ -1323,9 +1898,18 @@
       "is_public": false,
       "event": {
         "type": "Phase 3",
+        "stage": "Phase 3",
         "description": "Phase 3 Data readout",
         "drug_name": "Plozasiran (ARO-APOC3)",
-        "indication": "Severe hypertriglyceridemia"
+        "indication": "Severe hypertriglyceridemia",
+        "category": null,
+        "is_binary": true,
+        "is_milestone": false
+      },
+      "company": {
+        "name": null,
+        "mcap_millions": 9180.0,
+        "short_interest_pct": null
       },
       "risk": {
         "level": "MEDIUM-HIGH",
@@ -1364,12 +1948,22 @@
           "color": "red"
         }
       ],
-      "company": {
-        "mcap_millions": 9180.0,
-        "short_interest_pct": null
+      "movement": {
+        "is_big_mover": false,
+        "mover_score": null,
+        "success_prob": null,
+        "upside_pct": null,
+        "downside_pct": null
+      },
+      "risk_factors": {
+        "has_crl_history": false,
+        "crl_count": 0,
+        "true_binary_score": null,
+        "true_binary_rating": null
       },
       "analysis": {
         "cont_score": null,
+        "cont_rating": null,
         "play_type": null,
         "is_leap_play": false,
         "estimated_pdufa": null,
@@ -1377,7 +1971,10 @@
       },
       "meta": {
         "has_position": false,
-        "research_available": true
+        "research_available": true,
+        "is_phase1": false,
+        "is_initiation": false,
+        "is_submission": false
       }
     },
     {
@@ -1389,9 +1986,18 @@
       "is_public": false,
       "event": {
         "type": "Phase 3",
+        "stage": "Phase 3",
         "description": "Phase 3 Data readout",
         "drug_name": "XPOVIO (Selinexor) (XPO1 inhibitor)",
-        "indication": "Endometrial cancer"
+        "indication": "Endometrial cancer",
+        "category": null,
+        "is_binary": true,
+        "is_milestone": false
+      },
+      "company": {
+        "name": null,
+        "mcap_millions": 115.5,
+        "short_interest_pct": 16.7
       },
       "risk": {
         "level": "MEDIUM-HIGH",
@@ -1405,12 +2011,22 @@
           "color": "gold"
         }
       ],
-      "company": {
-        "mcap_millions": 115.5,
-        "short_interest_pct": 16.7
+      "movement": {
+        "is_big_mover": false,
+        "mover_score": null,
+        "success_prob": null,
+        "upside_pct": null,
+        "downside_pct": null
+      },
+      "risk_factors": {
+        "has_crl_history": false,
+        "crl_count": 0,
+        "true_binary_score": null,
+        "true_binary_rating": null
       },
       "analysis": {
         "cont_score": null,
+        "cont_rating": null,
         "play_type": null,
         "is_leap_play": false,
         "estimated_pdufa": null,
@@ -1418,7 +2034,10 @@
       },
       "meta": {
         "has_position": false,
-        "research_available": true
+        "research_available": true,
+        "is_phase1": false,
+        "is_initiation": false,
+        "is_submission": false
       }
     },
     {
@@ -1430,9 +2049,18 @@
       "is_public": false,
       "event": {
         "type": "Phase 3",
+        "stage": "Phase 3",
         "description": "Phase 3 Data readout",
         "drug_name": "Tarcocimab (KSI-301) (anti-VEGF)",
-        "indication": "Non-proliferative diabetic retinopathy"
+        "indication": "Non-proliferative diabetic retinopathy",
+        "category": null,
+        "is_binary": true,
+        "is_milestone": false
+      },
+      "company": {
+        "name": null,
+        "mcap_millions": 1500.0,
+        "short_interest_pct": 21.9
       },
       "risk": {
         "level": "MEDIUM-HIGH",
@@ -1446,12 +2074,22 @@
           "color": "gold"
         }
       ],
-      "company": {
-        "mcap_millions": 1500.0,
-        "short_interest_pct": 21.9
+      "movement": {
+        "is_big_mover": false,
+        "mover_score": null,
+        "success_prob": null,
+        "upside_pct": null,
+        "downside_pct": null
+      },
+      "risk_factors": {
+        "has_crl_history": false,
+        "crl_count": 0,
+        "true_binary_score": null,
+        "true_binary_rating": null
       },
       "analysis": {
         "cont_score": null,
+        "cont_rating": null,
         "play_type": null,
         "is_leap_play": false,
         "estimated_pdufa": null,
@@ -1459,7 +2097,10 @@
       },
       "meta": {
         "has_position": false,
-        "research_available": true
+        "research_available": true,
+        "is_phase1": false,
+        "is_initiation": false,
+        "is_submission": false
       }
     },
     {
@@ -1471,9 +2112,18 @@
       "is_public": false,
       "event": {
         "type": "Phase 3",
+        "stage": "Phase 3",
         "description": "Phase 3",
         "drug_name": null,
-        "indication": null
+        "indication": null,
+        "category": null,
+        "is_binary": true,
+        "is_milestone": false
+      },
+      "company": {
+        "name": null,
+        "mcap_millions": 335.0,
+        "short_interest_pct": null
       },
       "risk": {
         "level": "MEDIUM-HIGH",
@@ -1492,12 +2142,22 @@
           "color": "gold"
         }
       ],
-      "company": {
-        "mcap_millions": 335.0,
-        "short_interest_pct": null
+      "movement": {
+        "is_big_mover": false,
+        "mover_score": null,
+        "success_prob": null,
+        "upside_pct": null,
+        "downside_pct": null
+      },
+      "risk_factors": {
+        "has_crl_history": false,
+        "crl_count": 0,
+        "true_binary_score": null,
+        "true_binary_rating": null
       },
       "analysis": {
         "cont_score": null,
+        "cont_rating": null,
         "play_type": null,
         "is_leap_play": false,
         "estimated_pdufa": null,
@@ -1505,7 +2165,10 @@
       },
       "meta": {
         "has_position": false,
-        "research_available": true
+        "research_available": true,
+        "is_phase1": false,
+        "is_initiation": false,
+        "is_submission": false
       }
     },
     {
@@ -1517,9 +2180,18 @@
       "is_public": false,
       "event": {
         "type": "Phase 3",
+        "stage": "Phase 3",
         "description": "Phase 3",
         "drug_name": null,
-        "indication": null
+        "indication": null,
+        "category": null,
+        "is_binary": true,
+        "is_milestone": false
+      },
+      "company": {
+        "name": null,
+        "mcap_millions": 830.0,
+        "short_interest_pct": null
       },
       "risk": {
         "level": "MEDIUM-HIGH",
@@ -1538,12 +2210,22 @@
           "color": "gold"
         }
       ],
-      "company": {
-        "mcap_millions": 830.0,
-        "short_interest_pct": null
+      "movement": {
+        "is_big_mover": false,
+        "mover_score": null,
+        "success_prob": null,
+        "upside_pct": null,
+        "downside_pct": null
+      },
+      "risk_factors": {
+        "has_crl_history": false,
+        "crl_count": 0,
+        "true_binary_score": null,
+        "true_binary_rating": null
       },
       "analysis": {
         "cont_score": null,
+        "cont_rating": null,
         "play_type": null,
         "is_leap_play": false,
         "estimated_pdufa": null,
@@ -1551,7 +2233,10 @@
       },
       "meta": {
         "has_position": false,
-        "research_available": true
+        "research_available": true,
+        "is_phase1": false,
+        "is_initiation": false,
+        "is_submission": false
       }
     },
     {
@@ -1563,9 +2248,18 @@
       "is_public": false,
       "event": {
         "type": "Phase 3",
+        "stage": "Phase 3",
         "description": "Phase 3",
         "drug_name": null,
-        "indication": null
+        "indication": null,
+        "category": null,
+        "is_binary": true,
+        "is_milestone": false
+      },
+      "company": {
+        "name": null,
+        "mcap_millions": 114.0,
+        "short_interest_pct": null
       },
       "risk": {
         "level": "MEDIUM-HIGH",
@@ -1589,12 +2283,22 @@
           "color": "red"
         }
       ],
-      "company": {
-        "mcap_millions": 114.0,
-        "short_interest_pct": null
+      "movement": {
+        "is_big_mover": false,
+        "mover_score": null,
+        "success_prob": null,
+        "upside_pct": null,
+        "downside_pct": null
+      },
+      "risk_factors": {
+        "has_crl_history": false,
+        "crl_count": 0,
+        "true_binary_score": null,
+        "true_binary_rating": null
       },
       "analysis": {
         "cont_score": null,
+        "cont_rating": null,
         "play_type": null,
         "is_leap_play": false,
         "estimated_pdufa": null,
@@ -1602,7 +2306,10 @@
       },
       "meta": {
         "has_position": false,
-        "research_available": true
+        "research_available": true,
+        "is_phase1": false,
+        "is_initiation": false,
+        "is_submission": false
       }
     },
     {
@@ -1614,9 +2321,18 @@
       "is_public": false,
       "event": {
         "type": "Phase 3",
+        "stage": "Phase 3",
         "description": "Phase 3",
         "drug_name": null,
-        "indication": null
+        "indication": null,
+        "category": null,
+        "is_binary": true,
+        "is_milestone": false
+      },
+      "company": {
+        "name": null,
+        "mcap_millions": 1720.0,
+        "short_interest_pct": null
       },
       "risk": {
         "level": "MEDIUM-HIGH",
@@ -1640,12 +2356,22 @@
           "color": "gold"
         }
       ],
-      "company": {
-        "mcap_millions": 1720.0,
-        "short_interest_pct": null
+      "movement": {
+        "is_big_mover": false,
+        "mover_score": null,
+        "success_prob": null,
+        "upside_pct": null,
+        "downside_pct": null
+      },
+      "risk_factors": {
+        "has_crl_history": false,
+        "crl_count": 0,
+        "true_binary_score": null,
+        "true_binary_rating": null
       },
       "analysis": {
         "cont_score": null,
+        "cont_rating": null,
         "play_type": null,
         "is_leap_play": false,
         "estimated_pdufa": null,
@@ -1653,7 +2379,10 @@
       },
       "meta": {
         "has_position": false,
-        "research_available": true
+        "research_available": true,
+        "is_phase1": false,
+        "is_initiation": false,
+        "is_submission": false
       }
     },
     {
@@ -1665,9 +2394,18 @@
       "is_public": false,
       "event": {
         "type": "Phase 3",
+        "stage": "Phase 3",
         "description": "Phase 3",
         "drug_name": null,
-        "indication": null
+        "indication": null,
+        "category": null,
+        "is_binary": true,
+        "is_milestone": false
+      },
+      "company": {
+        "name": null,
+        "mcap_millions": 850.0,
+        "short_interest_pct": null
       },
       "risk": {
         "level": "MEDIUM-HIGH",
@@ -1686,12 +2424,22 @@
           "color": "gold"
         }
       ],
-      "company": {
-        "mcap_millions": 850.0,
-        "short_interest_pct": null
+      "movement": {
+        "is_big_mover": false,
+        "mover_score": null,
+        "success_prob": null,
+        "upside_pct": null,
+        "downside_pct": null
+      },
+      "risk_factors": {
+        "has_crl_history": false,
+        "crl_count": 0,
+        "true_binary_score": null,
+        "true_binary_rating": null
       },
       "analysis": {
         "cont_score": null,
+        "cont_rating": null,
         "play_type": null,
         "is_leap_play": false,
         "estimated_pdufa": null,
@@ -1699,7 +2447,10 @@
       },
       "meta": {
         "has_position": false,
-        "research_available": true
+        "research_available": true,
+        "is_phase1": false,
+        "is_initiation": false,
+        "is_submission": false
       }
     },
     {
@@ -1711,9 +2462,18 @@
       "is_public": false,
       "event": {
         "type": "Phase 3",
+        "stage": "Phase 3",
         "description": "Phase 3",
         "drug_name": null,
-        "indication": null
+        "indication": null,
+        "category": null,
+        "is_binary": true,
+        "is_milestone": false
+      },
+      "company": {
+        "name": null,
+        "mcap_millions": 16.0,
+        "short_interest_pct": null
       },
       "risk": {
         "level": "MEDIUM-HIGH",
@@ -1737,12 +2497,22 @@
           "color": "red"
         }
       ],
-      "company": {
-        "mcap_millions": 16.0,
-        "short_interest_pct": null
+      "movement": {
+        "is_big_mover": false,
+        "mover_score": null,
+        "success_prob": null,
+        "upside_pct": null,
+        "downside_pct": null
+      },
+      "risk_factors": {
+        "has_crl_history": false,
+        "crl_count": 0,
+        "true_binary_score": null,
+        "true_binary_rating": null
       },
       "analysis": {
         "cont_score": null,
+        "cont_rating": null,
         "play_type": null,
         "is_leap_play": false,
         "estimated_pdufa": null,
@@ -1750,7 +2520,10 @@
       },
       "meta": {
         "has_position": false,
-        "research_available": true
+        "research_available": true,
+        "is_phase1": false,
+        "is_initiation": false,
+        "is_submission": false
       }
     },
     {
@@ -1762,9 +2535,18 @@
       "is_public": false,
       "event": {
         "type": "Phase 3",
+        "stage": "Phase 3",
         "description": "Phase 3",
         "drug_name": null,
-        "indication": null
+        "indication": null,
+        "category": null,
+        "is_binary": true,
+        "is_milestone": false
+      },
+      "company": {
+        "name": null,
+        "mcap_millions": 2350.0,
+        "short_interest_pct": null
       },
       "risk": {
         "level": "MEDIUM-HIGH",
@@ -1783,12 +2565,22 @@
           "color": "gold"
         }
       ],
-      "company": {
-        "mcap_millions": 2350.0,
-        "short_interest_pct": null
+      "movement": {
+        "is_big_mover": false,
+        "mover_score": null,
+        "success_prob": null,
+        "upside_pct": null,
+        "downside_pct": null
+      },
+      "risk_factors": {
+        "has_crl_history": false,
+        "crl_count": 0,
+        "true_binary_score": null,
+        "true_binary_rating": null
       },
       "analysis": {
         "cont_score": null,
+        "cont_rating": null,
         "play_type": null,
         "is_leap_play": false,
         "estimated_pdufa": null,
@@ -1796,7 +2588,10 @@
       },
       "meta": {
         "has_position": false,
-        "research_available": true
+        "research_available": true,
+        "is_phase1": false,
+        "is_initiation": false,
+        "is_submission": false
       }
     },
     {
@@ -1808,9 +2603,18 @@
       "is_public": false,
       "event": {
         "type": "Phase 3",
+        "stage": "Phase 3",
         "description": "Phase 3",
         "drug_name": null,
-        "indication": null
+        "indication": null,
+        "category": null,
+        "is_binary": true,
+        "is_milestone": false
+      },
+      "company": {
+        "name": null,
+        "mcap_millions": 180.0,
+        "short_interest_pct": null
       },
       "risk": {
         "level": "MEDIUM-HIGH",
@@ -1839,12 +2643,22 @@
           "color": "red"
         }
       ],
-      "company": {
-        "mcap_millions": 180.0,
-        "short_interest_pct": null
+      "movement": {
+        "is_big_mover": false,
+        "mover_score": null,
+        "success_prob": null,
+        "upside_pct": null,
+        "downside_pct": null
+      },
+      "risk_factors": {
+        "has_crl_history": false,
+        "crl_count": 0,
+        "true_binary_score": null,
+        "true_binary_rating": null
       },
       "analysis": {
         "cont_score": null,
+        "cont_rating": null,
         "play_type": null,
         "is_leap_play": false,
         "estimated_pdufa": null,
@@ -1852,7 +2666,10 @@
       },
       "meta": {
         "has_position": false,
-        "research_available": true
+        "research_available": true,
+        "is_phase1": false,
+        "is_initiation": false,
+        "is_submission": false
       }
     },
     {
@@ -1864,9 +2681,18 @@
       "is_public": false,
       "event": {
         "type": "Phase 3",
+        "stage": "Phase 3",
         "description": "Phase 3 TEMPO study data readout",
         "drug_name": "WAKIX\u00ae (pitolisant) ",
-        "indication": "Muscle weakness, Muscle degeneration, Myotonic Dystrophy Type 1"
+        "indication": "Muscle weakness, Muscle degeneration, Myotonic Dystrophy Type 1",
+        "category": null,
+        "is_binary": true,
+        "is_milestone": false
+      },
+      "company": {
+        "name": null,
+        "mcap_millions": 2117.0,
+        "short_interest_pct": 3.5
       },
       "risk": {
         "level": "MEDIUM-HIGH",
@@ -1890,12 +2716,22 @@
           "color": "red"
         }
       ],
-      "company": {
-        "mcap_millions": 2117.0,
-        "short_interest_pct": 3.5
+      "movement": {
+        "is_big_mover": false,
+        "mover_score": null,
+        "success_prob": null,
+        "upside_pct": null,
+        "downside_pct": null
+      },
+      "risk_factors": {
+        "has_crl_history": false,
+        "crl_count": 0,
+        "true_binary_score": null,
+        "true_binary_rating": null
       },
       "analysis": {
         "cont_score": null,
+        "cont_rating": null,
         "play_type": null,
         "is_leap_play": false,
         "estimated_pdufa": null,
@@ -1903,7 +2739,10 @@
       },
       "meta": {
         "has_position": false,
-        "research_available": false
+        "research_available": false,
+        "is_phase1": false,
+        "is_initiation": false,
+        "is_submission": false
       }
     },
     {
@@ -1915,9 +2754,18 @@
       "is_public": false,
       "event": {
         "type": "Phase 3",
+        "stage": "Phase 3",
         "description": "Phase 3",
         "drug_name": null,
-        "indication": null
+        "indication": null,
+        "category": null,
+        "is_binary": true,
+        "is_milestone": false
+      },
+      "company": {
+        "name": null,
+        "mcap_millions": 1780.0,
+        "short_interest_pct": null
       },
       "risk": {
         "level": "MEDIUM-HIGH",
@@ -1941,12 +2789,22 @@
           "color": "red"
         }
       ],
-      "company": {
-        "mcap_millions": 1780.0,
-        "short_interest_pct": null
+      "movement": {
+        "is_big_mover": false,
+        "mover_score": null,
+        "success_prob": null,
+        "upside_pct": null,
+        "downside_pct": null
+      },
+      "risk_factors": {
+        "has_crl_history": false,
+        "crl_count": 0,
+        "true_binary_score": null,
+        "true_binary_rating": null
       },
       "analysis": {
         "cont_score": null,
+        "cont_rating": null,
         "play_type": null,
         "is_leap_play": false,
         "estimated_pdufa": null,
@@ -1954,7 +2812,10 @@
       },
       "meta": {
         "has_position": false,
-        "research_available": true
+        "research_available": true,
+        "is_phase1": false,
+        "is_initiation": false,
+        "is_submission": false
       }
     },
     {
@@ -1966,9 +2827,18 @@
       "is_public": false,
       "event": {
         "type": "Phase 3",
+        "stage": "Phase 3",
         "description": "Phase 3",
         "drug_name": null,
-        "indication": null
+        "indication": null,
+        "category": null,
+        "is_binary": true,
+        "is_milestone": false
+      },
+      "company": {
+        "name": null,
+        "mcap_millions": 30.0,
+        "short_interest_pct": null
       },
       "risk": {
         "level": "MEDIUM-HIGH",
@@ -1982,12 +2852,22 @@
           "color": "purple"
         }
       ],
-      "company": {
-        "mcap_millions": 30.0,
-        "short_interest_pct": null
+      "movement": {
+        "is_big_mover": false,
+        "mover_score": null,
+        "success_prob": null,
+        "upside_pct": null,
+        "downside_pct": null
+      },
+      "risk_factors": {
+        "has_crl_history": false,
+        "crl_count": 0,
+        "true_binary_score": null,
+        "true_binary_rating": null
       },
       "analysis": {
         "cont_score": null,
+        "cont_rating": null,
         "play_type": null,
         "is_leap_play": false,
         "estimated_pdufa": null,
@@ -1995,7 +2875,10 @@
       },
       "meta": {
         "has_position": false,
-        "research_available": true
+        "research_available": true,
+        "is_phase1": false,
+        "is_initiation": false,
+        "is_submission": false
       }
     },
     {
@@ -2007,9 +2890,18 @@
       "is_public": false,
       "event": {
         "type": "Phase 3",
+        "stage": "Phase 3",
         "description": "Phase 3",
         "drug_name": null,
-        "indication": null
+        "indication": null,
+        "category": null,
+        "is_binary": true,
+        "is_milestone": false
+      },
+      "company": {
+        "name": null,
+        "mcap_millions": 22500.0,
+        "short_interest_pct": null
       },
       "risk": {
         "level": "MEDIUM-HIGH",
@@ -2033,12 +2925,22 @@
           "color": "gold"
         }
       ],
-      "company": {
-        "mcap_millions": 22500.0,
-        "short_interest_pct": null
+      "movement": {
+        "is_big_mover": false,
+        "mover_score": null,
+        "success_prob": null,
+        "upside_pct": null,
+        "downside_pct": null
+      },
+      "risk_factors": {
+        "has_crl_history": false,
+        "crl_count": 0,
+        "true_binary_score": null,
+        "true_binary_rating": null
       },
       "analysis": {
         "cont_score": null,
+        "cont_rating": null,
         "play_type": null,
         "is_leap_play": false,
         "estimated_pdufa": null,
@@ -2046,7 +2948,10 @@
       },
       "meta": {
         "has_position": false,
-        "research_available": true
+        "research_available": true,
+        "is_phase1": false,
+        "is_initiation": false,
+        "is_submission": false
       }
     },
     {
@@ -2058,9 +2963,18 @@
       "is_public": false,
       "event": {
         "type": "Phase 3",
+        "stage": "Phase 3",
         "description": "Phase 3",
         "drug_name": null,
-        "indication": null
+        "indication": null,
+        "category": null,
+        "is_binary": true,
+        "is_milestone": false
+      },
+      "company": {
+        "name": null,
+        "mcap_millions": 393.0,
+        "short_interest_pct": null
       },
       "risk": {
         "level": "MEDIUM-HIGH",
@@ -2084,12 +2998,22 @@
           "color": "gold"
         }
       ],
-      "company": {
-        "mcap_millions": 393.0,
-        "short_interest_pct": null
+      "movement": {
+        "is_big_mover": false,
+        "mover_score": null,
+        "success_prob": null,
+        "upside_pct": null,
+        "downside_pct": null
+      },
+      "risk_factors": {
+        "has_crl_history": false,
+        "crl_count": 0,
+        "true_binary_score": null,
+        "true_binary_rating": null
       },
       "analysis": {
         "cont_score": null,
+        "cont_rating": null,
         "play_type": null,
         "is_leap_play": false,
         "estimated_pdufa": null,
@@ -2097,7 +3021,10 @@
       },
       "meta": {
         "has_position": false,
-        "research_available": true
+        "research_available": true,
+        "is_phase1": false,
+        "is_initiation": false,
+        "is_submission": false
       }
     },
     {
@@ -2109,9 +3036,18 @@
       "is_public": false,
       "event": {
         "type": "Phase 3",
+        "stage": "Phase 3",
         "description": "Phase 3",
         "drug_name": null,
-        "indication": null
+        "indication": null,
+        "category": null,
+        "is_binary": true,
+        "is_milestone": false
+      },
+      "company": {
+        "name": null,
+        "mcap_millions": 214.0,
+        "short_interest_pct": null
       },
       "risk": {
         "level": "MEDIUM-HIGH",
@@ -2125,12 +3061,22 @@
           "color": "gold"
         }
       ],
-      "company": {
-        "mcap_millions": 214.0,
-        "short_interest_pct": null
+      "movement": {
+        "is_big_mover": false,
+        "mover_score": null,
+        "success_prob": null,
+        "upside_pct": null,
+        "downside_pct": null
+      },
+      "risk_factors": {
+        "has_crl_history": false,
+        "crl_count": 0,
+        "true_binary_score": null,
+        "true_binary_rating": null
       },
       "analysis": {
         "cont_score": null,
+        "cont_rating": null,
         "play_type": null,
         "is_leap_play": false,
         "estimated_pdufa": null,
@@ -2138,7 +3084,10 @@
       },
       "meta": {
         "has_position": false,
-        "research_available": true
+        "research_available": true,
+        "is_phase1": false,
+        "is_initiation": false,
+        "is_submission": false
       }
     },
     {
@@ -2150,9 +3099,18 @@
       "is_public": false,
       "event": {
         "type": "Phase 3",
+        "stage": "Phase 3",
         "description": "Phase 3 Interim Update",
         "drug_name": "Soquelitinib (CPI-818)",
-        "indication": "Peripheral T-cell Lymphomas"
+        "indication": "Peripheral T-cell Lymphomas",
+        "category": null,
+        "is_binary": true,
+        "is_milestone": false
+      },
+      "company": {
+        "name": null,
+        "mcap_millions": 1910.0,
+        "short_interest_pct": 10.34
       },
       "risk": {
         "level": "MEDIUM-HIGH",
@@ -2171,12 +3129,22 @@
           "color": "gold"
         }
       ],
-      "company": {
-        "mcap_millions": 1910.0,
-        "short_interest_pct": 10.34
+      "movement": {
+        "is_big_mover": false,
+        "mover_score": null,
+        "success_prob": null,
+        "upside_pct": null,
+        "downside_pct": null
+      },
+      "risk_factors": {
+        "has_crl_history": false,
+        "crl_count": 0,
+        "true_binary_score": null,
+        "true_binary_rating": null
       },
       "analysis": {
         "cont_score": null,
+        "cont_rating": null,
         "play_type": null,
         "is_leap_play": false,
         "estimated_pdufa": null,
@@ -2184,7 +3152,10 @@
       },
       "meta": {
         "has_position": false,
-        "research_available": true
+        "research_available": true,
+        "is_phase1": false,
+        "is_initiation": false,
+        "is_submission": false
       }
     },
     {
@@ -2196,9 +3167,18 @@
       "is_public": false,
       "event": {
         "type": "Phase 3",
+        "stage": "Phase 3",
         "description": "Phase 3 Data readout",
         "drug_name": "KarXT (M1/M4 muscarinic agonist)",
-        "indication": "Schizophrenia, Mental health, Alzheimers disease"
+        "indication": "Schizophrenia, Mental health, Alzheimers disease",
+        "category": null,
+        "is_binary": true,
+        "is_milestone": false
+      },
+      "company": {
+        "name": null,
+        "mcap_millions": null,
+        "short_interest_pct": null
       },
       "risk": {
         "level": "MEDIUM-HIGH",
@@ -2206,12 +3186,22 @@
         "note": "Pivotal data - significant move likely"
       },
       "designations": [],
-      "company": {
-        "mcap_millions": null,
-        "short_interest_pct": null
+      "movement": {
+        "is_big_mover": false,
+        "mover_score": null,
+        "success_prob": null,
+        "upside_pct": null,
+        "downside_pct": null
+      },
+      "risk_factors": {
+        "has_crl_history": false,
+        "crl_count": 0,
+        "true_binary_score": null,
+        "true_binary_rating": null
       },
       "analysis": {
         "cont_score": null,
+        "cont_rating": null,
         "play_type": null,
         "is_leap_play": false,
         "estimated_pdufa": null,
@@ -2219,7 +3209,10 @@
       },
       "meta": {
         "has_position": false,
-        "research_available": false
+        "research_available": false,
+        "is_phase1": false,
+        "is_initiation": false,
+        "is_submission": false
       }
     },
     {
@@ -2231,9 +3224,18 @@
       "is_public": false,
       "event": {
         "type": "Phase 3",
+        "stage": "Phase 3",
         "description": "Phase 3 Data readout",
         "drug_name": "mRNA-4157/V940 +KEYTRUDA",
-        "indication": "Cancer, Non-small cell lung carcinoma"
+        "indication": "Cancer, Non-small cell lung carcinoma",
+        "category": null,
+        "is_binary": true,
+        "is_milestone": false
+      },
+      "company": {
+        "name": null,
+        "mcap_millions": null,
+        "short_interest_pct": null
       },
       "risk": {
         "level": "MEDIUM-HIGH",
@@ -2241,12 +3243,22 @@
         "note": "Pivotal data - significant move likely"
       },
       "designations": [],
-      "company": {
-        "mcap_millions": null,
-        "short_interest_pct": null
+      "movement": {
+        "is_big_mover": false,
+        "mover_score": null,
+        "success_prob": null,
+        "upside_pct": null,
+        "downside_pct": null
+      },
+      "risk_factors": {
+        "has_crl_history": false,
+        "crl_count": 0,
+        "true_binary_score": null,
+        "true_binary_rating": null
       },
       "analysis": {
         "cont_score": null,
+        "cont_rating": null,
         "play_type": null,
         "is_leap_play": false,
         "estimated_pdufa": null,
@@ -2254,7 +3266,10 @@
       },
       "meta": {
         "has_position": false,
-        "research_available": false
+        "research_available": false,
+        "is_phase1": false,
+        "is_initiation": false,
+        "is_submission": false
       }
     },
     {
@@ -2266,9 +3281,18 @@
       "is_public": false,
       "event": {
         "type": "Phase 3",
+        "stage": "Phase 3",
         "description": "Phase 3 Data readout",
         "drug_name": "GTX-102",
-        "indication": "Angelman Syndrome"
+        "indication": "Angelman Syndrome",
+        "category": null,
+        "is_binary": true,
+        "is_milestone": false
+      },
+      "company": {
+        "name": null,
+        "mcap_millions": 2277.0,
+        "short_interest_pct": 9.24
       },
       "risk": {
         "level": "MEDIUM-HIGH",
@@ -2307,12 +3331,22 @@
           "color": "red"
         }
       ],
-      "company": {
-        "mcap_millions": 2277.0,
-        "short_interest_pct": 9.24
+      "movement": {
+        "is_big_mover": false,
+        "mover_score": null,
+        "success_prob": null,
+        "upside_pct": null,
+        "downside_pct": null
+      },
+      "risk_factors": {
+        "has_crl_history": false,
+        "crl_count": 0,
+        "true_binary_score": null,
+        "true_binary_rating": null
       },
       "analysis": {
         "cont_score": null,
+        "cont_rating": null,
         "play_type": null,
         "is_leap_play": false,
         "estimated_pdufa": null,
@@ -2320,7 +3354,10 @@
       },
       "meta": {
         "has_position": false,
-        "research_available": true
+        "research_available": true,
+        "is_phase1": false,
+        "is_initiation": false,
+        "is_submission": false
       }
     },
     {
@@ -2332,9 +3369,18 @@
       "is_public": false,
       "event": {
         "type": "Phase 3",
+        "stage": "Phase 3",
         "description": "Phase 3 Data readout",
         "drug_name": "Ivonescimab (SMT112)",
-        "indication": "1L Non-small cell lung carcinoma"
+        "indication": "1L Non-small cell lung carcinoma",
+        "category": null,
+        "is_binary": true,
+        "is_milestone": false
+      },
+      "company": {
+        "name": null,
+        "mcap_millions": 14000.0,
+        "short_interest_pct": 30.19
       },
       "risk": {
         "level": "MEDIUM-HIGH",
@@ -2363,12 +3409,22 @@
           "color": "gold"
         }
       ],
-      "company": {
-        "mcap_millions": 14000.0,
-        "short_interest_pct": 30.19
+      "movement": {
+        "is_big_mover": false,
+        "mover_score": null,
+        "success_prob": null,
+        "upside_pct": null,
+        "downside_pct": null
+      },
+      "risk_factors": {
+        "has_crl_history": false,
+        "crl_count": 0,
+        "true_binary_score": null,
+        "true_binary_rating": null
       },
       "analysis": {
         "cont_score": null,
+        "cont_rating": null,
         "play_type": null,
         "is_leap_play": false,
         "estimated_pdufa": null,
@@ -2376,7 +3432,10 @@
       },
       "meta": {
         "has_position": false,
-        "research_available": true
+        "research_available": true,
+        "is_phase1": false,
+        "is_initiation": false,
+        "is_submission": false
       }
     },
     {
@@ -2388,9 +3447,18 @@
       "is_public": false,
       "event": {
         "type": "Phase 3",
+        "stage": "Phase 3",
         "description": "Phase 3",
         "drug_name": null,
-        "indication": null
+        "indication": null,
+        "category": null,
+        "is_binary": true,
+        "is_milestone": false
+      },
+      "company": {
+        "name": null,
+        "mcap_millions": 6010.0,
+        "short_interest_pct": null
       },
       "risk": {
         "level": "MEDIUM-HIGH",
@@ -2414,12 +3482,22 @@
           "color": "gold"
         }
       ],
-      "company": {
-        "mcap_millions": 6010.0,
-        "short_interest_pct": null
+      "movement": {
+        "is_big_mover": false,
+        "mover_score": null,
+        "success_prob": null,
+        "upside_pct": null,
+        "downside_pct": null
+      },
+      "risk_factors": {
+        "has_crl_history": false,
+        "crl_count": 0,
+        "true_binary_score": null,
+        "true_binary_rating": null
       },
       "analysis": {
         "cont_score": null,
+        "cont_rating": null,
         "play_type": null,
         "is_leap_play": false,
         "estimated_pdufa": null,
@@ -2427,7 +3505,10 @@
       },
       "meta": {
         "has_position": false,
-        "research_available": true
+        "research_available": true,
+        "is_phase1": false,
+        "is_initiation": false,
+        "is_submission": false
       }
     },
     {
@@ -2439,9 +3520,18 @@
       "is_public": false,
       "event": {
         "type": "Phase 3",
+        "stage": "Phase 3",
         "description": "Phase 3",
         "drug_name": null,
-        "indication": null
+        "indication": null,
+        "category": null,
+        "is_binary": true,
+        "is_milestone": false
+      },
+      "company": {
+        "name": null,
+        "mcap_millions": 1100.0,
+        "short_interest_pct": null
       },
       "risk": {
         "level": "MEDIUM-HIGH",
@@ -2455,12 +3545,22 @@
           "color": "gold"
         }
       ],
-      "company": {
-        "mcap_millions": 1100.0,
-        "short_interest_pct": null
+      "movement": {
+        "is_big_mover": false,
+        "mover_score": null,
+        "success_prob": null,
+        "upside_pct": null,
+        "downside_pct": null
+      },
+      "risk_factors": {
+        "has_crl_history": false,
+        "crl_count": 0,
+        "true_binary_score": null,
+        "true_binary_rating": null
       },
       "analysis": {
         "cont_score": null,
+        "cont_rating": null,
         "play_type": null,
         "is_leap_play": false,
         "estimated_pdufa": null,
@@ -2468,7 +3568,10 @@
       },
       "meta": {
         "has_position": false,
-        "research_available": true
+        "research_available": true,
+        "is_phase1": false,
+        "is_initiation": false,
+        "is_submission": false
       }
     },
     {
@@ -2480,9 +3583,18 @@
       "is_public": false,
       "event": {
         "type": "Phase 3",
+        "stage": "Phase 3",
         "description": "Phase 3",
         "drug_name": null,
-        "indication": null
+        "indication": null,
+        "category": null,
+        "is_binary": true,
+        "is_milestone": false
+      },
+      "company": {
+        "name": null,
+        "mcap_millions": 300.0,
+        "short_interest_pct": null
       },
       "risk": {
         "level": "MEDIUM-HIGH",
@@ -2501,12 +3613,22 @@
           "color": "red"
         }
       ],
-      "company": {
-        "mcap_millions": 300.0,
-        "short_interest_pct": null
+      "movement": {
+        "is_big_mover": false,
+        "mover_score": null,
+        "success_prob": null,
+        "upside_pct": null,
+        "downside_pct": null
+      },
+      "risk_factors": {
+        "has_crl_history": false,
+        "crl_count": 0,
+        "true_binary_score": null,
+        "true_binary_rating": null
       },
       "analysis": {
         "cont_score": null,
+        "cont_rating": null,
         "play_type": null,
         "is_leap_play": false,
         "estimated_pdufa": null,
@@ -2514,7 +3636,10 @@
       },
       "meta": {
         "has_position": false,
-        "research_available": true
+        "research_available": true,
+        "is_phase1": false,
+        "is_initiation": false,
+        "is_submission": false
       }
     },
     {
@@ -2526,9 +3651,18 @@
       "is_public": false,
       "event": {
         "type": "Phase 3",
+        "stage": "Phase 3",
         "description": "Phase 3",
         "drug_name": null,
-        "indication": null
+        "indication": null,
+        "category": null,
+        "is_binary": true,
+        "is_milestone": false
+      },
+      "company": {
+        "name": null,
+        "mcap_millions": 8300.0,
+        "short_interest_pct": null
       },
       "risk": {
         "level": "MEDIUM-HIGH",
@@ -2542,12 +3676,22 @@
           "color": "gold"
         }
       ],
-      "company": {
-        "mcap_millions": 8300.0,
-        "short_interest_pct": null
+      "movement": {
+        "is_big_mover": false,
+        "mover_score": null,
+        "success_prob": null,
+        "upside_pct": null,
+        "downside_pct": null
+      },
+      "risk_factors": {
+        "has_crl_history": false,
+        "crl_count": 0,
+        "true_binary_score": null,
+        "true_binary_rating": null
       },
       "analysis": {
         "cont_score": null,
+        "cont_rating": null,
         "play_type": null,
         "is_leap_play": false,
         "estimated_pdufa": null,
@@ -2555,7 +3699,10 @@
       },
       "meta": {
         "has_position": false,
-        "research_available": true
+        "research_available": true,
+        "is_phase1": false,
+        "is_initiation": false,
+        "is_submission": false
       }
     },
     {
@@ -2567,9 +3714,18 @@
       "is_public": false,
       "event": {
         "type": "Phase 3",
+        "stage": "Phase 3",
         "description": "Phase 3",
         "drug_name": null,
-        "indication": null
+        "indication": null,
+        "category": null,
+        "is_binary": true,
+        "is_milestone": false
+      },
+      "company": {
+        "name": null,
+        "mcap_millions": 550.0,
+        "short_interest_pct": null
       },
       "risk": {
         "level": "MEDIUM-HIGH",
@@ -2598,12 +3754,22 @@
           "color": "red"
         }
       ],
-      "company": {
-        "mcap_millions": 550.0,
-        "short_interest_pct": null
+      "movement": {
+        "is_big_mover": false,
+        "mover_score": null,
+        "success_prob": null,
+        "upside_pct": null,
+        "downside_pct": null
+      },
+      "risk_factors": {
+        "has_crl_history": false,
+        "crl_count": 0,
+        "true_binary_score": null,
+        "true_binary_rating": null
       },
       "analysis": {
         "cont_score": null,
+        "cont_rating": null,
         "play_type": null,
         "is_leap_play": false,
         "estimated_pdufa": null,
@@ -2611,7 +3777,10 @@
       },
       "meta": {
         "has_position": false,
-        "research_available": true
+        "research_available": true,
+        "is_phase1": false,
+        "is_initiation": false,
+        "is_submission": false
       }
     }
   ]
