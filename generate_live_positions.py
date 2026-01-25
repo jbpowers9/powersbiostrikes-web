@@ -280,9 +280,15 @@ def calculate_cloud_enr(
     # Calculate ENR
     enr = (win_prob * option_return_on_win) + ((1 - win_prob) * option_return_on_lose)
 
+    # Calculate max_buy based on 140% target ENR
+    target_enr = 1.40  # 140% target return
+    intrinsic_on_win = max(0, stock_price * (1 + expected_gain_pct) - strike)
+    max_buy = (win_prob * intrinsic_on_win) / (target_enr + 1) if intrinsic_on_win > 0 else 0
+
     return {
         'enr': max(0, round(enr, 1)),
         'win_prob': round(win_prob * 100, 1),
+        'max_buy': round(max_buy, 2),
         'is_live': True,
         'calculation_method': 'cloud'
     }
@@ -735,7 +741,13 @@ def generate_position_data(position: Dict, stock_price: Optional[float] = None) 
                 'research_found': research_found,
                 'is_live': True
             }
-            print(f"  {ticker}: ENR={enr_data['enr']}% (research={research_found})")
+
+            # Use ENR-calculated max_buy (based on 140% target ENR) if available
+            enr_max_buy = enr_result.get('max_buy', 0)
+            if enr_max_buy > 0:
+                max_buy = round(enr_max_buy, 2)
+
+            print(f"  {ticker}: ENR={enr_data['enr']}% max_buy=${max_buy:.2f} (research={research_found})")
         except Exception as e:
             print(f"Error calculating ENR for {ticker}: {e}")
 
@@ -763,7 +775,13 @@ def generate_position_data(position: Dict, stock_price: Optional[float] = None) 
                 'is_live': True,
                 'calculation_method': 'cloud_fallback'
             }
-            print(f"  {ticker}: Cloud ENR = {cloud_enr['enr']:.1f}% (fallback mode)")
+
+            # Use ENR-calculated max_buy (based on 140% target ENR) if available
+            cloud_max_buy = cloud_enr.get('max_buy', 0)
+            if cloud_max_buy > 0:
+                max_buy = cloud_max_buy
+
+            print(f"  {ticker}: Cloud ENR = {cloud_enr['enr']:.1f}% max_buy=${max_buy:.2f} (fallback mode)")
         except Exception as e:
             print(f"  Error calculating cloud ENR for {ticker}: {e}")
 
