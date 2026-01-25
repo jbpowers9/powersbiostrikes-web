@@ -256,16 +256,20 @@
         // Run on load
         document.addEventListener('DOMContentLoaded', updateNavForMember);
 
-        // Check if user is authenticated
-        function isAuthenticated() {
-            const foundingMembers = localStorage.getItem('pbs_founding_members');
-            if (foundingMembers) {
-                try {
-                    const members = JSON.parse(foundingMembers);
-                    return members.some(m => m.status === 'active');
-                } catch (e) {}
+        // Check if user is authenticated (using Supabase)
+        let isUserAuthenticated = false;
+
+        async function checkAuth() {
+            try {
+                const user = await pbsAuth.getUser();
+                isUserAuthenticated = !!user;
+            } catch (e) {
+                isUserAuthenticated = false;
             }
-            return !!localStorage.getItem('pbs_auth_token');
+        }
+
+        function isAuthenticated() {
+            return isUserAuthenticated;
         }
 
         // Load calendar data
@@ -438,8 +442,12 @@
             renderCatalysts();
         }
 
-        // Initialize
-        loadCalendar();
+        // Initialize - check auth first, then load calendar
+        async function init() {
+            await checkAuth();
+            await loadCalendar();
+        }
+        init();
     </script>
 </body>
 </html>
