@@ -1,15 +1,16 @@
 {
-  "generated_at": "2026-01-23T22:14:24.974525",
+  "generated_at": "2026-01-25T14:28:28.724788",
   "public_days": 7,
   "summary": {
     "total_catalysts": 53,
-    "this_week": 0,
+    "this_week": 1,
     "next_week": 1,
     "this_month": 3,
     "by_type": {
       "PDUFA": 6,
       "Phase 3": 46,
       "Phase 2": 1,
+      "Phase 1": 0,
       "AdCom": 0,
       "Other": 0
     }
@@ -20,8 +21,8 @@
       "date": "2026-01-31",
       "date_display": "Jan 31, 2026",
       "weekday": "Saturday",
-      "days_until": 8,
-      "is_public": false,
+      "days_until": 6,
+      "is_public": true,
       "event": {
         "type": "Phase 3",
         "description": "Phase 3",
@@ -61,7 +62,7 @@
       "date": "2026-02-08",
       "date_display": "Feb 08, 2026",
       "weekday": "Sunday",
-      "days_until": 16,
+      "days_until": 14,
       "is_public": false,
       "event": {
         "type": "PDUFA",
@@ -137,7 +138,7 @@
       "date": "2026-02-21",
       "date_display": "Feb 21, 2026",
       "weekday": "Saturday",
-      "days_until": 29,
+      "days_until": 27,
       "is_public": false,
       "event": {
         "type": "PDUFA",
@@ -172,7 +173,7 @@
       "date": "2026-02-28",
       "date_display": "Feb 28, 2026",
       "weekday": "Saturday",
-      "days_until": 36,
+      "days_until": 34,
       "is_public": false,
       "event": {
         "type": "Phase 3",
@@ -223,7 +224,7 @@
       "date": "2026-03-06",
       "date_display": "Mar 06, 2026",
       "weekday": "Friday",
-      "days_until": 42,
+      "days_until": 40,
       "is_public": false,
       "event": {
         "type": "PDUFA",
@@ -258,7 +259,7 @@
       "date": "2026-03-31",
       "date_display": "Mar 31, 2026",
       "weekday": "Tuesday",
-      "days_until": 67,
+      "days_until": 65,
       "is_public": false,
       "event": {
         "type": "Phase 3",
@@ -309,7 +310,7 @@
       "date": "2026-03-31",
       "date_display": "Mar 31, 2026",
       "weekday": "Tuesday",
-      "days_until": 67,
+      "days_until": 65,
       "is_public": false,
       "event": {
         "type": "Phase 2",
@@ -350,7 +351,7 @@
       "date": "2026-03-31",
       "date_display": "Mar 31, 2026",
       "weekday": "Tuesday",
-      "days_until": 67,
+      "days_until": 65,
       "is_public": false,
       "event": {
         "type": "Phase 3",
@@ -406,7 +407,7 @@
       "date": "2026-03-31",
       "date_display": "Mar 31, 2026",
       "weekday": "Tuesday",
-      "days_until": 67,
+      "days_until": 65,
       "is_public": false,
       "event": {
         "type": "Phase 3",
@@ -452,7 +453,7 @@
       "date": "2026-03-31",
       "date_display": "Mar 31, 2026",
       "weekday": "Tuesday",
-      "days_until": 67,
+      "days_until": 65,
       "is_public": false,
       "event": {
         "type": "Phase 3",
@@ -498,7 +499,7 @@
       "date": "2026-03-31",
       "date_display": "Mar 31, 2026",
       "weekday": "Tuesday",
-      "days_until": 67,
+      "days_until": 65,
       "is_public": false,
       "event": {
         "type": "Phase 3",
@@ -544,7 +545,7 @@
       "date": "2026-03-31",
       "date_display": "Mar 31, 2026",
       "weekday": "Tuesday",
-      "days_until": 67,
+      "days_until": 65,
       "is_public": false,
       "event": {
         "type": "Phase 3",
@@ -600,7 +601,7 @@
       "date": "2026-03-31",
       "date_display": "Mar 31, 2026",
       "weekday": "Tuesday",
-      "days_until": 67,
+      "days_until": 65,
       "is_public": false,
       "event": {
         "type": "Phase 3",
@@ -651,7 +652,7 @@
       "date": "2026-04-05",
       "date_display": "Apr 05, 2026",
       "weekday": "Sunday",
-      "days_until": 72,
+      "days_until": 70,
       "is_public": false,
       "event": {
         "type": "PDUFA",
@@ -727,7 +728,7 @@
       "date": "2026-04-30",
       "date_display": "Apr 30, 2026",
       "weekday": "Thursday",
-      "days_until": 97,
+      "days_until": 95,
       "is_public": false,
       "event": {
         "type": "Phase 3",
@@ -793,7 +794,7 @@
       "date": "2026-05-29",
       "date_display": "May 29, 2026",
       "weekday": "Friday",
-      "days_until": 126,
+      "days_until": 124,
       "is_public": false,
       "event": {
         "type": "PDUFA",
@@ -834,7 +835,7 @@
       "date": "2026-06-20",
       "date_display": "Jun 20, 2026",
       "weekday": "Saturday",
-      "days_until": 148,
+      "days_until": 146,
       "is_public": false,
       "event": {
         "type": "PDUFA",
@@ -885,7 +886,7 @@
       "date": "2026-06-30",
       "date_display": "Jun 30, 2026",
       "weekday": "Tuesday",
-      "days_until": 158,
+      "days_until": 156,
       "is_public": false,
       "event": {
         "type": "Phase 3",
@@ -920,7 +921,7 @@
         "short_interest_pct": 21.63
       },
       "analysis": {
-        "cont_score": 90,
+        "cont_score": null,
         "play_type": "LEAP",
         "is_leap_play": false,
         "estimated_pdufa": null,
@@ -936,7 +937,7 @@
       "date": "2026-06-30",
       "date_display": "Jun 30, 2026",
       "weekday": "Tuesday",
-      "days_until": 158,
+      "days_until": 156,
       "is_public": false,
       "event": {
         "type": "Phase 3",
@@ -987,7 +988,7 @@
       "date": "2026-06-30",
       "date_display": "Jun 30, 2026",
       "weekday": "Tuesday",
-      "days_until": 158,
+      "days_until": 156,
       "is_public": false,
       "event": {
         "type": "Phase 3",
@@ -1033,7 +1034,7 @@
       "date": "2026-06-30",
       "date_display": "Jun 30, 2026",
       "weekday": "Tuesday",
-      "days_until": 158,
+      "days_until": 156,
       "is_public": false,
       "event": {
         "type": "Phase 3",
@@ -1079,7 +1080,7 @@
       "date": "2026-06-30",
       "date_display": "Jun 30, 2026",
       "weekday": "Tuesday",
-      "days_until": 158,
+      "days_until": 156,
       "is_public": false,
       "event": {
         "type": "Phase 3",
@@ -1094,21 +1095,26 @@
       },
       "designations": [
         {
-          "code": "ORPHAN",
-          "label": "Orphan Drug",
-          "color": "purple"
+          "code": "BIC",
+          "label": "Best-in-Class",
+          "color": "gold"
+        },
+        {
+          "code": "UMN",
+          "label": "Unmet Medical Need",
+          "color": "red"
         }
       ],
       "company": {
         "mcap_millions": 2090.0,
-        "short_interest_pct": null
+        "short_interest_pct": 3.1
       },
       "analysis": {
         "cont_score": null,
         "play_type": null,
         "is_leap_play": false,
         "estimated_pdufa": null,
-        "data_completeness": null
+        "data_completeness": 92.9
       },
       "meta": {
         "has_position": false,
@@ -1120,7 +1126,7 @@
       "date": "2026-06-30",
       "date_display": "Jun 30, 2026",
       "weekday": "Tuesday",
-      "days_until": 158,
+      "days_until": 156,
       "is_public": false,
       "event": {
         "type": "Phase 3",
@@ -1171,7 +1177,7 @@
       "date": "2026-06-30",
       "date_display": "Jun 30, 2026",
       "weekday": "Tuesday",
-      "days_until": 158,
+      "days_until": 156,
       "is_public": false,
       "event": {
         "type": "Phase 3",
@@ -1227,7 +1233,7 @@
       "date": "2026-06-30",
       "date_display": "Jun 30, 2026",
       "weekday": "Tuesday",
-      "days_until": 158,
+      "days_until": 156,
       "is_public": false,
       "event": {
         "type": "Phase 3",
@@ -1278,7 +1284,7 @@
       "date": "2026-06-30",
       "date_display": "Jun 30, 2026",
       "weekday": "Tuesday",
-      "days_until": 158,
+      "days_until": 156,
       "is_public": false,
       "event": {
         "type": "Phase 3",
@@ -1313,7 +1319,7 @@
       "date": "2026-08-15",
       "date_display": "Aug 15, 2026",
       "weekday": "Saturday",
-      "days_until": 204,
+      "days_until": 202,
       "is_public": false,
       "event": {
         "type": "Phase 3",
@@ -1379,7 +1385,7 @@
       "date": "2026-08-15",
       "date_display": "Aug 15, 2026",
       "weekday": "Saturday",
-      "days_until": 204,
+      "days_until": 202,
       "is_public": false,
       "event": {
         "type": "Phase 3",
@@ -1420,7 +1426,7 @@
       "date": "2026-09-30",
       "date_display": "Sep 30, 2026",
       "weekday": "Wednesday",
-      "days_until": 250,
+      "days_until": 248,
       "is_public": false,
       "event": {
         "type": "Phase 3",
@@ -1461,7 +1467,7 @@
       "date": "2026-09-30",
       "date_display": "Sep 30, 2026",
       "weekday": "Wednesday",
-      "days_until": 250,
+      "days_until": 248,
       "is_public": false,
       "event": {
         "type": "Phase 3",
@@ -1507,7 +1513,7 @@
       "date": "2026-09-30",
       "date_display": "Sep 30, 2026",
       "weekday": "Wednesday",
-      "days_until": 250,
+      "days_until": 248,
       "is_public": false,
       "event": {
         "type": "Phase 3",
@@ -1553,7 +1559,7 @@
       "date": "2026-09-30",
       "date_display": "Sep 30, 2026",
       "weekday": "Wednesday",
-      "days_until": 250,
+      "days_until": 248,
       "is_public": false,
       "event": {
         "type": "Phase 3",
@@ -1604,7 +1610,7 @@
       "date": "2026-09-30",
       "date_display": "Sep 30, 2026",
       "weekday": "Wednesday",
-      "days_until": 250,
+      "days_until": 248,
       "is_public": false,
       "event": {
         "type": "Phase 3",
@@ -1655,7 +1661,7 @@
       "date": "2026-09-30",
       "date_display": "Sep 30, 2026",
       "weekday": "Wednesday",
-      "days_until": 250,
+      "days_until": 248,
       "is_public": false,
       "event": {
         "type": "Phase 3",
@@ -1701,7 +1707,7 @@
       "date": "2026-09-30",
       "date_display": "Sep 30, 2026",
       "weekday": "Wednesday",
-      "days_until": 250,
+      "days_until": 248,
       "is_public": false,
       "event": {
         "type": "Phase 3",
@@ -1752,7 +1758,7 @@
       "date": "2026-09-30",
       "date_display": "Sep 30, 2026",
       "weekday": "Wednesday",
-      "days_until": 250,
+      "days_until": 248,
       "is_public": false,
       "event": {
         "type": "Phase 3",
@@ -1798,7 +1804,7 @@
       "date": "2026-09-30",
       "date_display": "Sep 30, 2026",
       "weekday": "Wednesday",
-      "days_until": 250,
+      "days_until": 248,
       "is_public": false,
       "event": {
         "type": "Phase 3",
@@ -1854,7 +1860,7 @@
       "date": "2026-12-31",
       "date_display": "Dec 31, 2026",
       "weekday": "Thursday",
-      "days_until": 342,
+      "days_until": 340,
       "is_public": false,
       "event": {
         "type": "Phase 3",
@@ -1905,7 +1911,7 @@
       "date": "2026-12-31",
       "date_display": "Dec 31, 2026",
       "weekday": "Thursday",
-      "days_until": 342,
+      "days_until": 340,
       "is_public": false,
       "event": {
         "type": "Phase 3",
@@ -1956,7 +1962,7 @@
       "date": "2026-12-31",
       "date_display": "Dec 31, 2026",
       "weekday": "Thursday",
-      "days_until": 342,
+      "days_until": 340,
       "is_public": false,
       "event": {
         "type": "Phase 3",
@@ -1997,7 +2003,7 @@
       "date": "2026-12-31",
       "date_display": "Dec 31, 2026",
       "weekday": "Thursday",
-      "days_until": 342,
+      "days_until": 340,
       "is_public": false,
       "event": {
         "type": "Phase 3",
@@ -2048,7 +2054,7 @@
       "date": "2026-12-31",
       "date_display": "Dec 31, 2026",
       "weekday": "Thursday",
-      "days_until": 342,
+      "days_until": 340,
       "is_public": false,
       "event": {
         "type": "Phase 3",
@@ -2099,7 +2105,7 @@
       "date": "2026-12-31",
       "date_display": "Dec 31, 2026",
       "weekday": "Thursday",
-      "days_until": 342,
+      "days_until": 340,
       "is_public": false,
       "event": {
         "type": "Phase 3",
@@ -2140,7 +2146,7 @@
       "date": "2026-12-31",
       "date_display": "Dec 31, 2026",
       "weekday": "Thursday",
-      "days_until": 342,
+      "days_until": 340,
       "is_public": false,
       "event": {
         "type": "Phase 3",
@@ -2186,7 +2192,7 @@
       "date": "2026-12-31",
       "date_display": "Dec 31, 2026",
       "weekday": "Thursday",
-      "days_until": 342,
+      "days_until": 340,
       "is_public": false,
       "event": {
         "type": "Phase 3",
@@ -2221,7 +2227,7 @@
       "date": "2026-12-31",
       "date_display": "Dec 31, 2026",
       "weekday": "Thursday",
-      "days_until": 342,
+      "days_until": 340,
       "is_public": false,
       "event": {
         "type": "Phase 3",
@@ -2256,7 +2262,7 @@
       "date": "2026-12-31",
       "date_display": "Dec 31, 2026",
       "weekday": "Thursday",
-      "days_until": 342,
+      "days_until": 340,
       "is_public": false,
       "event": {
         "type": "Phase 3",
@@ -2322,7 +2328,7 @@
       "date": "2026-12-31",
       "date_display": "Dec 31, 2026",
       "weekday": "Thursday",
-      "days_until": 342,
+      "days_until": 340,
       "is_public": false,
       "event": {
         "type": "Phase 3",
@@ -2378,7 +2384,7 @@
       "date": "2027-06-30",
       "date_display": "Jun 30, 2027",
       "weekday": "Wednesday",
-      "days_until": 523,
+      "days_until": 521,
       "is_public": false,
       "event": {
         "type": "Phase 3",
@@ -2429,7 +2435,7 @@
       "date": "2027-06-30",
       "date_display": "Jun 30, 2027",
       "weekday": "Wednesday",
-      "days_until": 523,
+      "days_until": 521,
       "is_public": false,
       "event": {
         "type": "Phase 3",
@@ -2470,7 +2476,7 @@
       "date": "2027-06-30",
       "date_display": "Jun 30, 2027",
       "weekday": "Wednesday",
-      "days_until": 523,
+      "days_until": 521,
       "is_public": false,
       "event": {
         "type": "Phase 3",
@@ -2516,7 +2522,7 @@
       "date": "2027-12-31",
       "date_display": "Dec 31, 2027",
       "weekday": "Friday",
-      "days_until": 707,
+      "days_until": 705,
       "is_public": false,
       "event": {
         "type": "Phase 3",
@@ -2557,7 +2563,7 @@
       "date": "2027-12-31",
       "date_display": "Dec 31, 2027",
       "weekday": "Friday",
-      "days_until": 707,
+      "days_until": 705,
       "is_public": false,
       "event": {
         "type": "Phase 3",

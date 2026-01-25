@@ -221,6 +221,7 @@ def generate_calendar(public_days: int = 7) -> Dict:
     pdufa_count = len([c for c in catalysts if c['event']['type'] == 'PDUFA'])
     phase3_count = len([c for c in catalysts if c['event']['type'] == 'Phase 3'])
     phase2_count = len([c for c in catalysts if c['event']['type'] == 'Phase 2'])
+    phase1_count = len([c for c in catalysts if c['event']['type'] == 'Phase 1'])
 
     calendar_data = {
         'generated_at': datetime.now().isoformat(),
@@ -235,6 +236,7 @@ def generate_calendar(public_days: int = 7) -> Dict:
                 'PDUFA': pdufa_count,
                 'Phase 3': phase3_count,
                 'Phase 2': phase2_count,
+                'Phase 1': phase1_count,
                 'AdCom': len([c for c in catalysts if c['event']['type'] == 'AdCom']),
                 'Other': len([c for c in catalysts if c['event']['type'] == 'Other']),
             }

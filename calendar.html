@@ -63,7 +63,7 @@
             color: #444;
         }
         .calendar-day.today {
-            background: rgba(212, 175, 55, 0.1);
+            background: rgba(212, 175, 55, 0.15);
         }
         .calendar-day.today .day-number {
             background: #D4AF37;
@@ -74,6 +74,23 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            font-weight: 700;
+        }
+        /* Current week highlighting - brighter and more obvious */
+        .calendar-day.current-week {
+            background: rgba(212, 175, 55, 0.08);
+            border-top: 2px solid rgba(212, 175, 55, 0.4);
+            border-bottom: 2px solid rgba(212, 175, 55, 0.4);
+        }
+        .calendar-day.current-week .day-number {
+            color: #D4AF37;
+            font-weight: 600;
+        }
+        .calendar-day.current-week.week-start {
+            border-left: 2px solid rgba(212, 175, 55, 0.4);
+        }
+        .calendar-day.current-week.week-end {
+            border-right: 2px solid rgba(212, 175, 55, 0.4);
         }
         .day-number {
             font-size: 14px;
@@ -109,6 +126,10 @@
         .catalyst-chip.adcom {
             background: rgba(255, 0, 255, 0.2);
             border-left: 2px solid #FF00FF;
+        }
+        .catalyst-chip.phase1 {
+            background: rgba(76, 175, 80, 0.2);
+            border-left: 2px solid #4CAF50;
         }
         .catalyst-chip.other {
             background: rgba(136, 136, 136, 0.2);
@@ -176,6 +197,7 @@
         .type-pdufa { background: rgba(255, 99, 71, 0.2); color: #FF6B6B; border: 1px solid rgba(255, 99, 71, 0.3); }
         .type-phase3 { background: rgba(255, 165, 0, 0.2); color: #FFA500; border: 1px solid rgba(255, 165, 0, 0.3); }
         .type-phase2 { background: rgba(100, 149, 237, 0.2); color: #6495ED; border: 1px solid rgba(100, 149, 237, 0.3); }
+        .type-phase1 { background: rgba(76, 175, 80, 0.2); color: #4CAF50; border: 1px solid rgba(76, 175, 80, 0.3); }
         .type-adcom { background: rgba(255, 0, 255, 0.2); color: #FF00FF; border: 1px solid rgba(255, 0, 255, 0.3); }
         .type-other { background: rgba(136, 136, 136, 0.2); color: #888; border: 1px solid rgba(136, 136, 136, 0.3); }
 
@@ -224,8 +246,8 @@
     <nav class="fixed top-0 left-0 right-0 z-50 bg-dark/95 backdrop-blur-sm border-b border-dark-border">
         <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
             <a id="nav-logo-link" href="index.html" class="flex items-center space-x-2">
-                <span class="text-2xl">🐸</span>
-                <span class="text-xl font-bold text-gold">PowersBioStrikes</span>
+                <!-- NEVER CHANGE: Official PowersBioStrikes logo - Google identifier -->
+                <img src="images/og-image.png" alt="PowersBioStrikes" class="h-8 w-auto">
             </a>
             <div class="flex items-center space-x-6">
                 <a id="nav-home-link" href="index.html" class="text-gray-300 hover:text-gold transition-colors">Home</a>
@@ -250,7 +272,7 @@
             </div>
 
             <!-- Summary Stats -->
-            <div id="summary-stats" class="grid grid-cols-2 md:grid-cols-5 gap-3 mb-6">
+            <div id="summary-stats" class="grid grid-cols-3 md:grid-cols-6 gap-3 mb-6">
                 <!-- Populated by JS -->
             </div>
         </div>
@@ -298,9 +320,11 @@
                     <select id="type-filter" onchange="filterCatalysts(this.value)" class="px-3 py-2 rounded-lg bg-dark-card border border-dark-border text-sm focus:border-gold outline-none">
                         <option value="all">All Events</option>
                         <option value="PDUFA">PDUFA</option>
+                        <option value="AdCom">AdCom</option>
                         <option value="Phase 3">Phase 3</option>
                         <option value="Phase 2">Phase 2</option>
-                        <option value="AdCom">AdCom</option>
+                        <option value="Phase 1">Phase 1</option>
+                        <option value="Other">Other</option>
                     </select>
                 </div>
             </div>
@@ -503,16 +527,20 @@
                     <div class="text-gray-500 text-xs">This Week</div>
                 </div>
                 <div class="bg-dark-card border border-dark-border rounded-lg p-3 text-center">
-                    <div class="text-2xl font-bold text-red-400">${summary.by_type.PDUFA}</div>
+                    <div class="text-2xl font-bold text-red-400">${summary.by_type.PDUFA || 0}</div>
                     <div class="text-gray-500 text-xs">PDUFA</div>
                 </div>
                 <div class="bg-dark-card border border-dark-border rounded-lg p-3 text-center">
-                    <div class="text-2xl font-bold text-orange-400">${summary.by_type['Phase 3']}</div>
+                    <div class="text-2xl font-bold text-orange-400">${summary.by_type['Phase 3'] || 0}</div>
                     <div class="text-gray-500 text-xs">Phase 3</div>
                 </div>
                 <div class="bg-dark-card border border-dark-border rounded-lg p-3 text-center">
-                    <div class="text-2xl font-bold text-blue-400">${summary.by_type['Phase 2']}</div>
+                    <div class="text-2xl font-bold text-blue-400">${summary.by_type['Phase 2'] || 0}</div>
                     <div class="text-gray-500 text-xs">Phase 2</div>
+                </div>
+                <div class="bg-dark-card border border-dark-border rounded-lg p-3 text-center">
+                    <div class="text-2xl font-bold" style="color: #4CAF50">${summary.by_type['Phase 1'] || 0}</div>
+                    <div class="text-gray-500 text-xs">Phase 1</div>
                 </div>
             `;
         }
@@ -541,9 +569,33 @@
                 'PDUFA': 'pdufa',
                 'Phase 3': 'phase3',
                 'Phase 2': 'phase2',
+                'Phase 1': 'phase1',
                 'AdCom': 'adcom'
             };
             return typeMap[type] || 'other';
+        }
+
+        // Check if a date is in the current week
+        function isInCurrentWeek(year, month, day) {
+            const today = new Date();
+            const checkDate = new Date(year, month, day);
+
+            // Get start of current week (Sunday)
+            const weekStart = new Date(today);
+            weekStart.setDate(today.getDate() - today.getDay());
+            weekStart.setHours(0, 0, 0, 0);
+
+            // Get end of current week (Saturday)
+            const weekEnd = new Date(weekStart);
+            weekEnd.setDate(weekStart.getDate() + 6);
+            weekEnd.setHours(23, 59, 59, 999);
+
+            return checkDate >= weekStart && checkDate <= weekEnd;
+        }
+
+        // Get day of week (0=Sunday, 6=Saturday)
+        function getDayOfWeek(year, month, day) {
+            return new Date(year, month, day).getDay();
         }
 
         // Render calendar grid
@@ -608,7 +660,19 @@
         // Create a day cell
         function createDayCell(year, month, day, isOtherMonth, isToday = false) {
             const cell = document.createElement('div');
-            cell.className = 'calendar-day' + (isOtherMonth ? ' other-month' : '') + (isToday ? ' today' : '');
+            let className = 'calendar-day';
+            if (isOtherMonth) className += ' other-month';
+            if (isToday) className += ' today';
+
+            // Add current week highlighting
+            if (!isOtherMonth && isInCurrentWeek(year, month, day)) {
+                className += ' current-week';
+                const dayOfWeek = getDayOfWeek(year, month, day);
+                if (dayOfWeek === 0) className += ' week-start';
+                if (dayOfWeek === 6) className += ' week-end';
+            }
+
+            cell.className = className;
 
             const dayNum = document.createElement('div');
             dayNum.className = 'day-number';
@@ -626,9 +690,10 @@
             catalysts.slice(0, maxShow).forEach(cat => {
                 const chip = document.createElement('div');
                 chip.className = `catalyst-chip ${getTypeClass(cat.event.type)}` + (!canView ? ' blur-content' : '');
+                const typeAbbr = {'Phase 3': 'P3', 'Phase 2': 'P2', 'Phase 1': 'P1'}[cat.event.type] || cat.event.type;
                 chip.innerHTML = `
                     <span class="ticker">${cat.ticker}</span>
-                    <span class="type-abbr">${cat.event.type === 'Phase 3' ? 'P3' : cat.event.type === 'Phase 2' ? 'P2' : cat.event.type}</span>
+                    <span class="type-abbr">${typeAbbr}</span>
                 `;
                 if (canView) {
                     chip.onclick = () => openModal(cat);
