@@ -262,13 +262,16 @@
         async function checkAuth() {
             try {
                 const user = await pbsAuth.getUser();
+                console.log('Calendar auth check - User:', user ? user.email : 'Not logged in');
                 isUserAuthenticated = !!user;
             } catch (e) {
+                console.error('Calendar auth check failed:', e);
                 isUserAuthenticated = false;
             }
         }
 
         function isAuthenticated() {
+            console.log('isAuthenticated called, returning:', isUserAuthenticated);
             return isUserAuthenticated;
         }
 
