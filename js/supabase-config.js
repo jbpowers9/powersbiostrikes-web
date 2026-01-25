@@ -111,6 +111,84 @@ const pbsAuth = {
     }
 };
 
+// Catalyst calendar API functions
+const pbsCatalysts = {
+    // Fetch all catalysts (requires authentication for full data)
+    async getAllCatalysts() {
+        const { data, error } = await supabaseClient
+            .from('calendar_catalysts')
+            .select('*')
+            .order('catalyst_date', { ascending: true });
+        return { data, error };
+    },
+
+    // Fetch public catalysts only (next 7 days, no auth required)
+    async getPublicCatalysts() {
+        const { data, error } = await supabaseClient
+            .from('calendar_catalysts')
+            .select('*')
+            .eq('is_public', true)
+            .order('catalyst_date', { ascending: true });
+        return { data, error };
+    },
+
+    // Fetch catalysts by type
+    async getCatalystsByType(eventType) {
+        const { data, error } = await supabaseClient
+            .from('calendar_catalysts')
+            .select('*')
+            .eq('event_type', eventType)
+            .order('catalyst_date', { ascending: true });
+        return { data, error };
+    },
+
+    // Fetch big movers only
+    async getBigMovers() {
+        const { data, error } = await supabaseClient
+            .from('calendar_catalysts')
+            .select('*')
+            .eq('is_big_mover', true)
+            .order('catalyst_date', { ascending: true });
+        return { data, error };
+    },
+
+    // Fetch catalysts for a specific ticker
+    async getCatalystsByTicker(ticker) {
+        const { data, error } = await supabaseClient
+            .from('calendar_catalysts')
+            .select('*')
+            .eq('ticker', ticker.toUpperCase())
+            .order('catalyst_date', { ascending: true });
+        return { data, error };
+    },
+
+    // Get calendar summary stats
+    async getSummary() {
+        // Get counts by type
+        const { data: catalysts, error } = await supabaseClient
+            .from('calendar_catalysts')
+            .select('event_type, is_big_mover, days_until');
+
+        if (error) return { data: null, error };
+
+        const summary = {
+            total: catalysts.length,
+            this_week: catalysts.filter(c => c.days_until <= 7).length,
+            next_week: catalysts.filter(c => c.days_until > 7 && c.days_until <= 14).length,
+            this_month: catalysts.filter(c => c.days_until <= 30).length,
+            big_movers: catalysts.filter(c => c.is_big_mover).length,
+            by_type: {}
+        };
+
+        catalysts.forEach(c => {
+            summary.by_type[c.event_type] = (summary.by_type[c.event_type] || 0) + 1;
+        });
+
+        return { data: summary, error: null };
+    }
+};
+
 // Export for use in other scripts
 window.pbsAuth = pbsAuth;
+window.pbsCatalysts = pbsCatalysts;
 window.supabaseClient = supabaseClient;

@@ -559,15 +559,94 @@
             }
         }
 
+        // Feature flag: Use Supabase or static JSON
+        // Set to true once Supabase table is populated
+        const USE_SUPABASE = false;
+
         // Load calendar data
         async function loadCalendar() {
             try {
-                const response = await fetch('data/calendar.json');
-                calendarData = await response.json();
+                if (USE_SUPABASE && window.pbsCatalysts) {
+                    // Load from Supabase
+                    const [catalystsResult, summaryResult] = await Promise.all([
+                        isUserAuthenticated ? pbsCatalysts.getAllCatalysts() : pbsCatalysts.getPublicCatalysts(),
+                        pbsCatalysts.getSummary()
+                    ]);
+
+                    if (catalystsResult.error) throw catalystsResult.error;
+
+                    // Transform Supabase data to match static JSON format
+                    calendarData = {
+                        summary: {
+                            total_catalysts: summaryResult.data?.total || 0,
+                            this_week: summaryResult.data?.this_week || 0,
+                            next_week: summaryResult.data?.next_week || 0,
+                            this_month: summaryResult.data?.this_month || 0,
+                            big_movers: summaryResult.data?.big_movers || 0,
+                            by_type: summaryResult.data?.by_type || {}
+                        },
+                        catalysts: (catalystsResult.data || []).map(c => ({
+                            ticker: c.ticker,
+                            date: c.catalyst_date,
+                            date_display: c.date_display,
+                            weekday: c.weekday?.trim(),
+                            days_until: c.days_until,
+                            is_public: c.is_public,
+                            event: {
+                                type: c.event_type,
+                                stage: c.stage,
+                                description: c.catalyst_event,
+                                drug_name: c.drug_name,
+                                indication: c.indication,
+                                is_binary: c.is_binary,
+                                is_milestone: c.is_milestone,
+                            },
+                            company: {
+                                name: c.company_name,
+                                mcap_millions: c.mcap_millions,
+                                short_interest_pct: c.short_interest_pct,
+                            },
+                            movement: {
+                                is_big_mover: c.is_big_mover,
+                                mover_score: c.mover_score,
+                                success_prob: c.success_prob,
+                                upside_pct: c.upside_pct,
+                                downside_pct: c.downside_pct,
+                            },
+                            risk_factors: {
+                                has_crl_history: c.has_crl_history,
+                                crl_count: c.crl_count,
+                            },
+                            analysis: {
+                                cont_score: c.cont_score,
+                                cont_rating: c.cont_rating,
+                            },
+                            meta: {
+                                is_phase1: c.is_phase1,
+                                is_initiation: c.is_initiation,
+                                is_submission: c.is_submission,
+                            }
+                        }))
+                    };
+                    console.log('[Calendar] Loaded from Supabase:', calendarData.catalysts.length, 'catalysts');
+                } else {
+                    // Load from static JSON
+                    const response = await fetch('data/calendar.json');
+                    calendarData = await response.json();
+                    console.log('[Calendar] Loaded from static JSON:', calendarData.catalysts.length, 'catalysts');
+                }
                 renderSummary();
                 renderCalendar();
             } catch (error) {
                 console.error('Failed to load calendar:', error);
+                // Fallback to static JSON if Supabase fails
+                if (USE_SUPABASE) {
+                    console.log('[Calendar] Supabase failed, falling back to static JSON');
+                    const response = await fetch('data/calendar.json');
+                    calendarData = await response.json();
+                    renderSummary();
+                    renderCalendar();
+                }
             }
         }
 
