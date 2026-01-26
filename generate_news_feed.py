@@ -28,10 +28,9 @@ OUTPUT_FILE = os.path.join(DATA_DIR, 'news.json')
 # Database path (shared with scanner) - handle both Windows and WSL
 import platform
 if platform.system() == 'Windows':
-    SCANNER_PROJECT = r'C:\biotech-options-v2'
+    DB_PATH = r'C:\biotech-options-v2\biotech_options.db'
 else:
-    SCANNER_PROJECT = '/mnt/c/biotech-options-v2'
-DB_PATH = os.path.join(SCANNER_PROJECT, 'biotech_options.db')
+    DB_PATH = '/mnt/c/biotech-options-v2/biotech_options.db'
 
 # Try to import yfinance
 try:
