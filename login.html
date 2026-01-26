@@ -248,8 +248,20 @@
                     return;
                 }
 
-                // Success - redirect to dashboard
-                window.location.href = 'dashboard.html';
+                // Check if user is approved (beta access)
+                const { data: profile } = await supabaseClient
+                    .from('profiles')
+                    .select('is_approved')
+                    .eq('id', data.user.id)
+                    .single();
+
+                if (profile?.is_approved === true) {
+                    // Approved - go to dashboard
+                    window.location.href = 'dashboard.html';
+                } else {
+                    // Not approved yet - go to pending page
+                    window.location.href = 'pending-approval.html';
+                }
 
             } catch (err) {
                 errorText.textContent = 'An unexpected error occurred. Please try again.';

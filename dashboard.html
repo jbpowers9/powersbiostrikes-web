@@ -319,14 +319,20 @@
                     return;
                 }
 
-                // Check access status (beta/waitlist mode)
+                // Check approval status (beta mode)
                 const { data: profile } = await supabaseClient
                     .from('profiles')
-                    .select('access_status')
+                    .select('is_approved, access_status')
                     .eq('id', user.id)
                     .single();
 
-                // If user is on waitlist, redirect to waitlist page
+                // If user is not approved, redirect to pending page
+                if (!profile || profile.is_approved !== true) {
+                    window.location.href = 'pending-approval.html';
+                    return;
+                }
+
+                // Legacy: If user is on waitlist, redirect to waitlist page
                 if (profile && profile.access_status === 'waitlist') {
                     window.location.href = 'waitlist.html';
                     return;

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pending Approval | PowersBioStrikes</title>
+    <meta name="description" content="Your account is pending approval.">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        mahogany: { dark: '#4A0E0E', DEFAULT: '#6B1414', light: '#8B2323' },
+                        steel: { dark: '#2C3E50', DEFAULT: '#34495E', light: '#5D6D7E' },
+                        gold: { dark: '#8B6914', DEFAULT: '#D4AF37', light: '#E8C547' },
+                        dark: { bg: '#1a1a1a', card: '#242424', elevated: '#2d2d2d' }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body { background: #1a1a1a; font-family: 'Inter', sans-serif; }
+        .pending-card {
+            background: linear-gradient(135deg, #242424 0%, #1a1a1a 100%);
+            border: 1px solid rgba(212,175,55,0.2);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center px-4 py-12">
+    <!-- Background -->
+    <div class="fixed inset-0 bg-gradient-to-br from-dark-bg via-mahogany-dark/10 to-dark-bg -z-10"></div>
+    <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-gold/5 rounded-full blur-3xl -z-10"></div>
+
+    <div class="w-full max-w-lg text-center">
+        <!-- Logo -->
+        <div class="mb-8">
+            <a href="index.html" class="inline-flex items-center justify-center gap-3">
+                <svg class="h-12 w-12" viewBox="0 0 80 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="boltGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#D4AF37"/>
+                            <stop offset="100%" style="stop-color:#8B6914"/>
+                        </linearGradient>
+                    </defs>
+                    <path d="M45 5 L25 45 L38 45 L20 95 L55 40 L40 40 Z" fill="url(#boltGrad)"/>
+                    <circle cx="20" cy="95" r="6" fill="#D4AF37" opacity="0.9"/>
+                    <circle cx="45" cy="5" r="5" fill="#8B6914" opacity="0.9"/>
+                    <circle cx="55" cy="40" r="4" fill="#D4AF37" opacity="0.7"/>
+                </svg>
+                <span class="text-gold font-bold text-2xl tracking-wider">PowersBioStrikes</span>
+            </a>
+        </div>
+
+        <!-- Pending Card -->
+        <div class="pending-card rounded-2xl p-8">
+            <!-- Beta Badge -->
+            <div class="inline-flex items-center gap-2 px-4 py-2 bg-gold/10 border border-gold/30 rounded-full mb-6">
+                <span class="w-2 h-2 bg-gold rounded-full animate-pulse"></span>
+                <span class="text-gold text-sm font-medium">BETA ACCESS</span>
+            </div>
+
+            <div class="text-6xl mb-6">
+                <span class="inline-block animate-bounce">&#9889;</span>
+            </div>
+
+            <h1 class="text-2xl font-bold text-white mb-4">You're on the List!</h1>
+
+            <p class="text-gray-400 mb-6">
+                Thanks for signing up, <span id="user-name" class="text-white font-medium">member</span>!
+            </p>
+
+            <div class="bg-dark-bg/50 rounded-xl p-6 mb-6 text-left">
+                <h2 class="text-white font-semibold mb-3">What happens next?</h2>
+                <ul class="space-y-3 text-gray-400 text-sm">
+                    <li class="flex items-start gap-3">
+                        <span class="text-gold">1.</span>
+                        <span>We're currently in <strong class="text-white">private beta</strong> with limited spots</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="text-gold">2.</span>
+                        <span>JP personally reviews each application</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="text-gold">3.</span>
+                        <span>You'll get an email when you're approved (usually within 24-48 hours)</span>
+                    </li>
+                </ul>
+            </div>
+
+            <p class="text-gray-500 text-sm mb-6">
+                Already approved? Try <a href="login.html" class="text-gold hover:underline">signing in again</a>.
+            </p>
+
+            <!-- Sign Out -->
+            <button id="signout-btn" class="text-gray-500 hover:text-white text-sm transition-colors">
+                Sign out
+            </button>
+        </div>
+
+        <!-- Social Links -->
+        <div class="mt-8">
+            <p class="text-gray-500 text-sm mb-4">While you wait, follow us for updates:</p>
+            <a href="https://twitter.com/PowersBioStrike" target="_blank"
+               class="inline-flex items-center gap-2 text-gray-400 hover:text-gold transition-colors">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path>
+                </svg>
+                @PowersBioStrike
+            </a>
+        </div>
+    </div>
+
+    <!-- Supabase SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase-config.js"></script>
+
+    <script>
+        const userNameEl = document.getElementById('user-name');
+        const signoutBtn = document.getElementById('signout-btn');
+
+        // Check user status
+        async function checkUser() {
+            const user = await pbsAuth.getUser();
+
+            if (!user) {
+                window.location.href = 'login.html';
+                return;
+            }
+
+            // Set user name
+            const fullName = user.user_metadata?.full_name || 'member';
+            userNameEl.textContent = fullName.split(' ')[0];
+
+            // Check if already approved
+            const { data: profile } = await supabaseClient
+                .from('profiles')
+                .select('is_approved')
+                .eq('id', user.id)
+                .single();
+
+            if (profile?.is_approved === true) {
+                window.location.href = 'dashboard.html';
+            }
+        }
+
+        // Sign out
+        signoutBtn.addEventListener('click', async () => {
+            await pbsAuth.signOut();
+            window.location.href = 'index.html';
+        });
+
+        checkUser();
+    </script>
+</body>
+</html>
