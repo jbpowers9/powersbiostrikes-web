@@ -248,20 +248,9 @@
                     return;
                 }
 
-                // Check if user is approved (beta access)
-                const { data: profile } = await supabaseClient
-                    .from('profiles')
-                    .select('is_approved')
-                    .eq('id', data.user.id)
-                    .single();
-
-                if (profile?.is_approved === true) {
-                    // Approved - go to dashboard
-                    window.location.href = 'dashboard.html';
-                } else {
-                    // Not approved yet - go to pending page
-                    window.location.href = 'pending-approval.html';
-                }
+                // TEMPORARILY DISABLED - go straight to dashboard
+                // TODO: Re-enable approval check after fixing
+                window.location.href = 'dashboard.html';
 
             } catch (err) {
                 errorText.textContent = 'An unexpected error occurred. Please try again.';

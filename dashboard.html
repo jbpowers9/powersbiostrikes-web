@@ -319,26 +319,26 @@
                     return;
                 }
 
-                // Check approval status (beta mode)
+                // TEMPORARILY DISABLED - approval check
+                // TODO: Re-enable after fixing the loop issue
+                /*
                 const { data: profile } = await supabaseClient
                     .from('profiles')
                     .select('is_approved, access_status')
                     .eq('id', user.id)
                     .single();
 
-                // If user is not approved, redirect to pending page
-                // Check for true as boolean OR string
                 const isApproved = profile?.is_approved === true || profile?.is_approved === 't' || profile?.is_approved === 'true';
                 if (!profile || !isApproved) {
                     window.location.href = 'pending-approval.html';
                     return;
                 }
 
-                // Legacy: If user is on waitlist, redirect to waitlist page
                 if (profile && profile.access_status === 'waitlist') {
                     window.location.href = 'waitlist.html';
                     return;
                 }
+                */
 
                 // Populate user info
                 const fullName = user.user_metadata?.full_name || 'Member';
