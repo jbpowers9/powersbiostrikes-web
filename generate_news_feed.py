@@ -25,8 +25,12 @@ SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(SCRIPT_DIR, 'data')
 OUTPUT_FILE = os.path.join(DATA_DIR, 'news.json')
 
-# Database path (shared with scanner)
-SCANNER_PROJECT = '/mnt/c/biotech-options-v2'
+# Database path (shared with scanner) - handle both Windows and WSL
+import platform
+if platform.system() == 'Windows':
+    SCANNER_PROJECT = r'C:\biotech-options-v2'
+else:
+    SCANNER_PROJECT = '/mnt/c/biotech-options-v2'
 DB_PATH = os.path.join(SCANNER_PROJECT, 'biotech_options.db')
 
 # Try to import yfinance
