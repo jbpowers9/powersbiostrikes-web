@@ -1457,10 +1457,8 @@
                 .from('profiles')
                 .select('*', { count: 'exact', head: true });
 
-            if (error) throw error;
-
-            // Animate the counter
-            const targetCount = count || 0;
+            // Use count from DB, minimum of 1 (admin always counts)
+            const targetCount = Math.max((count || 0), 1);
             let currentCount = 0;
             const duration = 1500;
             const startTime = Date.now();
@@ -1483,7 +1481,8 @@
             animateCount();
         } catch (err) {
             console.log('Member count unavailable:', err.message);
-            memberCountEl.textContent = '--';
+            // Show 1 (admin) even if query fails
+            memberCountEl.textContent = '1';
         }
     })();
     </script>

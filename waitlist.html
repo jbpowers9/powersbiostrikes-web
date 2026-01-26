@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>You're on the Waitlist | PowersBioStrikes</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        mahogany: { dark: '#4A0E0E', DEFAULT: '#6B1414', light: '#8B2323' },
+                        steel: { dark: '#2C3E50', DEFAULT: '#34495E', light: '#5D6D7E' },
+                        gold: { dark: '#8B6914', DEFAULT: '#D4AF37', light: '#E8C547' },
+                        dark: { bg: '#1a1a1a', card: '#242424', elevated: '#2d2d2d' }
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { background: #1a1a1a; font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center px-4 py-12 text-white">
+    <div class="fixed inset-0 bg-gradient-to-br from-dark-bg via-mahogany-dark/10 to-dark-bg -z-10"></div>
+
+    <div class="max-w-lg text-center">
+        <!-- Logo -->
+        <a href="index.html" class="inline-flex items-center justify-center gap-3 mb-8">
+            <svg class="h-12 w-12" viewBox="0 0 80 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="boltGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#D4AF37"/>
+                        <stop offset="100%" style="stop-color:#8B6914"/>
+                    </linearGradient>
+                </defs>
+                <path d="M45 5 L25 45 L38 45 L20 95 L55 40 L40 40 Z" fill="url(#boltGrad)"/>
+                <circle cx="20" cy="95" r="6" fill="#D4AF37" opacity="0.9"/>
+                <circle cx="45" cy="5" r="5" fill="#8B6914" opacity="0.9"/>
+                <circle cx="55" cy="40" r="4" fill="#D4AF37" opacity="0.7"/>
+            </svg>
+            <span class="text-gold font-bold text-2xl tracking-wider">PowersBioStrikes</span>
+        </a>
+
+        <!-- Beta Badge -->
+        <div class="inline-flex items-center gap-2 px-4 py-2 bg-gold/10 border border-gold/30 rounded-full mb-6">
+            <span class="w-2 h-2 bg-gold rounded-full animate-pulse"></span>
+            <span class="text-gold text-sm font-medium">BETA</span>
+        </div>
+
+        <!-- Main Content -->
+        <div class="bg-dark-card border border-white/10 rounded-2xl p-8 mb-6">
+            <div class="text-5xl mb-4">🎉</div>
+            <h1 class="text-2xl font-bold mb-3">You're on the Waitlist!</h1>
+            <p class="text-gray-400 mb-6">
+                Thanks for signing up! We're currently in private beta with limited spots.
+                You'll get an email when your access is approved.
+            </p>
+
+            <div class="bg-dark-bg/50 rounded-xl p-4 mb-6 text-left">
+                <div class="text-sm text-gray-400 mb-2">Signed up as:</div>
+                <div id="user-email" class="text-white font-medium">loading...</div>
+            </div>
+
+            <div class="space-y-3 text-sm text-gray-400">
+                <div class="flex items-center gap-3">
+                    <span class="text-gold">✓</span>
+                    <span>Your spot is saved</span>
+                </div>
+                <div class="flex items-center gap-3">
+                    <span class="text-gold">✓</span>
+                    <span>We'll email you when approved</span>
+                </div>
+                <div class="flex items-center gap-3">
+                    <span class="text-gold">✓</span>
+                    <span>Founding member benefits included</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- While You Wait -->
+        <div class="text-gray-500 text-sm mb-6">
+            While you wait, check out:
+        </div>
+        <div class="flex flex-wrap justify-center gap-3">
+            <a href="calendar.html" class="px-4 py-2 bg-dark-card border border-white/10 rounded-lg text-sm hover:border-gold/50 transition-colors">
+                Catalyst Calendar
+            </a>
+            <a href="blog/" class="px-4 py-2 bg-dark-card border border-white/10 rounded-lg text-sm hover:border-gold/50 transition-colors">
+                How It Works
+            </a>
+            <a href="https://twitter.com/PowersBioStrike" target="_blank" class="px-4 py-2 bg-dark-card border border-white/10 rounded-lg text-sm hover:border-gold/50 transition-colors">
+                Follow on X
+            </a>
+        </div>
+
+        <!-- Sign Out -->
+        <div class="mt-8">
+            <button id="logout-btn" class="text-gray-500 text-sm hover:text-gold transition-colors">
+                Sign out
+            </button>
+        </div>
+    </div>
+
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase-config.js"></script>
+    <script>
+        (async function() {
+            // Check if user is logged in
+            const user = await pbsAuth.getUser();
+
+            if (!user) {
+                window.location.href = 'login.html';
+                return;
+            }
+
+            // Show email
+            document.getElementById('user-email').textContent = user.email;
+
+            // Check if user is actually approved (shouldn't be on this page)
+            const { data: profile } = await supabaseClient
+                .from('profiles')
+                .select('access_status')
+                .eq('id', user.id)
+                .single();
+
+            if (profile && (profile.access_status === 'approved' || profile.access_status === 'admin')) {
+                // User is approved, redirect to dashboard
+                window.location.href = 'dashboard.html';
+                return;
+            }
+
+            // Logout handler
+            document.getElementById('logout-btn').addEventListener('click', async () => {
+                await pbsAuth.signOut();
+                window.location.href = 'index.html';
+            });
+        })();
+    </script>
+</body>
+</html>

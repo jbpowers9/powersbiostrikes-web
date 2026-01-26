@@ -5,6 +5,16 @@
 - I am the engineer responsible for all code
 - Always push changes after completing web modifications
 
+## IMPORTANT: Browser Cache Issue
+- User can only see changes in incognito mode due to aggressive browser caching
+- After pushing changes, remind user to hard refresh: **Ctrl+Shift+R**
+- Consider adding cache-busting query strings to CSS/JS files (e.g., `?v=1.2`)
+
+## Beta/Waitlist Mode
+- Site is in BETA - new signups go to waitlist
+- Admin can manually approve users via Supabase Dashboard
+- Check `profiles.access_status` field: 'approved', 'waitlist', 'admin'
+
 ## Related Projects
 - **This project**: PowersBioStrikes subscription website
 - **Biotech Scanner**: `/mnt/c/biotech-options-v2/` (Streamlit dashboard)

@@ -116,17 +116,26 @@
                     <h1 class="text-3xl font-bold mb-2">Welcome back, <span id="user-name" class="text-gold">Member</span>!</h1>
                     <p class="text-gray-400">Here's what you receive as a <span class="text-gold">Founding Member</span>.</p>
                 </div>
-                <div class="dashboard-card rounded-xl p-4 flex items-center gap-4">
-                    <div class="w-12 h-12 bg-gold/20 rounded-full flex items-center justify-center">
-                        <span id="user-initials-lg" class="text-gold font-bold text-lg">?</span>
-                    </div>
-                    <div>
-                        <div id="user-email" class="text-white font-medium text-sm">loading@email.com</div>
-                        <div class="flex items-center gap-2 mt-1">
-                            <span class="px-2 py-0.5 bg-gold/20 text-gold text-xs font-medium rounded">FOUNDING MEMBER</span>
-                            <span id="member-since" class="text-gray-500 text-xs">Since Jan 2026</span>
+                <div class="dashboard-card rounded-xl p-4">
+                    <div class="flex items-center gap-4 mb-3">
+                        <div class="w-12 h-12 bg-gold/20 rounded-full flex items-center justify-center">
+                            <span id="user-initials-lg" class="text-gold font-bold text-lg">?</span>
                         </div>
-                        <div id="free-remaining" class="text-green-400 text-xs mt-1">6 months free remaining</div>
+                        <div>
+                            <div id="user-email" class="text-white font-medium text-sm">loading@email.com</div>
+                            <div class="flex items-center gap-2 mt-1">
+                                <span class="px-2 py-0.5 bg-gold/20 text-gold text-xs font-medium rounded">FOUNDING MEMBER</span>
+                                <span id="member-since" class="text-gray-500 text-xs">Since Jan 2026</span>
+                            </div>
+                            <div id="free-remaining" class="text-green-400 text-xs mt-1">6 months free remaining</div>
+                        </div>
+                    </div>
+                    <!-- Founding Member Benefits - Simple Links -->
+                    <div class="border-t border-white/10 pt-3 flex flex-wrap gap-x-4 gap-y-1 text-xs">
+                        <a href="top10-picks.html" class="text-gray-400 hover:text-gold transition-colors">Top 10 Picks</a>
+                        <a href="calendar.html" class="text-gray-400 hover:text-gold transition-colors">Catalyst Calendar</a>
+                        <a href="community.html" class="text-gray-400 hover:text-gold transition-colors">Community</a>
+                        <a href="blog/" class="text-gray-400 hover:text-gold transition-colors">How It Works</a>
                     </div>
                 </div>
             </div>
@@ -170,41 +179,6 @@
                             </svg>
                             Send Feedback
                         </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Founding Member Benefits Banner -->
-            <div class="bg-gradient-to-r from-gold/10 to-gold/5 border border-gold/30 rounded-2xl p-6 mb-8">
-                <h2 class="text-xl font-bold text-gold mb-4">🎉 Your Founding Member Benefits</h2>
-                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-                    <div class="flex items-start gap-3">
-                        <span class="text-green-400 text-xl">✓</span>
-                        <div>
-                            <div class="font-medium">6 Months Free Access</div>
-                            <div class="text-gray-500 text-sm">Full access from sign-up date</div>
-                        </div>
-                    </div>
-                    <div class="flex items-start gap-3">
-                        <span class="text-green-400 text-xl">✓</span>
-                        <div>
-                            <div class="font-medium">Top 10 Stock Picks</div>
-                            <div class="text-gray-500 text-sm">Detailed CONT analysis</div>
-                        </div>
-                    </div>
-                    <div class="flex items-start gap-3">
-                        <span class="text-green-400 text-xl">✓</span>
-                        <div>
-                            <div class="font-medium">Live Positions</div>
-                            <div class="text-gray-500 text-sm">Deep dive analysis included</div>
-                        </div>
-                    </div>
-                    <div class="flex items-start gap-3">
-                        <span class="text-green-400 text-xl">✓</span>
-                        <div>
-                            <div class="font-medium">Catalyst Calendar</div>
-                            <div class="text-gray-500 text-sm">PDUFA dates & Phase 3 readouts</div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -363,6 +337,19 @@
 
                 if (!user) {
                     window.location.href = 'login.html';
+                    return;
+                }
+
+                // Check access status (beta/waitlist mode)
+                const { data: profile } = await supabaseClient
+                    .from('profiles')
+                    .select('access_status')
+                    .eq('id', user.id)
+                    .single();
+
+                // If user is on waitlist, redirect to waitlist page
+                if (profile && profile.access_status === 'waitlist') {
+                    window.location.href = 'waitlist.html';
                     return;
                 }
 
