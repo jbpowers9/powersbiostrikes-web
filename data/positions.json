@@ -17,9 +17,9 @@
       "prices": {
         "entry": 1.91,
         "current": 8.05,
-        "stock_price": 12.08,
+        "stock_price": 11.615,
         "break_even": 6.91,
-        "max_buy": 4.23,
+        "max_buy": 2.1,
         "pnl_pct": 321.5
       },
       "entry_zone": {
@@ -29,15 +29,14 @@
         "pct_from_entry": 321.46596858638753
       },
       "enr": {
-        "enr": 28.9,
-        "win_prob": 91.0,
+        "enr": 0,
+        "win_prob": 50.0,
         "enr_zone": {
           "zone": "avoid",
           "color": "red",
           "message": "Negative expected return"
         },
-        "research_found": false,
-        "is_live": true
+        "is_live": false
       },
       "cont": {
         "score": 70,
@@ -49,10 +48,10 @@
         "date_display": "Dec 24, 2025",
         "event": "PDUFA APPROVED",
         "drug": "Narsoplimab/Yartemlia - TA-TMA (FDA APPROVED Dec 24, 2025)",
-        "days_to_catalyst": -33
+        "days_to_catalyst": -34
       },
       "timing": {
-        "days_to_expiry": 25,
+        "days_to_expiry": 24,
         "entry_date": "2025-12-31 07:14:59"
       },
       "thesis": {
@@ -66,12 +65,12 @@
         "short_interest": null
       },
       "oi": {
-        "current": 0,
-        "change_1d": 0,
+        "current": 11724,
+        "change_1d": 5428,
         "change_5d": 0,
-        "trend": "unknown"
+        "trend": "strong_increase"
       },
-      "last_updated": "2026-01-25T08:54:10.813812",
+      "last_updated": "2026-01-26T13:29:14.887840",
       "recommendation": {
         "action": "EXIT",
         "notes": "This was a great win for me and i trimmed multiple times some before the PDUFA and still hold a small amount.  waiting for a better exit price or I may convert to stocks for a long term hold and avoid more short term gains.  A good problem for a well ITM option.  ",
@@ -94,21 +93,21 @@
       },
       "prices": {
         "entry": 4.325,
-        "current": 4.4,
-        "stock_price": 14.01,
+        "current": 4.45,
+        "stock_price": 13.95,
         "break_even": 16.825,
-        "max_buy": 3.58,
-        "pnl_pct": 1.7
+        "max_buy": 2.95,
+        "pnl_pct": 2.9
       },
       "entry_zone": {
         "zone": "good",
         "color": "green",
-        "message": "Within 1.7% of entry - still good",
-        "pct_from_entry": 1.7341040462427681
+        "message": "Within 2.9% of entry - still good",
+        "pct_from_entry": 2.8901734104046284
       },
       "enr": {
-        "enr": 91.1,
-        "win_prob": 93.4,
+        "enr": 58.2,
+        "win_prob": 91.6,
         "enr_zone": {
           "zone": "weak",
           "color": "orange",
@@ -118,19 +117,19 @@
         "is_live": true
       },
       "cont": {
-        "score": 90,
-        "rating": "HIGH",
-        "display": "High (Hold Through)"
+        "score": 30,
+        "rating": "LOW",
+        "display": "Low (Exit Early)"
       },
       "catalyst": {
         "date": "2026-02-08",
         "date_display": "Feb 08, 2026",
         "event": "PDUFA",
         "drug": "RGX-121 (clemidsogene lanparvovec) - Hunter Syndrome (MPS II)",
-        "days_to_catalyst": 13
+        "days_to_catalyst": 12
       },
       "timing": {
-        "days_to_expiry": 81,
+        "days_to_expiry": 80,
         "entry_date": "2025-12-31 07:15:01"
       },
       "thesis": {
@@ -144,18 +143,18 @@
           "28% run-up suggests approval partially priced; limited upside vs. downside",
           "Denali competition (DNL310 PDUFA April 5) creates binary outcome for market share"
         ],
-        "is_first_in_class": 1,
-        "is_orphan": 1,
-        "is_fast_track": 1,
+        "is_first_in_class": 0,
+        "is_orphan": 0,
+        "is_fast_track": 0,
         "short_interest": null
       },
       "oi": {
-        "current": 0,
-        "change_1d": 0,
+        "current": 902,
+        "change_1d": 215,
         "change_5d": 0,
-        "trend": "unknown"
+        "trend": "strong_increase"
       },
-      "last_updated": "2026-01-25T08:54:11.250229",
+      "last_updated": "2026-01-26T13:29:15.215830",
       "recommendation": {
         "action": "HOLD",
         "notes": "Well same comments as my $15 strikes here but this one is in the money and i'm goign to let it ride past the PDUFA.  - I've had this one for a while now but it hasn't moved much.  not much ENR left but my continuation score tells me this will run after approval.  I expect it will still move.  as of 1/23/26  i don't now i would get in here but  i have plenty of expiration time to hold past the PDUFA approval and OI is still increasing.",
@@ -178,43 +177,43 @@
       },
       "prices": {
         "entry": 4.6,
-        "current": 3.8499999999999996,
-        "stock_price": 14.01,
+        "current": 4.050000000000001,
+        "stock_price": 13.95,
         "break_even": 19.6,
-        "max_buy": 2.59,
-        "pnl_pct": -16.3
+        "max_buy": 1.96,
+        "pnl_pct": -12.0
       },
       "entry_zone": {
         "zone": "excellent",
         "color": "green",
-        "message": "Down 16.3% from entry - better value",
-        "pct_from_entry": -16.30434782608696
+        "message": "Down 12.0% from entry - better value",
+        "pct_from_entry": -11.95652173913041
       },
       "enr": {
-        "enr": 59.3,
-        "win_prob": 84.7,
+        "enr": 19.4,
+        "win_prob": 69.7,
         "enr_zone": {
-          "zone": "weak",
-          "color": "orange",
-          "message": "Below target threshold"
+          "zone": "avoid",
+          "color": "red",
+          "message": "Negative expected return"
         },
         "research_found": true,
         "is_live": true
       },
       "cont": {
-        "score": 90,
-        "rating": "HIGH",
-        "display": "High (Hold Through)"
+        "score": 30,
+        "rating": "LOW",
+        "display": "Low (Exit Early)"
       },
       "catalyst": {
         "date": "2026-02-08",
         "date_display": "Feb 08, 2026",
         "event": "PDUFA",
         "drug": "RGX-121 (clemidsogene lanparvovec) - Hunter Syndrome (MPS II)",
-        "days_to_catalyst": 13
+        "days_to_catalyst": 12
       },
       "timing": {
-        "days_to_expiry": 81,
+        "days_to_expiry": 80,
         "entry_date": "2026-01-08 12:29:03"
       },
       "thesis": {
@@ -228,18 +227,18 @@
           "28% run-up suggests approval partially priced; limited upside vs. downside",
           "Denali competition (DNL310 PDUFA April 5) creates binary outcome for market share"
         ],
-        "is_first_in_class": 1,
-        "is_orphan": 1,
-        "is_fast_track": 1,
+        "is_first_in_class": 0,
+        "is_orphan": 0,
+        "is_fast_track": 0,
         "short_interest": null
       },
       "oi": {
-        "current": 0,
-        "change_1d": 0,
+        "current": 902,
+        "change_1d": 215,
         "change_5d": 0,
-        "trend": "unknown"
+        "trend": "strong_increase"
       },
-      "last_updated": "2026-01-25T08:54:11.564244",
+      "last_updated": "2026-01-26T13:29:15.737420",
       "recommendation": {
         "action": "HOLD",
         "notes": " I've had this one for a while now but it hasn't moved much.  not much ENR left but my continuation score tells me this will run after approval.  I expect it will still move.  as of 1/23/26  i don't now i would get in here but  i have plenty of expiration time to hold past the PDUFA approval and OI is still increasing.",
@@ -262,25 +261,25 @@
       },
       "prices": {
         "entry": 1.675,
-        "current": 2.075,
-        "stock_price": 8.0672,
+        "current": 2.275,
+        "stock_price": 7.74,
         "break_even": 7.675,
-        "max_buy": 2.13,
-        "pnl_pct": 23.9
+        "max_buy": 1.91,
+        "pnl_pct": 35.8
       },
       "entry_zone": {
-        "zone": "caution",
-        "color": "yellow",
-        "message": "Up 23.9% - consider smaller size",
-        "pct_from_entry": 23.880597014925375
+        "zone": "passed",
+        "color": "red",
+        "message": "Up 35.8% - wait for pullback",
+        "pct_from_entry": 35.82089552238805
       },
       "enr": {
-        "enr": 150.3,
-        "win_prob": 87.0,
+        "enr": 104.7,
+        "win_prob": 84.8,
         "enr_zone": {
-          "zone": "good",
-          "color": "green",
-          "message": "Strong expected return"
+          "zone": "fair",
+          "color": "yellow",
+          "message": "Moderate expected return"
         },
         "research_found": true,
         "is_live": true
@@ -295,10 +294,10 @@
         "date_display": "Feb 21, 2026",
         "event": "PDUFA",
         "drug": "Bysanti (milsaperidone) - Bipolar I & Schizophrenia (NEREUS approved 12/30/25)",
-        "days_to_catalyst": 26
+        "days_to_catalyst": 25
       },
       "timing": {
-        "days_to_expiry": 53,
+        "days_to_expiry": 52,
         "entry_date": "2025-12-31 07:15:00"
       },
       "thesis": {
@@ -318,184 +317,16 @@
         "short_interest": 7.88
       },
       "oi": {
-        "current": 5305,
+        "current": 10026,
         "change_1d": 0,
         "change_5d": 0,
         "trend": "stable"
       },
-      "last_updated": "2026-01-25T08:54:11.935636",
+      "last_updated": "2026-01-26T13:29:16.050090",
       "recommendation": {
         "action": "HOLD",
         "notes": "ok this is a hold that I've had for some time.  but plan to start reducing prior to the PDUFA date.   High chance of sell the news.  I'm up quite a bit but it shows there is still ENR left.  Not sure i would buy now (wait for my new recommendations) , but your call on this one.",
         "updated": "2026-01-24T09:51:39.404821"
-      }
-    },
-    {
-      "ticker": "GOSS",
-      "status": "OPEN",
-      "play_type": "LEAP",
-      "is_phase3_sequential": true,
-      "compound_move": 130.8,
-      "category": "Biotech",
-      "position": {
-        "strike": 5.0,
-        "expiration": "2027-01-15",
-        "expiration_display": "Jan 15, 2027",
-        "option_type": "CALL",
-        "quantity": 60
-      },
-      "prices": {
-        "entry": 1.15,
-        "current": 1.25,
-        "stock_price": 2.7062,
-        "break_even": 6.15,
-        "max_buy": 0.27,
-        "pnl_pct": 8.7
-      },
-      "entry_zone": {
-        "zone": "good",
-        "color": "green",
-        "message": "Within 8.7% of entry - still good",
-        "pct_from_entry": 8.69565217391306
-      },
-      "enr": {
-        "enr": -27.4,
-        "win_prob": 35.2,
-        "enr_zone": {
-          "zone": "avoid",
-          "color": "red",
-          "message": "Negative expected return"
-        },
-        "research_found": true,
-        "is_live": true
-      },
-      "cont": {
-        "score": 105,
-        "rating": "HIGH",
-        "display": "High (Hold Through)"
-      },
-      "catalyst": {
-        "date": "2026-02-28",
-        "date_display": "Feb 28, 2026",
-        "event": "Phase 3",
-        "drug": "Seralutinib - Pulmonary Arterial Hypertension (PAH) - PROSERA Trial",
-        "days_to_catalyst": 33
-      },
-      "timing": {
-        "days_to_expiry": 354,
-        "entry_date": "2025-12-31 07:14:59"
-      },
-      "thesis": {
-        "drug_name": "Seralutinib - Pulmonary Arterial Hypertension (PAH) - PROSERA Trial",
-        "indication": "Phase 3",
-        "highlights": [
-          "GOSS presents a compelling contrarian LEAP opportunity with institutional validation via the concentrated 4,339 OI on the $3 Jan-2027 strike. The structural setup is textbook: proven management (Hasnain sold Receptos for $7.2B), heavy insider buying at $1.14-$1.82, first-in-class mechanism with comb..."
-        ],
-        "risks": [
-          "Phase 2 TORREY missed 6MWD endpoint - same endpoint used in Phase 3 PROSERA",
-          "Merck Winrevair first-mover advantage in PAH market with $238K/year pricing",
-          "Enriched FC II/III patient strategy relies on subgroup signal that may not replicate"
-        ],
-        "is_first_in_class": 1,
-        "is_orphan": 1,
-        "is_fast_track": 0,
-        "short_interest": 3.6
-      },
-      "oi": {
-        "current": 5042,
-        "change_1d": 0,
-        "change_5d": 0,
-        "trend": "stable"
-      },
-      "last_updated": "2026-01-25T08:54:12.259366",
-      "recommendation": {
-        "action": "HOLD",
-        "notes": "I've had this position for a while and  its a hold for me.  But I don't recommend getting in ",
-        "updated": "2026-01-24T10:44:23.735435"
-      }
-    },
-    {
-      "ticker": "GOSS",
-      "status": "OPEN",
-      "play_type": "LEAP",
-      "is_phase3_sequential": true,
-      "compound_move": 130.8,
-      "category": "Biotech",
-      "position": {
-        "strike": 3.0,
-        "expiration": "2027-01-15",
-        "expiration_display": "Jan 15, 2027",
-        "option_type": "CALL",
-        "quantity": 50
-      },
-      "prices": {
-        "entry": 1.4,
-        "current": 1.7,
-        "stock_price": 2.7062,
-        "break_even": 4.4,
-        "max_buy": 0.87,
-        "pnl_pct": 21.4
-      },
-      "entry_zone": {
-        "zone": "caution",
-        "color": "yellow",
-        "message": "Up 21.4% - consider smaller size",
-        "pct_from_entry": 21.42857142857144
-      },
-      "enr": {
-        "enr": 39.8,
-        "win_prob": 68.5,
-        "enr_zone": {
-          "zone": "avoid",
-          "color": "red",
-          "message": "Negative expected return"
-        },
-        "research_found": true,
-        "is_live": true
-      },
-      "cont": {
-        "score": 105,
-        "rating": "HIGH",
-        "display": "High (Hold Through)"
-      },
-      "catalyst": {
-        "date": "2026-02-28",
-        "date_display": "Feb 28, 2026",
-        "event": "Phase 3",
-        "drug": "Seralutinib - Pulmonary Arterial Hypertension (PAH) - PROSERA Trial",
-        "days_to_catalyst": 33
-      },
-      "timing": {
-        "days_to_expiry": 354,
-        "entry_date": "2026-01-07 13:19:27"
-      },
-      "thesis": {
-        "drug_name": "Seralutinib - Pulmonary Arterial Hypertension (PAH) - PROSERA Trial",
-        "indication": "Phase 3",
-        "highlights": [
-          "GOSS presents a compelling contrarian LEAP opportunity with institutional validation via the concentrated 4,339 OI on the $3 Jan-2027 strike. The structural setup is textbook: proven management (Hasnain sold Receptos for $7.2B), heavy insider buying at $1.14-$1.82, first-in-class mechanism with comb..."
-        ],
-        "risks": [
-          "Phase 2 TORREY missed 6MWD endpoint - same endpoint used in Phase 3 PROSERA",
-          "Merck Winrevair first-mover advantage in PAH market with $238K/year pricing",
-          "Enriched FC II/III patient strategy relies on subgroup signal that may not replicate"
-        ],
-        "is_first_in_class": 1,
-        "is_orphan": 1,
-        "is_fast_track": 0,
-        "short_interest": 3.6
-      },
-      "oi": {
-        "current": 5042,
-        "change_1d": 0,
-        "change_5d": 0,
-        "trend": "stable"
-      },
-      "last_updated": "2026-01-25T08:54:12.592331",
-      "recommendation": {
-        "action": "HOLD",
-        "notes": "This ENR has dropped some since purchase so only accumulate on pull backs.  watch the max buy.  Sometimes i still get in if it is a little below my 140% criteria.  This has a high continuation score but may expire prior to full PDUFA approval.  We may roll some of these over time.   ",
-        "updated": "2026-01-24T10:37:33.640194"
       }
     },
     {
@@ -514,43 +345,43 @@
       },
       "prices": {
         "entry": 0.9,
-        "current": 1.0,
+        "current": 2.95,
         "stock_price": 3.18,
         "break_even": 3.4,
-        "max_buy": 1.72,
-        "pnl_pct": 11.1
+        "max_buy": 1.2,
+        "pnl_pct": 227.8
       },
       "entry_zone": {
-        "zone": "caution",
-        "color": "yellow",
-        "message": "Up 11.1% - consider smaller size",
-        "pct_from_entry": 11.111111111111116
+        "zone": "passed",
+        "color": "red",
+        "message": "Up 227.8% - wait for pullback",
+        "pct_from_entry": 227.77777777777777
       },
       "enr": {
-        "enr": 320.6,
-        "win_prob": 71.5,
+        "enr": 6.1,
+        "win_prob": 63.5,
         "enr_zone": {
-          "zone": "good",
-          "color": "green",
-          "message": "Strong expected return"
+          "zone": "avoid",
+          "color": "red",
+          "message": "Negative expected return"
         },
         "research_found": true,
         "is_live": true
       },
       "cont": {
-        "score": 55,
-        "rating": "MODERATE",
-        "display": "Moderate"
+        "score": 15,
+        "rating": "LOW",
+        "display": "Low (Exit Early)"
       },
       "catalyst": {
         "date": "2026-03-31",
         "date_display": "Mar 31, 2026",
         "event": "Phase 3 Data readout",
         "drug": null,
-        "days_to_catalyst": 64
+        "days_to_catalyst": 63
       },
       "timing": {
-        "days_to_expiry": 172,
+        "days_to_expiry": 171,
         "entry_date": "2026-01-21"
       },
       "thesis": {
@@ -564,9 +395,9 @@
           "All available options have >30% spreads = untradeable",
           "84% run-up suggests options premium already inflated"
         ],
-        "is_first_in_class": 1,
+        "is_first_in_class": 0,
         "is_orphan": 0,
-        "is_fast_track": 1,
+        "is_fast_track": 0,
         "short_interest": 3.59
       },
       "oi": {
@@ -575,7 +406,7 @@
         "change_5d": 0,
         "trend": "stable"
       },
-      "last_updated": "2026-01-25T08:54:12.919822",
+      "last_updated": "2026-01-26T13:29:16.397184",
       "recommendation": {
         "action": "ACCUMULATE",
         "notes": "This is a new buy for me.  I love the set up .  ",
@@ -598,21 +429,21 @@
       },
       "prices": {
         "entry": 1.4,
-        "current": 1.625,
-        "stock_price": 7.28,
+        "current": 1.525,
+        "stock_price": 7.73,
         "break_even": 9.4,
-        "max_buy": 2.12,
-        "pnl_pct": 16.1
+        "max_buy": 2.14,
+        "pnl_pct": 8.9
       },
       "entry_zone": {
-        "zone": "caution",
-        "color": "yellow",
-        "message": "Up 16.1% - consider smaller size",
-        "pct_from_entry": 16.07142857142858
+        "zone": "good",
+        "color": "green",
+        "message": "Within 8.9% of entry - still good",
+        "pct_from_entry": 8.92857142857142
       },
       "enr": {
-        "enr": 223.1,
-        "win_prob": 68.5,
+        "enr": 248.9,
+        "win_prob": 61.8,
         "enr_zone": {
           "zone": "good",
           "color": "green",
@@ -622,19 +453,19 @@
         "is_live": true
       },
       "cont": {
-        "score": 90,
-        "rating": "HIGH",
-        "display": "High (Hold Through)"
+        "score": 60,
+        "rating": "MODERATE",
+        "display": "Moderate"
       },
       "catalyst": {
         "date": "2026-06-30",
         "date_display": "Jun 30, 2026",
         "event": "Phase 3 Data readout",
         "drug": null,
-        "days_to_catalyst": 155
+        "days_to_catalyst": 154
       },
       "timing": {
-        "days_to_expiry": 207,
+        "days_to_expiry": 206,
         "entry_date": "2026-01-21"
       },
       "thesis": {
@@ -643,17 +474,17 @@
         "highlights": [],
         "risks": [],
         "is_first_in_class": 0,
-        "is_orphan": 1,
-        "is_fast_track": 1,
+        "is_orphan": 0,
+        "is_fast_track": 0,
         "short_interest": 21.63
       },
       "oi": {
-        "current": 3173,
-        "change_1d": 0,
+        "current": 3172,
+        "change_1d": 3172,
         "change_5d": 0,
         "trend": "stable"
       },
-      "last_updated": "2026-01-25T08:54:13.237627",
+      "last_updated": "2026-01-26T13:29:16.739263",
       "recommendation": {
         "action": "ACCUMULATE",
         "notes": "New position this week.  Add but watch the max buy.  Make those market makers work for their money.  start with a bid close to the bid and work your way up.  Watch the spread and dont over pay.  if you get 80% of the way to the ask wait until close to close and see if they take your bid.  Good luck.",
@@ -665,7 +496,7 @@
       "status": "OPEN",
       "play_type": "LEAP",
       "is_phase3_sequential": true,
-      "compound_move": 114.5,
+      "compound_move": 82.0,
       "category": "Biotech",
       "position": {
         "strike": 10.0,
@@ -676,21 +507,21 @@
       },
       "prices": {
         "entry": 1.41,
-        "current": 1.275,
-        "stock_price": 7.28,
+        "current": 1.4249999999999998,
+        "stock_price": 7.73,
         "break_even": 11.41,
-        "max_buy": 1.54,
-        "pnl_pct": -9.6
+        "max_buy": 1.63,
+        "pnl_pct": 1.1
       },
       "entry_zone": {
         "zone": "good",
         "color": "green",
-        "message": "Within -9.6% of entry - still good",
-        "pct_from_entry": -9.57446808510638
+        "message": "Within 1.1% of entry - still good",
+        "pct_from_entry": 1.0638297872340274
       },
       "enr": {
-        "enr": 205.7,
-        "win_prob": 65.9,
+        "enr": 187.4,
+        "win_prob": 60.2,
         "enr_zone": {
           "zone": "good",
           "color": "green",
@@ -700,19 +531,19 @@
         "is_live": true
       },
       "cont": {
-        "score": 90,
-        "rating": "HIGH",
-        "display": "High (Hold Through)"
+        "score": 60,
+        "rating": "MODERATE",
+        "display": "Moderate"
       },
       "catalyst": {
         "date": "2026-06-30",
         "date_display": "Jun 30, 2026",
         "event": "Phase 3 Data readout",
         "drug": null,
-        "days_to_catalyst": 155
+        "days_to_catalyst": 154
       },
       "timing": {
-        "days_to_expiry": 354,
+        "days_to_expiry": 353,
         "entry_date": "2026-01-23"
       },
       "thesis": {
@@ -721,17 +552,17 @@
         "highlights": [],
         "risks": [],
         "is_first_in_class": 0,
-        "is_orphan": 1,
-        "is_fast_track": 1,
+        "is_orphan": 0,
+        "is_fast_track": 0,
         "short_interest": 21.63
       },
       "oi": {
-        "current": 1877,
-        "change_1d": 0,
+        "current": 1921,
+        "change_1d": 1077,
         "change_5d": 0,
-        "trend": "stable"
+        "trend": "strong_increase"
       },
-      "last_updated": "2026-01-25T08:54:13.630781",
+      "last_updated": "2026-01-26T13:29:17.097795",
       "recommendation": {
         "action": "ACCUMULATE",
         "notes": "new position accumulate.  Remember start with a low bid and work your way up.  wait until close to the close to get the best price.  but if your within the max buy go for it add some.",
@@ -740,13 +571,13 @@
     }
   ],
   "summary": {
-    "total_positions": 9,
-    "total_value": 57225.0,
-    "avg_days_to_catalyst": 51.0
+    "total_positions": 7,
+    "total_value": 47975.0,
+    "avg_days_to_catalyst": 55.0
   },
   "market_status": {
-    "is_open": false,
-    "last_updated": "2026-01-25T08:54:13.631188"
+    "is_open": true,
+    "last_updated": "2026-01-26T13:29:17.098464"
   },
-  "last_updated": "2026-01-25T08:54:13.631197"
+  "last_updated": "2026-01-26T13:29:17.098473"
 }
