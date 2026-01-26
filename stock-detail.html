@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Position Details | PowersBioStrikes</title>
+    <meta name="description" content="Detailed analysis for position">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        mahogany: { dark: '#4A0E0E', DEFAULT: '#6B1414', light: '#8B2323' },
+                        steel: { dark: '#2C3E50', DEFAULT: '#34495E', light: '#5D6D7E' },
+                        gold: { dark: '#8B6914', DEFAULT: '#D4AF37', light: '#E8C547' },
+                        dark: { bg: '#1a1a1a', card: '#242424', elevated: '#2d2d2d' }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body { background: #1a1a1a; font-family: 'Inter', sans-serif; }
+        .detail-card {
+            background: linear-gradient(135deg, #242424 0%, #1a1a1a 100%);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .factor-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        .factor-positive { background: rgba(34, 197, 94, 0.2); color: #22c55e; border: 1px solid rgba(34, 197, 94, 0.3); }
+        .factor-negative { background: rgba(239, 68, 68, 0.2); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.3); }
+        .factor-neutral { background: rgba(156, 163, 175, 0.2); color: #9ca3af; border: 1px solid rgba(156, 163, 175, 0.3); }
+        .stat-box {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        .analysis-section {
+            background: rgba(212,175,55,0.05);
+            border: 1px solid rgba(212,175,55,0.2);
+        }
+    </style>
+</head>
+<body class="min-h-screen text-gray-100">
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-dark-bg/95 backdrop-blur border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+            <a href="dashboard.html" class="flex items-center gap-2">
+                <svg class="h-8 w-8" viewBox="0 0 80 100" fill="none">
+                    <defs>
+                        <linearGradient id="boltGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#D4AF37"/>
+                            <stop offset="100%" style="stop-color:#8B6914"/>
+                        </linearGradient>
+                    </defs>
+                    <path d="M45 5 L25 45 L38 45 L20 95 L55 40 L40 40 Z" fill="url(#boltGrad)"/>
+                </svg>
+                <span class="text-gold font-bold text-lg">PowersBioStrikes</span>
+            </a>
+            <div class="flex items-center gap-6">
+                <a href="dashboard.html" class="text-gray-400 hover:text-white text-sm">Dashboard</a>
+                <a href="calendar.html" class="text-gray-400 hover:text-white text-sm">Calendar</a>
+                <a href="news.html" class="text-gray-400 hover:text-white text-sm">News</a>
+                <a href="top10.html" class="text-gray-400 hover:text-white text-sm">Top 10</a>
+                <a href="community.html" class="text-gray-400 hover:text-white text-sm">Community</a>
+                <a href="blog.html" class="text-gray-400 hover:text-white text-sm">Blog</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-5xl mx-auto px-4 py-8">
+        <!-- Loading State -->
+        <div id="loading" class="text-center py-20">
+            <div class="inline-block w-8 h-8 border-2 border-gold border-t-transparent rounded-full animate-spin"></div>
+            <p class="text-gray-400 mt-4">Loading position details...</p>
+        </div>
+
+        <!-- Error State -->
+        <div id="error" class="hidden text-center py-20">
+            <div class="text-6xl mb-4">⚠️</div>
+            <h2 class="text-xl font-bold text-white mb-2">Position Not Found</h2>
+            <p class="text-gray-400 mb-6">Unable to load details for this position.</p>
+            <a href="dashboard.html" class="inline-block px-6 py-3 bg-gold text-dark-bg font-semibold rounded-lg hover:bg-gold-light transition-colors">
+                Back to Dashboard
+            </a>
+        </div>
+
+        <!-- Position Content (hidden until loaded) -->
+        <div id="content" class="hidden space-y-6">
+            <!-- Header -->
+            <div class="flex items-start justify-between">
+                <div>
+                    <div class="flex items-center gap-3 mb-2">
+                        <h1 id="ticker" class="text-4xl font-bold text-gold">TICKER</h1>
+                        <span id="position-type" class="px-3 py-1 bg-green-500/20 text-green-400 text-sm rounded-full">CALL</span>
+                    </div>
+                    <p id="company-name" class="text-gray-400 text-lg">Company Name</p>
+                </div>
+                <a href="dashboard.html" class="text-gray-400 hover:text-white flex items-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+                    </svg>
+                    Back
+                </a>
+            </div>
+
+            <!-- Position Stats -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="stat-box rounded-xl p-4">
+                    <p class="text-gray-500 text-xs uppercase mb-1">Strike</p>
+                    <p id="strike" class="text-2xl font-bold text-white">$0</p>
+                </div>
+                <div class="stat-box rounded-xl p-4">
+                    <p class="text-gray-500 text-xs uppercase mb-1">Expiration</p>
+                    <p id="expiration" class="text-2xl font-bold text-white">--</p>
+                </div>
+                <div class="stat-box rounded-xl p-4">
+                    <p class="text-gray-500 text-xs uppercase mb-1">Entry Price</p>
+                    <p id="entry-price" class="text-2xl font-bold text-white">$0.00</p>
+                </div>
+                <div class="stat-box rounded-xl p-4">
+                    <p class="text-gray-500 text-xs uppercase mb-1">Current Price</p>
+                    <p id="current-price" class="text-2xl font-bold text-white">$0.00</p>
+                    <p id="pnl" class="text-sm mt-1">--</p>
+                </div>
+            </div>
+
+            <!-- Catalyst Info -->
+            <div class="detail-card rounded-2xl p-6">
+                <h2 class="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                    </svg>
+                    Catalyst
+                </h2>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <p class="text-gray-500 text-sm mb-1">Event</p>
+                        <p id="catalyst-event" class="text-white font-medium">--</p>
+                    </div>
+                    <div>
+                        <p class="text-gray-500 text-sm mb-1">Date</p>
+                        <p id="catalyst-date" class="text-white font-medium">--</p>
+                        <p id="days-until" class="text-gold text-sm mt-1">--</p>
+                    </div>
+                    <div>
+                        <p class="text-gray-500 text-sm mb-1">Drug</p>
+                        <p id="drug-name" class="text-white font-medium">--</p>
+                    </div>
+                    <div>
+                        <p class="text-gray-500 text-sm mb-1">Indication</p>
+                        <p id="indication" class="text-white font-medium">--</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Research Factors -->
+            <div class="detail-card rounded-2xl p-6">
+                <h2 class="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                    </svg>
+                    Research Factors
+                </h2>
+
+                <!-- CONT Score -->
+                <div class="mb-6 flex items-center gap-4">
+                    <div class="text-center">
+                        <p class="text-gray-500 text-xs uppercase mb-1">CONT Score</p>
+                        <p id="cont-score" class="text-3xl font-bold text-gold">--</p>
+                    </div>
+                    <div class="flex-1 grid grid-cols-3 gap-4 text-center">
+                        <div>
+                            <p class="text-gray-500 text-xs">Success Prob</p>
+                            <p id="success-prob" class="text-lg font-semibold text-white">--%</p>
+                        </div>
+                        <div>
+                            <p class="text-gray-500 text-xs">Upside</p>
+                            <p id="upside" class="text-lg font-semibold text-green-400">--%</p>
+                        </div>
+                        <div>
+                            <p class="text-gray-500 text-xs">Downside</p>
+                            <p id="downside" class="text-lg font-semibold text-red-400">--%</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Factor Pills -->
+                <div id="factor-pills" class="flex flex-wrap gap-2">
+                    <!-- Pills will be inserted here -->
+                </div>
+
+                <!-- Additional Stats -->
+                <div class="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+                    <div>
+                        <p class="text-gray-500">Market Cap</p>
+                        <p id="mcap" class="text-white font-medium">--</p>
+                    </div>
+                    <div>
+                        <p class="text-gray-500">Short Interest</p>
+                        <p id="short-interest" class="text-white font-medium">--%</p>
+                    </div>
+                    <div>
+                        <p class="text-gray-500">Days to Cover</p>
+                        <p id="days-to-cover" class="text-white font-medium">--</p>
+                    </div>
+                    <div>
+                        <p class="text-gray-500">Cash Runway</p>
+                        <p id="cash-runway" class="text-white font-medium">-- months</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OI Tracking -->
+            <div class="detail-card rounded-2xl p-6">
+                <h2 class="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                    </svg>
+                    Open Interest Tracking
+                </h2>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+                    <div>
+                        <p class="text-gray-500 text-sm mb-1">OI at Entry</p>
+                        <p id="oi-entry" class="text-2xl font-bold text-white">--</p>
+                    </div>
+                    <div>
+                        <p class="text-gray-500 text-sm mb-1">Current OI</p>
+                        <p id="oi-current" class="text-2xl font-bold text-white">--</p>
+                    </div>
+                    <div>
+                        <p class="text-gray-500 text-sm mb-1">Change</p>
+                        <p id="oi-change" class="text-2xl font-bold">--</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI Analysis -->
+            <div id="ai-section" class="analysis-section rounded-2xl p-6 hidden">
+                <h2 class="text-lg font-semibold text-gold mb-4 flex items-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                    </svg>
+                    AI Analysis
+                </h2>
+                <div id="ai-content" class="prose prose-invert max-w-none text-gray-300">
+                    <!-- AI analysis content -->
+                </div>
+            </div>
+
+            <!-- Thesis -->
+            <div id="thesis-section" class="detail-card rounded-2xl p-6 hidden">
+                <h2 class="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                    </svg>
+                    Investment Thesis
+                </h2>
+                <p id="thesis-content" class="text-gray-300 whitespace-pre-wrap">--</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Supabase SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase-config.js"></script>
+
+    <script>
+        // Get ticker from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const ticker = urlParams.get('ticker');
+        const strike = urlParams.get('strike');
+        const expiration = urlParams.get('exp');
+
+        // Elements
+        const loadingEl = document.getElementById('loading');
+        const errorEl = document.getElementById('error');
+        const contentEl = document.getElementById('content');
+
+        // Helper to format dates
+        function formatDate(dateStr) {
+            if (!dateStr) return '--';
+            const d = new Date(dateStr);
+            return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+        }
+
+        // Helper to calculate days until
+        function daysUntil(dateStr) {
+            if (!dateStr) return null;
+            const target = new Date(dateStr);
+            const today = new Date();
+            const diff = Math.ceil((target - today) / (1000 * 60 * 60 * 24));
+            return diff;
+        }
+
+        // Helper to format currency
+        function formatCurrency(val) {
+            if (val === null || val === undefined) return '--';
+            return '$' + parseFloat(val).toFixed(2);
+        }
+
+        // Helper to format percentage
+        function formatPct(val) {
+            if (val === null || val === undefined) return '--%';
+            return parseFloat(val).toFixed(1) + '%';
+        }
+
+        // Helper to format large numbers
+        function formatNumber(val) {
+            if (val === null || val === undefined) return '--';
+            if (val >= 1000) return (val / 1000).toFixed(1) + 'K';
+            return val.toLocaleString();
+        }
+
+        // Create factor pill
+        function createPill(label, isPositive) {
+            const pill = document.createElement('span');
+            pill.className = `factor-pill ${isPositive ? 'factor-positive' : 'factor-neutral'}`;
+            pill.innerHTML = `${isPositive ? '✓' : '○'} ${label}`;
+            return pill;
+        }
+
+        // Load position data
+        async function loadPosition() {
+            if (!ticker) {
+                showError();
+                return;
+            }
+
+            try {
+                // Check authentication
+                const user = await pbsAuth.getUser();
+                if (!user) {
+                    window.location.href = 'login.html';
+                    return;
+                }
+
+                // Build query
+                let query = supabaseClient
+                    .from('positions_public')
+                    .select('*')
+                    .eq('ticker', ticker.toUpperCase());
+
+                if (strike) {
+                    query = query.eq('strike', parseFloat(strike));
+                }
+                if (expiration) {
+                    query = query.eq('expiration', expiration);
+                }
+
+                const { data, error } = await query.limit(1).single();
+
+                if (error || !data) {
+                    console.error('Error loading position:', error);
+                    showError();
+                    return;
+                }
+
+                displayPosition(data);
+
+            } catch (err) {
+                console.error('Error:', err);
+                showError();
+            }
+        }
+
+        function displayPosition(pos) {
+            loadingEl.classList.add('hidden');
+            contentEl.classList.remove('hidden');
+
+            // Header
+            document.getElementById('ticker').textContent = pos.ticker;
+            document.getElementById('company-name').textContent = pos.company_name || 'Biotech Company';
+            document.getElementById('position-type').textContent = (pos.position_type || 'call').toUpperCase();
+            document.title = `${pos.ticker} Details | PowersBioStrikes`;
+
+            // Position stats
+            document.getElementById('strike').textContent = '$' + (pos.strike || 0);
+            document.getElementById('expiration').textContent = formatDate(pos.expiration);
+            document.getElementById('entry-price').textContent = formatCurrency(pos.entry_price);
+            document.getElementById('current-price').textContent = formatCurrency(pos.current_price);
+
+            // P/L calculation
+            if (pos.entry_price && pos.current_price) {
+                const pnlPct = ((pos.current_price - pos.entry_price) / pos.entry_price * 100);
+                const pnlEl = document.getElementById('pnl');
+                pnlEl.textContent = (pnlPct >= 0 ? '+' : '') + pnlPct.toFixed(1) + '%';
+                pnlEl.className = 'text-sm mt-1 ' + (pnlPct >= 0 ? 'text-green-400' : 'text-red-400');
+            }
+
+            // Catalyst info
+            document.getElementById('catalyst-event').textContent = pos.catalyst_event || '--';
+            document.getElementById('catalyst-date').textContent = formatDate(pos.catalyst_date);
+            document.getElementById('drug-name').textContent = pos.drug_name || '--';
+            document.getElementById('indication').textContent = pos.indication || '--';
+
+            // Days until catalyst
+            const days = daysUntil(pos.catalyst_date);
+            if (days !== null) {
+                const daysEl = document.getElementById('days-until');
+                if (days > 0) {
+                    daysEl.textContent = `${days} days away`;
+                } else if (days === 0) {
+                    daysEl.textContent = 'TODAY!';
+                    daysEl.className = 'text-red-400 text-sm mt-1 font-bold';
+                } else {
+                    daysEl.textContent = `${Math.abs(days)} days ago`;
+                    daysEl.className = 'text-gray-500 text-sm mt-1';
+                }
+            }
+
+            // Research factors
+            const rf = pos.research_factors || {};
+            document.getElementById('cont-score').textContent = rf.cont_score || '--';
+            document.getElementById('success-prob').textContent = formatPct(rf.success_prob);
+            document.getElementById('upside').textContent = '+' + formatPct(rf.upside_pct);
+            document.getElementById('downside').textContent = '-' + formatPct(rf.downside_pct);
+
+            // Factor pills
+            const pillsContainer = document.getElementById('factor-pills');
+            pillsContainer.innerHTML = '';
+
+            const factors = [
+                { key: 'breakthrough', label: 'Breakthrough Therapy' },
+                { key: 'fast_track', label: 'Fast Track' },
+                { key: 'orphan_drug', label: 'Orphan Drug' },
+                { key: 'priority_review', label: 'Priority Review' },
+                { key: 'accelerated_approval', label: 'Accelerated Approval' },
+                { key: 'is_first_in_class', label: 'First in Class' },
+                { key: 'is_best_in_class', label: 'Best in Class' },
+                { key: 'critical_unmet_need', label: 'Critical Unmet Need' }
+            ];
+
+            factors.forEach(f => {
+                if (rf[f.key]) {
+                    pillsContainer.appendChild(createPill(f.label, true));
+                }
+            });
+
+            // Additional stats
+            document.getElementById('mcap').textContent = rf.mcap_millions ? `$${rf.mcap_millions}M` : '--';
+            document.getElementById('short-interest').textContent = formatPct(rf.short_interest_pct);
+            document.getElementById('days-to-cover').textContent = rf.days_to_cover ? rf.days_to_cover.toFixed(1) : '--';
+            document.getElementById('cash-runway').textContent = rf.cash_runway_months ? `${rf.cash_runway_months} months` : '--';
+
+            // OI tracking
+            document.getElementById('oi-entry').textContent = formatNumber(pos.oi_entry);
+            document.getElementById('oi-current').textContent = formatNumber(pos.oi_current);
+
+            if (pos.oi_entry && pos.oi_current) {
+                const oiChange = pos.oi_current - pos.oi_entry;
+                const oiPct = (oiChange / pos.oi_entry * 100);
+                const oiEl = document.getElementById('oi-change');
+                oiEl.textContent = (oiChange >= 0 ? '+' : '') + formatNumber(oiChange) + ` (${oiPct.toFixed(1)}%)`;
+                oiEl.className = 'text-2xl font-bold ' + (oiChange >= 0 ? 'text-green-400' : 'text-red-400');
+            }
+
+            // AI Analysis
+            if (pos.ai_analysis) {
+                const aiSection = document.getElementById('ai-section');
+                const aiContent = document.getElementById('ai-content');
+                aiSection.classList.remove('hidden');
+
+                // Handle different AI analysis formats
+                let analysisHtml = '';
+                const ai = pos.ai_analysis;
+
+                if (typeof ai === 'string') {
+                    analysisHtml = `<p>${ai}</p>`;
+                } else if (ai.raw) {
+                    analysisHtml = `<p>${ai.raw}</p>`;
+                } else if (ai.summary || ai.analysis) {
+                    if (ai.summary) analysisHtml += `<p class="mb-4">${ai.summary}</p>`;
+                    if (ai.bull_case) analysisHtml += `<h4 class="text-green-400 font-semibold mt-4">Bull Case</h4><p>${ai.bull_case}</p>`;
+                    if (ai.bear_case) analysisHtml += `<h4 class="text-red-400 font-semibold mt-4">Bear Case</h4><p>${ai.bear_case}</p>`;
+                    if (ai.recommendation) analysisHtml += `<h4 class="text-gold font-semibold mt-4">Recommendation</h4><p>${ai.recommendation}</p>`;
+                } else {
+                    // Try to display as formatted JSON
+                    analysisHtml = `<pre class="text-sm overflow-x-auto">${JSON.stringify(ai, null, 2)}</pre>`;
+                }
+
+                aiContent.innerHTML = analysisHtml;
+            }
+
+            // Thesis
+            if (pos.thesis) {
+                document.getElementById('thesis-section').classList.remove('hidden');
+                document.getElementById('thesis-content').textContent = pos.thesis;
+            }
+        }
+
+        function showError() {
+            loadingEl.classList.add('hidden');
+            errorEl.classList.remove('hidden');
+        }
+
+        // Initialize
+        loadPosition();
+    </script>
+</body>
+</html>
