@@ -127,11 +127,28 @@
         const userNameEl = document.getElementById('user-name');
         const signoutBtn = document.getElementById('signout-btn');
 
+        // ============================================
+        // HELPER: Check if value is truthy (handles all Supabase boolean formats)
+        // Same function as dashboard.html for consistency
+        // ============================================
+        function isApprovedValue(val) {
+            if (val === true) return true;
+            if (val === 1) return true;
+            if (val === '1') return true;
+            if (typeof val === 'string') {
+                const lower = val.toLowerCase();
+                if (lower === 'true' || lower === 't') return true;
+            }
+            return false;
+        }
+
         // Check user status
         async function checkUser() {
             const user = await pbsAuth.getUser();
+            console.log('[PENDING] User:', user ? user.email : 'NOT LOGGED IN');
 
             if (!user) {
+                console.log('[PENDING] No user, redirecting to login');
                 window.location.href = 'login.html';
                 return;
             }
@@ -141,15 +158,26 @@
             userNameEl.textContent = fullName.split(' ')[0];
 
             // Check if already approved
-            const { data: profile } = await supabaseClient
+            const { data: profile, error: profileError } = await supabaseClient
                 .from('profiles')
                 .select('is_approved')
                 .eq('id', user.id)
                 .single();
 
-            const isApproved = profile?.is_approved === true || profile?.is_approved === 't' || profile?.is_approved === 'true';
+            // Debug logging
+            console.log('[PENDING] Profile query result:', { profile, profileError });
+            console.log('[PENDING] is_approved raw value:', profile?.is_approved);
+            console.log('[PENDING] is_approved type:', typeof profile?.is_approved);
+
+            // Use helper function to check approval
+            const isApproved = isApprovedValue(profile?.is_approved);
+            console.log('[PENDING] isApproved (after check):', isApproved);
+
             if (isApproved) {
+                console.log('[PENDING] User IS approved, redirecting to dashboard');
                 window.location.href = 'dashboard.html';
+            } else {
+                console.log('[PENDING] User NOT approved, staying on pending page');
             }
         }
 

@@ -133,7 +133,7 @@
                             <span id="user-initials-lg" class="text-gold font-bold text-lg">?</span>
                         </div>
                         <div>
-                            <div id="user-email" class="text-white font-medium text-sm">loading@email.com</div>
+                            <div id="user-email" class="text-white font-medium text-sm">member@example.com</div>
                             <div class="flex items-center gap-2 mt-1">
                                 <span class="px-2 py-0.5 bg-gold/20 text-gold text-xs font-medium rounded">FOUNDING MEMBER</span>
                                 <span id="member-since" class="text-gray-500 text-xs">Since Jan 2026</span>
@@ -156,7 +156,7 @@
                     <a href="blog/" class="inline-flex items-center gap-1 px-3 py-1.5 bg-gold/10 border border-gold/30 rounded text-gold text-xs hover:bg-gold/20 transition-colors">
                         📚 How It Works
                     </a>
-                    <a href="mailto:jon@powersbiostrikes.com" class="inline-flex items-center gap-1 px-3 py-1.5 bg-white/5 border border-white/10 rounded text-gray-400 text-xs hover:bg-white/10 transition-colors">
+                    <a href="mailto:jp@powersbiostrikes.com" class="inline-flex items-center gap-1 px-3 py-1.5 bg-white/5 border border-white/10 rounded text-gray-400 text-xs hover:bg-white/10 transition-colors">
                         ✉️ Send Feedback
                     </a>
                 </div>
@@ -280,7 +280,7 @@
                         <p class="text-gray-400 text-sm mb-4">
                             I'm building this for traders like you. Tell me what features you want to see.
                         </p>
-                        <a href="mailto:jon@powersbiostrikes.com?subject=Dashboard Feedback" class="block w-full text-center px-4 py-2 border border-gold/30 text-gold rounded-lg text-sm hover:bg-gold/10 transition-colors">
+                        <a href="mailto:jp@powersbiostrikes.com" class="block w-full text-center px-4 py-2 border border-gold/30 text-gold rounded-lg text-sm hover:bg-gold/10 transition-colors">
                             Send Feedback
                         </a>
                     </div>
@@ -310,35 +310,67 @@
         const freeRemainingEl = document.getElementById('free-remaining');
         const logoutBtn = document.getElementById('logout-btn');
 
+        // ============================================
+        // HELPER: Check if value is truthy (handles all Supabase boolean formats)
+        // ============================================
+        function isApprovedValue(val) {
+            if (val === true) return true;
+            if (val === 1) return true;
+            if (val === '1') return true;
+            if (typeof val === 'string') {
+                const lower = val.toLowerCase();
+                if (lower === 'true' || lower === 't') return true;
+            }
+            return false;
+        }
+
         async function loadDashboard() {
             try {
                 const user = await pbsAuth.getUser();
+                console.log('[DASHBOARD] User:', user ? user.email : 'NOT LOGGED IN');
 
                 if (!user) {
+                    console.log('[DASHBOARD] No user, redirecting to login');
                     window.location.href = 'login.html';
                     return;
                 }
 
-                // TEMPORARILY DISABLED - approval check
-                // TODO: Re-enable after fixing the loop issue
-                /*
-                const { data: profile } = await supabaseClient
+                // ============================================
+                // APPROVAL CHECK - ENABLED
+                // ============================================
+                const { data: profile, error: profileError } = await supabaseClient
                     .from('profiles')
-                    .select('is_approved, access_status')
+                    .select('is_approved')
                     .eq('id', user.id)
                     .single();
 
-                const isApproved = profile?.is_approved === true || profile?.is_approved === 't' || profile?.is_approved === 'true';
-                if (!profile || !isApproved) {
+                // Debug logging - check browser console (F12) to see this
+                console.log('[DASHBOARD] Profile query result:', { profile, profileError });
+                console.log('[DASHBOARD] is_approved raw value:', profile?.is_approved);
+                console.log('[DASHBOARD] is_approved type:', typeof profile?.is_approved);
+
+                // Check if query failed
+                if (profileError) {
+                    console.error('[DASHBOARD] Profile query error:', profileError);
+                    // If profile doesn't exist, redirect to pending
                     window.location.href = 'pending-approval.html';
                     return;
                 }
 
-                if (profile && profile.access_status === 'waitlist') {
-                    window.location.href = 'waitlist.html';
+                // Check approval status using helper function
+                const isApproved = isApprovedValue(profile?.is_approved);
+                console.log('[DASHBOARD] isApproved (after check):', isApproved);
+
+                if (!isApproved) {
+                    console.log('[DASHBOARD] User NOT approved, redirecting to pending-approval');
+                    window.location.href = 'pending-approval.html';
                     return;
                 }
-                */
+
+                console.log('[DASHBOARD] User IS approved, loading dashboard...');
+                // ============================================
+                // END APPROVAL CHECK
+                // ============================================
 
                 // Populate user info
                 const fullName = user.user_metadata?.full_name || 'Member';
@@ -383,7 +415,7 @@
                 loadAlerts();
 
             } catch (err) {
-                console.error('Dashboard error:', err);
+                console.error('[DASHBOARD] Error:', err);
                 window.location.href = 'login.html';
             }
         }
@@ -624,9 +656,8 @@
             }
         });
 
+        // Initialize
         initMessageState();
-
-        // Load dashboard on page load
         loadDashboard();
     </script>
 </body>
