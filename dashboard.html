@@ -327,50 +327,30 @@
         async function loadDashboard() {
             try {
                 const user = await pbsAuth.getUser();
-                console.log('[DASHBOARD] User:', user ? user.email : 'NOT LOGGED IN');
 
                 if (!user) {
-                    console.log('[DASHBOARD] No user, redirecting to login');
                     window.location.href = 'login.html';
                     return;
                 }
 
-                // ============================================
-                // APPROVAL CHECK - ENABLED
-                // ============================================
+                // Check approval status
                 const { data: profile, error: profileError } = await supabaseClient
                     .from('profiles')
                     .select('is_approved')
                     .eq('id', user.id)
                     .single();
 
-                // Debug logging - check browser console (F12) to see this
-                console.log('[DASHBOARD] Profile query result:', { profile, profileError });
-                console.log('[DASHBOARD] is_approved raw value:', profile?.is_approved);
-                console.log('[DASHBOARD] is_approved type:', typeof profile?.is_approved);
-
-                // Check if query failed
                 if (profileError) {
-                    console.error('[DASHBOARD] Profile query error:', profileError);
-                    // If profile doesn't exist, redirect to pending
                     window.location.href = 'pending-approval.html';
                     return;
                 }
 
-                // Check approval status using helper function
                 const isApproved = isApprovedValue(profile?.is_approved);
-                console.log('[DASHBOARD] isApproved (after check):', isApproved);
 
                 if (!isApproved) {
-                    console.log('[DASHBOARD] User NOT approved, redirecting to pending-approval');
                     window.location.href = 'pending-approval.html';
                     return;
                 }
-
-                console.log('[DASHBOARD] User IS approved, loading dashboard...');
-                // ============================================
-                // END APPROVAL CHECK
-                // ============================================
 
                 // Populate user info
                 const fullName = user.user_metadata?.full_name || 'Member';

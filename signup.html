@@ -309,11 +309,9 @@
                     return;
                 }
 
-                console.log('[SIGNUP] User created:', data);
-
-                // Step 2: Create profile row (since trigger is disabled)
+                // Step 2: Create profile row
                 if (data.user) {
-                    const { error: profileError } = await supabaseClient
+                    await supabaseClient
                         .from('profiles')
                         .insert({
                             id: data.user.id,
@@ -321,14 +319,6 @@
                             email: email,
                             is_approved: false
                         });
-
-                    if (profileError) {
-                        console.error('[SIGNUP] Profile creation error:', profileError);
-                        // Don't fail the signup - user exists, just profile didn't create
-                        // They can still verify email and we can add profile manually if needed
-                    } else {
-                        console.log('[SIGNUP] Profile created successfully');
-                    }
                 }
 
                 // Success - show message
@@ -337,7 +327,6 @@
                 form.classList.add('hidden');
 
             } catch (err) {
-                console.error('[SIGNUP] Unexpected error:', err);
                 errorText.textContent = 'An unexpected error occurred. Please try again.';
                 errorMsg.classList.remove('hidden');
                 submitBtn.disabled = false;
