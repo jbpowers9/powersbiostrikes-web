@@ -440,6 +440,26 @@
         </div>
     </footer>
 
+    <!-- Day List Modal (for "+X more" clicks) -->
+    <div id="day-modal" class="modal-overlay" onclick="closeDayModal(event)">
+        <div class="modal-content p-6" onclick="event.stopPropagation()" style="max-width: 500px;">
+            <div class="flex justify-between items-start mb-4">
+                <div>
+                    <h3 id="day-modal-title" class="text-xl font-bold text-gold"></h3>
+                    <p id="day-modal-count" class="text-gray-500 text-sm"></p>
+                </div>
+                <button onclick="closeDayModal()" class="text-gray-500 hover:text-white p-1">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            <div id="day-modal-list" class="space-y-2 max-h-96 overflow-y-auto">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+    </div>
+
     <!-- Catalyst Detail Modal -->
     <div id="catalyst-modal" class="modal-overlay" onclick="closeModal(event)">
         <div class="modal-content p-6" onclick="event.stopPropagation()" style="max-width: 500px;">
@@ -1074,9 +1094,40 @@
 
         // Show all catalysts for a day (when clicking "+more")
         function showDayModal(year, month, day, catalysts) {
-            // For simplicity, just open the first one
-            // Could be enhanced to show a list
-            openModal(catalysts[0]);
+            const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+                               'July', 'August', 'September', 'October', 'November', 'December'];
+
+            document.getElementById('day-modal-title').textContent = `${monthNames[month]} ${day}, ${year}`;
+            document.getElementById('day-modal-count').textContent = `${catalysts.length} catalysts`;
+
+            const listHtml = catalysts.map(cat => {
+                const typeClass = getTypeClass(cat.event.type);
+                const isOwned = isOwnedTicker(cat.ticker);
+                const isBigMover = cat.movement?.is_big_mover;
+                const typeAbbr = {'Phase 3': 'P3', 'Phase 2': 'P2', 'Phase 1': 'P1', 'Initiation': 'INIT', 'Submission': 'SUB'}[cat.event.type] || cat.event.type;
+
+                return `
+                    <div class="catalyst-chip ${typeClass}${isBigMover ? ' big-mover' : ''}${isOwned ? ' owned' : ''}"
+                         style="padding: 8px 12px; cursor: pointer;"
+                         onclick="closeDayModal(); openModal(calendarData.catalysts.find(c => c.ticker === '${cat.ticker}' && c.date === '${cat.date}'))">
+                        <div class="flex items-center gap-2 w-full">
+                            ${isOwned ? '<span style="color: #D4AF37;">⚡</span>' : (isBigMover ? '<span style="color: #FFA500;">★</span>' : '')}
+                            <span class="ticker text-base">${cat.ticker}</span>
+                            <span class="type-abbr">${typeAbbr}</span>
+                            <span class="text-gray-400 text-xs ml-auto">${cat.event.drug_name || cat.event.description || ''}</span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            document.getElementById('day-modal-list').innerHTML = listHtml;
+            document.getElementById('day-modal').classList.add('active');
+        }
+
+        // Close day modal
+        function closeDayModal(event) {
+            if (event && event.target !== event.currentTarget) return;
+            document.getElementById('day-modal').classList.remove('active');
         }
 
         // Change month
@@ -1115,9 +1166,12 @@
             renderCalendar();
         }
 
-        // Close modal on escape
+        // Close modals on escape
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeModal();
+            if (e.key === 'Escape') {
+                closeModal();
+                closeDayModal();
+            }
         });
 
         // Render Upcoming Club Catalysts section (members only)
