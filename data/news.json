@@ -1,0 +1,16 @@
+{
+  "generated_at": "2026-01-26T13:19:34.371695",
+  "ticker_count": 42,
+  "news_count": 0,
+  "high_priority_count": 0,
+  "summary": {
+    "total": 0,
+    "fda": 0,
+    "clinical": 0,
+    "positive": 0,
+    "negative": 0
+  },
+  "high_priority": [],
+  "recent": [],
+  "by_ticker": {}
+}

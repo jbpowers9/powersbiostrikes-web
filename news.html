@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biotech News Feed | PowersBioStrikes</title>
+    <meta name="description" content="Real-time biotech news aggregation for PDUFA, Phase 3 readouts, and catalyst plays. FDA approvals, clinical trial updates, and more.">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'dark': '#1C1C1C',
+                        'dark-card': '#242424',
+                        'dark-border': '#333333',
+                        'gold': '#D4AF37',
+                        'gold-dark': '#8B6914',
+                        'steel': '#5D6D7E',
+                        'steel-light': '#85929E',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* News Card Styles */
+        .news-card {
+            background: linear-gradient(145deg, #2a2a2a 0%, #1f1f1f 100%);
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 16px;
+            transition: all 0.2s ease;
+        }
+        .news-card:hover {
+            border-color: #444;
+            transform: translateY(-2px);
+        }
+        .news-card.fda {
+            border-left: 4px solid #10B981;
+        }
+        .news-card.clinical {
+            border-left: 4px solid #3B82F6;
+        }
+        .news-card.negative {
+            border-left: 4px solid #EF4444;
+        }
+        .news-card.positive {
+            border-left: 4px solid #10B981;
+        }
+
+        .ticker-pill {
+            background: #374151;
+            color: #F9FAFB;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 13px;
+        }
+
+        .category-tag {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 500;
+            margin-right: 4px;
+            background: #374151;
+            color: #9CA3AF;
+        }
+        .category-tag.fda { background: #065F46; color: #10B981; }
+        .category-tag.clinical { background: #1E3A5F; color: #60A5FA; }
+        .category-tag.positive { background: #065F46; color: #34D399; }
+        .category-tag.negative { background: #7F1D1D; color: #FCA5A5; }
+
+        /* Alert Banner */
+        .alert-banner {
+            background: linear-gradient(90deg, rgba(239, 68, 68, 0.15), transparent);
+            border-left: 4px solid #EF4444;
+            padding: 12px 16px;
+            margin-bottom: 12px;
+            border-radius: 4px;
+        }
+
+        /* Filter Pills */
+        .filter-pill {
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid #444;
+            background: transparent;
+            color: #9CA3AF;
+        }
+        .filter-pill:hover {
+            border-color: #D4AF37;
+            color: #D4AF37;
+        }
+        .filter-pill.active {
+            background: #D4AF37;
+            color: #1C1C1C;
+            border-color: #D4AF37;
+        }
+
+        /* Loading skeleton */
+        .skeleton {
+            background: linear-gradient(90deg, #2a2a2a 25%, #333 50%, #2a2a2a 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+            border-radius: 8px;
+        }
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+    </style>
+</head>
+<body class="bg-dark text-white min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-dark-card border-b border-dark-border sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <a href="index.html" class="flex items-center space-x-2">
+                    <span class="text-gold font-bold text-xl">PowersBioStrikes</span>
+                </a>
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="calendar.html" class="text-steel-light hover:text-gold transition">Calendar</a>
+                    <a href="news.html" class="text-gold font-medium">News</a>
+                    <a href="dashboard.html" class="text-steel-light hover:text-gold transition">Dashboard</a>
+                    <a href="blog/index.html" class="text-steel-light hover:text-gold transition">Blog</a>
+                </div>
+                <a href="signup.html" class="bg-gold text-dark px-4 py-2 rounded-lg font-semibold hover:bg-gold-dark transition">
+                    Join Free
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 py-8">
+        <!-- Header -->
+        <div class="mb-8">
+            <h1 class="text-3xl font-bold mb-2">Biotech News Feed</h1>
+            <p class="text-steel-light">Real-time news for upcoming catalysts and positions</p>
+        </div>
+
+        <!-- Summary Stats -->
+        <div id="news-summary" class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8">
+            <div class="bg-dark-card rounded-lg p-4 border border-dark-border">
+                <div class="text-steel-light text-sm">Total News</div>
+                <div id="stat-total" class="text-2xl font-bold">-</div>
+            </div>
+            <div class="bg-dark-card rounded-lg p-4 border border-dark-border">
+                <div class="text-steel-light text-sm">FDA Related</div>
+                <div id="stat-fda" class="text-2xl font-bold text-green-400">-</div>
+            </div>
+            <div class="bg-dark-card rounded-lg p-4 border border-dark-border">
+                <div class="text-steel-light text-sm">Clinical</div>
+                <div id="stat-clinical" class="text-2xl font-bold text-blue-400">-</div>
+            </div>
+            <div class="bg-dark-card rounded-lg p-4 border border-dark-border">
+                <div class="text-steel-light text-sm">Positive</div>
+                <div id="stat-positive" class="text-2xl font-bold text-green-400">-</div>
+            </div>
+            <div class="bg-dark-card rounded-lg p-4 border border-dark-border">
+                <div class="text-steel-light text-sm">Negative</div>
+                <div id="stat-negative" class="text-2xl font-bold text-red-400">-</div>
+            </div>
+        </div>
+
+        <!-- High Priority Alerts -->
+        <div id="alerts-section" class="mb-8 hidden">
+            <h2 class="text-xl font-bold mb-4 flex items-center">
+                <span class="text-2xl mr-2">⚠️</span> High Priority Alerts
+            </h2>
+            <div id="alerts-container"></div>
+        </div>
+
+        <!-- Filters -->
+        <div class="flex flex-wrap gap-3 mb-6">
+            <button class="filter-pill active" data-filter="all">All News</button>
+            <button class="filter-pill" data-filter="fda">🏛️ FDA</button>
+            <button class="filter-pill" data-filter="clinical">🔬 Clinical</button>
+            <button class="filter-pill" data-filter="positive">📈 Positive</button>
+            <button class="filter-pill" data-filter="negative">📉 Negative</button>
+            <button class="filter-pill" data-filter="position">📋 Positions</button>
+        </div>
+
+        <!-- News Grid -->
+        <div id="news-container" class="grid md:grid-cols-2 gap-4">
+            <!-- Loading Skeleton -->
+            <div class="skeleton h-40"></div>
+            <div class="skeleton h-40"></div>
+            <div class="skeleton h-40"></div>
+            <div class="skeleton h-40"></div>
+        </div>
+
+        <!-- Load More -->
+        <div id="load-more-container" class="text-center mt-8 hidden">
+            <button id="load-more-btn" class="bg-dark-card border border-dark-border px-6 py-3 rounded-lg hover:border-gold transition">
+                Load More News
+            </button>
+        </div>
+
+        <!-- Empty State -->
+        <div id="empty-state" class="text-center py-16 hidden">
+            <div class="text-6xl mb-4">📰</div>
+            <h3 class="text-xl font-bold mb-2">No news found</h3>
+            <p class="text-steel-light">Try adjusting your filters or check back later.</p>
+        </div>
+
+        <!-- Last Updated -->
+        <div id="last-updated" class="text-center text-steel-light text-sm mt-8"></div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark-card border-t border-dark-border mt-16 py-8">
+        <div class="max-w-7xl mx-auto px-4 text-center text-steel-light">
+            <p>&copy; 2026 PowersBioStrikes. All rights reserved.</p>
+            <p class="text-sm mt-2">News data from Yahoo Finance. Not financial advice.</p>
+        </div>
+    </footer>
+
+    <script>
+        // State
+        let allNews = [];
+        let displayedNews = [];
+        let currentFilter = 'all';
+        let displayCount = 20;
+
+        // Utility Functions
+        function timeAgo(dateString) {
+            const date = new Date(dateString);
+            const now = new Date();
+            const seconds = Math.floor((now - date) / 1000);
+
+            if (seconds < 60) return 'just now';
+            if (seconds < 3600) return Math.floor(seconds / 60) + 'm ago';
+            if (seconds < 86400) return Math.floor(seconds / 3600) + 'h ago';
+            return Math.floor(seconds / 86400) + 'd ago';
+        }
+
+        function getCardClass(item) {
+            const classes = ['news-card'];
+            if (item.categories?.includes('fda')) classes.push('fda');
+            else if (item.categories?.includes('clinical')) classes.push('clinical');
+            else if (item.sentiment === 'negative') classes.push('negative');
+            else if (item.sentiment === 'positive') classes.push('positive');
+            return classes.join(' ');
+        }
+
+        function getSentimentIcon(sentiment) {
+            switch(sentiment) {
+                case 'positive': return '📈';
+                case 'negative': return '📉';
+                default: return '➖';
+            }
+        }
+
+        function renderNewsCard(item) {
+            const tags = (item.tags || []).slice(0, 3).map(tag => {
+                let tagClass = 'category-tag';
+                if (['fda', 'pdufa', 'approval', 'nda', 'bla'].includes(tag)) tagClass += ' fda';
+                else if (['phase', 'trial', 'clinical'].some(k => tag.includes(k))) tagClass += ' clinical';
+                return `<span class="${tagClass}">${tag}</span>`;
+            }).join('');
+
+            const sourceType = item.source_type || [];
+            const sourceIcons = sourceType.map(t => {
+                if (t === 'position') return '📋';
+                if (t === 'watchlist') return '👁️';
+                return '📅';
+            }).join(' ');
+
+            return `
+                <div class="${getCardClass(item)}">
+                    <div class="flex items-center justify-between mb-2">
+                        <div class="flex items-center gap-2">
+                            <span class="ticker-pill">$${item.ticker}</span>
+                            <span class="text-lg">${getSentimentIcon(item.sentiment)}</span>
+                            ${sourceIcons ? `<span class="text-sm">${sourceIcons}</span>` : ''}
+                        </div>
+                        <span class="text-steel-light text-sm">${timeAgo(item.published)}</span>
+                    </div>
+                    <a href="${item.link}" target="_blank" class="block hover:text-gold transition">
+                        <h3 class="font-medium mb-2 line-clamp-2">${item.title}</h3>
+                    </a>
+                    <div class="text-steel-light text-sm mb-2">${item.publisher}</div>
+                    ${item.summary ? `<p class="text-steel text-sm line-clamp-2 mb-2">${item.summary}</p>` : ''}
+                    <div class="flex flex-wrap gap-1 mt-2">${tags}</div>
+                    ${item.catalyst ? `
+                        <div class="mt-3 pt-3 border-t border-dark-border text-sm text-steel-light">
+                            <span class="text-gold">Catalyst:</span> ${item.catalyst.catalyst_event} on ${item.catalyst.catalyst_date}
+                        </div>
+                    ` : ''}
+                </div>
+            `;
+        }
+
+        function renderAlert(item) {
+            return `
+                <div class="alert-banner flex items-start gap-3">
+                    <span class="text-red-400 text-xl">${getSentimentIcon(item.sentiment)}</span>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-1">
+                            <span class="ticker-pill">$${item.ticker}</span>
+                            <span class="text-steel-light text-sm">${timeAgo(item.published)}</span>
+                        </div>
+                        <a href="${item.link}" target="_blank" class="hover:text-gold transition">
+                            ${item.title}
+                        </a>
+                    </div>
+                </div>
+            `;
+        }
+
+        function filterNews(filter) {
+            currentFilter = filter;
+            displayCount = 20;
+
+            switch(filter) {
+                case 'fda':
+                    displayedNews = allNews.filter(n => n.categories?.includes('fda'));
+                    break;
+                case 'clinical':
+                    displayedNews = allNews.filter(n => n.categories?.includes('clinical'));
+                    break;
+                case 'positive':
+                    displayedNews = allNews.filter(n => n.sentiment === 'positive');
+                    break;
+                case 'negative':
+                    displayedNews = allNews.filter(n => n.sentiment === 'negative');
+                    break;
+                case 'position':
+                    displayedNews = allNews.filter(n => n.source_type?.includes('position'));
+                    break;
+                default:
+                    displayedNews = [...allNews];
+            }
+
+            renderNews();
+
+            // Update filter pills
+            document.querySelectorAll('.filter-pill').forEach(pill => {
+                pill.classList.toggle('active', pill.dataset.filter === filter);
+            });
+        }
+
+        function renderNews() {
+            const container = document.getElementById('news-container');
+            const emptyState = document.getElementById('empty-state');
+            const loadMoreContainer = document.getElementById('load-more-container');
+
+            if (displayedNews.length === 0) {
+                container.innerHTML = '';
+                emptyState.classList.remove('hidden');
+                loadMoreContainer.classList.add('hidden');
+                return;
+            }
+
+            emptyState.classList.add('hidden');
+
+            const toShow = displayedNews.slice(0, displayCount);
+            container.innerHTML = toShow.map(renderNewsCard).join('');
+
+            // Show/hide load more
+            if (displayCount < displayedNews.length) {
+                loadMoreContainer.classList.remove('hidden');
+            } else {
+                loadMoreContainer.classList.add('hidden');
+            }
+        }
+
+        function loadMore() {
+            displayCount += 20;
+            renderNews();
+        }
+
+        async function loadNewsFeed() {
+            try {
+                const response = await fetch('data/news.json');
+                const data = await response.json();
+
+                // Update stats
+                document.getElementById('stat-total').textContent = data.summary?.total || 0;
+                document.getElementById('stat-fda').textContent = data.summary?.fda || 0;
+                document.getElementById('stat-clinical').textContent = data.summary?.clinical || 0;
+                document.getElementById('stat-positive').textContent = data.summary?.positive || 0;
+                document.getElementById('stat-negative').textContent = data.summary?.negative || 0;
+
+                // Render alerts
+                if (data.high_priority && data.high_priority.length > 0) {
+                    const alertsSection = document.getElementById('alerts-section');
+                    const alertsContainer = document.getElementById('alerts-container');
+                    alertsSection.classList.remove('hidden');
+                    alertsContainer.innerHTML = data.high_priority.slice(0, 5).map(renderAlert).join('');
+                }
+
+                // Store all news
+                allNews = data.recent || [];
+                displayedNews = [...allNews];
+
+                // Render
+                renderNews();
+
+                // Last updated
+                if (data.generated_at) {
+                    const date = new Date(data.generated_at);
+                    document.getElementById('last-updated').textContent =
+                        `Last updated: ${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
+                }
+
+            } catch (error) {
+                console.error('Error loading news:', error);
+                document.getElementById('news-container').innerHTML = `
+                    <div class="col-span-2 text-center py-16">
+                        <div class="text-6xl mb-4">⚠️</div>
+                        <h3 class="text-xl font-bold mb-2">Could not load news</h3>
+                        <p class="text-steel-light">News feed not available. Run generate_news_feed.py to create it.</p>
+                    </div>
+                `;
+            }
+        }
+
+        // Event Listeners
+        document.querySelectorAll('.filter-pill').forEach(pill => {
+            pill.addEventListener('click', () => filterNews(pill.dataset.filter));
+        });
+
+        document.getElementById('load-more-btn')?.addEventListener('click', loadMore);
+
+        // Initialize
+        loadNewsFeed();
+    </script>
+</body>
+</html>
