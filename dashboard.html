@@ -114,7 +114,17 @@
             <div class="flex flex-wrap items-start justify-between gap-6 mb-8">
                 <div>
                     <h1 class="text-3xl font-bold mb-2">Welcome back, <span id="user-name" class="text-gold">Member</span>!</h1>
-                    <p class="text-gray-400">Here's what you receive as a <span class="text-gold">Founding Member</span>.</p>
+                    <p class="text-gray-400 mb-2">Here's what you receive as a <span class="text-gold">Founding Member</span>.</p>
+                    <!-- Compact Message from Jon -->
+                    <button id="jon-message-toggle" class="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors group">
+                        <span class="text-blue-400">📩</span>
+                        <span>Message from Jon</span>
+                        <span id="message-badge-new" class="px-1.5 py-0.5 bg-blue-500/20 text-blue-400 text-xs rounded font-medium hidden">new</span>
+                        <span id="message-badge-read" class="px-1.5 py-0.5 bg-gray-700 text-gray-500 text-xs rounded hidden">read</span>
+                        <svg id="message-chevron" class="w-4 h-4 text-gray-500 group-hover:text-white transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
                 </div>
                 <div class="dashboard-card rounded-xl p-4">
                     <div class="flex items-center gap-4 mb-3">
@@ -140,46 +150,21 @@
                 </div>
             </div>
 
-            <!-- Collapsible Message from Jon -->
-            <div id="jon-message-container" class="mb-8">
-                <button id="jon-message-toggle" class="w-full text-left dashboard-card rounded-2xl p-4 border-l-4 border-blue-500 hover:bg-dark-elevated transition-colors">
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-3">
-                            <span class="text-2xl">👋</span>
-                            <span class="font-semibold text-blue-400">A Note from Jon</span>
-                            <span id="message-badge" class="px-2 py-0.5 bg-blue-500/20 text-blue-400 text-xs rounded hidden">NEW</span>
-                        </div>
-                        <svg id="message-chevron" class="w-5 h-5 text-gray-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                        </svg>
-                    </div>
-                </button>
-                <div id="jon-message-content" class="dashboard-card rounded-b-2xl border-l-4 border-blue-500 border-t-0 p-6 hidden">
-                    <p class="text-gray-300 leading-relaxed">
-                        Thanks for being a founding member! You're getting in early while I build this out.
-                        I'm trading these positions with my own money - every win and loss is real.
-                    </p>
-                    <p class="text-gray-300 leading-relaxed mt-3">
-                        <span class="text-gold">New here?</span> Start with <a href="blog/" class="text-gold underline hover:text-gold-light">the blog article</a> -
-                        it explains how to read the positions, what ENR and CONT scores mean, and how I approach buying.
-                    </p>
-                    <p class="text-gray-300 leading-relaxed mt-3">
-                        <span class="text-gold">Your feedback matters.</span> Questions about trades or strategy? Hit me up anytime.
-                    </p>
-                    <div class="flex flex-wrap gap-3 mt-4">
-                        <a href="blog/" class="inline-flex items-center gap-2 px-4 py-2 bg-gold text-dark-bg font-semibold rounded-lg text-sm hover:bg-gold-light transition-colors">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-                            </svg>
-                            Read: How to Use This System
-                        </a>
-                        <a href="mailto:jon@powersbiostrikes.com" class="inline-flex items-center gap-2 px-4 py-2 bg-gold/10 border border-gold/30 rounded-lg text-gold text-sm hover:bg-gold/20 transition-colors">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                            </svg>
-                            Send Feedback
-                        </a>
-                    </div>
+            <!-- Message Content (hidden by default) -->
+            <div id="jon-message-content" class="mt-4 mb-6 dashboard-card rounded-xl p-4 border-l-2 border-blue-500/50 hidden max-w-2xl">
+                <p class="text-gray-300 text-sm leading-relaxed">
+                    Thanks for being a founding member! I'm trading these positions with my own money - every win and loss is real.
+                </p>
+                <p class="text-gray-300 text-sm leading-relaxed mt-2">
+                    <span class="text-gold">New here?</span> Check out <a href="blog/" class="text-gold underline hover:text-gold-light">how to use this system</a> - it explains ENR, CONT scores, and my approach.
+                </p>
+                <div class="flex flex-wrap gap-2 mt-3">
+                    <a href="blog/" class="inline-flex items-center gap-1 px-3 py-1.5 bg-gold/10 border border-gold/30 rounded text-gold text-xs hover:bg-gold/20 transition-colors">
+                        📚 How It Works
+                    </a>
+                    <a href="mailto:jon@powersbiostrikes.com" class="inline-flex items-center gap-1 px-3 py-1.5 bg-white/5 border border-white/10 rounded text-gray-400 text-xs hover:bg-white/10 transition-colors">
+                        ✉️ Send Feedback
+                    </a>
                 </div>
             </div>
 
@@ -595,19 +580,24 @@
         });
 
         // Jon's Message Toggle with Read Tracking
-        const MESSAGE_VERSION = '2026-01-23'; // Update this when message content changes
+        const MESSAGE_VERSION = '2026-01-26'; // Update this when message content changes
         const messageToggle = document.getElementById('jon-message-toggle');
         const messageContent = document.getElementById('jon-message-content');
         const messageChevron = document.getElementById('message-chevron');
-        const messageBadge = document.getElementById('message-badge');
+        const messageBadgeNew = document.getElementById('message-badge-new');
+        const messageBadgeRead = document.getElementById('message-badge-read');
 
         function initMessageState() {
             const lastRead = localStorage.getItem('jonMessageRead');
             const isExpanded = localStorage.getItem('jonMessageExpanded') === 'true';
 
-            // Show NEW badge if not read this version
+            // Show appropriate badge
             if (lastRead !== MESSAGE_VERSION) {
-                messageBadge.classList.remove('hidden');
+                messageBadgeNew.classList.remove('hidden');
+                messageBadgeRead.classList.add('hidden');
+            } else {
+                messageBadgeNew.classList.add('hidden');
+                messageBadgeRead.classList.remove('hidden');
             }
 
             // Restore expanded state
@@ -627,7 +617,8 @@
             // Mark as read when expanded
             if (!isHidden) {
                 localStorage.setItem('jonMessageRead', MESSAGE_VERSION);
-                messageBadge.classList.add('hidden');
+                messageBadgeNew.classList.add('hidden');
+                messageBadgeRead.classList.remove('hidden');
             }
         });
 
