@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Position Details | PowersBioStrikes</title>
     <meta name="description" content="Detailed analysis for position">
+    <!-- Cache busting -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -256,10 +260,84 @@
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
                     </svg>
-                    AI Analysis
+                    AI Trade Analysis
                 </h2>
-                <div id="ai-content" class="prose prose-invert max-w-none text-gray-300">
-                    <!-- AI analysis content -->
+
+                <!-- Verdict Badge -->
+                <div id="ai-verdict-section" class="mb-6 hidden">
+                    <div class="flex items-center gap-4 mb-4">
+                        <span id="ai-verdict" class="px-4 py-2 rounded-lg text-lg font-bold">--</span>
+                        <div class="flex gap-4 text-sm">
+                            <div><span class="text-gray-500">Confidence:</span> <span id="ai-confidence" class="text-white font-medium">--</span>/10</div>
+                            <div><span class="text-gray-500">Thesis:</span> <span id="ai-thesis-strength" class="text-white font-medium">--</span>/10</div>
+                            <div><span class="text-gray-500">Data Quality:</span> <span id="ai-data-quality" class="text-white font-medium">--</span>/10</div>
+                        </div>
+                    </div>
+                    <p id="ai-one-liner" class="text-white font-medium text-lg border-l-4 border-gold pl-4">--</p>
+                </div>
+
+                <!-- Executive Summary -->
+                <div id="ai-summary-section" class="mb-6 hidden">
+                    <h3 class="text-white font-semibold mb-3">Executive Summary</h3>
+                    <div id="ai-executive-summary" class="text-gray-300 leading-relaxed whitespace-pre-line">--</div>
+                </div>
+
+                <!-- Key Risks -->
+                <div id="ai-risks-section" class="mb-6 hidden">
+                    <h3 class="text-red-400 font-semibold mb-3 flex items-center gap-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                        </svg>
+                        Key Risks
+                    </h3>
+                    <ul id="ai-key-risks" class="space-y-2 text-gray-300">--</ul>
+                </div>
+
+                <!-- Watch Triggers -->
+                <div id="ai-triggers-section" class="mb-6 hidden grid md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="text-green-400 font-semibold mb-3">Buy Triggers</h3>
+                        <ul id="ai-buy-triggers" class="space-y-2 text-gray-300 text-sm">--</ul>
+                    </div>
+                    <div>
+                        <h3 class="text-red-400 font-semibold mb-3">Pass Triggers</h3>
+                        <ul id="ai-pass-triggers" class="space-y-2 text-gray-300 text-sm">--</ul>
+                    </div>
+                </div>
+
+                <!-- Recommended Option -->
+                <div id="ai-option-section" class="mb-6 hidden">
+                    <h3 class="text-gold font-semibold mb-3">Recommended Option</h3>
+                    <div id="ai-recommended-option" class="bg-dark-bg/50 rounded-lg p-4 text-gray-300">--</div>
+                </div>
+
+                <!-- Price Targets -->
+                <div id="ai-targets-section" class="mb-6 hidden">
+                    <h3 class="text-white font-semibold mb-3">Price Targets</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+                        <div class="bg-dark-bg/50 rounded-lg p-3">
+                            <p class="text-gray-500">Entry Target</p>
+                            <p id="ai-target-entry" class="text-white font-semibold">--</p>
+                        </div>
+                        <div class="bg-dark-bg/50 rounded-lg p-3">
+                            <p class="text-gray-500">Exit Target</p>
+                            <p id="ai-target-exit" class="text-green-400 font-semibold">--</p>
+                        </div>
+                        <div class="bg-dark-bg/50 rounded-lg p-3">
+                            <p class="text-gray-500">Stop Loss</p>
+                            <p id="ai-stop-loss" class="text-red-400 font-semibold text-xs">--</p>
+                        </div>
+                        <div class="bg-dark-bg/50 rounded-lg p-3">
+                            <p class="text-gray-500">Review By</p>
+                            <p id="ai-review-date" class="text-white font-semibold">--</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Follow-up Items -->
+                <div id="ai-followup-section" class="hidden">
+                    <h3 class="text-white font-semibold mb-3">Follow-up Items</h3>
+                    <ul id="ai-followup-items" class="space-y-1 text-gray-400 text-sm">--</ul>
                 </div>
             </div>
 
@@ -473,28 +551,93 @@
             // AI Analysis
             if (pos.ai_analysis) {
                 const aiSection = document.getElementById('ai-section');
-                const aiContent = document.getElementById('ai-content');
                 aiSection.classList.remove('hidden');
 
-                // Handle different AI analysis formats
-                let analysisHtml = '';
                 const ai = pos.ai_analysis;
 
-                if (typeof ai === 'string') {
-                    analysisHtml = `<p>${ai}</p>`;
-                } else if (ai.raw) {
-                    analysisHtml = `<p>${ai.raw}</p>`;
-                } else if (ai.summary || ai.analysis) {
-                    if (ai.summary) analysisHtml += `<p class="mb-4">${ai.summary}</p>`;
-                    if (ai.bull_case) analysisHtml += `<h4 class="text-green-400 font-semibold mt-4">Bull Case</h4><p>${ai.bull_case}</p>`;
-                    if (ai.bear_case) analysisHtml += `<h4 class="text-red-400 font-semibold mt-4">Bear Case</h4><p>${ai.bear_case}</p>`;
-                    if (ai.recommendation) analysisHtml += `<h4 class="text-gold font-semibold mt-4">Recommendation</h4><p>${ai.recommendation}</p>`;
-                } else {
-                    // Try to display as formatted JSON
-                    analysisHtml = `<pre class="text-sm overflow-x-auto">${JSON.stringify(ai, null, 2)}</pre>`;
+                // Verdict section
+                if (ai.verdict || ai.one_line_summary) {
+                    document.getElementById('ai-verdict-section').classList.remove('hidden');
+
+                    // Verdict badge styling
+                    const verdictEl = document.getElementById('ai-verdict');
+                    const verdict = ai.verdict || 'ANALYSIS';
+                    verdictEl.textContent = verdict;
+                    if (verdict === 'BUY') {
+                        verdictEl.className = 'px-4 py-2 rounded-lg text-lg font-bold bg-green-500/20 text-green-400 border border-green-500/30';
+                    } else if (verdict === 'WATCH') {
+                        verdictEl.className = 'px-4 py-2 rounded-lg text-lg font-bold bg-yellow-500/20 text-yellow-400 border border-yellow-500/30';
+                    } else if (verdict === 'PASS') {
+                        verdictEl.className = 'px-4 py-2 rounded-lg text-lg font-bold bg-red-500/20 text-red-400 border border-red-500/30';
+                    } else {
+                        verdictEl.className = 'px-4 py-2 rounded-lg text-lg font-bold bg-gray-500/20 text-gray-400 border border-gray-500/30';
+                    }
+
+                    if (ai.confidence) document.getElementById('ai-confidence').textContent = ai.confidence;
+                    if (ai.thesis_strength) document.getElementById('ai-thesis-strength').textContent = ai.thesis_strength;
+                    if (ai.data_quality) document.getElementById('ai-data-quality').textContent = ai.data_quality;
+                    if (ai.one_line_summary) document.getElementById('ai-one-liner').textContent = ai.one_line_summary;
                 }
 
-                aiContent.innerHTML = analysisHtml;
+                // Executive Summary
+                if (ai.executive_summary) {
+                    document.getElementById('ai-summary-section').classList.remove('hidden');
+                    document.getElementById('ai-executive-summary').textContent = ai.executive_summary;
+                }
+
+                // Key Risks
+                if (ai.key_risks && ai.key_risks.length > 0) {
+                    document.getElementById('ai-risks-section').classList.remove('hidden');
+                    document.getElementById('ai-key-risks').innerHTML = ai.key_risks.map(r =>
+                        `<li class="flex items-start gap-2"><span class="text-red-400">•</span> ${r}</li>`
+                    ).join('');
+                }
+
+                // Watch Triggers
+                if ((ai.watch_buy_triggers && ai.watch_buy_triggers.length > 0) ||
+                    (ai.watch_pass_triggers && ai.watch_pass_triggers.length > 0)) {
+                    document.getElementById('ai-triggers-section').classList.remove('hidden');
+
+                    if (ai.watch_buy_triggers) {
+                        document.getElementById('ai-buy-triggers').innerHTML = ai.watch_buy_triggers.map(t =>
+                            `<li class="flex items-start gap-2"><span class="text-green-400">✓</span> ${t}</li>`
+                        ).join('');
+                    }
+                    if (ai.watch_pass_triggers) {
+                        document.getElementById('ai-pass-triggers').innerHTML = ai.watch_pass_triggers.map(t =>
+                            `<li class="flex items-start gap-2"><span class="text-red-400">✗</span> ${t}</li>`
+                        ).join('');
+                    }
+                }
+
+                // Recommended Option
+                if (ai.recommended_option) {
+                    document.getElementById('ai-option-section').classList.remove('hidden');
+                    const opt = ai.recommended_option;
+                    if (opt.rationale) {
+                        document.getElementById('ai-recommended-option').innerHTML = `
+                            ${opt.strike ? `<div class="mb-2"><span class="text-gold">$${opt.strike} ${opt.expiration || ''}</span> @ $${opt.premium || '--'}</div>` : ''}
+                            <p>${opt.rationale}</p>
+                        `;
+                    }
+                }
+
+                // Price Targets
+                if (ai.target_entry_price || ai.target_exit_price || ai.stop_loss_trigger || ai.review_by_date) {
+                    document.getElementById('ai-targets-section').classList.remove('hidden');
+                    if (ai.target_entry_price) document.getElementById('ai-target-entry').textContent = '$' + ai.target_entry_price;
+                    if (ai.target_exit_price) document.getElementById('ai-target-exit').textContent = '$' + ai.target_exit_price;
+                    if (ai.stop_loss_trigger) document.getElementById('ai-stop-loss').textContent = ai.stop_loss_trigger;
+                    if (ai.review_by_date) document.getElementById('ai-review-date').textContent = formatDate(ai.review_by_date);
+                }
+
+                // Follow-up Items
+                if (ai.follow_up_items && ai.follow_up_items.length > 0) {
+                    document.getElementById('ai-followup-section').classList.remove('hidden');
+                    document.getElementById('ai-followup-items').innerHTML = ai.follow_up_items.map(item =>
+                        `<li class="flex items-start gap-2"><span class="text-gray-500">○</span> ${item}</li>`
+                    ).join('');
+                }
             }
 
             // Thesis
