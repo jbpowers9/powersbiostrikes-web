@@ -72,8 +72,13 @@
                         <span class="text-gray-500 text-xs">Member Community</span>
                     </div>
                 </a>
-                <div class="flex items-center gap-4">
-                    <a href="dashboard.html" class="text-gray-400 hover:text-gold transition-colors text-sm">← Dashboard</a>
+                <div class="flex items-center gap-6">
+                    <a href="dashboard.html" class="text-gray-400 hover:text-gold transition-colors text-sm">Dashboard</a>
+                    <a href="calendar.html" class="text-gray-400 hover:text-gold transition-colors text-sm">Calendar</a>
+                    <a href="news.html" class="text-gray-400 hover:text-gold transition-colors text-sm">News</a>
+                    <a href="top10-picks.html" class="text-gray-400 hover:text-gold transition-colors text-sm">Top 10</a>
+                    <a href="community.html" class="text-gold font-medium text-sm">Community</a>
+                    <a href="blog/" class="text-gray-400 hover:text-gold transition-colors text-sm">Blog</a>
                     <div id="user-avatar" class="w-9 h-9 bg-gold/20 rounded-full flex items-center justify-center">
                         <span id="user-initials" class="text-gold font-bold text-sm">?</span>
                     </div>
@@ -89,6 +94,10 @@
             <div class="text-center mb-8">
                 <h1 class="text-3xl font-bold mb-2">Member Community</h1>
                 <p class="text-gray-400">Share your wins, losses, and lessons learned. We're all here to get better.</p>
+                <div class="mt-4 inline-flex items-center gap-2 px-4 py-2 bg-dark-card rounded-full border border-white/10">
+                    <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                    <span class="text-gray-400 text-sm"><span id="member-count" class="text-gold font-semibold">--</span> members strong</span>
+                </div>
             </div>
 
             <!-- New Post Form -->
@@ -371,8 +380,27 @@
             return div.innerHTML;
         }
 
+        // Load member count
+        async function loadMemberCount() {
+            const memberCountEl = document.getElementById('member-count');
+            if (!memberCountEl) return;
+
+            try {
+                const { count, error } = await supabase
+                    .from('profiles')
+                    .select('*', { count: 'exact', head: true });
+
+                if (!error && count !== null) {
+                    memberCountEl.textContent = count;
+                }
+            } catch (err) {
+                console.log('Member count unavailable');
+            }
+        }
+
         // Initialize
         loadPage();
+        loadMemberCount();
     </script>
 </body>
 </html>

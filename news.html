@@ -124,18 +124,22 @@
     <nav class="bg-dark-card border-b border-dark-border sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex items-center justify-between h-16">
-                <a href="index.html" class="flex items-center space-x-2">
+                <a href="dashboard.html" class="flex items-center space-x-2">
                     <span class="text-gold font-bold text-xl">PowersBioStrikes</span>
                 </a>
                 <div class="hidden md:flex items-center space-x-6">
+                    <a href="dashboard.html" class="text-steel-light hover:text-gold transition">Dashboard</a>
                     <a href="calendar.html" class="text-steel-light hover:text-gold transition">Calendar</a>
                     <a href="news.html" class="text-gold font-medium">News</a>
-                    <a href="dashboard.html" class="text-steel-light hover:text-gold transition">Dashboard</a>
-                    <a href="blog/index.html" class="text-steel-light hover:text-gold transition">Blog</a>
+                    <a href="top10-picks.html" class="text-steel-light hover:text-gold transition">Top 10</a>
+                    <a href="community.html" class="text-steel-light hover:text-gold transition">Community</a>
+                    <a href="blog/" class="text-steel-light hover:text-gold transition">Blog</a>
                 </div>
-                <a href="signup.html" class="bg-gold text-dark px-4 py-2 rounded-lg font-semibold hover:bg-gold-dark transition">
-                    Join Free
-                </a>
+                <div id="user-nav" class="flex items-center gap-3">
+                    <div class="w-9 h-9 bg-gold/20 rounded-full flex items-center justify-center">
+                        <span id="user-initials" class="text-gold font-bold text-sm">?</span>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
