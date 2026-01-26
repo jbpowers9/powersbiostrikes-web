@@ -147,7 +147,8 @@
                 .eq('id', user.id)
                 .single();
 
-            if (profile?.is_approved === true) {
+            const isApproved = profile?.is_approved === true || profile?.is_approved === 't' || profile?.is_approved === 'true';
+            if (isApproved) {
                 window.location.href = 'dashboard.html';
             }
         }

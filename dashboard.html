@@ -327,7 +327,9 @@
                     .single();
 
                 // If user is not approved, redirect to pending page
-                if (!profile || profile.is_approved !== true) {
+                // Check for true as boolean OR string
+                const isApproved = profile?.is_approved === true || profile?.is_approved === 't' || profile?.is_approved === 'true';
+                if (!profile || !isApproved) {
                     window.location.href = 'pending-approval.html';
                     return;
                 }
