@@ -124,7 +124,7 @@
             </div>
 
             <!-- Position Stats -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-4">
                 <div class="stat-box rounded-xl p-4">
                     <p class="text-gray-500 text-xs uppercase mb-1">Strike</p>
                     <p id="strike" class="text-2xl font-bold text-white">$0</p>
@@ -134,13 +134,30 @@
                     <p id="expiration" class="text-2xl font-bold text-white">--</p>
                 </div>
                 <div class="stat-box rounded-xl p-4">
-                    <p class="text-gray-500 text-xs uppercase mb-1">Entry Price</p>
+                    <p class="text-gray-500 text-xs uppercase mb-1">Stock Price</p>
+                    <p id="stock-price" class="text-2xl font-bold text-white">$0.00</p>
+                    <p id="stock-pnl" class="text-sm mt-1">--</p>
+                </div>
+            </div>
+
+            <!-- Option Prices -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="stat-box rounded-xl p-4">
+                    <p class="text-gray-500 text-xs uppercase mb-1">Option Entry</p>
                     <p id="entry-price" class="text-2xl font-bold text-white">$0.00</p>
                 </div>
                 <div class="stat-box rounded-xl p-4">
-                    <p class="text-gray-500 text-xs uppercase mb-1">Current Price</p>
+                    <p class="text-gray-500 text-xs uppercase mb-1">Option Current</p>
                     <p id="current-price" class="text-2xl font-bold text-white">$0.00</p>
                     <p id="pnl" class="text-sm mt-1">--</p>
+                </div>
+                <div class="stat-box rounded-xl p-4">
+                    <p class="text-gray-500 text-xs uppercase mb-1">Stock @ Entry</p>
+                    <p id="entry-stock-price" class="text-lg font-bold text-gray-400">$0.00</p>
+                </div>
+                <div class="stat-box rounded-xl p-4">
+                    <p class="text-gray-500 text-xs uppercase mb-1">Stock @ Current</p>
+                    <p id="current-stock-price" class="text-lg font-bold text-gray-400">$0.00</p>
                 </div>
             </div>
 
@@ -386,7 +403,20 @@
             document.getElementById('entry-price').textContent = formatCurrency(pos.entry_price);
             document.getElementById('current-price').textContent = formatCurrency(pos.current_price);
 
-            // P/L calculation
+            // Stock prices
+            document.getElementById('stock-price').textContent = formatCurrency(pos.stock_price);
+            document.getElementById('entry-stock-price').textContent = formatCurrency(pos.entry_stock_price);
+            document.getElementById('current-stock-price').textContent = formatCurrency(pos.stock_price);
+
+            // Stock P/L calculation
+            if (pos.entry_stock_price && pos.stock_price) {
+                const stockPnlPct = ((pos.stock_price - pos.entry_stock_price) / pos.entry_stock_price * 100);
+                const stockPnlEl = document.getElementById('stock-pnl');
+                stockPnlEl.textContent = (stockPnlPct >= 0 ? '+' : '') + stockPnlPct.toFixed(1) + '% from entry';
+                stockPnlEl.className = 'text-sm mt-1 ' + (stockPnlPct >= 0 ? 'text-green-400' : 'text-red-400');
+            }
+
+            // Option P/L calculation
             if (pos.entry_price && pos.current_price) {
                 const pnlPct = ((pos.current_price - pos.entry_price) / pos.entry_price * 100);
                 const pnlEl = document.getElementById('pnl');
