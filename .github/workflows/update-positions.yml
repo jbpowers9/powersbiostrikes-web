@@ -1,23 +1,12 @@
 name: Update Live Positions Data
 
 on:
-  # Run every 30 minutes during market hours (9:30 AM - 4 PM ET, Mon-Fri)
-  schedule:
-    # 30 minutes past each hour during market hours
-    # Note: Times are in UTC, ET is UTC-5 (or UTC-4 during DST)
-    # Market hours: 9:30 AM - 4:00 PM ET = 14:30 - 21:00 UTC (standard time)
-    - cron: '30 14-20 * * 1-5'  # Every hour from 9:30 AM to 3:30 PM ET
-    - cron: '0 15-21 * * 1-5'   # Top of each hour from 10 AM to 4 PM ET
+  # Schedule disabled - positions are updated locally via schwab_keepalive.py
+  # which runs on Task Scheduler and pushes data/positions.json directly.
+  # The GitHub Actions runner cannot maintain a valid Schwab OAuth token.
 
-  # Manual trigger
+  # Manual trigger (for testing)
   workflow_dispatch:
-
-  # Also run on push to main (for testing)
-  push:
-    branches:
-      - main
-    paths:
-      - 'generate_live_positions.py'
 
 permissions:
   contents: write
